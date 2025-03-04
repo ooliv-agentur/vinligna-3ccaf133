@@ -3,80 +3,161 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+// Animation variants for staggered animations
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1.0] }
+  }
+};
+
+const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: { 
+    opacity: 1,
+    transition: { duration: 1.2, ease: [0.25, 0.1, 0.25, 1.0] }
+  }
+};
+
+const scaleIn = {
+  hidden: { scale: 0.9, opacity: 0 },
+  visible: { 
+    scale: 1, 
+    opacity: 1,
+    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1.0] }
+  }
+};
+
 const Hero = () => {
   return (
-    <section className="relative min-h-[100vh] overflow-hidden flex flex-col items-center justify-center px-6 py-24 md:py-32 bg-black">
-      <div className="container relative z-10 mx-auto max-w-5xl text-center">
-        {/* Badge - simplified */}
+    <section className="relative h-screen overflow-hidden flex flex-col items-center justify-center px-6 py-12 bg-black">
+      {/* Background Texture/Gradient Animation */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.15 }}
+        transition={{ duration: 2 }}
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E")`,
+        }}
+      />
+
+      {/* Main Content Container */}
+      <motion.div 
+        className="container z-10 mx-auto max-w-6xl"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* Badge - animated */}
         <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-block mb-8 px-3 py-1 bg-white/10 text-white text-xs tracking-widest uppercase border border-white/10"
+          variants={itemVariants}
+          className="flex justify-center mb-8"
         >
-          Nachhaltige Eleganz
+          <div className="px-5 py-2 bg-white/10 backdrop-blur-sm text-white text-sm tracking-widest uppercase border border-white/20 rounded-full">
+            Nachhaltige Eleganz
+          </div>
         </motion.div>
 
-        {/* Heading - more minimal */}
+        {/* Heading - larger and animated with character staggering */}
         <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-light text-white mb-8 leading-tight tracking-tight"
+          variants={itemVariants}
+          className="text-5xl md:text-7xl lg:text-8xl font-light text-white mb-12 leading-tight tracking-tight text-center max-w-5xl mx-auto"
         >
-          Exklusive Fassmöbel aus <br className="hidden md:block" />
-          <span className="font-medium">recycelten Weinfässern</span>
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="block"
+          >
+            Exklusive Fassmöbel aus
+          </motion.span>
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.8 }}
+            className="font-medium block mt-2 bg-gradient-to-r from-wine to-wine-light bg-clip-text text-transparent"
+          >
+            recycelten Weinfässern
+          </motion.span>
         </motion.h1>
 
-        {/* Subheading - simplified */}
+        {/* Subheading - simplified and animated */}
         <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-base md:text-lg text-white/80 max-w-2xl mx-auto mb-16"
+          variants={itemVariants}
+          className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-16 text-center leading-relaxed"
         >
-          Wir verwandeln gebrauchte Barrique-Fässer in elegante, einzigartige Möbelstücke, die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
+          Wir verwandeln gebrauchte Barrique-Fässer in elegante, einzigartige Möbelstücke, 
+          die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
         </motion.p>
 
-        {/* Minimalist Entry Cards - full width container with no max width */}
+        {/* Entry Cards - full width, larger and with magnetic hover effect */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 w-full mb-20"
+          variants={scaleIn}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 w-full mb-24"
         >
-          {/* Business Entry Point - Minimalist Design */}
+          {/* Business Entry Point - Reimagined Design */}
           <EntryCard 
             title="Weingüter & Gastronomie"
             description="Maßgeschneiderte Lösungen für Ihre Marke"
             link="/business"
             imageSrc="/lovable-uploads/112627aa-d494-4e9d-939e-39625817461d.png"
-            delay={0.4}
           />
 
-          {/* Private Entry Point - Minimalist Design */}
+          {/* Private Entry Point - Reimagined Design */}
           <EntryCard 
             title="Weinliebhaber"
             description="Exklusive Designs für Ihr Zuhause"
             link="/private"
-            imageSrc="/lovable-uploads/e9d912cb-d45d-4016-8e8b-8250bd78de47.png" 
-            delay={0.5}
+            imageSrc="/lovable-uploads/e9d912cb-d45d-4016-8e8b-8250bd78de47.png"
           />
         </motion.div>
 
-        {/* Scroll indicator - minimalist */}
+        {/* Scroll indicator - animated */}
         <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
+          variants={fadeIn}
           className="flex flex-col items-center"
         >
-          <span className="text-white/60 text-sm mb-2">Mehr entdecken</span>
-          <div className="w-px h-12 bg-white/20 relative overflow-hidden">
-            <div className="w-full h-1/2 bg-white/60 absolute top-0 animate-[scrollDown_2s_ease-in-out_infinite]" />
-          </div>
+          <motion.span 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.7 }}
+            transition={{ duration: 1, delay: 1.2, repeat: Infinity, repeatType: "reverse" }}
+            className="text-white text-sm mb-2"
+          >
+            Mehr entdecken
+          </motion.span>
+          <motion.div 
+            initial={{ height: 0 }}
+            animate={{ height: 60 }}
+            transition={{ duration: 1, delay: 1.4 }}
+            className="w-px bg-white/20 relative overflow-hidden"
+          >
+            <motion.div 
+              initial={{ y: -60 }}
+              animate={{ y: 60 }}
+              transition={{ 
+                duration: 1.5, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+              className="w-full h-1/2 bg-white/60 absolute"
+            />
+          </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 };
@@ -86,42 +167,77 @@ interface EntryCardProps {
   description: string;
   link: string;
   imageSrc: string;
-  delay: number;
 }
 
-const EntryCard = ({ title, description, link, imageSrc, delay }: EntryCardProps) => {
+const EntryCard = ({ title, description, link, imageSrc }: EntryCardProps) => {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5, delay }}
+      whileHover={{ y: -5 }}
+      transition={{ type: "spring", stiffness: 300 }}
+      className="w-full h-full"
     >
       <Link 
         to={link} 
         className="block h-full group relative"
       >
-        {/* Card image with overlay - removed hover effect from image */}
-        <div className="relative aspect-[4/3] rounded-md overflow-hidden">
-          <img 
-            src={imageSrc} 
-            alt={title} 
-            className="w-full h-full object-cover" 
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent" />
+        {/* Card with parallax effect on hover */}
+        <div className="relative aspect-[16/9] rounded-lg overflow-hidden">
+          {/* Image with blur-up loading effect */}
+          <motion.div
+            initial={{ filter: "blur(10px)" }}
+            animate={{ filter: "blur(0px)" }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="absolute inset-0"
+          >
+            <img 
+              src={imageSrc} 
+              alt={title} 
+              className="w-full h-full object-cover" 
+            />
+          </motion.div>
           
-          {/* Card content */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-left">
-            <h3 className="text-2xl font-light text-white mb-1">{title}</h3>
-            <p className="text-white/70 mb-6 text-sm">{description}</p>
+          {/* Gradient overlay with animated opacity */}
+          <motion.div 
+            initial={{ opacity: 0.7 }}
+            whileHover={{ opacity: 0.9 }}
+            transition={{ duration: 0.3 }}
+            className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/30"
+          />
+          
+          {/* Card content with enhanced animations */}
+          <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10 text-left transform transition-all duration-300 group-hover:translate-y-0">
+            <h3 className="text-3xl font-light text-white mb-3">{title}</h3>
+            <p className="text-white/70 mb-8 text-lg font-light">{description}</p>
             
-            <div className="flex items-center text-white text-sm font-light group">
-              <span className="border-b border-white/30 group-hover:border-white transition-colors duration-300">Entdecken</span>
+            <div className="flex items-center text-white text-base font-light overflow-hidden relative">
+              <span className="relative group-hover:text-wine transition-colors duration-300">
+                Entdecken
+                <motion.span
+                  className="absolute bottom-0 left-0 w-full h-[1px] bg-white/30"
+                  whileHover={{ scaleX: 1 }}
+                  initial={{ scaleX: 0 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </span>
               <motion.div
                 initial={{ x: 0 }}
-                whileHover={{ x: 5 }}
-                className="ml-2"
+                whileHover={{ x: 10 }}
+                animate={{ x: 0 }}
+                transition={{ duration: 0.3 }}
+                className="ml-3"
               >
-                <ArrowRight size={16} className="text-white transition-transform duration-300 group-hover:translate-x-1" />
+                <motion.div
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ 
+                    duration: 1.5, 
+                    repeat: Infinity, 
+                    repeatType: "loop", 
+                    ease: "easeInOut",
+                    repeatDelay: 1
+                  }}
+                >
+                  <ArrowRight size={20} className="text-wine" />
+                </motion.div>
               </motion.div>
             </div>
           </div>
