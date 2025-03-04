@@ -19,14 +19,14 @@ const About = () => {
                   Die Philosophie hinter VINLIGNA
                 </span>
                 <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
-                  Ein Hauch Weinkultur für <br />
-                  <span className="font-medium">Ihr Zuhause</span>
+                  Exquisite Weinkultur für <br />
+                  <span className="font-medium">Unternehmen und Privathaushalte</span>
                 </h2>
                 <p className="text-muted-foreground mb-6">
                   In jedem VINLIGNA-Stück vereinen sich Jahrhunderte alte Tradition mit modernem Design. Wir verwandeln ausgediente Barrique-Fässer in edle Möbelkunstwerke und bewahren dabei die Geschichte und den Charakter des Holzes, das einst edle Weine beherbergte.
                 </p>
                 <p className="text-muted-foreground mb-6">
-                  Unsere Möbel erzählen Geschichten von Weinbergen, Kellereien und Reifeprozessen. Sie bringen die Seele des Weins in Ihr Zuhause – als Ausdruck Ihrer Leidenschaft für Wein und exklusives Design.
+                  Unsere Möbel erzählen Geschichten von Weinbergen, Kellereien und Reifeprozessen. Sie bringen die Seele des Weins in Ihr Zuhause oder Unternehmen – als Ausdruck Ihrer Leidenschaft für Wein und exklusives Design.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 mt-8">
                   <FeatureCard 
@@ -61,7 +61,7 @@ const About = () => {
                 className="absolute z-10 w-[85%] h-[70%] top-0 right-0 rounded-xl overflow-hidden shadow-2xl border-2 border-white/20"
               >
                 <img 
-                  src="/lovable-uploads/85d4a29e-509f-42f3-b7d7-52e5a3622dd9.png" 
+                  src="/lovable-uploads/7d68f803-8997-4648-9249-af03963b23eb.png" 
                   alt="VINLIGNA Handwerkerteam" 
                   className="w-full h-full object-cover"
                 />
