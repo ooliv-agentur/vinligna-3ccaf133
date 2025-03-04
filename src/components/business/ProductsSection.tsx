@@ -80,8 +80,8 @@ const ProductsSection = () => {
                 </div>
                 <div className="w-full md:w-1/2 rounded-lg overflow-hidden">
                   <img 
-                    src="/lovable-uploads/94f2d719-f448-460a-bee6-8ffd7d37af7c.png" 
-                    alt="Weingut mit detaillierten Weinfässern" 
+                    src="/lovable-uploads/25315c4b-0032-4c04-85f6-ddc09d9ef3df.png" 
+                    alt="Weinfässer mit Metallbändern im Weinkeller" 
                     className="w-full h-auto object-cover rounded-lg transition-transform duration-500 hover:scale-105"
                   />
                 </div>
