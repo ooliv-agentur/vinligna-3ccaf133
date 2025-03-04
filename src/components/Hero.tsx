@@ -1,149 +1,163 @@
 
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { useEffect, useRef } from 'react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import { motion, useScroll, useTransform } from 'framer-motion';
+
+// Text reveal component for animated headings
+const RevealText = ({ children, delay = 0, className }: { children: string, delay?: number, className?: string }) => {
+  return (
+    <span className="reveal-text-container">
+      <span 
+        className={cn("reveal-text", className)}
+        style={{ animationDelay: `${delay}s` }}
+      >
+        {children}
+      </span>
+    </span>
+  );
+};
 
 const Hero = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 500], [0, 150]);
+  
   return (
-    <section className="relative min-h-[100vh] overflow-hidden flex flex-col items-center justify-center px-6 py-24 md:py-32">
-      {/* Background image with overlay */}
-      <div className="absolute inset-0 z-0">
+    <section ref={containerRef} className="relative min-h-[100vh] overflow-hidden flex flex-col items-center justify-center px-6 py-24 md:py-32">
+      {/* Parallax background image with overlay */}
+      <motion.div 
+        style={{ y }}
+        className="absolute inset-0 z-0"
+      >
         <img 
           src="/lovable-uploads/bd5f84a4-a4f9-423f-88f7-1fce764501b2.png"
           alt="Weinfass-Workshop mit historischer Wandkunst"
           className="w-full h-full object-cover object-center"
         />
-        {/* Darker gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/40" />
-      </div>
+        {/* Monochrome overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/70 to-black/50" />
+      </motion.div>
 
-      <div className="container relative z-10 mx-auto max-w-5xl text-center">
-        {/* Badge */}
+      <div className="container relative z-10 mx-auto max-w-5xl">
+        {/* Badge - with staggered animation */}
         <motion.div 
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-block mb-6 px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-xs tracking-widest uppercase rounded-full border border-white/10"
+          transition={{ duration: 0.7, ease: [0.215, 0.61, 0.355, 1] }}
+          className="inline-block mb-8 px-3 py-1 bg-white/10 backdrop-blur-sm text-white text-xs tracking-widest uppercase rounded-full border border-white/10"
         >
           Nachhaltige Eleganz
         </motion.div>
 
-        {/* Heading */}
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-light text-white mb-6 leading-tight tracking-tight"
-        >
-          Exklusive Fassmöbel aus <br className="hidden md:block" />
-          <span className="font-medium">recycelten Weinfässern</span>
-        </motion.h1>
+        {/* Heading - with text reveal animation */}
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-white mb-8 leading-tight tracking-tight">
+          <div className="mb-2">
+            <RevealText delay={0.1}>Exklusive Fassmöbel aus</RevealText>
+          </div>
+          <div>
+            <RevealText delay={0.3} className="font-medium">recycelten Weinfässern</RevealText>
+          </div>
+        </h1>
 
-        {/* Subheading */}
+        {/* Subheading - with fade up animation */}
         <motion.p 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-base md:text-lg text-white/90 max-w-2xl mx-auto mb-12"
+          transition={{ duration: 0.7, delay: 0.5, ease: [0.215, 0.61, 0.355, 1] }}
+          className="text-base md:text-lg text-white/80 max-w-2xl mx-auto mb-16"
         >
           Wir verwandeln gebrauchte Barrique-Fässer in elegante, einzigartige Möbelstücke, die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
         </motion.p>
 
-        {/* Elegant Entry Points with Glass Cards */}
+        {/* Elegant Entry Points with Image Cards - inspired by isiglobal.com */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto mb-20"
         >
-          {/* Business Entry Point - Redesigned as elegant glass card */}
-          <EntryCard 
-            title="Weingüter & Gastronomie"
-            description="Maßgeschneiderte Lösungen für Ihre Marke"
-            link="/business"
-            imageSrc="/lovable-uploads/112627aa-d494-4e9d-939e-39625817461d.png"
-            delay={0.4}
-          />
+          {/* Business Entry Point - Redesigned as elegant image card */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.7, ease: [0.215, 0.61, 0.355, 1] }}
+            whileHover={{ y: -8 }}
+          >
+            <Link 
+              to="/business" 
+              className="block h-full group image-card rounded-lg overflow-hidden"
+            >
+              <div className="relative aspect-[4/3]">
+                <img 
+                  src="/lovable-uploads/112627aa-d494-4e9d-939e-39625817461d.png"
+                  alt="Weingüter & Gastronomie" 
+                  className="w-full h-full object-cover transition-transform duration-700"
+                />
+                <div className="absolute inset-0 flex flex-col justify-end p-8">
+                  <div className="image-card-content">
+                    <h3 className="text-2xl font-light text-white mb-2">Weingüter & Gastronomie</h3>
+                    <p className="text-white/70 mb-6 text-sm">Maßgeschneiderte Lösungen für Ihre Marke</p>
+                    <div className="flex items-center text-white/90 text-sm font-light">
+                      <span className="line-animation">Entdecken</span>
+                      <ArrowRight size={16} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </motion.div>
 
-          {/* Private Entry Point - Redesigned as elegant glass card */}
-          <EntryCard 
-            title="Weinliebhaber"
-            description="Exklusive Designs für Ihr Zuhause"
-            link="/private"
-            imageSrc="/lovable-uploads/e9d912cb-d45d-4016-8e8b-8250bd78de47.png" 
-            delay={0.5}
-          />
+          {/* Private Entry Point - Redesigned as elegant image card */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
+            whileHover={{ y: -8 }}
+          >
+            <Link 
+              to="/private" 
+              className="block h-full group image-card rounded-lg overflow-hidden"
+            >
+              <div className="relative aspect-[4/3]">
+                <img 
+                  src="/lovable-uploads/e9d912cb-d45d-4016-8e8b-8250bd78de47.png" 
+                  alt="Weinliebhaber" 
+                  className="w-full h-full object-cover transition-transform duration-700"
+                />
+                <div className="absolute inset-0 flex flex-col justify-end p-8">
+                  <div className="image-card-content">
+                    <h3 className="text-2xl font-light text-white mb-2">Weinliebhaber</h3>
+                    <p className="text-white/70 mb-6 text-sm">Exklusive Designs für Ihr Zuhause</p>
+                    <div className="flex items-center text-white/90 text-sm font-light">
+                      <span className="line-animation">Entdecken</span>
+                      <ArrowRight size={16} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </motion.div>
         </motion.div>
 
-        {/* Scroll indicator */}
+        {/* Scroll indicator - with smooth animation */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
+          transition={{ duration: 0.6, delay: 1 }}
           className="flex flex-col items-center"
         >
-          <span className="text-white/70 text-sm mb-2">Scrollen Sie, um mehr zu entdecken</span>
-          <div className="w-0.5 h-12 bg-white/20 relative overflow-hidden">
-            <div className="w-full h-1/2 bg-white/80 absolute top-0 animate-[scrollDown_2s_ease-in-out_infinite]" />
-          </div>
+          <span className="text-white/60 text-sm mb-2">Entdecken Sie mehr</span>
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+          >
+            <ChevronDown className="text-white/70" size={24} />
+          </motion.div>
         </motion.div>
       </div>
     </section>
-  );
-};
-
-interface EntryCardProps {
-  title: string;
-  description: string;
-  link: string;
-  imageSrc: string;
-  delay: number;
-}
-
-const EntryCard = ({ title, description, link, imageSrc, delay }: EntryCardProps) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5, delay }}
-      whileHover={{ 
-        scale: 1.02,
-        transition: { duration: 0.2 }
-      }}
-    >
-      <Link 
-        to={link} 
-        className="block h-full group relative"
-      >
-        {/* Card image with overlay */}
-        <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
-          <img 
-            src={imageSrc} 
-            alt={title} 
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-90" />
-          
-          {/* Card content */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-left">
-            <h3 className="text-2xl font-light text-white mb-1">{title}</h3>
-            <p className="text-white/70 mb-6 text-sm">{description}</p>
-            
-            <div className="flex items-center text-white/90 text-sm font-light group">
-              <span className="border-b border-white/30 group-hover:border-white transition-colors duration-300">Entdecken</span>
-              <motion.div
-                initial={{ x: 0 }}
-                whileHover={{ x: 5 }}
-                className="ml-2"
-              >
-                <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </Link>
-    </motion.div>
   );
 };
 
