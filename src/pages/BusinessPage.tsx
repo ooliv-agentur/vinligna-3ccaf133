@@ -165,7 +165,7 @@ const BusinessPage = () => {
                 icon={<Factory className="w-6 h-6" />}
                 title="Stühle und Sitzmöbel"
                 description="Unsere handgefertigten Stühle und Barhocker bieten Komfort und Stabilität für den täglichen Gebrauch in gastronomischen Umgebungen, während sie gleichzeitig höchsten Komfort bieten."
-                image="/project-b2b-2.jpg"
+                image="/lovable-uploads/87b6ac6c-025f-40d2-9b09-73f8ee6e25b8.png"
               />
               
               <ProductCard 
