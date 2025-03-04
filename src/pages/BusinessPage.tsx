@@ -158,7 +158,7 @@ const BusinessPage = () => {
                 icon={<Wine className="w-6 h-6" />}
                 title="Tische und Theken"
                 description="Unsere maßgefertigten Tische und Theken aus recycelten Barrique-Fässern vereinen Funktionalität und Eleganz. Diese Möbelstücke schaffen in Verkostungsräumen oder an Hotelbars eine stilvolle und authentische Atmosphäre."
-                image="/project-b2b-1.jpg"
+                image="/lovable-uploads/ce069aff-5e1d-415f-adba-547b6495298d.png"
               />
               
               <ProductCard 
