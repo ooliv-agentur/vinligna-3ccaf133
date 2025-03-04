@@ -45,20 +45,20 @@ const FaqItem = ({ question, answer }: FaqItemProps) => {
 const Faq = () => {
   const faqs: FaqItemProps[] = [
     {
-      question: "Was macht VinLigna-Fassmöbel besonders?",
-      answer: "VinLigna fertigt exklusive Möbel aus recycelten Weinfässern, die individuell gestaltet werden können. Unser Sortiment umfasst Fassmöbel mit Türen, Tischplatten aus Glas oder Holz sowie spezielle Möbel für den Terrassenbereich."
+      question: "Was macht VINLIGNA-Fassmöbel besonders?",
+      answer: "VINLIGNA fertigt exklusive Möbel aus recycelten Weinfässern, die individuell gestaltet werden können. Unser Sortiment umfasst Fassmöbel mit Türen, Tischplatten aus Glas oder Holz sowie spezielle Möbel für den Terrassenbereich."
     },
     {
-      question: "Welche Arten von Fassmöbeln gibt es bei VinLigna?",
+      question: "Welche Arten von Fassmöbeln gibt es bei VINLIGNA?",
       answer: "Wir bieten eine breite Auswahl, darunter Tische, Stühle, Regale, Sideboards, MiniBars, Weinschränke und Deko-Objekte. Besonders beliebt sind unsere maßgefertigten Fassmöbel für den Außenbereich."
     },
     {
-      question: "Sind VinLigna-Fassmöbel wetterfest und für den Außenbereich geeignet?",
+      question: "Sind VINLIGNA-Fassmöbel wetterfest und für den Außenbereich geeignet?",
       answer: "Ja! Unsere Terrassenmöbel aus Weinfässern sind speziell behandelt, um wetterfest zu sein. Sie sind ideal für Gärten, Balkone oder Vinotheken mit Außenbereich."
     },
     {
       question: "Kann ich mein eigenes Weinfass in ein Möbelstück verwandeln lassen?",
-      answer: "Ja! VinLigna bietet individuelle Anfertigungen, bei denen wir Ihr eigenes Weinfass zu einem Tisch, Schrank oder einer MiniBar umgestalten – mit Wunschgravur oder speziellen Farben."
+      answer: "Ja! VINLIGNA bietet individuelle Anfertigungen, bei denen wir Ihr eigenes Weinfass zu einem Tisch, Schrank oder einer MiniBar umgestalten – mit Wunschgravur oder speziellen Farben."
     },
     {
       question: "Welche Designoptionen gibt es für Fassmöbel?",
@@ -73,7 +73,7 @@ const Faq = () => {
       answer: "Ja! Wir verwenden recycelte Barrique-Fässer und geben ihnen ein zweites Leben als langlebige Designmöbel. So entsteht hochwertiges Upcycling, das Ressourcen schont."
     },
     {
-      question: "Wie pflege ich VinLigna-Fassmöbel richtig?",
+      question: "Wie pflege ich VINLIGNA-Fassmöbel richtig?",
       answer: "Unsere Möbel sind pflegeleicht: Ein weiches Tuch reicht für die Reinigung. Holzöl oder Wachs sorgt für zusätzlichen Schutz und betont die natürliche Maserung."
     },
     {
@@ -81,8 +81,8 @@ const Faq = () => {
       answer: "Kontaktieren Sie uns und teilen Sie Ihre Wünsche mit! Wir beraten Sie zur Größe, Holzart, Veredelung und individuellen Details und fertigen Ihr persönliches Möbelstück an."
     },
     {
-      question: "Wo kann ich VinLigna-Fassmöbel kaufen?",
-      answer: "Unsere Möbel erhalten Sie direkt bei VinLigna. Kontaktieren Sie uns für eine unverbindliche Beratung und entdecken Sie unsere maßgefertigten Fassmöbel für Wohnräume, Gastronomie und den Außenbereich. 📞 Kontakt: 📍 VinLignum Holzmanufaktur GmbH & Co. KG 📍 Industriestraße 19, 67821 Alsenz 📧 info@vinligna.de 📞 +49 6362 309 49 90"
+      question: "Wo kann ich VINLIGNA-Fassmöbel kaufen?",
+      answer: "Unsere Möbel erhalten Sie direkt bei VINLIGNA. Kontaktieren Sie uns für eine unverbindliche Beratung und entdecken Sie unsere maßgefertigten Fassmöbel für Wohnräume, Gastronomie und den Außenbereich. 📞 Kontakt: 📍 VinLignum Holzmanufaktur GmbH & Co. KG 📍 Industriestraße 19, 67821 Alsenz 📧 info@vinligna.de 📞 +49 6362 309 49 90"
     }
   ];
 
