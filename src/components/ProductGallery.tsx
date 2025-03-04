@@ -42,7 +42,7 @@ const ProductGallery = () => {
             <h2 className="section-title">
               Handwerkskunst aus <span className="text-wine">Eichenholz</span>
             </h2>
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-base text-gray-300 max-w-3xl mx-auto">
               Entdecken Sie unsere einzigartigen Kreationen aus recycelten Weinfässern. 
               Jedes Stück erzählt seine eigene Geschichte von Tradition, Handwerk und Nachhaltigkeit.
             </p>

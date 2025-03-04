@@ -43,7 +43,7 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
                 viewport={{ once: true }}
-                className="space-y-6 text-xl text-white/80"
+                className="space-y-6 text-base text-white/80"
               >
                 <p>
                   Wir verwandeln ausgediente Weinfässer in zeitlose Möbelstücke, die die Geschichte des Weins in Ihr Zuhause bringen. Jedes Stück ist ein Unikat mit eigener Geschichte.

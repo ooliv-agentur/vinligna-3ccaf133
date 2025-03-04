@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -91,7 +92,7 @@ const Hero = () => {
 
         <motion.p 
           variants={itemVariants}
-          className="text-base md:text-lg text-white/80 max-w-2xl mx-auto mb-8 md:mb-12 text-center leading-relaxed"
+          className="text-base text-white/80 max-w-2xl mx-auto mb-8 md:mb-12 text-center leading-relaxed"
         >
           Wir verwandeln gebrauchte Barrique-Fässer in elegante, einzigartige Möbelstücke, 
           die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
@@ -173,6 +174,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
         className="block h-full group relative"
       >
         <div className="relative md:aspect-[16/14] rounded-lg overflow-hidden h-full">
+          {/* Mobile version */}
           <div className="md:hidden w-[120%] h-[140%] -ml-[10%]">
             <motion.div
               initial={{ filter: "blur(10px)" }}
@@ -233,6 +235,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
             </div>
           </div>
 
+          {/* Desktop version */}
           <div className="hidden md:block">
             <motion.div
               initial={{ filter: "blur(10px)" }}
@@ -255,9 +258,9 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
             />
             
             <div className="absolute bottom-0 left-0 right-0 p-8 text-left transform transition-all duration-300 group-hover:translate-y-0">
-              <div className="mb-1 text-white/70 text-base sm:text-lg">{title}</div>
+              <div className="mb-1 text-white/70 text-base">{title}</div>
               <h2 className="text-2xl sm:text-3xl font-medium text-white mb-3">{subtitle}</h2>
-              <p className="text-white/70 mb-6 sm:mb-8 text-sm sm:text-base font-light">{description}</p>
+              <p className="text-white/70 mb-6 sm:mb-8 text-base font-light">{description}</p>
               
               <div className="flex items-center text-white text-base font-light overflow-hidden relative">
                 <span className="relative group-hover:text-wine transition-colors duration-300">
