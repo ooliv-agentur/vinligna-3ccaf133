@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -29,7 +30,7 @@ const Navbar = () => {
       )}
     >
       <div className="container mx-auto flex items-center justify-between">
-        <a href="/" className="inline-block" aria-label="VINLIGNA">
+        <Link to="/" className="inline-block" aria-label="VINLIGNA">
           <img 
             src={isScrolled 
               ? "/lovable-uploads/eef04cda-cc19-4e97-9136-dcd93f60b698.png" 
@@ -37,13 +38,13 @@ const Navbar = () => {
             alt="VINLIGNA" 
             className="h-6 md:h-8" 
           />
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <NavLink href="#business" isScrolled={isScrolled}>Weingüter, Gastronomie & Hotellerie</NavLink>
-          <NavLink href="#private" isScrolled={isScrolled}>Weinliebhaber & Privatkunden</NavLink>
-          <NavLink href="#contact" isScrolled={isScrolled}>Kontakt</NavLink>
+          <NavLink to="/business" isScrolled={isScrolled}>Weingüter, Gastronomie & Hotellerie</NavLink>
+          <NavLink to="/private" isScrolled={isScrolled}>Weinliebhaber & Privatkunden</NavLink>
+          <NavLink to="/#contact" isScrolled={isScrolled}>Kontakt</NavLink>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -73,13 +74,13 @@ const Navbar = () => {
           className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md shadow-md py-4"
         >
           <nav className="flex flex-col space-y-4 px-6">
-            <MobileNavLink href="#business" onClick={() => setIsMobileMenuOpen(false)}>
+            <MobileNavLink to="/business" onClick={() => setIsMobileMenuOpen(false)}>
               Weingüter, Gastronomie & Hotellerie
             </MobileNavLink>
-            <MobileNavLink href="#private" onClick={() => setIsMobileMenuOpen(false)}>
+            <MobileNavLink to="/private" onClick={() => setIsMobileMenuOpen(false)}>
               Weinliebhaber & Privatkunden
             </MobileNavLink>
-            <MobileNavLink href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
+            <MobileNavLink to="/#contact" onClick={() => setIsMobileMenuOpen(false)}>
               Kontakt
             </MobileNavLink>
           </nav>
@@ -90,34 +91,72 @@ const Navbar = () => {
 };
 
 interface NavLinkProps {
-  href: string;
+  to: string;
   children: React.ReactNode;
   onClick?: () => void;
   isScrolled?: boolean;
 }
 
-const NavLink = ({ href, children, isScrolled }: NavLinkProps) => (
-  <a
-    href={href}
-    className={cn(
-      "text-sm font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 hover:after:w-full after:transition-all after:duration-300",
-      isScrolled 
-        ? "text-foreground hover:text-foreground/80 after:bg-foreground" 
-        : "text-white hover:text-white/80 after:bg-white"
-    )}
-  >
-    {children}
-  </a>
-);
+const NavLink = ({ to, children, isScrolled }: NavLinkProps) => {
+  // Check if this is a hash link (e.g., #contact) that should be on the homepage
+  const isHashLink = to.startsWith('/#');
+  
+  if (isHashLink) {
+    return (
+      <a
+        href={to.substring(1)} // Remove the leading '/' for hash links
+        className={cn(
+          "text-sm font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 hover:after:w-full after:transition-all after:duration-300",
+          isScrolled 
+            ? "text-foreground hover:text-foreground/80 after:bg-foreground" 
+            : "text-white hover:text-white/80 after:bg-white"
+        )}
+      >
+        {children}
+      </a>
+    );
+  }
+  
+  return (
+    <Link
+      to={to}
+      className={cn(
+        "text-sm font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 hover:after:w-full after:transition-all after:duration-300",
+        isScrolled 
+          ? "text-foreground hover:text-foreground/80 after:bg-foreground" 
+          : "text-white hover:text-white/80 after:bg-white"
+      )}
+    >
+      {children}
+    </Link>
+  );
+};
 
-const MobileNavLink = ({ href, children, onClick }: NavLinkProps) => (
-  <a
-    href={href}
-    onClick={onClick}
-    className="text-lg font-medium py-2 text-muted-foreground hover:text-foreground transition-colors duration-200"
-  >
-    {children}
-  </a>
-);
+const MobileNavLink = ({ to, children, onClick }: NavLinkProps) => {
+  // Check if this is a hash link (e.g., #contact) that should be on the homepage
+  const isHashLink = to.startsWith('/#');
+  
+  if (isHashLink) {
+    return (
+      <a
+        href={to.substring(1)} // Remove the leading '/' for hash links
+        onClick={onClick}
+        className="text-lg font-medium py-2 text-muted-foreground hover:text-foreground transition-colors duration-200"
+      >
+        {children}
+      </a>
+    );
+  }
+  
+  return (
+    <Link
+      to={to}
+      onClick={onClick}
+      className="text-lg font-medium py-2 text-muted-foreground hover:text-foreground transition-colors duration-200"
+    >
+      {children}
+    </Link>
+  );
+};
 
 export default Navbar;
