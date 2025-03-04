@@ -1,15 +1,15 @@
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, HelpCircle, Armchair, Recycle, Phone, Mail, MapPin } from 'lucide-react';
+import { ChevronDown, Wine, Armchair, Recycle, Phone, Mail, MapPin } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface FaqItemProps {
   question: string;
   answer: string;
-  icon?: React.ReactNode;
 }
 
-const FaqItem = ({ question, answer, icon }: FaqItemProps) => {
+const FaqItem = ({ question, answer }: FaqItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -18,10 +18,7 @@ const FaqItem = ({ question, answer, icon }: FaqItemProps) => {
         className="flex w-full items-center justify-between py-4 text-left"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <div className="flex items-center gap-3">
-          {icon && <div className="text-wine">{icon}</div>}
-          <span className="font-medium">{question}</span>
-        </div>
+        <span className="font-medium">{question}</span>
         <ChevronDown 
           className={cn(
             "h-5 w-5 text-wine transition-transform duration-200",
@@ -36,7 +33,7 @@ const FaqItem = ({ question, answer, icon }: FaqItemProps) => {
         )}
       >
         <div className="overflow-hidden">
-          <div className="pl-10 text-muted-foreground">
+          <div className="text-muted-foreground">
             {answer}
           </div>
         </div>
@@ -48,55 +45,45 @@ const FaqItem = ({ question, answer, icon }: FaqItemProps) => {
 const Faq = () => {
   const faqs: FaqItemProps[] = [
     {
-      question: "Was macht VINLIGNA-Fassmöbel besonders?",
-      answer: "VINLIGNA fertigt exklusive Möbel aus recycelten Weinfässern, die individuell gestaltet werden können. Unser Sortiment umfasst Fassmöbel mit Türen, Tischplatten aus Glas oder Holz sowie spezielle Möbel für den Terrassenbereich.",
-      icon: <Armchair size={20} />
+      question: "Was sind Möbel aus Weinfässern?",
+      answer: "Möbel aus Weinfässern sind handgefertigte Unikate, die aus recycelten Barrique-Fässern gefertigt werden. Sie bringen den Charakter und die Geschichte des Weins in Ihr Zuhause und verbinden rustikalen Charme mit exklusivem Design."
     },
     {
-      question: "Welche Arten von Fassmöbeln gibt es bei VINLIGNA?",
-      answer: "Wir bieten eine breite Auswahl, darunter Tische, Stühle, Regale, Sideboards, MiniBars, Weinschränke und Deko-Objekte. Besonders beliebt sind unsere maßgefertigten Fassmöbel für den Außenbereich.",
-      icon: <Armchair size={20} />
+      question: "Welche Möbel aus Weinfässern gibt es bei VinLigna?",
+      answer: "Unser Sortiment umfasst Tische, Stühle, Regale, Sideboards und Dekorationsartikel. Jedes Stück wird nach Ihren Wünschen gestaltet und kann perfekt in Weinkeller, Wohnräume oder Esszimmer integriert werden."
     },
     {
-      question: "Sind VINLIGNA-Fassmöbel wetterfest und für den Außenbereich geeignet?",
-      answer: "Ja! Unsere Terrassenmöbel aus Weinfässern sind speziell behandelt, um wetterfest zu sein. Sie sind ideal für Gärten, Balkone oder Vinotheken mit Außenbereich.",
-      icon: <HelpCircle size={20} />
+      question: "Warum sind Möbel aus Weinfässern nachhaltig?",
+      answer: "Unsere Möbel entstehen durch Upcycling alter Weinfässer, die sonst entsorgt würden. So erhalten sie ein zweites Leben als stilvolle Designmöbel und tragen zur Ressourcenschonung und Nachhaltigkeit bei."
     },
     {
-      question: "Kann ich mein eigenes Weinfass in ein Möbelstück verwandeln lassen?",
-      answer: "Ja! VINLIGNA bietet individuelle Anfertigungen, bei denen wir Ihr eigenes Weinfass zu einem Tisch, Schrank oder einer MiniBar umgestalten – mit Wunschgravur oder speziellen Farben.",
-      icon: <HelpCircle size={20} />
+      question: "Sind Möbel aus Weinfässern für den Außenbereich geeignet?",
+      answer: "Ja! Einige unserer Möbel sind für den Garten oder die Terrasse konzipiert. Sie erhalten eine spezielle wetterfeste Versiegelung, um sie vor Feuchtigkeit und UV-Strahlung zu schützen."
     },
     {
-      question: "Welche Designoptionen gibt es für Fassmöbel?",
-      answer: "Unsere Kunden können zwischen Glas- oder Holzplatten für Tische, speziellen Lackierungen, Beiztönen und Metallakzenten wählen. Auch Fassmöbel mit Türen oder Schubladen sind möglich.",
-      icon: <Armchair size={20} />
+      question: "Kann ich Möbel aus meinem eigenen Weinfass anfertigen lassen?",
+      answer: "Ja, wir bieten individuelle Maßanfertigungen an. Wenn Sie ein besonderes Fass besitzen, können wir daraus ein einzigartiges Möbelstück für Ihren Weinkeller oder Wohnbereich gestalten."
     },
     {
-      question: "Warum sind Fassmöbel ein stilvolles Dekorationselement?",
-      answer: "Fassmöbel bringen Charakter und Exklusivität in jeden Raum. Durch ihre markante Maserung und die Geschichte des Eichenholzes schaffen sie eine warme, stilvolle Atmosphäre.",
-      icon: <Armchair size={20} />
+      question: "Wie werden Möbel aus Weinfässern behandelt, um langlebig zu sein?",
+      answer: "Unsere Möbel werden mit hochwertigen Ölen und Lacken veredelt, um das Holz zu schützen. Die ursprüngliche Maserung bleibt erhalten und sorgt für die unverwechselbare Optik."
     },
     {
-      question: "Sind Fassmöbel nachhaltig?",
-      answer: "Ja! Wir verwenden recycelte Barrique-Fässer und geben ihnen ein zweites Leben als langlebige Designmöbel. So entsteht hochwertiges Upcycling, das Ressourcen schont.",
-      icon: <Recycle size={20} />
+      question: "Sind Möbel aus Weinfässern ein gutes Geschenk für Weinliebhaber?",
+      answer: "Definitiv! Neben großen Möbelstücken bieten wir auch Accessoires wie Weinkühler, Schneidbretter und Kerzenhalter an – perfekte Geschenkideen für alle, die Wein und außergewöhnliches Design lieben."
     },
     {
-      question: "Wie pflege ich VINLIGNA-Fassmöbel richtig?",
-      answer: "Unsere Möbel sind pflegeleicht: Ein weiches Tuch reicht für die Reinigung. Holzöl oder Wachs sorgt für zusätzlichen Schutz und betont die natürliche Maserung.",
-      icon: <HelpCircle size={20} />
+      question: "Passen Möbel aus Weinfässern zu modernen Wohnstilen?",
+      answer: "Ja! Unsere Möbel kombinieren rustikales Eichenholz mit modernem Design. Sie lassen sich perfekt in elegante Wohnräume, minimalistische Einrichtungen oder gemütliche Weinkeller integrieren."
     },
     {
-      question: "Wie kann ich ein individuelles Fassmöbelstück bestellen?",
-      answer: "Kontaktieren Sie uns und teilen Sie Ihre Wünsche mit! Wir beraten Sie zur Größe, Holzart, Veredelung und individuellen Details und fertigen Ihr persönliches Möbelstück an.",
-      icon: <Phone size={20} />
+      question: "Wie kann ich Möbel aus Weinfässern bei VinLigna bestellen?",
+      answer: "Kontaktieren Sie uns für eine individuelle Beratung! Wir gestalten Ihr Wunschmöbel nach Maß und liefern es direkt zu Ihnen nach Hause."
     },
     {
-      question: "Wo kann ich VINLIGNA-Fassmöbel kaufen?",
-      answer: "Unsere Möbel erhalten Sie direkt bei VINLIGNA. Kontaktieren Sie uns für eine unverbindliche Beratung und entdecken Sie unsere maßgefertigten Fassmöbel für Wohnräume, Gastronomie und den Außenbereich.",
-      icon: <MapPin size={20} />
-    },
+      question: "Woher stammen die Weinfässer für die Möbel?",
+      answer: "Unsere Barrique-Fässer stammen von renommierten Weingütern, in denen sie jahrelang zur Weinreifung genutzt wurden. Jede Holzmaserung erzählt eine Geschichte und macht jedes Möbelstück einzigartig."
+    }
   ];
 
   return (
