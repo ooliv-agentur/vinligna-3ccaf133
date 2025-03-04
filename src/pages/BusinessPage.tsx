@@ -56,16 +56,22 @@ const BusinessPage = () => {
     <div className="min-h-screen overflow-x-hidden bg-black">
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center justify-center px-6 pt-32 pb-20">
-        {/* Background image with overlay */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="/lovable-uploads/bd5f84a4-a4f9-423f-88f7-1fce764501b2.png"
-            alt="Weinfass-Möbel für Weingüter und Gastronomie"
-            className="w-full h-full object-cover object-center"
+      {/* Hero Section - Updated to match site style */}
+      <section className="relative min-h-[90vh] flex items-center justify-center px-6 pt-32 pb-20 overflow-hidden">
+        {/* Dynamic background with gradient */}
+        <div className="absolute inset-0 z-0 bg-black">
+          <div className="absolute inset-0 bg-gradient-to-b from-wine/10 via-black to-black/90 opacity-70" />
+          
+          {/* Subtle pattern overlay */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.05 }}
+            transition={{ duration: 2 }}
+            className="absolute inset-0 z-0"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E")`,
+            }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/50 to-black/30" />
         </div>
 
         <div className="container relative z-10 mx-auto max-w-5xl text-center">
@@ -73,7 +79,7 @@ const BusinessPage = () => {
             variants={fadeIn}
             initial="hidden"
             animate="visible"
-            className="inline-block mb-6 px-3 py-1 bg-wine-light/90 backdrop-blur-sm text-oak-dark text-xs tracking-widest uppercase rounded-full"
+            className="inline-block mb-6 px-3 py-1 bg-white/5 backdrop-blur-sm text-wine-light text-xs tracking-widest uppercase rounded-full border border-white/10"
           >
             Für Geschäftskunden
           </motion.div>
@@ -83,10 +89,17 @@ const BusinessPage = () => {
             initial="hidden"
             animate="visible"
             transition={{ delay: 0.1 }}
-            className="section-title-large text-white mb-6"
+            className="text-5xl md:text-6xl lg:text-7xl font-light mb-6 leading-tight tracking-tight"
           >
-            Weinfass Möbel für <br className="hidden md:block" />
-            <span className="font-medium">Weingüter, Gastronomie & Hotellerie</span>
+            <span className="block text-white">Weinfass Möbel für</span>
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="font-medium block mt-2 bg-gradient-to-r from-wine to-wine-light bg-clip-text text-transparent"
+            >
+              Weingüter, Gastronomie & Hotellerie
+            </motion.span>
           </motion.h1>
 
           <motion.p 
@@ -94,10 +107,58 @@ const BusinessPage = () => {
             initial="hidden"
             animate="visible"
             transition={{ delay: 0.2 }}
-            className="text-base md:text-lg text-white/90 max-w-2xl mx-auto mb-8"
+            className="text-base md:text-lg text-white/80 max-w-2xl mx-auto mb-10"
           >
             Werten Sie Ihre Räumlichkeiten mit individuell gefertigten Möbeln aus recycelten Weinfässern auf. Erzählen Sie die Geschichte Ihres Unternehmens durch zeitlose, nachhaltige Unikate.
           </motion.p>
+          
+          <motion.div
+            variants={fadeIn}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 0.3 }}
+          >
+            <a 
+              href="#contact" 
+              className="btn-primary group"
+            >
+              <span>Jetzt anfragen</span>
+              <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
+          </motion.div>
+          
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.8 }}
+            className="flex flex-col items-center absolute bottom-8 left-0 right-0"
+          >
+            <motion.span 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.7 }}
+              transition={{ duration: 1, delay: 1.2, repeat: Infinity, repeatType: "reverse" }}
+              className="text-white/60 text-sm mb-2"
+            >
+              Mehr entdecken
+            </motion.span>
+            <motion.div 
+              initial={{ height: 0 }}
+              animate={{ height: 60 }}
+              transition={{ duration: 1, delay: 1.4 }}
+              className="w-px bg-white/20 relative overflow-hidden"
+            >
+              <motion.div 
+                initial={{ y: -60 }}
+                animate={{ y: 60 }}
+                transition={{ 
+                  duration: 1.5, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+                className="w-full h-1/2 bg-white/60 absolute"
+              />
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
