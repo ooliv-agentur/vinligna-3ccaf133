@@ -319,8 +319,8 @@ const PrivatePage = () => {
               >
                 <div className="h-full">
                   <img 
-                    src="/lovable-uploads/bb8a99d9-97f3-42b4-85ad-94d0c5d74fff.png" 
-                    alt="Handgefertigte Weinfass-Möbel für Weinliebhaber" 
+                    src="/lovable-uploads/150c0d0d-6f62-4986-919b-582297a95bac.png" 
+                    alt="Werkstatt mit handgefertigten Holzstühlen und Blick in die Produktionswerkstatt" 
                     className="w-full h-full object-cover rounded-lg shadow-md image-hover"
                   />
                 </div>
