@@ -51,34 +51,48 @@ const About = () => {
               </motion.div>
             </div>
 
-            <div className="relative">
+            <div className="relative h-[600px] md:h-[650px]">
+              {/* Main image with larger size */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true, margin: "-100px" }}
-                className="relative z-10 rounded-lg overflow-hidden shadow-xl"
+                className="absolute z-10 w-[85%] h-[70%] top-0 right-0 rounded-xl overflow-hidden shadow-2xl border-2 border-white/20"
               >
                 <img 
                   src="/lovable-uploads/85d4a29e-509f-42f3-b7d7-52e5a3622dd9.png" 
                   alt="VINLIGNA Handwerkerteam" 
                   className="w-full h-full object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-60"></div>
               </motion.div>
+              
+              {/* Secondary image, positioned differently */}
               <motion.div
-                initial={{ opacity: 0, x: 50, y: 50 }}
+                initial={{ opacity: 0, x: 30, y: 30 }}
                 whileInView={{ opacity: 1, x: 0, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
                 viewport={{ once: true, margin: "-100px" }}
-                className="absolute -bottom-8 -right-8 w-48 h-48 md:w-64 md:h-64 rounded-lg overflow-hidden shadow-xl border border-white/20"
+                className="absolute left-0 bottom-0 w-[60%] h-[45%] rounded-xl overflow-hidden shadow-2xl border-2 border-white/20 z-20"
               >
                 <img 
                   src="/lovable-uploads/e0b43253-a61b-417b-ae4e-62e3d7bc17d1.png" 
                   alt="Barrel detail craftsmanship" 
                   className="w-full h-full object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"></div>
               </motion.div>
-              <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-oak rounded-full opacity-10 blur-3xl"></div>
+              
+              {/* Decorative elements */}
+              <div className="absolute -z-10 top-1/3 right-1/4 w-32 h-32 bg-wine/10 rounded-full blur-3xl"></div>
+              <div className="absolute -z-10 bottom-1/4 left-1/4 w-40 h-40 bg-oak/20 rounded-full blur-3xl"></div>
+              <motion.div 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.5 }}
+                className="absolute -z-10 w-full h-full bg-gradient-to-br from-oak-light/20 via-transparent to-wine-light/30 rounded-3xl"
+              ></motion.div>
             </div>
           </div>
         </div>
