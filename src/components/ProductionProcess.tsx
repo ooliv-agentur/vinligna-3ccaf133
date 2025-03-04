@@ -1,6 +1,7 @@
 
 import { motion } from 'framer-motion';
 import { Package, PencilRuler, Sparkles } from 'lucide-react';
+import { fadeIn, slideUp } from '@/lib/motion';
 
 interface ProcessStepProps {
   number: string;
@@ -11,10 +12,7 @@ interface ProcessStepProps {
 
 const ProcessStep = ({ number, title, description, icon }: ProcessStepProps) => (
   <motion.div 
-    whileInView={{ opacity: 1, y: 0 }}
-    initial={{ opacity: 0, y: 20 }}
-    transition={{ duration: 0.5 }}
-    viewport={{ once: true, margin: "-100px" }}
+    variants={fadeIn}
     className="relative"
   >
     <div className="text-4xl font-light text-wine/20 mb-4">{number}</div>
@@ -22,9 +20,9 @@ const ProcessStep = ({ number, title, description, icon }: ProcessStepProps) => 
       <div className="text-wine w-20 h-20 mb-4 flex items-center justify-center">
         {icon}
       </div>
-      <h3 className="text-lg font-medium mb-2 text-center">{title}</h3>
+      <h3 className="text-lg font-medium mb-2 text-center text-white">{title}</h3>
     </div>
-    <p className="text-sm text-muted-foreground text-center">{description}</p>
+    <p className="text-sm text-white/70 text-center">{description}</p>
     
     {/* Connector line, only show for non-last items on desktop */}
     <div className="hidden md:block absolute top-8 right-0 h-[2px] w-1/2 bg-wine/10 -z-10 last:hidden"></div>
@@ -147,23 +145,23 @@ const ProductionProcess = ({ isB2C = false }: ProductionProcessProps) => {
   const content = isB2C ? contentB2C : contentB2B;
 
   return (
-    <section className="py-24 md:py-32 bg-background overflow-hidden">
+    <section className="py-24 md:py-32 bg-black overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="max-w-screen-xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            variants={fadeIn}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             className="text-center mb-16 md:mb-24"
           >
-            <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-4">
+            <span className="section-subtitle">
               {content.sectionTitle}
             </span>
-            <h2 className="text-4xl md:text-5xl font-light mb-6 leading-tight">
-              {content.heading.split(" ").slice(0, -1).join(" ")} <span className="font-medium">{content.heading.split(" ").slice(-1)}</span>
+            <h2 className="section-title text-white">
+              {content.heading.split(" ").slice(0, -1).join(" ")} <span className="highlight">{content.heading.split(" ").slice(-1)}</span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-white/70 max-w-2xl mx-auto">
               {content.description}
             </p>
           </motion.div>
