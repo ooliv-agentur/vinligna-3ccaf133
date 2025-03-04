@@ -1,5 +1,6 @@
 
 import { motion } from 'framer-motion';
+import { GalleryItem } from './business/GalleryItem';
 
 // Animation variants
 const fadeIn = {
@@ -47,65 +48,19 @@ const ProductGallery = () => {
             </p>
           </motion.div>
           
-          {/* First Row */}
+          {/* Gallery Grid - All items in a single consistent grid */}
           <motion.div 
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {galleryItems.slice(0, 3).map((item, index) => (
+            {galleryItems.map((item, index) => (
               <motion.div
                 key={index}
                 variants={fadeIn}
-                className="h-full"
-              >
-                <GalleryItem 
-                  image={item.image}
-                  title={item.title}
-                  category={item.category}
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Second Row */}
-          <motion.div 
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"
-          >
-            {galleryItems.slice(3, 6).map((item, index) => (
-              <motion.div
-                key={index + 3}
-                variants={fadeIn}
-                className="h-full"
-              >
-                <GalleryItem 
-                  image={item.image}
-                  title={item.title}
-                  category={item.category}
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Third Row */}
-          <motion.div 
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"
-          >
-            {galleryItems.slice(6, 9).map((item, index) => (
-              <motion.div
-                key={index + 6}
-                variants={fadeIn}
-                className="h-full"
+                className="gallery-item-wrapper"
               >
                 <GalleryItem 
                   image={item.image}
@@ -126,25 +81,6 @@ interface GalleryItemProps {
   title: string;
   category: string;
 }
-
-const GalleryItem = ({ image, title, category }: GalleryItemProps) => (
-  <div className="group relative h-full overflow-hidden rounded-lg bg-white/5 backdrop-blur-sm border border-white/10">
-    <div className="relative aspect-square overflow-hidden">
-      <img 
-        src={image} 
-        alt={title} 
-        className="w-full h-full object-cover transition-transform duration-1000"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-      <div className="absolute inset-0 p-6 flex flex-col justify-end translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-        <h3 className="font-medium text-xl text-white mb-1">{title}</h3>
-        <p className="text-wine">
-          {category}
-        </p>
-      </div>
-    </div>
-  </div>
-);
 
 // Gallery items with images
 const galleryItems = [
