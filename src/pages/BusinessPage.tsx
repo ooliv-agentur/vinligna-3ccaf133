@@ -10,6 +10,7 @@ import BusinessFaq from '@/components/BusinessFaq';
 import TeamSection from '@/components/TeamSection';
 import ProductGallery from '@/components/ProductGallery';
 import ProductionProcess from '@/components/ProductionProcess';
+import { fadeIn, staggerContainer, slideUp } from '@/lib/motion';
 
 const BusinessPage = () => {
   useEffect(() => {
@@ -52,7 +53,7 @@ const BusinessPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden bg-black">
       <Navbar />
       
       {/* Hero Section */}
@@ -69,18 +70,19 @@ const BusinessPage = () => {
 
         <div className="container relative z-10 mx-auto max-w-5xl text-center">
           <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            variants={fadeIn}
+            initial="hidden"
+            animate="visible"
             className="inline-block mb-6 px-3 py-1 bg-wine-light/90 backdrop-blur-sm text-oak-dark text-xs tracking-widest uppercase rounded-full"
           >
             Für Geschäftskunden
           </motion.div>
 
           <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            variants={fadeIn}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 0.1 }}
             className="section-title-large text-white mb-6"
           >
             Weinfass Möbel für <br className="hidden md:block" />
@@ -88,9 +90,10 @@ const BusinessPage = () => {
           </motion.h1>
 
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            variants={fadeIn}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 0.2 }}
             className="text-base md:text-lg text-white/90 max-w-2xl mx-auto mb-8"
           >
             Werten Sie Ihre Räumlichkeiten mit individuell gefertigten Möbeln aus recycelten Weinfässern auf. Erzählen Sie die Geschichte Ihres Unternehmens durch zeitlose, nachhaltige Unikate.
@@ -99,29 +102,30 @@ const BusinessPage = () => {
       </section>
 
       {/* About Us Section */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-black">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              variants={fadeIn}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               className="text-center mb-12"
             >
-              <h2 className="section-title">
+              <h2 className="section-title text-white">
                 Über <span className="highlight">VINLIGNA</span>
               </h2>
             </motion.div>
             
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              variants={fadeIn}
+              initial="hidden"
+              whileInView="visible"
+              transition={{ delay: 0.1 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="prose prose-lg mx-auto mb-12"
+              className="prose prose-lg prose-invert mx-auto mb-12"
             >
-              <p>
+              <p className="text-white/80">
                 VINLIGNA bietet handgefertigte, exklusive Möbel aus recycelten Barrique-Fässern für Weingüter, Gastronomiebetriebe und die Hotellerie. Unser Ziel ist es, maßgeschneiderte Möbelstücke zu schaffen, die nicht nur einzigartig sind, sondern auch nachhaltig produziert werden. Durch die Wiederverwendung von edlen Eichenholz-Weinfässern verleihen wir Ihren Räumlichkeiten einen einzigartigen Charme und schaffen gleichzeitig ein exklusives Ambiente, das Ihre Gäste begeistern wird.
               </p>
             </motion.div>
@@ -133,60 +137,72 @@ const BusinessPage = () => {
       <TeamSection />
 
       {/* Products Section */}
-      <section className="section-padding-lg bg-oak-light/5 overflow-hidden">
+      <section className="section-padding-lg bg-black overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="max-w-screen-xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              variants={fadeIn}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               className="section-title-container"
             >
               <span className="section-subtitle">
                 Unsere Produkte
               </span>
-              <h2 className="section-title">
+              <h2 className="section-title text-white">
                 Maßgeschneiderte <span className="highlight">Weinfass-Möbel</span>
               </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-white/70 max-w-2xl mx-auto">
                 Unsere Möbel sind vollständig individualisierbar und auf die speziellen Bedürfnisse von Weingütern, Restaurants und Hotels ausgerichtet.
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-              <ProductCard 
-                icon={<Table className="w-6 h-6" />}
-                title="Tische und Theken"
-                description="Unsere maßgefertigten Tische und Theken aus recycelten Barrique-Fässern vereinen Funktionalität und Eleganz. Diese Möbelstücke schaffen in Verkostungsräumen oder an Hotelbars eine stilvolle und authentische Atmosphäre."
-                image="/lovable-uploads/ce069aff-5e1d-415f-adba-547b6495298d.png"
-              />
+            <motion.div 
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              className="grid grid-cols-1 lg:grid-cols-3 gap-10"
+            >
+              <motion.div variants={fadeIn}>
+                <ProductCard 
+                  icon={<Table className="w-6 h-6" />}
+                  title="Tische und Theken"
+                  description="Unsere maßgefertigten Tische und Theken aus recycelten Barrique-Fässern vereinen Funktionalität und Eleganz. Diese Möbelstücke schaffen in Verkostungsräumen oder an Hotelbars eine stilvolle und authentische Atmosphäre."
+                  image="/lovable-uploads/ce069aff-5e1d-415f-adba-547b6495298d.png"
+                />
+              </motion.div>
               
-              <ProductCard 
-                icon={<Armchair className="w-6 h-6" />}
-                title="Stühle und Sitzmöbel"
-                description="Unsere handgefertigten Stühle und Barhocker bieten Komfort und Stabilität für den täglichen Gebrauch in gastronomischen Umgebungen, während sie gleichzeitig höchsten Komfort bieten."
-                image="/lovable-uploads/87b6ac6c-025f-40d2-9b09-73f8ee6e25b8.png"
-              />
+              <motion.div variants={fadeIn}>
+                <ProductCard 
+                  icon={<Armchair className="w-6 h-6" />}
+                  title="Stühle und Sitzmöbel"
+                  description="Unsere handgefertigten Stühle und Barhocker bieten Komfort und Stabilität für den täglichen Gebrauch in gastronomischen Umgebungen, während sie gleichzeitig höchsten Komfort bieten."
+                  image="/lovable-uploads/87b6ac6c-025f-40d2-9b09-73f8ee6e25b8.png"
+                />
+              </motion.div>
               
-              <ProductCard 
-                icon={<Layers className="w-6 h-6" />}
-                title="Weinregale und Präsentationsmöbel"
-                description="Unsere maßgeschneiderten Regale bieten Ihnen die Möglichkeit, Ihre Weinauswahl stilvoll und übersichtlich zu präsentieren. Diese exklusiven Möbelstücke sind ein Highlight in jeder Vinothek."
-                image="/lovable-uploads/e9d912cb-d45d-4016-8e8b-8250bd78de47.png"
-              />
-            </div>
+              <motion.div variants={fadeIn}>
+                <ProductCard 
+                  icon={<Layers className="w-6 h-6" />}
+                  title="Weinregale und Präsentationsmöbel"
+                  description="Unsere maßgeschneiderten Regale bieten Ihnen die Möglichkeit, Ihre Weinauswahl stilvoll und übersichtlich zu präsentieren. Diese exklusiven Möbelstücke sind ein Highlight in jeder Vinothek."
+                  image="/lovable-uploads/e9d912cb-d45d-4016-8e8b-8250bd78de47.png"
+                />
+              </motion.div>
+            </motion.div>
             
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              variants={slideUp}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               className="mt-16 text-center"
             >
-              <div className="bg-wine-light/10 rounded-lg p-8 max-w-3xl mx-auto">
-                <h3 className="text-xl font-medium mb-4">Besonderheit für Winzer</h3>
-                <p className="text-muted-foreground mb-0">
+              <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 max-w-3xl mx-auto border border-white/10">
+                <h3 className="text-xl font-medium mb-4 text-white">Besonderheit für Winzer</h3>
+                <p className="text-white/70 mb-0">
                   Für Winzer bieten wir die Möglichkeit, Möbel aus Ihren eigenen, nicht mehr genutzten Weinfässern fertigen zu lassen. Diese können auf Wunsch mit eingebrannten Logos oder individuellen Markenzeichen veredelt werden, sodass Ihre Gäste sofort die Verbindung zu Ihrem Weingut erkennen.
                 </p>
               </div>
@@ -199,29 +215,35 @@ const BusinessPage = () => {
       <ProductionProcess isB2C={false} />
 
       {/* Benefits Section */}
-      <section className="section-padding-lg bg-oak-light/5 overflow-hidden">
+      <section className="section-padding-lg bg-black overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="max-w-screen-xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              variants={fadeIn}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               className="section-title-container"
             >
               <span className="section-subtitle">
                 Ihre Vorteile
               </span>
-              <h2 className="section-title">
+              <h2 className="section-title text-white">
                 Vorteile für <span className="highlight">Ihr Unternehmen</span>
               </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-white/70 max-w-2xl mx-auto">
                 Entdecken Sie, warum VINLIGNA die erste Wahl für Weingüter, Gastronomiebetriebe und Hotels ist.
               </p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="md:col-span-2 lg:col-span-1">
+              <motion.div 
+                variants={slideUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                className="md:col-span-2 lg:col-span-1"
+              >
                 <div className="h-full">
                   <img 
                     src="/lovable-uploads/bb8a99d9-97f3-42b4-85ad-94d0c5d74fff.png" 
@@ -229,30 +251,47 @@ const BusinessPage = () => {
                     className="w-full h-full object-cover rounded-lg shadow-md image-hover"
                   />
                 </div>
-              </div>
+              </motion.div>
               
-              <div className="md:col-span-2 lg:col-span-1 space-y-6">
-                <BenefitItem 
-                  title="Individuelle Lösungen"
-                  description="Jedes Möbelstück wird maßgefertigt, um perfekt in Ihre Räumlichkeiten zu passen und Ihren individuellen Stil widerzuspiegeln."
-                />
+              <motion.div 
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                className="md:col-span-2 lg:col-span-1 space-y-6"
+              >
+                <motion.div variants={fadeIn}>
+                  <BenefitItem 
+                    title="Individuelle Lösungen"
+                    description="Jedes Möbelstück wird maßgefertigt, um perfekt in Ihre Räumlichkeiten zu passen und Ihren individuellen Stil widerzuspiegeln."
+                  />
+                </motion.div>
                 
-                <BenefitItem 
-                  title="Nachhaltigkeit und Upcycling"
-                  description="Wir verwenden recycelte Weinfässer, die nicht mehr für die Weinproduktion genutzt werden. So entstehen aus alten Materialien neue, langlebige Möbelstücke."
-                />
+                <motion.div variants={fadeIn}>
+                  <BenefitItem 
+                    title="Nachhaltigkeit und Upcycling"
+                    description="Wir verwenden recycelte Weinfässer, die nicht mehr für die Weinproduktion genutzt werden. So entstehen aus alten Materialien neue, langlebige Möbelstücke."
+                  />
+                </motion.div>
                 
-                <BenefitItem 
-                  title="Exklusives Design"
-                  description="Unsere Möbelstücke aus Barrique-Eichenholz bieten eine besondere Optik, die Ihren Betrieb aufwertet und ein Gefühl von Exklusivität und Tradition vermittelt."
-                />
+                <motion.div variants={fadeIn}>
+                  <BenefitItem 
+                    title="Exklusives Design"
+                    description="Unsere Möbelstücke aus Barrique-Eichenholz bieten eine besondere Optik, die Ihren Betrieb aufwertet und ein Gefühl von Exklusivität und Tradition vermittelt."
+                  />
+                </motion.div>
                 
-                <BenefitItem 
-                  title="Langlebigkeit und Robustheit"
-                  description="Das Eichenholz der Barrique-Fässer ist nicht nur ästhetisch ansprechend, sondern auch extrem robust und für den täglichen Einsatz in gastronomischen Betrieben ausgelegt."
-                />
+                <motion.div variants={fadeIn}>
+                  <BenefitItem 
+                    title="Langlebigkeit und Robustheit"
+                    description="Das Eichenholz der Barrique-Fässer ist nicht nur ästhetisch ansprechend, sondern auch extrem robust und für den täglichen Einsatz in gastronomischen Betrieben ausgelegt."
+                  />
+                </motion.div>
                 
-                <div className="pt-4">
+                <motion.div 
+                  variants={fadeIn}
+                  className="pt-4"
+                >
                   <a 
                     href="#contact" 
                     className="btn-primary group"
@@ -260,43 +299,46 @@ const BusinessPage = () => {
                     <span>Verwandeln Sie Ihre Räumlichkeiten</span>
                     <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
                   </a>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Product Gallery */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-black">
         <div className="container mx-auto px-6">
           <div className="max-w-screen-xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              variants={fadeIn}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               className="section-title-container"
             >
               <span className="section-subtitle">
                 Galerie
               </span>
-              <h2 className="section-title">
+              <h2 className="section-title text-white">
                 Unsere <span className="highlight">Projekte</span>
               </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-white/70 max-w-2xl mx-auto">
                 Unsere Galerie zeigt ausgewählte Projekte, die wir bereits für namhafte Weingüter und Restaurants realisiert haben. Entdecken Sie unsere maßgefertigten Tische, Theken und Regale, die in verschiedenen Gastronomie- und Hotelbetrieben zum Einsatz kommen. Jedes Möbelstück ist ein Unikat und erzählt die Geschichte des Weins, von dem es inspiriert wurde.
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <motion.div 
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            >
               {galleryItems.map((item, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true, margin: "-100px" }}
+                  variants={fadeIn}
                   className="hover-lift"
                 >
                   <GalleryItem 
@@ -306,7 +348,7 @@ const BusinessPage = () => {
                   />
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -332,15 +374,12 @@ interface ProcessStepProps {
 
 const ProcessStep = ({ number, title, description }: ProcessStepProps) => (
   <motion.div 
-    whileInView={{ opacity: 1, y: 0 }}
-    initial={{ opacity: 0, y: 20 }}
-    transition={{ duration: 0.5 }}
-    viewport={{ once: true, margin: "-100px" }}
+    variants={fadeIn}
     className="relative"
   >
     <div className="text-4xl font-light text-wine/20 mb-4">{number}</div>
-    <h4 className="text-lg font-medium mb-2">{title}</h4>
-    <p className="text-sm text-muted-foreground">{description}</p>
+    <h4 className="text-lg font-medium mb-2 text-white">{title}</h4>
+    <p className="text-sm text-white/60">{description}</p>
     
     {/* Connector line, only show for non-last items on desktop */}
     <div className="hidden md:block absolute top-8 right-0 h-[2px] w-1/2 bg-wine/10 -z-10 last:hidden"></div>
@@ -357,13 +396,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ icon, title, description, image }: ProductCardProps) => (
-  <motion.div 
-    whileInView={{ opacity: 1, y: 0 }}
-    initial={{ opacity: 0, y: 30 }}
-    transition={{ duration: 0.5 }}
-    viewport={{ once: true, margin: "-100px" }}
-    className="flex flex-col h-full hover-scale"
-  >
+  <div className="flex flex-col h-full hover-scale">
     <div className="relative h-56 overflow-hidden rounded-t-lg">
       <img 
         src={image} 
@@ -371,14 +404,14 @@ const ProductCard = ({ icon, title, description, image }: ProductCardProps) => (
         className="w-full h-full object-cover image-hover"
       />
     </div>
-    <div className="flex-1 p-6 bg-white rounded-b-lg border border-t-0 border-background/10 shadow-sm">
+    <div className="flex-1 p-6 bg-white/5 backdrop-blur-sm rounded-b-lg border border-t-0 border-white/10">
       <div className="mb-4 bg-wine-light/20 w-12 h-12 rounded-full flex items-center justify-center text-wine">
         {icon}
       </div>
-      <h3 className="text-xl font-medium mb-3">{title}</h3>
-      <p className="text-muted-foreground text-sm">{description}</p>
+      <h3 className="text-xl font-medium mb-3 text-white">{title}</h3>
+      <p className="text-white/70 text-sm">{description}</p>
     </div>
-  </motion.div>
+  </div>
 );
 
 // BenefitItem Component
@@ -388,15 +421,15 @@ interface BenefitItemProps {
 }
 
 const BenefitItem = ({ title, description }: BenefitItemProps) => (
-  <div className="flex gap-4 slide-up">
+  <div className="flex gap-4">
     <div className="flex-shrink-0 mt-1">
       <div className="w-5 h-5 bg-wine rounded-full flex items-center justify-center">
         <Check className="text-white w-3 h-3" />
       </div>
     </div>
     <div>
-      <h4 className="text-lg font-medium mb-1">{title}</h4>
-      <p className="text-muted-foreground text-sm">{description}</p>
+      <h4 className="text-lg font-medium mb-1 text-white">{title}</h4>
+      <p className="text-white/70 text-sm">{description}</p>
     </div>
   </div>
 );
@@ -409,7 +442,7 @@ interface GalleryItemProps {
 }
 
 const GalleryItem = ({ image, title, category }: GalleryItemProps) => (
-  <div className="group rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+  <div className="group rounded-lg overflow-hidden shadow-md">
     <div className="relative h-64 overflow-hidden">
       <img 
         src={image} 
@@ -417,9 +450,9 @@ const GalleryItem = ({ image, title, category }: GalleryItemProps) => (
         className="w-full h-full object-cover image-hover"
       />
     </div>
-    <div className="p-4 bg-white border-t">
-      <h4 className="font-medium">{title}</h4>
-      <p className="text-sm text-muted-foreground">
+    <div className="p-4 bg-white/5 backdrop-blur-sm border-t border-white/10">
+      <h4 className="font-medium text-white">{title}</h4>
+      <p className="text-sm text-white/60">
         <span className="text-wine">{category}</span>
       </p>
     </div>
