@@ -39,7 +39,7 @@ const Footer = () => {
                 <FooterLink href="#business">Maßgeschneiderte Lösungen</FooterLink>
                 <FooterLink href="#business">Gastronomie</FooterLink>
                 <FooterLink href="#business">Weingüter</FooterLink>
-                <FooterLink href="#business">Restaurants</FooterLink>
+                <FooterLink href="#business">Hotellerie</FooterLink>
               </ul>
             </div>
             
@@ -79,13 +79,13 @@ const Footer = () => {
               © {currentYear} VinLignum Holzmanufaktur GmbH & Co. KG. Alle Rechte vorbehalten.
             </div>
             <div className="flex space-x-6">
-              <a href="#" className="text-background/60 hover:text-background transition-colors">
-                AGB
+              <a href="#impressum" className="text-background/60 hover:text-background transition-colors">
+                Impressum
               </a>
-              <a href="#" className="text-background/60 hover:text-background transition-colors">
+              <a href="#datenschutz" className="text-background/60 hover:text-background transition-colors">
                 Datenschutz
               </a>
-              <a href="#" className="text-background/60 hover:text-background transition-colors">
+              <a href="#cookies" className="text-background/60 hover:text-background transition-colors">
                 Cookies
               </a>
             </div>

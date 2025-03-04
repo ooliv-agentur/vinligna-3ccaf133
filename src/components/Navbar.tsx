@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
@@ -35,10 +34,8 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <NavLink href="/">Home</NavLink>
-          <NavLink href="#business">Weingüter & Gastronomie</NavLink>
-          <NavLink href="#private">Weinliebhaber</NavLink>
-          <NavLink href="#about">Über uns</NavLink>
+          <NavLink href="#business">Weingüter, Gastronomie & Hotellerie</NavLink>
+          <NavLink href="#private">Weinliebhaber & Privatkunden</NavLink>
           <NavLink href="#contact">Kontakt</NavLink>
         </nav>
 
@@ -66,17 +63,11 @@ const Navbar = () => {
           className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md shadow-md py-4"
         >
           <nav className="flex flex-col space-y-4 px-6">
-            <MobileNavLink href="/" onClick={() => setIsMobileMenuOpen(false)}>
-              Home
-            </MobileNavLink>
             <MobileNavLink href="#business" onClick={() => setIsMobileMenuOpen(false)}>
-              Weingüter & Gastronomie
+              Weingüter, Gastronomie & Hotellerie
             </MobileNavLink>
             <MobileNavLink href="#private" onClick={() => setIsMobileMenuOpen(false)}>
-              Weinliebhaber
-            </MobileNavLink>
-            <MobileNavLink href="#about" onClick={() => setIsMobileMenuOpen(false)}>
-              Über uns
+              Weinliebhaber & Privatkunden
             </MobileNavLink>
             <MobileNavLink href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
               Kontakt
