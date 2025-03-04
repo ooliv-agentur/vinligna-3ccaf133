@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, Table, Armchair, Layers } from 'lucide-react';
@@ -55,7 +56,7 @@ const BusinessPage = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center px-6 pt-32 pb-20">
+      <section className="relative min-h-[70vh] flex items-center justify-center px-6 pt-32 pb-20">
         {/* Background image with overlay */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -69,7 +70,7 @@ const BusinessPage = () => {
         <div className="container relative z-10 mx-auto max-w-5xl text-center">
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="inline-block mb-6 px-3 py-1 bg-wine-light/90 backdrop-blur-sm text-oak-dark text-xs tracking-widest uppercase rounded-full"
           >
@@ -78,9 +79,9 @@ const BusinessPage = () => {
 
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 leading-tight tracking-tight"
+            className="section-title-large text-white mb-6"
           >
             Weinfass Möbel für <br className="hidden md:block" />
             <span className="font-medium">Weingüter, Gastronomie & Hotellerie</span>
@@ -88,7 +89,7 @@ const BusinessPage = () => {
 
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-base md:text-lg text-white/90 max-w-2xl mx-auto mb-8"
           >
@@ -98,7 +99,7 @@ const BusinessPage = () => {
       </section>
 
       {/* About Us Section */}
-      <section className="py-20 bg-background">
+      <section className="section-padding bg-background">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -108,8 +109,8 @@ const BusinessPage = () => {
               viewport={{ once: true, margin: "-100px" }}
               className="text-center mb-12"
             >
-              <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
-                Über <span className="font-medium">VINLIGNA</span>
+              <h2 className="section-title">
+                Über <span className="highlight">VINLIGNA</span>
               </h2>
             </motion.div>
             
@@ -132,7 +133,7 @@ const BusinessPage = () => {
       <TeamSection />
 
       {/* Products Section */}
-      <section className="py-24 md:py-32 bg-oak-light/5 overflow-hidden">
+      <section className="section-padding-lg bg-oak-light/5 overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="max-w-screen-xl mx-auto">
             <motion.div
@@ -140,13 +141,13 @@ const BusinessPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="text-center mb-16 md:mb-24"
+              className="section-title-container"
             >
-              <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-4">
+              <span className="section-subtitle">
                 Unsere Produkte
               </span>
-              <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
-                Maßgeschneiderte <span className="font-medium">Weinfass-Möbel</span>
+              <h2 className="section-title">
+                Maßgeschneiderte <span className="highlight">Weinfass-Möbel</span>
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
                 Unsere Möbel sind vollständig individualisierbar und auf die speziellen Bedürfnisse von Weingütern, Restaurants und Hotels ausgerichtet.
@@ -198,7 +199,7 @@ const BusinessPage = () => {
       <ProductionProcess isB2C={false} />
 
       {/* Benefits Section */}
-      <section className="py-24 md:py-32 bg-oak-light/5 overflow-hidden">
+      <section className="section-padding-lg bg-oak-light/5 overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="max-w-screen-xl mx-auto">
             <motion.div
@@ -206,13 +207,13 @@ const BusinessPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="text-center mb-16"
+              className="section-title-container"
             >
-              <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-4">
+              <span className="section-subtitle">
                 Ihre Vorteile
               </span>
-              <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
-                Vorteile für <span className="font-medium">Ihr Unternehmen</span>
+              <h2 className="section-title">
+                Vorteile für <span className="highlight">Ihr Unternehmen</span>
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
                 Entdecken Sie, warum VINLIGNA die erste Wahl für Weingüter, Gastronomiebetriebe und Hotels ist.
@@ -225,7 +226,7 @@ const BusinessPage = () => {
                   <img 
                     src="/lovable-uploads/bb8a99d9-97f3-42b4-85ad-94d0c5d74fff.png" 
                     alt="Maßgefertigte Weinfass-Möbel" 
-                    className="w-full h-full object-cover rounded-lg shadow-md"
+                    className="w-full h-full object-cover rounded-lg shadow-md image-hover"
                   />
                 </div>
               </div>
@@ -254,7 +255,7 @@ const BusinessPage = () => {
                 <div className="pt-4">
                   <a 
                     href="#contact" 
-                    className="inline-flex items-center text-sm font-medium bg-foreground text-background py-3 px-6 rounded-lg hover:bg-foreground/90 transition-colors group"
+                    className="btn-primary group"
                   >
                     <span>Verwandeln Sie Ihre Räumlichkeiten</span>
                     <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
@@ -267,7 +268,7 @@ const BusinessPage = () => {
       </section>
 
       {/* Product Gallery */}
-      <section className="py-20 bg-background">
+      <section className="section-padding bg-background">
         <div className="container mx-auto px-6">
           <div className="max-w-screen-xl mx-auto">
             <motion.div
@@ -275,13 +276,13 @@ const BusinessPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="text-center mb-12"
+              className="section-title-container"
             >
-              <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-4">
+              <span className="section-subtitle">
                 Galerie
               </span>
-              <h2 className="text-3xl font-light mb-6">
-                Unsere <span className="font-medium">Projekte</span>
+              <h2 className="section-title">
+                Unsere <span className="highlight">Projekte</span>
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
                 Unsere Galerie zeigt ausgewählte Projekte, die wir bereits für namhafte Weingüter und Restaurants realisiert haben. Entdecken Sie unsere maßgefertigten Tische, Theken und Regale, die in verschiedenen Gastronomie- und Hotelbetrieben zum Einsatz kommen. Jedes Möbelstück ist ein Unikat und erzählt die Geschichte des Weins, von dem es inspiriert wurde.
@@ -296,6 +297,7 @@ const BusinessPage = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true, margin: "-100px" }}
+                  className="hover-lift"
                 >
                   <GalleryItem 
                     image={item.image}
@@ -360,13 +362,13 @@ const ProductCard = ({ icon, title, description, image }: ProductCardProps) => (
     initial={{ opacity: 0, y: 30 }}
     transition={{ duration: 0.5 }}
     viewport={{ once: true, margin: "-100px" }}
-    className="flex flex-col h-full"
+    className="flex flex-col h-full hover-scale"
   >
     <div className="relative h-56 overflow-hidden rounded-t-lg">
       <img 
         src={image} 
         alt={title} 
-        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        className="w-full h-full object-cover image-hover"
       />
     </div>
     <div className="flex-1 p-6 bg-white rounded-b-lg border border-t-0 border-background/10 shadow-sm">
@@ -386,7 +388,7 @@ interface BenefitItemProps {
 }
 
 const BenefitItem = ({ title, description }: BenefitItemProps) => (
-  <div className="flex gap-4">
+  <div className="flex gap-4 slide-up">
     <div className="flex-shrink-0 mt-1">
       <div className="w-5 h-5 bg-wine rounded-full flex items-center justify-center">
         <Check className="text-white w-3 h-3" />
@@ -412,7 +414,7 @@ const GalleryItem = ({ image, title, category }: GalleryItemProps) => (
       <img 
         src={image} 
         alt={title} 
-        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        className="w-full h-full object-cover image-hover"
       />
     </div>
     <div className="p-4 bg-white border-t">
