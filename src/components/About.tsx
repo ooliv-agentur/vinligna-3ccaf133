@@ -33,7 +33,7 @@ const About = () => {
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="text-5xl md:text-6xl font-light mb-10 leading-tight"
+                className="text-4xl md:text-5xl font-light mb-10 leading-tight"
               >
                 Die Kunst der <span className="font-medium bg-gradient-to-r from-wine to-wine-light bg-clip-text text-transparent">Nachhaltigkeit</span>
               </motion.h2>
@@ -79,7 +79,7 @@ const About = () => {
             >
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
                 <img 
-                  src="/lovable-uploads/0f5485b5-8cee-4ad4-9f8c-9b4aecaf9d05.png" 
+                  src="/lovable-uploads/06e1c8e5-67ad-412d-99a2-e2c2c4609419.png" 
                   alt="Werkstatt mit Weinfässern und daraus gefertigten Möbelstücken" 
                   className="w-full h-full object-cover object-center transition-transform duration-500"
                 />

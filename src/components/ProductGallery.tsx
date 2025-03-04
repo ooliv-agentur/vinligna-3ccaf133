@@ -35,7 +35,10 @@ const ProductGallery = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="text-center mb-20"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-6 tracking-wider">
+            <span className="inline-block text-sm font-medium tracking-widest uppercase text-wine mb-4">
+              Unsere Produkte
+            </span>
+            <h2 className="text-4xl md:text-5xl font-light mb-6 tracking-wider">
               Handwerkskunst aus <span className="text-wine">Eichenholz</span>
             </h2>
             <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
@@ -86,7 +89,7 @@ const GalleryItem = ({ image, title, category }: GalleryItemProps) => (
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       <div className="absolute inset-0 p-6 flex flex-col justify-end translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-        <h4 className="font-medium text-xl text-white mb-1">{title}</h4>
+        <h3 className="font-medium text-xl text-white mb-1">{title}</h3>
         <p className="text-wine">
           {category}
         </p>

@@ -210,7 +210,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
           {/* Card content with enhanced animations */}
           <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10 text-left transform transition-all duration-300 group-hover:translate-y-0">
             <div className="mb-1 text-white/70 text-lg">{title}</div>
-            <h3 className="text-3xl font-medium text-white mb-2">{subtitle}</h3>
+            <h2 className="text-3xl font-medium text-white mb-2">{subtitle}</h2>
             <p className="text-white/70 mb-8 text-base font-light">{description}</p>
             
             <div className="flex items-center text-white text-base font-light overflow-hidden relative">

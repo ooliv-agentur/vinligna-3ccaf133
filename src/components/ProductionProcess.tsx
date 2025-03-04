@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { Package, PencilRuler, Sparkles } from 'lucide-react';
 
@@ -21,7 +22,7 @@ const ProcessStep = ({ number, title, description, icon }: ProcessStepProps) => 
       <div className="text-wine w-20 h-20 mb-4 flex items-center justify-center">
         {icon}
       </div>
-      <h4 className="text-lg font-medium mb-2 text-center">{title}</h4>
+      <h3 className="text-lg font-medium mb-2 text-center">{title}</h3>
     </div>
     <p className="text-sm text-muted-foreground text-center">{description}</p>
     
@@ -159,7 +160,7 @@ const ProductionProcess = ({ isB2C = false }: ProductionProcessProps) => {
             <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-4">
               {content.sectionTitle}
             </span>
-            <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-light mb-6 leading-tight">
               {content.heading.split(" ").slice(0, -1).join(" ")} <span className="font-medium">{content.heading.split(" ").slice(-1)}</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
