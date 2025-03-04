@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, Table, Armchair, Layers } from 'lucide-react';
@@ -104,14 +105,26 @@ const BusinessPage = () => {
             </a>
           </motion.div>
         </div>
+
+        {/* Directly add the uploaded image as a background */}
+        <div 
+          className="absolute inset-0 -z-10"
+          style={{
+            backgroundImage: `url('/lovable-uploads/58ff8116-9477-4e49-a7fb-b5d41fb8339c.png')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            opacity: 0.5
+          }}
+        ></div>
+        <div className="absolute inset-0 -z-10 bg-black/60"></div>
       </section>
 
-      {/* Image Section - Using img instead of background-image */}
-      <section className="relative w-full overflow-hidden">
+      {/* Image Section - Using img tag */}
+      <section className="relative w-full h-[60vh] md:h-[70vh] overflow-hidden">
         <img 
-          src="/lovable-uploads/795a3d50-95b0-4b77-9758-0b469218b2fe.png" 
+          src="/lovable-uploads/58ff8116-9477-4e49-a7fb-b5d41fb8339c.png" 
           alt="Weinfass Möbel Showroom" 
-          className="w-full h-[60vh] md:h-[70vh] object-cover"
+          className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"></div>
       </section>
