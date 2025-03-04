@@ -1,5 +1,5 @@
+
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
 
 // Animation variants
 const fadeIn = {
@@ -24,9 +24,26 @@ const staggerContainer = {
 
 const ProductGallery = () => {
   return (
-    <section className="py-32 md:py-44 bg-black text-white overflow-hidden">
+    <section className="py-32 md:py-44 bg-black text-white overflow-hidden" id="gallery">
       <div className="container mx-auto px-6">
         <div className="max-w-screen-xl mx-auto">
+          {/* Headline and intro text */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="text-center mb-20"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light mb-6 tracking-wider">
+              Handwerkskunst aus <span className="text-wine">Eichenholz</span>
+            </h2>
+            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+              Entdecken Sie unsere einzigartigen Kreationen aus recycelten Weinfässern. 
+              Jedes Stück erzählt seine eigene Geschichte von Tradition, Handwerk und Nachhaltigkeit.
+            </p>
+          </motion.div>
+          
           <motion.div 
             variants={staggerContainer}
             initial="hidden"
@@ -46,32 +63,6 @@ const ProductGallery = () => {
                 />
               </motion.div>
             ))}
-          </motion.div>
-          
-          {/* Call-to-action */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="mt-16 text-center"
-          >
-            <div className="inline-flex items-center text-wine hover:text-wine-light transition-colors cursor-pointer group">
-              <span className="text-lg">Alle Kreationen entdecken</span>
-              <motion.div
-                animate={{ x: [0, 5, 0] }}
-                transition={{ 
-                  duration: 1.5, 
-                  repeat: Infinity, 
-                  repeatType: "loop", 
-                  ease: "easeInOut",
-                  repeatDelay: 1
-                }}
-                className="ml-2"
-              >
-                <ArrowRight size={20} />
-              </motion.div>
-            </div>
           </motion.div>
         </div>
       </div>
