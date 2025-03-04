@@ -47,17 +47,65 @@ const ProductGallery = () => {
             </p>
           </motion.div>
           
+          {/* First Row */}
           <motion.div 
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {galleryItems.map((item, index) => (
+            {galleryItems.slice(0, 3).map((item, index) => (
               <motion.div
                 key={index}
                 variants={fadeIn}
+                className="h-full"
+              >
+                <GalleryItem 
+                  image={item.image}
+                  title={item.title}
+                  category={item.category}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Second Row */}
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"
+          >
+            {galleryItems.slice(3, 6).map((item, index) => (
+              <motion.div
+                key={index + 3}
+                variants={fadeIn}
+                className="h-full"
+              >
+                <GalleryItem 
+                  image={item.image}
+                  title={item.title}
+                  category={item.category}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Third Row */}
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"
+          >
+            {galleryItems.slice(6, 9).map((item, index) => (
+              <motion.div
+                key={index + 6}
+                variants={fadeIn}
+                className="h-full"
               >
                 <GalleryItem 
                   image={item.image}
@@ -80,7 +128,7 @@ interface GalleryItemProps {
 }
 
 const GalleryItem = ({ image, title, category }: GalleryItemProps) => (
-  <div className="group relative overflow-hidden rounded-lg bg-white/5 backdrop-blur-sm border border-white/10">
+  <div className="group relative h-full overflow-hidden rounded-lg bg-white/5 backdrop-blur-sm border border-white/10">
     <div className="relative aspect-square overflow-hidden">
       <img 
         src={image} 
