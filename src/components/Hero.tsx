@@ -14,8 +14,8 @@ const Hero = () => {
           alt="Weinfass-Workshop mit historischer Wandkunst"
           className="w-full h-full object-cover object-center"
         />
-        {/* Gradient overlay - dunkler oben, heller unten */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/50 to-black/30" />
+        {/* Darker gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/40" />
       </div>
 
       <div className="container relative z-10 mx-auto max-w-5xl text-center">
@@ -24,7 +24,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-block mb-6 px-3 py-1 bg-wine-light/90 backdrop-blur-sm text-oak-dark text-xs tracking-widest uppercase rounded-full"
+          className="inline-block mb-6 px-3 py-1 bg-white/20 backdrop-blur-sm text-white text-xs tracking-widest uppercase rounded-full border border-white/10"
         >
           Nachhaltige Eleganz
         </motion.div>
@@ -50,50 +50,29 @@ const Hero = () => {
           Wir verwandeln gebrauchte Barrique-Fässer in elegante, einzigartige Möbelstücke, die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
         </motion.p>
 
-        {/* Entry Points - Modern Technical Animation */}
+        {/* Elegant Entry Points with Glass Cards */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16"
         >
-          {/* Business Entry Point */}
-          <EntryPoint 
-            title="Für Weingüter & Gastronomie"
+          {/* Business Entry Point - Redesigned as elegant glass card */}
+          <EntryCard 
+            title="Weingüter & Gastronomie"
             description="Maßgeschneiderte Lösungen für Ihre Marke"
             link="/business"
-            color="wine"
+            imageSrc="/lovable-uploads/112627aa-d494-4e9d-939e-39625817461d.png"
             delay={0.4}
-            icon={
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="stroke-white">
-                <path d="M5 8h14" />
-                <path d="M5 12h14" />
-                <path d="M5 16h14" />
-                <path d="M3 20h18" />
-                <path d="M17 4h1a2 2 0 0 1 2 2v1" />
-                <path d="M16 4V2" />
-                <path d="M8 4H7a2 2 0 0 0-2 2v1" />
-                <path d="M8 4V2" />
-              </svg>
-            }
           />
 
-          {/* Private Entry Point */}
-          <EntryPoint 
-            title="Für Weinliebhaber"
+          {/* Private Entry Point - Redesigned as elegant glass card */}
+          <EntryCard 
+            title="Weinliebhaber"
             description="Exklusive Designs für Ihr Zuhause"
             link="/private"
-            color="oak-dark"
+            imageSrc="/lovable-uploads/e9d912cb-d45d-4016-8e8b-8250bd78de47.png" 
             delay={0.5}
-            icon={
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="stroke-white">
-                <path d="M8 22h8" />
-                <path d="M7 10h10" />
-                <path d="M10 2h4" />
-                <path d="M12 2v8" />
-                <path d="M12 10v12" />
-              </svg>
-            }
           />
         </motion.div>
 
@@ -114,20 +93,15 @@ const Hero = () => {
   );
 };
 
-interface EntryPointProps {
+interface EntryCardProps {
   title: string;
   description: string;
   link: string;
-  color: 'wine' | 'oak-dark';
+  imageSrc: string;
   delay: number;
-  icon: React.ReactNode;
 }
 
-const EntryPoint = ({ title, description, link, color, delay, icon }: EntryPointProps) => {
-  const bgColor = color === 'wine' ? 'bg-wine/90' : 'bg-oak-dark/90';
-  const hoverBgColor = color === 'wine' ? 'hover:bg-wine' : 'hover:bg-oak-dark';
-  const borderColor = color === 'wine' ? 'border-wine-light/30' : 'border-oak-light/30';
-  
+const EntryCard = ({ title, description, link, imageSrc, delay }: EntryCardProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -140,38 +114,32 @@ const EntryPoint = ({ title, description, link, color, delay, icon }: EntryPoint
     >
       <Link 
         to={link} 
-        className={cn(
-          "block h-full p-8 rounded-2xl backdrop-blur-md border",
-          bgColor, hoverBgColor, borderColor,
-          "transition-all duration-300 shadow-lg hover:shadow-xl"
-        )}
+        className="block h-full group relative"
       >
-        <div className="flex flex-col items-center text-center">
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0.8 }}
-            whileHover={{ 
-              scale: 1,
-              opacity: 1,
-              rotate: [0, 5, 0, -5, 0],
-              transition: { duration: 0.5 }
-            }}
-            className="mb-6"
-          >
-            {icon}
-          </motion.div>
+        {/* Card image with overlay */}
+        <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
+          <img 
+            src={imageSrc} 
+            alt={title} 
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-90" />
           
-          <h3 className="text-2xl font-medium mb-2 text-white">{title}</h3>
-          <p className="text-white/80 mb-6">{description}</p>
-          
-          <div className="mt-auto inline-flex items-center font-medium text-white group">
-            <span>Entdecken</span>
-            <motion.div
-              initial={{ x: 0 }}
-              whileHover={{ x: 5 }}
-              className="ml-2"
-            >
-              <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
-            </motion.div>
+          {/* Card content */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-left">
+            <h3 className="text-2xl font-light text-white mb-1">{title}</h3>
+            <p className="text-white/70 mb-6 text-sm">{description}</p>
+            
+            <div className="flex items-center text-white/90 text-sm font-light group">
+              <span className="border-b border-white/30 group-hover:border-white transition-colors duration-300">Entdecken</span>
+              <motion.div
+                initial={{ x: 0 }}
+                whileHover={{ x: 5 }}
+                className="ml-2"
+              >
+                <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+              </motion.div>
+            </div>
           </div>
         </div>
       </Link>
