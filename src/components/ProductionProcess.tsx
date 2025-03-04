@@ -1,13 +1,15 @@
 
 import { motion } from 'framer-motion';
+import { Wine, Hammer, Ruler, Sparkles } from 'lucide-react';
 
 interface ProcessStepProps {
   number: string;
   title: string;
   description: string;
+  icon: React.ReactNode;
 }
 
-const ProcessStep = ({ number, title, description }: ProcessStepProps) => (
+const ProcessStep = ({ number, title, description, icon }: ProcessStepProps) => (
   <motion.div 
     whileInView={{ opacity: 1, y: 0 }}
     initial={{ opacity: 0, y: 20 }}
@@ -16,8 +18,13 @@ const ProcessStep = ({ number, title, description }: ProcessStepProps) => (
     className="relative"
   >
     <div className="text-4xl font-light text-wine/20 mb-4">{number}</div>
-    <h4 className="text-lg font-medium mb-2">{title}</h4>
-    <p className="text-sm text-muted-foreground">{description}</p>
+    <div className="flex flex-col items-center mb-6">
+      <div className="text-wine w-20 h-20 mb-4 flex items-center justify-center">
+        {icon}
+      </div>
+      <h4 className="text-lg font-medium mb-2 text-center">{title}</h4>
+    </div>
+    <p className="text-sm text-muted-foreground text-center">{description}</p>
     
     {/* Connector line, only show for non-last items on desktop */}
     <div className="hidden md:block absolute top-8 right-0 h-[2px] w-1/2 bg-wine/10 -z-10 last:hidden"></div>
@@ -39,22 +46,26 @@ const ProductionProcess = ({ isB2C = false }: ProductionProcessProps) => {
       {
         number: "01",
         title: "Auswahl der Fässer",
-        description: "Wir wählen sorgfältig gebrauchte Barrique-Fässer aus, die jahrelang edle Weine beherbergt haben und eine besondere Geschichte erzählen."
+        description: "Wir wählen sorgfältig gebrauchte Barrique-Fässer aus, die jahrelang edle Weine beherbergt haben und eine besondere Geschichte erzählen.",
+        icon: <Wine strokeWidth={1.5} size={48} />
       },
       {
         number: "02",
         title: "Handwerkliche Verarbeitung",
-        description: "Mit traditionellen Handwerkstechniken zerlegen wir die Fässer und verarbeiten die edlen Hölzer zu einzigartigen Wohnaccessoires und Möbelstücken."
+        description: "Mit traditionellen Handwerkstechniken zerlegen wir die Fässer und verarbeiten die edlen Hölzer zu einzigartigen Wohnaccessoires und Möbelstücken.",
+        icon: <Hammer strokeWidth={1.5} size={48} />
       },
       {
         number: "03",
         title: "Individuelle Gestaltung",
-        description: "Wir gestalten Ihr Wunschmöbel nach Ihren persönlichen Vorstellungen und passen es optimal an Ihren Wohnraum an."
+        description: "Wir gestalten Ihr Wunschmöbel nach Ihren persönlichen Vorstellungen und passen es optimal an Ihren Wohnraum an.",
+        icon: <Ruler strokeWidth={1.5} size={48} />
       },
       {
         number: "04",
         title: "Perfekte Vollendung",
-        description: "Die Oberflächen werden mit hochwertigen Ölen und Wachsen veredelt, um die einzigartige Holzmaserung zur Geltung zu bringen und langlebigen Schutz zu bieten."
+        description: "Die Oberflächen werden mit hochwertigen Ölen und Wachsen veredelt, um die einzigartige Holzmaserung zur Geltung zu bringen und langlebigen Schutz zu bieten.",
+        icon: <Sparkles strokeWidth={1.5} size={48} />
       }
     ]
   };
@@ -67,22 +78,26 @@ const ProductionProcess = ({ isB2C = false }: ProductionProcessProps) => {
       {
         number: "01",
         title: "Fassauswahl",
-        description: "Wir verwenden sorgfältig ausgewählte, alte Barrique-Fässer, die aus Weingütern stammen und für die Reifung von Wein verwendet wurden."
+        description: "Wir verwenden sorgfältig ausgewählte, alte Barrique-Fässer, die aus Weingütern stammen und für die Reifung von Wein verwendet wurden.",
+        icon: <Wine strokeWidth={1.5} size={48} />
       },
       {
         number: "02",
         title: "Verarbeitung",
-        description: "Die Fässer werden in Fassdauben zerlegt und von unseren Handwerkern zu einzigartigen Möbelstücken weiterverarbeitet."
+        description: "Die Fässer werden in Fassdauben zerlegt und von unseren Handwerkern zu einzigartigen Möbelstücken weiterverarbeitet.",
+        icon: <Hammer strokeWidth={1.5} size={48} />
       },
       {
         number: "03",
         title: "Maßanfertigung",
-        description: "Jedes Möbelstück wird in enger Zusammenarbeit mit Ihnen entworfen und exakt an Ihre Anforderungen angepasst."
+        description: "Jedes Möbelstück wird in enger Zusammenarbeit mit Ihnen entworfen und exakt an Ihre Anforderungen angepasst.",
+        icon: <Ruler strokeWidth={1.5} size={48} />
       },
       {
         number: "04",
         title: "Endveredelung",
-        description: "Die fertigen Möbelstücke werden mit einem speziellen Finish versehen, das die natürliche Schönheit des Holzes hervorhebt."
+        description: "Die fertigen Möbelstücke werden mit einem speziellen Finish versehen, das die natürliche Schönheit des Holzes hervorhebt.",
+        icon: <Sparkles strokeWidth={1.5} size={48} />
       }
     ]
   };
@@ -118,6 +133,7 @@ const ProductionProcess = ({ isB2C = false }: ProductionProcessProps) => {
                 number={step.number}
                 title={step.title}
                 description={step.description}
+                icon={step.icon}
               />
             ))}
           </div>
