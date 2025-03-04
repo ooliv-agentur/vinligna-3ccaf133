@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -122,7 +121,7 @@ const Hero = () => {
           {/* Business Entry Point - Reimagined Design */}
           <EntryCard 
             title="Ich bin"
-            subtitle="Winzer oder Gastronom"
+            subtitle="Winzer, Gastronom oder Hotelier"
             description="Maßgeschneiderte Lösungen für Ihre Marke"
             link="/business"
             imageSrc="/lovable-uploads/112627aa-d494-4e9d-939e-39625817461d.png"
