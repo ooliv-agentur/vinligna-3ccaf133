@@ -53,7 +53,7 @@ const BusinessFaq = () => {
       answer: "Unsere Weinfass Möbel sind robust, langlebig und individuell anpassbar. Sie bieten eine edle Optik, unterstreichen das Thema Wein und setzen Ihre Räumlichkeiten stilvoll in Szene – ob als Theke, Tisch oder Präsentationsmöbel."
     },
     {
-      question: "Kann VinLigna Möbel aus meinen eigenen Weinfässern fertigen?",
+      question: "Kann VINLIGNA Möbel aus meinen eigenen Weinfässern fertigen?",
       answer: "Ja! Wir können Ihre nicht mehr genutzten Weinfässer in individuelle Möbelstücke verwandeln. Auf Wunsch versehen wir diese mit eingebrannten Logos oder Markenzeichen, um Ihre Markenidentität zu stärken."
     },
     {
@@ -81,8 +81,8 @@ const BusinessFaq = () => {
       answer: "Wir bieten eine Vielzahl an Farboptionen, Oberflächenbehandlungen und Kombinationen mit Glas oder Metall, sodass jedes Möbelstück optimal in Ihr Konzept integriert wird."
     },
     {
-      question: "Warum sollte ich mich für VinLigna entscheiden?",
-      answer: "VinLigna steht für handgefertigte Unikate aus echten Weinfässern, höchste Qualität und individuelle Anpassung. Wir kombinieren traditionelles Handwerk mit modernem Design und schaffen so maßgeschneiderte Lösungen für Weingüter, Restaurants und Hotels."
+      question: "Warum sollte ich mich für VINLIGNA entscheiden?",
+      answer: "VINLIGNA steht für handgefertigte Unikate aus echten Weinfässern, höchste Qualität und individuelle Anpassung. Wir kombinieren traditionelles Handwerk mit modernem Design und schaffen so maßgeschneiderte Lösungen für Weingüter, Restaurants und Hotels."
     }
   ];
 
@@ -118,22 +118,6 @@ const BusinessFaq = () => {
             {faqs.map((faq, index) => (
               <FaqItem key={index} {...faq} />
             ))}
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="mt-16 pt-6 border-t border-oak/10 text-center"
-          >
-            <h3 className="text-xl font-medium mb-6">Kontakt</h3>
-            <div className="space-y-2 text-muted-foreground">
-              <p>VinLignum Holzmanufaktur GmbH & Co. KG</p>
-              <p>Industriestraße 19, 67821 Alsenz</p>
-              <p><a href="mailto:info@vinligna.de" className="hover:text-wine transition-colors">info@vinligna.de</a></p>
-              <p><a href="tel:+4963623094990" className="hover:text-wine transition-colors">+49 6362 309 49 90</a></p>
-            </div>
           </motion.div>
         </div>
       </div>

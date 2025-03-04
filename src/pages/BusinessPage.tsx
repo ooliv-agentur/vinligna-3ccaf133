@@ -1,10 +1,10 @@
+
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, Table, Armchair, Layers } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
-import Cta from '@/components/Cta';
 import ScrollToTop from '@/components/ScrollToTop';
 import { cn } from '@/lib/utils';
 import BusinessFaq from '@/components/BusinessFaq';
@@ -314,7 +314,6 @@ const BusinessPage = () => {
       {/* FAQ Section */}
       <BusinessFaq />
 
-      <Cta />
       <Contact />
       <Footer />
       <ScrollToTop />
