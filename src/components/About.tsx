@@ -60,8 +60,8 @@ const About = () => {
                 className="relative z-10 rounded-lg overflow-hidden shadow-xl"
               >
                 <img 
-                  src="/lovable-uploads/7d68f803-8997-4648-9249-af03963b23eb.png" 
-                  alt="Handcrafted wine barrel furniture" 
+                  src="/lovable-uploads/85d4a29e-509f-42f3-b7d7-52e5a3622dd9.png" 
+                  alt="VINLIGNA Handwerkerteam" 
                   className="w-full h-full object-cover"
                 />
               </motion.div>
