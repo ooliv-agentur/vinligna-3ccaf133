@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import TextArrowButton from './TextArrowButton';
 
@@ -90,15 +91,15 @@ const About = () => {
                 </div>
               </div>
               
-              {/* Decorative floating element */}
+              {/* Decorative floating element - Changed from wine/orange to green */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
                 viewport={{ once: true }}
-                className="absolute -top-12 -right-8 bg-wine/10 backdrop-blur-sm p-6 rounded-xl border border-wine/20 hidden lg:block"
+                className="absolute -top-12 -right-8 bg-emerald-500/10 backdrop-blur-sm p-6 rounded-xl border border-emerald-500/20 hidden lg:block"
               >
-                <span className="block text-3xl font-medium text-wine-light">100%</span>
+                <span className="block text-3xl font-medium text-emerald-400">100%</span>
                 <span className="text-white/90">nachhaltige Produktion</span>
               </motion.div>
             </motion.div>
