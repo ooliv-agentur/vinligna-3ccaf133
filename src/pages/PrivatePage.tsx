@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, Wine, Heart, ShieldCheck, Table, BookOpen } from 'lucide-react';
@@ -11,6 +10,7 @@ import ProductGallery from '@/components/ProductGallery';
 import Faq from '@/components/Faq';
 import ProductionProcess from '@/components/ProductionProcess';
 import { fadeIn, slideInLeft, slideInRight, staggerContainer } from '@/lib/motion';
+import FullWidthImageSection from '@/components/private/FullWidthImageSection';
 
 const PrivatePage = () => {
   useEffect(() => {
@@ -120,6 +120,9 @@ const PrivatePage = () => {
         ></div>
         <div className="absolute inset-0 -z-10 bg-black/60"></div>
       </section>
+
+      {/* Full Width Image Section */}
+      <FullWidthImageSection />
 
       {/* About Section */}
       <section className="section-padding relative overflow-hidden bg-black">
