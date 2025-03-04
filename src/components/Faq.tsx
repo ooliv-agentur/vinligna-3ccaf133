@@ -171,7 +171,7 @@ const Faq = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="mt-16 text-center"
           >
-            <div className="inline-flex items-center text-wine hover:text-wine-light transition-colors cursor-pointer group">
+            <a href="#contact" className="inline-flex items-center text-wine hover:text-wine-light transition-colors cursor-pointer group">
               <span className="text-lg">Weitere Informationen anfragen</span>
               <motion.div
                 animate={{ x: [0, 5, 0] }}
@@ -186,7 +186,7 @@ const Faq = () => {
               >
                 <ArrowRight size={20} />
               </motion.div>
-            </div>
+            </a>
           </motion.div>
         </div>
       </div>
