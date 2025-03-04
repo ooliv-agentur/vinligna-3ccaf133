@@ -13,7 +13,8 @@ const Hero = () => {
           alt="Weinfass-Workshop mit historischer Wandkunst"
           className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-black/40" /> {/* Overlay for better text readability */}
+        {/* Gradient overlay - dunkler oben, heller unten */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/50 to-black/30" />
       </div>
 
       <div className="container relative z-10 mx-auto max-w-5xl text-center">
