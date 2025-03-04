@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check } from 'lucide-react';
@@ -211,7 +212,7 @@ const Contact = () => {
               <div className="sticky top-32">
                 <div className="relative rounded-lg overflow-hidden h-64 mb-8">
                   <img 
-                    src="/contact-image.jpg" 
+                    src="/lovable-uploads/d5f56555-b294-42a9-b01c-5d95a80b0613.png" 
                     alt="VINLIGNA Werkstatt" 
                     className="w-full h-full object-cover"
                   />
