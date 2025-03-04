@@ -78,7 +78,7 @@ const TeamSection = () => {
             <TeamMember 
               name="Rei Suzuki" 
               role="Vertrieb und Kundenbetreuung" 
-              image="/lovable-uploads/b2a5db81-02e1-4a5a-857e-ab4f4a858a70.png"
+              image="/lovable-uploads/87b6ac6c-025f-40d2-9b09-73f8ee6e25b8.png"
               altText="Rei Suzuki - Vertrieb und Kundenbetreuung"
             />
           </motion.div>
