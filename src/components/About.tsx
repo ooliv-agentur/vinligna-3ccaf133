@@ -16,36 +16,36 @@ const About = () => {
                 viewport={{ once: true, margin: "-100px" }}
               >
                 <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-4">
-                  Our Approach
+                  Unser Ansatz
                 </span>
                 <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
-                  A Sustainable Second Life for <br />
-                  <span className="font-medium">Wine Barrels</span>
+                  Ein nachhaltiges zweites Leben für <br />
+                  <span className="font-medium">Weinfässer</span>
                 </h2>
                 <p className="text-muted-foreground mb-6">
-                  Every VINLIGNA piece is crafted from reclaimed Barrique barrels, giving the noble oak wood a second life. Each furniture item tells a story—of time, of wine, and of timeless elegance.
+                  Jedes VINLIGNA-Stück wird aus recycelten Barrique-Fässern gefertigt und gibt dem edlen Eichenholz ein zweites Leben. Jedes Möbelstück erzählt eine Geschichte – von Zeit, von Wein und von zeitloser Eleganz.
                 </p>
                 <p className="text-muted-foreground mb-6">
-                  Whether it's a custom wine bar for a hotel or a statement dining table for a private wine lover, VINLIGNA embodies both luxury and sustainability.
+                  Ob es sich um eine maßgeschneiderte Weinbar für ein Hotel oder einen besonderen Esstisch für einen privaten Weinliebhaber handelt, VINLIGNA verkörpert sowohl Luxus als auch Nachhaltigkeit.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 mt-8">
                   <FeatureCard 
-                    title="Authentic Craftsmanship" 
-                    description="Every piece is handmade by skilled artisans" 
+                    title="Authentische Handwerkskunst" 
+                    description="Jedes Stück wird von erfahrenen Handwerkern gefertigt" 
                   />
                   <FeatureCard 
-                    title="Sustainable Elegance" 
-                    description="Upcycling aged Barrique barrels into timeless designs" 
+                    title="Nachhaltige Eleganz" 
+                    description="Upcycling gealterter Barrique-Fässer in zeitlose Designs" 
                   />
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4 mt-4">
                   <FeatureCard 
-                    title="100% Customizable" 
-                    description="From the choice of wood finish to engraved branding" 
+                    title="100% Individualisierbar" 
+                    description="Von der Holzoberfläche bis zur Gravur Ihres Logos" 
                   />
                   <FeatureCard 
                     title="Designed to Impress" 
-                    description="Whether in a high-end restaurant or a private wine lounge" 
+                    description="Ob im gehobenen Restaurant oder in Ihrer privaten Weinlounge" 
                   />
                 </div>
               </motion.div>
