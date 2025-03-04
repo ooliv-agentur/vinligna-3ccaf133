@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -69,7 +70,7 @@ const Hero = () => {
 
         <motion.h1 
           variants={itemVariants}
-          className="text-5xl md:text-7xl lg:text-8xl font-light mb-10 leading-tight tracking-tight text-center max-w-5xl mx-auto"
+          className="text-4xl md:text-6xl lg:text-7xl font-light mb-10 leading-tight tracking-tight text-center max-w-5xl mx-auto"
         >
           <motion.span
             initial={{ opacity: 0 }}
@@ -91,7 +92,7 @@ const Hero = () => {
 
         <motion.p 
           variants={itemVariants}
-          className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-12 text-center leading-relaxed"
+          className="text-base md:text-lg text-white/80 max-w-2xl mx-auto mb-12 text-center leading-relaxed"
         >
           Wir verwandeln gebrauchte Barrique-Fässer in elegante, einzigartige Möbelstücke, 
           die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
