@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -72,6 +73,23 @@
       opacity: 1;
     }
   }
+  
+  /* Standardized heading styles */
+  h1 {
+    @apply text-4xl md:text-6xl lg:text-7xl font-light leading-tight tracking-tight;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl font-light mb-6 leading-tight;
+  }
+  
+  h3 {
+    @apply text-xl md:text-2xl font-medium mb-4 leading-snug;
+  }
+  
+  h4 {
+    @apply text-lg md:text-xl font-medium mb-3;
+  }
 }
 
 @layer components {
@@ -93,11 +111,11 @@
   }
   
   .section-title {
-    @apply text-3xl md:text-4xl font-light mb-6 leading-tight;
+    @apply text-3xl md:text-4xl lg:text-5xl font-light mb-6 leading-tight;
   }
   
   .section-title-large {
-    @apply text-4xl md:text-5xl font-light mb-6 leading-tight;
+    @apply text-4xl md:text-5xl lg:text-6xl font-light mb-6 leading-tight;
   }
   
   /* Image treatments */

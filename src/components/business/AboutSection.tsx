@@ -19,7 +19,7 @@ const AboutSection = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="text-center mb-16"
           >
-            <h2 className="section-title text-white text-4xl md:text-5xl font-light mb-6">
+            <h2 className="section-title text-white">
               Über <span className="text-gradient font-normal">VINLIGNA</span>
             </h2>
           </motion.div>
