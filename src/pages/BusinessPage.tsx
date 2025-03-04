@@ -1,6 +1,7 @@
+
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Factory, Building, Wine, GlassWater, Check } from 'lucide-react';
+import { ArrowRight, Check, Table, Armchair, Layers } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
@@ -155,21 +156,21 @@ const BusinessPage = () => {
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
               <ProductCard 
-                icon={<Wine className="w-6 h-6" />}
+                icon={<Table className="w-6 h-6" />}
                 title="Tische und Theken"
                 description="Unsere maßgefertigten Tische und Theken aus recycelten Barrique-Fässern vereinen Funktionalität und Eleganz. Diese Möbelstücke schaffen in Verkostungsräumen oder an Hotelbars eine stilvolle und authentische Atmosphäre."
                 image="/lovable-uploads/ce069aff-5e1d-415f-adba-547b6495298d.png"
               />
               
               <ProductCard 
-                icon={<Factory className="w-6 h-6" />}
+                icon={<Armchair className="w-6 h-6" />}
                 title="Stühle und Sitzmöbel"
                 description="Unsere handgefertigten Stühle und Barhocker bieten Komfort und Stabilität für den täglichen Gebrauch in gastronomischen Umgebungen, während sie gleichzeitig höchsten Komfort bieten."
                 image="/lovable-uploads/87b6ac6c-025f-40d2-9b09-73f8ee6e25b8.png"
               />
               
               <ProductCard 
-                icon={<Building className="w-6 h-6" />}
+                icon={<Layers className="w-6 h-6" />}
                 title="Weinregale und Präsentationsmöbel"
                 description="Unsere maßgeschneiderten Regale bieten Ihnen die Möglichkeit, Ihre Weinauswahl stilvoll und übersichtlich zu präsentieren. Diese exklusiven Möbelstücke sind ein Highlight in jeder Vinothek."
                 image="/lovable-uploads/e9d912cb-d45d-4016-8e8b-8250bd78de47.png"
