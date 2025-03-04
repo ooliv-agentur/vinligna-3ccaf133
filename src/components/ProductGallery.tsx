@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
@@ -28,24 +27,6 @@ const ProductGallery = () => {
     <section className="py-32 md:py-44 bg-black text-white overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="max-w-screen-xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-center mb-20"
-          >
-            <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-6">
-              Galerie
-            </span>
-            <h2 className="text-4xl md:text-5xl font-light mb-8 leading-tight">
-              Unsere <span className="font-medium bg-gradient-to-r from-wine to-wine-light bg-clip-text text-transparent">Kreationen</span>
-            </h2>
-            <p className="text-white/80 text-xl max-w-3xl mx-auto">
-              Unsere Galerie zeigt eine Auswahl an maßgefertigten Möbeln, die wir bereits für Privatkunden gefertigt haben. Von Tischen bis hin zu Sideboards – sehen Sie, wie unsere Möbel in stilvollen Weinkellern und Wohnräumen zur Geltung kommen.
-            </p>
-          </motion.div>
-
           <motion.div 
             variants={staggerContainer}
             initial="hidden"
