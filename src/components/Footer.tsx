@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
@@ -10,8 +11,12 @@ const Footer = () => {
         <div className="max-w-screen-xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
             <div className="md:col-span-4">
-              <a href="/" className="text-2xl font-semibold tracking-tight inline-block mb-6">
-                VINLIGNA
+              <a href="/" className="inline-block mb-6">
+                <img 
+                  src="/vinligna-logo.svg" 
+                  alt="VINLIGNA" 
+                  className="h-8 brightness-0 invert" 
+                />
               </a>
               <p className="text-background/70 mb-8 max-w-xs">
                 Exklusive Möbel aus recycelten Weinfässern, die Tradition, Handwerkskunst und Nachhaltigkeit vereinen.

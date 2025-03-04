@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
@@ -28,8 +29,12 @@ const Navbar = () => {
       )}
     >
       <div className="container mx-auto flex items-center justify-between">
-        <a href="/" className="text-2xl font-semibold tracking-tight">
-          VINLIGNA
+        <a href="/" className="inline-block" aria-label="VINLIGNA">
+          <img 
+            src="/vinligna-logo.svg" 
+            alt="VINLIGNA" 
+            className="h-6 md:h-8" 
+          />
         </a>
 
         {/* Desktop Navigation */}
