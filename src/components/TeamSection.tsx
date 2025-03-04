@@ -1,26 +1,6 @@
 
 import { motion } from 'framer-motion';
-
-// Animation variants
-const fadeIn = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1.0] }
-  }
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.3
-    }
-  }
-};
+import { fadeIn, staggerContainer } from '@/lib/motion';
 
 interface TeamMemberProps {
   name: string;
@@ -38,10 +18,10 @@ const TeamMember = ({ name, role, image, altText }: TeamMemberProps) => (
       <img 
         src={image} 
         alt={altText || `${name} - ${role}`} 
-        className="h-full w-full object-cover object-center"
+        className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-70"></div>
-      <div className="absolute inset-0 flex flex-col justify-end p-6">
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+      <div className="absolute inset-0 flex flex-col justify-end p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
         <h3 className="text-xl font-medium text-white">{name}</h3>
         <p className="text-wine mt-1">{role}</p>
       </div>
@@ -54,6 +34,25 @@ const TeamSection = () => {
     <section className="py-32 md:py-44 bg-black text-white overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="max-w-screen-xl mx-auto">
+          {/* Section title and subtitle */}
+          <motion.div
+            variants={fadeIn}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="text-center mb-20"
+          >
+            <span className="section-subtitle">
+              Unser Team
+            </span>
+            <h2 className="section-title text-white">
+              Die <span className="text-gradient">Experten</span> hinter VINLIGNA
+            </h2>
+            <p className="text-white/70 max-w-2xl mx-auto">
+              Unser Expertenteam vereint Leidenschaft für Handwerkskunst mit innovativem Design, um Ihre Vision zum Leben zu erwecken.
+            </p>
+          </motion.div>
+          
           <motion.div 
             variants={staggerContainer}
             initial="hidden"
@@ -79,7 +78,7 @@ const TeamSection = () => {
             <TeamMember 
               name="Rei Suzuki" 
               role="Vertrieb und Kundenbetreuung" 
-              image="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+              image="/lovable-uploads/b2a5db81-02e1-4a5a-857e-ab4f4a858a70.png"
               altText="Rei Suzuki - Vertrieb und Kundenbetreuung"
             />
           </motion.div>
