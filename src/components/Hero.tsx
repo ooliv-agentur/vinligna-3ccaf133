@@ -99,10 +99,17 @@ const Hero = () => {
 
         <motion.div
           variants={scaleIn}
-          className="w-full max-w-5xl mx-auto mb-10 md:mb-8 px-0"
+          className="w-full max-w-5xl mx-auto mb-10 md:mb-8 p-0 m-0"
+          style={{ padding: 0, margin: "2.5rem auto 2rem" }}
         >
-          <div className="flex flex-col w-full items-center md:grid md:grid-cols-2 gap-10 md:gap-8">
-            <div className="w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 p-0 m-0">
+          <div 
+            className="flex flex-col w-full items-center md:grid md:grid-cols-2 gap-10 md:gap-8 p-0 m-0" 
+            style={{ padding: 0, margin: 0 }}
+          >
+            <div 
+              className="w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 p-0 m-0" 
+              style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
+            >
               <EntryCard 
                 title="Ich bin"
                 subtitle="Winzer, Gastronom oder Hotelier"
@@ -112,7 +119,10 @@ const Hero = () => {
               />
             </div>
             
-            <div className="w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 p-0 m-0">
+            <div 
+              className="w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 p-0 m-0"
+              style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
+            >
               <EntryCard 
                 title="Ich bin"
                 subtitle="Weinliebhaber"
@@ -173,24 +183,37 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
       whileHover={{ y: -5 }}
       transition={{ type: "spring", stiffness: 300 }}
       className="w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 flex flex-col p-0 m-0"
+      style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
     >
       <Link 
         to={link} 
         className="block w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 group relative p-0 m-0"
+        style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
       >
-        <div className="relative rounded-lg overflow-hidden w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 p-0 m-0">
-          <div className="block md:hidden w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 p-0 m-0">
-            <div className="aspect-[16/14] w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 p-0 m-0">
+        <div 
+          className="relative rounded-lg overflow-hidden w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 p-0 m-0"
+          style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
+        >
+          <div 
+            className="block md:hidden w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 p-0 m-0"
+            style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
+          >
+            <div 
+              className="aspect-[16/14] w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 p-0 m-0"
+              style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
+            >
               <motion.div
                 initial={{ filter: "blur(10px)" }}
                 animate={{ filter: "blur(0px)" }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="absolute inset-0 w-full h-full p-0 m-0"
+                style={{ padding: 0, margin: 0 }}
               >
                 <img 
                   src={imageSrc} 
                   alt={subtitle} 
                   className="w-full h-full object-cover" 
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />
               </motion.div>
               
@@ -226,18 +249,26 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
             </div>
           </div>
 
-          <div className="hidden md:block h-full w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 p-0 m-0">
-            <div className="aspect-[16/12] h-full w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 p-0 m-0">
+          <div 
+            className="hidden md:block h-full w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 p-0 m-0"
+            style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
+          >
+            <div 
+              className="aspect-[16/12] h-full w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 p-0 m-0"
+              style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
+            >
               <motion.div
                 initial={{ filter: "blur(10px)" }}
                 animate={{ filter: "blur(0px)" }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="absolute inset-0 w-full h-full p-0 m-0"
+                style={{ padding: 0, margin: 0 }}
               >
                 <img 
                   src={imageSrc} 
                   alt={subtitle} 
                   className="w-full h-full object-cover" 
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />
               </motion.div>
               
