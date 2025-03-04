@@ -66,7 +66,7 @@ const Contact = () => {
             Kontakt
           </span>
           <h2 className="section-title-large text-white">
-            Lassen Sie uns ins <span className="font-medium">Gespräch</span> kommen
+            Lassen Sie uns ins <span className="highlight">Gespräch</span> kommen
           </h2>
           <p className="text-white/70 text-lg max-w-2xl mx-auto">
             Ob Sie ein maßgeschneidertes Möbelstück suchen oder Fragen zu unseren Produkten haben,
