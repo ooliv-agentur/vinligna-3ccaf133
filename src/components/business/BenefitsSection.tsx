@@ -1,6 +1,5 @@
 
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
 import { BenefitItem } from './BenefitItem';
 import { fadeIn, staggerContainer, slideUp } from '@/lib/motion';
 
@@ -77,19 +76,6 @@ const BenefitsSection = () => {
                   title="Langlebigkeit und Robustheit"
                   description="Das Eichenholz der Barrique-Fässer ist nicht nur ästhetisch ansprechend, sondern auch extrem robust und für den täglichen Einsatz in gastronomischen Betrieben ausgelegt."
                 />
-              </motion.div>
-              
-              <motion.div 
-                variants={fadeIn}
-                className="pt-4"
-              >
-                <a 
-                  href="#contact" 
-                  className="btn-primary group"
-                >
-                  <span>Verwandeln Sie Ihre Räumlichkeiten</span>
-                  <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-                </a>
               </motion.div>
             </motion.div>
           </div>

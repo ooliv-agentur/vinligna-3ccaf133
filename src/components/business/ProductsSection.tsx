@@ -1,6 +1,6 @@
 
 import { motion } from 'framer-motion';
-import { Table, Armchair, Layers } from 'lucide-react';
+import { Table, Armchair, Layers, Wine, PenTool } from 'lucide-react';
 import { ProductCard } from './ProductCard';
 import { fadeIn, staggerContainer, slideUp } from '@/lib/motion';
 
@@ -70,13 +70,30 @@ const ProductsSection = () => {
             className="mt-16 text-center"
           >
             <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 max-w-3xl mx-auto border border-white/10">
-              <h3 className="text-xl font-medium mb-4 text-white">Besonderheit für Winzer</h3>
+              <h3 className="text-xl font-medium mb-4 text-white">Besonderheiten für Ihr Unternehmen</h3>
               
               <div className="flex flex-col md:flex-row gap-8 items-center">
                 <div className="w-full md:w-1/2">
-                  <p className="text-white/70 mb-0">
-                    Für Winzer bieten wir die Möglichkeit, Möbel aus Ihren eigenen, nicht mehr genutzten Weinfässern fertigen zu lassen. Diese können auf Wunsch mit eingebrannten Logos oder individuellen Markenzeichen veredelt werden, sodass Ihre Gäste sofort die Verbindung zu Ihrem Weingut erkennen.
-                  </p>
+                  <ul className="space-y-4">
+                    <li className="flex items-start gap-3">
+                      <div className="mt-1 bg-wine rounded-full p-1 flex-shrink-0">
+                        <Wine className="w-4 h-4 text-white" />
+                      </div>
+                      <p className="text-white/70 text-sm text-left">
+                        <span className="text-white font-medium block mb-1">Für Weingüter</span>
+                        Nutzen Sie Ihre eigenen, nicht mehr verwendeten Weinfässer für einzigartige Möbelstücke mit Ihrem eingebrannten Logo.
+                      </p>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="mt-1 bg-wine rounded-full p-1 flex-shrink-0">
+                        <PenTool className="w-4 h-4 text-white" />
+                      </div>
+                      <p className="text-white/70 text-sm text-left">
+                        <span className="text-white font-medium block mb-1">Für Restaurants & Hotels</span>
+                        Wir entwickeln spezielle Designkonzepte, die perfekt zu Ihrem Interieur passen und Ihren Gästen ein einzigartiges Ambiente bieten.
+                      </p>
+                    </li>
+                  </ul>
                 </div>
                 <div className="w-full md:w-1/2 rounded-lg overflow-hidden">
                   <img 
