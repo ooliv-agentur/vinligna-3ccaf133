@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { Table, Armchair, Layers } from 'lucide-react';
 import { ProductCard } from './ProductCard';
@@ -79,8 +80,8 @@ const ProductsSection = () => {
                 </div>
                 <div className="w-full md:w-1/2 rounded-lg overflow-hidden">
                   <img 
-                    src="/lovable-uploads/672910a2-3c69-4f9c-8f94-bacb529ccda5.png" 
-                    alt="Weingut mit Weinfässern" 
+                    src="/lovable-uploads/94f2d719-f448-460a-bee6-8ffd7d37af7c.png" 
+                    alt="Weingut mit detaillierten Weinfässern" 
                     className="w-full h-auto object-cover rounded-lg transition-transform duration-500 hover:scale-105"
                   />
                 </div>
