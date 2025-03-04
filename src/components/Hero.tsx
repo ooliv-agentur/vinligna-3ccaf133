@@ -95,21 +95,17 @@ const EntryCard = ({ title, description, link, imageSrc, delay }: EntryCardProps
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, delay }}
-      whileHover={{ 
-        scale: 1.02,
-        transition: { duration: 0.2 }
-      }}
     >
       <Link 
         to={link} 
         className="block h-full group relative"
       >
-        {/* Card image with overlay */}
+        {/* Card image with overlay - removed hover effect from image */}
         <div className="relative aspect-[4/3] rounded-md overflow-hidden">
           <img 
             src={imageSrc} 
             alt={title} 
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            className="w-full h-full object-cover" 
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent" />
           
