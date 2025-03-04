@@ -1,6 +1,6 @@
 
 import { motion } from 'framer-motion';
-import { ArrowDown, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
@@ -45,25 +45,56 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-base md:text-lg text-white/90 max-w-2xl mx-auto mb-10"
+          className="text-base md:text-lg text-white/90 max-w-2xl mx-auto mb-12"
         >
           Wir verwandeln gebrauchte Barrique-Fässer in elegante, einzigartige Möbelstücke, die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
         </motion.p>
 
-        {/* Single CTA Button */}
-        <motion.div 
+        {/* Entry Points - Modern Technical Animation */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex justify-center mb-16"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16"
         >
-          <a 
-            href="#cta" 
-            className="group px-8 py-4 rounded-full bg-wine/90 backdrop-blur-sm text-white hover:bg-wine transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl"
-          >
-            <span className="font-medium">Entdecken Sie unsere Kollektionen</span>
-            <ArrowDown className="w-5 h-5 group-hover:animate-bounce" />
-          </a>
+          {/* Business Entry Point */}
+          <EntryPoint 
+            title="Für Weingüter & Gastronomie"
+            description="Maßgeschneiderte Lösungen für Ihre Marke"
+            link="/business"
+            color="wine"
+            delay={0.4}
+            icon={
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="stroke-white">
+                <path d="M5 8h14" />
+                <path d="M5 12h14" />
+                <path d="M5 16h14" />
+                <path d="M3 20h18" />
+                <path d="M17 4h1a2 2 0 0 1 2 2v1" />
+                <path d="M16 4V2" />
+                <path d="M8 4H7a2 2 0 0 0-2 2v1" />
+                <path d="M8 4V2" />
+              </svg>
+            }
+          />
+
+          {/* Private Entry Point */}
+          <EntryPoint 
+            title="Für Weinliebhaber"
+            description="Exklusive Designs für Ihr Zuhause"
+            link="/private"
+            color="oak-dark"
+            delay={0.5}
+            icon={
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="stroke-white">
+                <path d="M8 22h8" />
+                <path d="M7 10h10" />
+                <path d="M10 2h4" />
+                <path d="M12 2v8" />
+                <path d="M12 10v12" />
+              </svg>
+            }
+          />
         </motion.div>
 
         {/* Scroll indicator */}
@@ -80,6 +111,71 @@ const Hero = () => {
         </motion.div>
       </div>
     </section>
+  );
+};
+
+interface EntryPointProps {
+  title: string;
+  description: string;
+  link: string;
+  color: 'wine' | 'oak-dark';
+  delay: number;
+  icon: React.ReactNode;
+}
+
+const EntryPoint = ({ title, description, link, color, delay, icon }: EntryPointProps) => {
+  const bgColor = color === 'wine' ? 'bg-wine/90' : 'bg-oak-dark/90';
+  const hoverBgColor = color === 'wine' ? 'hover:bg-wine' : 'hover:bg-oak-dark';
+  const borderColor = color === 'wine' ? 'border-wine-light/30' : 'border-oak-light/30';
+  
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5, delay }}
+      whileHover={{ 
+        scale: 1.02,
+        transition: { duration: 0.2 }
+      }}
+    >
+      <Link 
+        to={link} 
+        className={cn(
+          "block h-full p-8 rounded-2xl backdrop-blur-md border",
+          bgColor, hoverBgColor, borderColor,
+          "transition-all duration-300 shadow-lg hover:shadow-xl"
+        )}
+      >
+        <div className="flex flex-col items-center text-center">
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0.8 }}
+            whileHover={{ 
+              scale: 1,
+              opacity: 1,
+              rotate: [0, 5, 0, -5, 0],
+              transition: { duration: 0.5 }
+            }}
+            className="mb-6"
+          >
+            {icon}
+          </motion.div>
+          
+          <h3 className="text-2xl font-medium mb-2 text-white">{title}</h3>
+          <p className="text-white/80 mb-6">{description}</p>
+          
+          <div className="mt-auto inline-flex items-center font-medium text-white group">
+            <span>Entdecken</span>
+            <motion.div
+              initial={{ x: 0 }}
+              whileHover={{ x: 5 }}
+              className="ml-2"
+            >
+              <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
+            </motion.div>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
   );
 };
 
