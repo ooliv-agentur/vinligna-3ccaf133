@@ -17,20 +17,20 @@ const Contact = ({
   description = "Ob Sie ein maßgeschneidertes Möbelstück suchen oder Fragen zu unseren Produkten haben, wir sind für Sie da."
 }: ContactProps) => {
   return (
-    <section id="contact" className="py-32 md:py-44 bg-black overflow-hidden relative">
+    <section id="contact" className="py-20 md:py-32 lg:py-44 bg-black overflow-hidden relative">
       {/* Background pattern */}
       <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
         <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-wine/20 to-transparent"></div>
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-oak/20 to-transparent"></div>
       </div>
       
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="max-w-screen-xl mx-auto text-center mb-16 md:mb-24"
+          className="max-w-screen-xl mx-auto text-center mb-10 md:mb-16 lg:mb-24"
         >
           <span className="section-subtitle">
             {subtitle}
@@ -39,19 +39,19 @@ const Contact = ({
             className="section-title-large text-white"
             dangerouslySetInnerHTML={{ __html: title }}
           />
-          <p className="text-white/70 text-lg max-w-2xl mx-auto">
+          <p className="text-white/70 text-base md:text-lg max-w-2xl mx-auto">
             {description}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 md:gap-10">
           {/* Form Column - 3 spans */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="lg:col-span-3 bg-white/5 backdrop-blur-sm rounded-3xl p-10"
+            className="lg:col-span-3 bg-white/5 backdrop-blur-sm rounded-3xl p-6 md:p-10"
           >
             <ContactForm />
           </motion.div>
@@ -62,7 +62,7 @@ const Contact = ({
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="lg:col-span-2 space-y-8"
+            className="lg:col-span-2 space-y-6 md:space-y-8"
           >
             {/* Contact Info Card */}
             <ContactInfo />

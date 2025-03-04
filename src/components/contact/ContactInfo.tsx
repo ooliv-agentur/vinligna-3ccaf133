@@ -4,9 +4,9 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 
 const ContactInfo = () => {
   return (
-    <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8">
-      <h3 className="text-xl font-light mb-6 text-white">Kontaktinformationen</h3>
-      <div className="space-y-6 text-sm">
+    <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 md:p-8">
+      <h3 className="text-xl font-light mb-4 md:mb-6 text-white">Kontaktinformationen</h3>
+      <div className="space-y-4 md:space-y-6 text-sm">
         <div className="flex items-start">
           <div className="w-8 flex-shrink-0 flex items-center justify-center">
             <Mail size={18} className="text-wine" />
