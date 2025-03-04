@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -175,7 +174,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
       >
         <div className="relative rounded-lg overflow-hidden h-full">
           <div className="block md:hidden w-full h-full">
-            <div className="aspect-[4/5] w-full">
+            <div className="aspect-[16/14] w-full">
               <motion.div
                 initial={{ filter: "blur(10px)" }}
                 animate={{ filter: "blur(0px)" }}
