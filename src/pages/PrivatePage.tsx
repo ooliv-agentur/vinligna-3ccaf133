@@ -1,12 +1,14 @@
 
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Home, Gift, Armchair, Wine, Heart, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Check, Wine, Heart, ShieldCheck, Table, BookOpen } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import Cta from '@/components/Cta';
 import ScrollToTop from '@/components/ScrollToTop';
+import TeamSection from '@/components/TeamSection';
+import ProductGallery from '@/components/ProductGallery';
 import { cn } from '@/lib/utils';
 
 const PrivatePage = () => {
@@ -33,10 +35,10 @@ const PrivatePage = () => {
     window.scrollTo(0, 0);
 
     // Update page title and meta description for SEO
-    document.title = "VINLIGNA | Exklusive Möbel aus Weinfässern für Weinliebhaber";
+    document.title = "VINLIGNA | Möbel aus Weinfässern – Handgefertigte Unikate für Weinliebhaber";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "Einzigartige, handgefertigte Möbel und Accessoires aus recycelten Weinfässern für Ihr Zuhause. Nachhaltige Unikate für Weinenthusiasten.");
+      metaDescription.setAttribute("content", "Entdecken Sie exklusive Möbel aus recycelten Barrique-Fässern. Handgefertigte Unikate für Weinliebhaber, die Nachhaltigkeit und Luxus vereinen. Maßanfertigung nach Ihren Wünschen.");
     }
 
     // Cleanup
@@ -59,7 +61,7 @@ const PrivatePage = () => {
         <div className="absolute inset-0 z-0">
           <img 
             src="/lovable-uploads/bd5f84a4-a4f9-423f-88f7-1fce764501b2.png"
-            alt="Weinliebhaber-Möbel aus recycelten Weinfässern"
+            alt="Möbel aus Weinfässern – Handgefertigte Unikate für Weinliebhaber"
             className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/50 to-black/30" />
@@ -81,8 +83,8 @@ const PrivatePage = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 leading-tight tracking-tight"
           >
-            Exklusive Möbel aus Weinfässern <br className="hidden md:block" />
-            <span className="font-medium">für Ihr Zuhause</span>
+            Möbel aus Weinfässern – <br className="hidden md:block" />
+            <span className="font-medium">Handgefertigte Unikate für Weinliebhaber</span>
           </motion.h1>
 
           <motion.p 
@@ -96,8 +98,58 @@ const PrivatePage = () => {
         </div>
       </section>
 
-      {/* Main Private Customer Content */}
-      <section className="py-24 md:py-32 bg-oak-light/20">
+      {/* About Us Section */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
+                Über <span className="font-medium">uns</span>
+              </h2>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="prose prose-lg mx-auto mb-12"
+            >
+              <p>
+                Bei VINLIGNA stehen exklusive Möbelstücke im Fokus, die aus recycelten Barrique-Fässern gefertigt werden. Unsere Möbel sind mehr als nur Einrichtungsgegenstände – sie sind ein Ausdruck Ihrer Leidenschaft für Wein und gehobenes Design. Jedes Stück erzählt die Geschichte des Weins, der einst in den Fässern reifte, und bringt diese Geschichte in Ihr Zuhause.
+              </p>
+              <p>
+                Unsere Möbel vereinen Nachhaltigkeit und Luxus und sind handgefertigte Unikate, die nach Ihren individuellen Wünschen gefertigt werden. Ob im Weinkeller, im Esszimmer oder im Wohnbereich – VINLIGNA-Möbel sind für Menschen gemacht, die das Besondere suchen und ihr Zuhause stilvoll gestalten wollen.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="bg-wine-light/10 rounded-lg p-8 text-center"
+            >
+              <h3 className="text-xl font-medium mb-4">Nachhaltigkeit trifft auf Luxus</h3>
+              <p className="text-muted-foreground">
+                VINLIGNA verbindet nachhaltiges Design mit zeitloser Eleganz. Die Barrique-Fässer, die wir verwenden, stammen aus renommierten Weingütern und wurden zuvor zur Reifung edler Weine verwendet. Jedes Möbelstück ist ein handgefertigtes Unikat, das die Schönheit des Weins in Ihren Wohnraum bringt und die Geschichte des Weins bewahrt.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <TeamSection />
+
+      {/* Products Section */}
+      <section className="py-24 md:py-32 bg-oak-light/5 overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="max-w-screen-xl mx-auto">
             <motion.div
@@ -107,154 +159,191 @@ const PrivatePage = () => {
               viewport={{ once: true, margin: "-100px" }}
               className="text-center mb-16 md:mb-24"
             >
+              <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-4">
+                Unsere Produkte
+              </span>
               <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
-                Handgefertigte Unikate für <span className="font-medium">Weinenthusiasten</span>
+                Handgefertigte <span className="font-medium">Unikate</span>
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Jedes Möbelstück erzählt eine Geschichte – vom edlen Wein, den das Fass einst beherbergte, bis zur handwerklichen Verarbeitung, die es in ein einzigartiges Kunstwerk verwandelt.
+                Unsere Möbel sind zu 100% individualisierbar und werden speziell nach Ihren Wünschen gefertigt. Egal, ob Sie ein Einzelstück für Ihren Weinkeller oder ein elegantes Interieur für Ihr Wohnzimmer suchen – bei VINLIGNA finden Sie die perfekte Lösung.
               </p>
             </motion.div>
 
-            {/* Benefits */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-              <Benefit 
-                icon={<Heart className="w-6 h-6" />}
-                title="Einzigartige Unikate"
-                description="Jedes Stück ist ein Unikat mit individueller Maserung, Farbe und Geschichte – kein anderes gleicht dem Ihren."
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+              <ProductCategory 
+                icon={<Table className="w-6 h-6" />}
+                title="Tische aus Fassdauben"
+                description="Unsere handgefertigten Tische bringen den Charme und die Geschichte des Weins in Ihr Zuhause. Jeder Tisch ist ein Unikat, gefertigt aus recycelten Weinfässern, die zuvor für die Reifung edler Weine verwendet wurden. Die rustikale, aber elegante Ästhetik dieser Möbelstücke macht sie ideal für Weinverkostungen oder gesellige Abende."
+                features={[
+                  "Rustikal und elegant, handgefertigt aus recycelten Weinfässern",
+                  "Perfekt für Esszimmer, Weinkeller oder als luxuriöser Akzent in Ihrem Wohnbereich"
+                ]}
+                image="/lovable-uploads/ce069aff-5e1d-415f-adba-547b6495298d.png"
               />
               
-              <Benefit 
-                icon={<ShieldCheck className="w-6 h-6" />}
-                title="Nachhaltige Eleganz"
-                description="Durch die Wiederverwertung von Weinfässern schonen wir Ressourcen und schaffen gleichzeitig zeitlose Möbelstücke."
+              <ProductCategory 
+                icon={<BookOpen className="w-6 h-6" />}
+                title="Sideboards und Regale"
+                description="Unsere maßgefertigten Sideboards und Regale vereinen Ästhetik und Funktionalität. Sie bieten nicht nur Stauraum, sondern setzen auch stilvolle Akzente in Ihrem Zuhause. Die natürliche Maserung des Eichenholzes sorgt dafür, dass jedes Möbelstück einzigartig ist."
+                features={[
+                  "Zeitlos und elegant, perfekt für die Präsentation von Weinen oder dekorativen Gegenständen",
+                  "Ideal für Weinkeller, Wohnzimmer oder Esszimmer"
+                ]}
+                image="/lovable-uploads/e9d912cb-d45d-4016-8e8b-8250bd78de47.png"
               />
               
-              <Benefit 
+              <ProductCategory 
+                icon={<Table className="w-6 h-6" />}
+                title="Stühle und Sitzmöbel"
+                description="Unsere Stühle und Barhocker aus Fassdauben verbinden Komfort mit einem unverwechselbaren Design. Jedes Möbelstück erzählt die Geschichte des Weins und verleiht Ihrem Raum eine warme, einladende Atmosphäre."
+                features={[
+                  "Modern und individuell, handgefertigt aus Fassdauben",
+                  "Perfekt für Essbereiche, Küchen oder als Design-Highlight in Ihrem Weinkeller"
+                ]}
+                image="/lovable-uploads/87b6ac6c-025f-40d2-9b09-73f8ee6e25b8.png"
+              />
+              
+              <ProductCategory 
                 icon={<Wine className="w-6 h-6" />}
-                title="Erzählt Weingeschichte"
-                description="Die Patina und der Duft des Eichenholzes erinnern an die edle Herkunft und die Weine, die das Fass einst beherbergte."
+                title="Accessoires und Geschenkartikel"
+                description="Neben Möbelstücken bieten wir auch eine Auswahl an kleineren Accessoires, die sich perfekt als stilvolle Dekoration oder als Geschenke für Weinliebhaber eignen. Jedes Accessoire wird aus recycelten Weinfässern gefertigt und verleiht Ihrem Zuhause das gewisse Etwas."
+                features={[
+                  "Weinkühler, Schneidbretter, Ablageschalen, Kerzenständer",
+                  "Ideal als Geschenk oder zur Verschönerung Ihrer Wohnräume"
+                ]}
+                image="/lovable-uploads/bb8a99d9-97f3-42b4-85ad-94d0c5d74fff.png"
               />
             </div>
 
-            {/* Product Categories */}
-            <div className="mb-20">
-              <h3 className="text-2xl font-light mb-12 text-center">Unsere <span className="font-medium">Kollektionen</span></h3>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                <ProductCategory 
-                  icon={<Armchair className="w-6 h-6" />}
-                  title="Möbelkollektion"
-                  description="Einzigartige Esstische, Stühle, Couchtische und Weinregale, die Ihr Zuhause aufwerten."
-                  features={[
-                    "Massivholztische mit Fassdauben",
-                    "Individuelle Sitzgelegenheiten",
-                    "Maßgefertigte Weinregale"
-                  ]}
-                  color="bg-wine/10"
-                  textColor="text-wine-dark"
-                />
-                
-                <ProductCategory 
-                  icon={<Home className="w-6 h-6" />}
-                  title="Wohn- & Weinaccessoires"
-                  description="Funktionale Kunstwerke, die Weingenuss und Inneneinrichtung perfekt ergänzen."
-                  features={[
-                    "Weinhalter und Weinkühlständer",
-                    "Dekorative Wandelemente",
-                    "Beleuchtungsobjekte aus Fässern"
-                  ]}
-                  color="bg-oak/10"
-                  textColor="text-oak-dark"
-                />
-                
-                <ProductCategory 
-                  icon={<Gift className="w-6 h-6" />}
-                  title="Geschenke für Weinliebhaber"
-                  description="Besondere Geschenke, die jeden Weinenthusiasten begeistern werden."
-                  features={[
-                    "Personalisierte Weinaccessoires",
-                    "Exklusive Geschenksets",
-                    "Sammlerstücke mit Herkunftsnachweis"
-                  ]}
-                  color="bg-foreground/10"
-                  textColor="text-foreground"
-                />
-              </div>
-
-              <div className="text-center">
-                <a 
-                  href="#products" 
-                  className="inline-flex items-center text-sm font-medium py-2 px-4 text-wine hover:text-wine-dark transition-colors group"
-                >
-                  <span>Alle Produkte entdecken</span>
-                  <ArrowRight className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" />
-                </a>
-              </div>
-            </div>
-
-            {/* Featured Products */}
-            <div id="products" className="mt-24">
-              <h3 className="text-2xl font-light mb-12 text-center">Ausgewählte <span className="font-medium">Produkte</span></h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {products.map((product, index) => (
-                  <motion.div
-                    key={product.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                  >
-                    <ProductCard 
-                      image={product.image}
-                      title={product.title}
-                      category={product.category}
-                      price={product.price}
-                    />
-                  </motion.div>
-                ))}
-              </div>
-
-              <div className="text-center mt-12">
-                <a 
-                  href="#contact" 
-                  className="inline-flex items-center text-sm font-medium bg-wine text-white py-3 px-6 rounded-lg hover:bg-wine-dark transition-colors group"
-                >
-                  <span>Unverbindliche Beratung anfragen</span>
-                  <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-                </a>
-              </div>
+            <div className="text-center">
+              <a 
+                href="#products" 
+                className="inline-flex items-center text-sm font-medium bg-foreground text-background py-3 px-6 rounded-lg hover:bg-foreground/90 transition-colors group"
+              >
+                <span>Alle Produkte entdecken</span>
+                <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Customer Testimonials */}
-      <section className="py-20 bg-background">
+      {/* Product Gallery */}
+      <ProductGallery />
+      
+      {/* Process Section */}
+      <section className="py-24 md:py-32 bg-background overflow-hidden">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-light mb-12 text-center">Was unsere <span className="font-medium">Kunden sagen</span></h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Testimonial 
-                quote="Der Esstisch aus einem Weinfass ist nicht nur ein Möbelstück, sondern ein Gesprächsthema bei jedem Dinner. Die Handwerkskunst ist beeindruckend."
-                author="Michael K."
-                role="Weinsammler aus München"
+          <div className="max-w-screen-xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="text-center mb-16 md:mb-24"
+            >
+              <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-4">
+                Unser Produktionsprozess
+              </span>
+              <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
+                Vom Fass zum <span className="font-medium">Möbelstück</span>
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Entdecken Sie, wie wir hochwertige Barrique-Fässer in exklusive Möbelstücke für Ihr Zuhause verwandeln.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+              <ProcessStep 
+                number="01"
+                title="Fassauswahl"
+                description="Wir wählen sorgfältig alte Barrique-Fässer aus Eichenholz aus, die zuvor in Weingütern zur Reifung edler Weine genutzt wurden. Jedes Fass bringt seine eigene Geschichte und individuelle Holzmaserung mit."
               />
-              <Testimonial 
-                quote="Als leidenschaftliche Weinliebhaberin wollte ich etwas Besonderes für mein Wohnzimmer. Der Couchtisch aus einem Barrique-Fass übertrifft alle Erwartungen."
-                author="Sabine M."
-                role="Kundin aus Hamburg"
+              <ProcessStep 
+                number="02"
+                title="Verarbeitung"
+                description="Die Fässer werden in Fassdauben zerlegt, gereinigt und für die Fertigung vorbereitet. Dabei wird die einzigartige Struktur des Holzes bewahrt, um jedem Möbelstück eine unverwechselbare Optik zu verleihen."
               />
-              <Testimonial 
-                quote="Die Weinregale sind nicht nur funktional, sondern echte Kunstwerke. Man spürt die Liebe zum Detail und die Geschichte des Holzes."
-                author="Thomas L."
-                role="Gastronom & Privatkunde"
+              <ProcessStep 
+                number="03"
+                title="Maßanfertigung"
+                description="Sie bestimmen das Design, die Größe und das Finish Ihres Möbelstücks. Jedes Stück wird individuell für Sie gefertigt und genau auf Ihre Bedürfnisse und Wünsche abgestimmt."
               />
-              <Testimonial 
-                quote="Die persönliche Beratung war hervorragend und das maßgefertigte Stück passt perfekt in unsere Einrichtung. Ein echtes Erbstück."
-                author="Familie Berger"
-                role="Kunden aus Wien"
+              <ProcessStep 
+                number="04"
+                title="Endveredelung"
+                description="Jedes Möbelstück wird poliert und erhält eine hochwertige Veredelung, die die natürliche Schönheit des Holzes unterstreicht. Das fertige Möbelstück erzählt die Geschichte des Weins und bringt diese in Ihr Zuhause."
               />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-24 md:py-32 bg-oak-light/5 overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="max-w-screen-xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="text-center mb-16"
+            >
+              <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-4">
+                Ihre Vorteile
+              </span>
+              <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
+                Vorteile für <span className="font-medium">Weinliebhaber</span>
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Entdecken Sie, was unsere Möbelstücke so besonders macht und wie sie Ihr Zuhause bereichern können.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="md:col-span-2 lg:col-span-1">
+                <div className="h-full">
+                  <img 
+                    src="/lovable-uploads/bb8a99d9-97f3-42b4-85ad-94d0c5d74fff.png" 
+                    alt="Handgefertigte Weinfass-Möbel für Weinliebhaber" 
+                    className="w-full h-full object-cover rounded-lg shadow-md"
+                  />
+                </div>
+              </div>
+              
+              <div className="md:col-span-2 lg:col-span-1 space-y-6">
+                <BenefitItem 
+                  title="Individuelle Maßanfertigung"
+                  description="Jedes Möbelstück wird speziell nach Ihren Vorstellungen und Anforderungen gefertigt. Jedes Stück ist ein Unikat, das Ihre Leidenschaft für Wein und Design in Ihrem Zuhause widerspiegelt."
+                />
+                
+                <BenefitItem 
+                  title="Nachhaltigkeit und Upcycling"
+                  description="Unsere Möbelstücke werden aus recycelten Barrique-Fässern gefertigt, die zuvor in Weingütern für die Reifung edler Weine genutzt wurden. Mit einem Möbelstück von VINLIGNA leisten Sie einen Beitrag zur Nachhaltigkeit und holen sich ein Stück Weintradition nach Hause."
+                />
+                
+                <BenefitItem 
+                  title="Exklusives Design"
+                  description="Das besondere Eichenholz verleiht unseren Möbeln eine luxuriöse Optik, die in jedem Raum ein Highlight setzt. Jedes Möbelstück bringt nicht nur Funktionalität, sondern auch ein edles Design in Ihr Zuhause."
+                />
+                
+                <BenefitItem 
+                  title="Vielfältige Auswahl"
+                  description="Ob Tische, Stühle, Sideboards oder kleine Accessoires – VINLIGNA bietet Ihnen eine Vielzahl an Produkten, die perfekt zu Ihrem Lebensstil und Ihrer Einrichtung passen."
+                />
+                
+                <div className="pt-4">
+                  <a 
+                    href="#contact" 
+                    className="inline-flex items-center text-sm font-medium bg-foreground text-background py-3 px-6 rounded-lg hover:bg-foreground/90 transition-colors group"
+                  >
+                    <span>Verwandeln Sie Ihre Räumlichkeiten</span>
+                    <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -268,27 +357,51 @@ const PrivatePage = () => {
             
             <div className="space-y-6">
               <FaqItem 
-                question="Wie werden die Möbel gepflegt und gereinigt?"
-                answer="Unsere Möbel werden mit speziellen Ölen behandelt, die das Holz schützen und seine natürliche Schönheit bewahren. Zur Reinigung empfehlen wir ein leicht feuchtes Tuch und spezielle Holzpflegeprodukte, die wir auf Wunsch mitliefern."
+                question="Was sind Möbel aus Weinfässern?"
+                answer="Möbel aus Weinfässern sind handgefertigte Unikate, die aus recycelten Barrique-Fässern gefertigt werden. Sie bringen den Charakter und die Geschichte des Weins in Ihr Zuhause und verbinden rustikalen Charme mit exklusivem Design."
               />
               <FaqItem 
-                question="Kann ich ein bestimmtes Weingut oder eine bestimmte Weinregion für mein Möbelstück anfragen?"
-                answer="Ja, wir haben Zugang zu Fässern aus verschiedenen Weinregionen und von spezifischen Weingütern. Teilen Sie uns Ihre Wünsche mit, und wir bemühen uns, diese zu erfüllen."
+                question="Welche Möbel aus Weinfässern gibt es bei VINLIGNA?"
+                answer="Unser Sortiment umfasst Tische, Stühle, Regale, Sideboards und Dekorationsartikel. Jedes Stück wird nach Ihren Wünschen gestaltet und kann perfekt in Weinkeller, Wohnräume oder Esszimmer integriert werden."
               />
               <FaqItem 
-                question="Wie lange dauert die Anfertigung eines maßgeschneiderten Möbelstücks?"
-                answer="Die Produktionszeit beträgt je nach Komplexität und Größe des Stücks zwischen 4 und 8 Wochen. Für besondere Maßanfertigungen kann es etwas länger dauern."
+                question="Warum sind Möbel aus Weinfässern nachhaltig?"
+                answer="Unsere Möbel entstehen durch Upcycling alter Weinfässer, die sonst entsorgt würden. So erhalten sie ein zweites Leben als stilvolle Designmöbel und tragen zur Ressourcenschonung und Nachhaltigkeit bei."
               />
               <FaqItem 
-                question="Können die Möbel auch personalisiert werden?"
-                answer="Absolut. Wir bieten verschiedene Personalisierungsoptionen wie Gravuren, Einlegearbeiten oder die Integration persönlicher Elemente an. Sprechen Sie uns an, um Ihre individuellen Vorstellungen zu besprechen."
+                question="Sind Möbel aus Weinfässern für den Außenbereich geeignet?"
+                answer="Ja! Einige unserer Möbel sind für den Garten oder die Terrasse konzipiert. Sie erhalten eine spezielle wetterfeste Versiegelung, um sie vor Feuchtigkeit und UV-Strahlung zu schützen."
+              />
+              <FaqItem 
+                question="Kann ich Möbel aus meinem eigenen Weinfass anfertigen lassen?"
+                answer="Ja, wir bieten individuelle Maßanfertigungen an. Wenn Sie ein besonderes Fass besitzen, können wir daraus ein einzigartiges Möbelstück für Ihren Weinkeller oder Wohnbereich gestalten."
               />
             </div>
           </div>
         </div>
       </section>
 
-      <Cta />
+      {/* CTA Section */}
+      <section className="py-20 bg-wine-light/10">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl font-light mb-6">
+              Verleihen Sie Ihrem Zuhause eine <span className="font-medium">besondere Note</span>
+            </h2>
+            <p className="text-muted-foreground mb-8 max-w-3xl mx-auto">
+              Verleihen Sie Ihrem Zuhause eine besondere Note mit maßgefertigten Möbeln aus Fassdauben. Jedes Stück ist ein Unikat, das Ihre Leidenschaft für Wein und Design widerspiegelt. Kontaktieren Sie uns jetzt für eine unverbindliche Beratung und lassen Sie uns Ihre Vision verwirklichen.
+            </p>
+            <a 
+              href="#contact" 
+              className="inline-flex items-center text-sm font-medium bg-wine text-white py-3 px-6 rounded-lg hover:bg-wine-dark transition-colors group"
+            >
+              <span>Unverbindliche Beratung anfragen</span>
+              <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
+          </div>
+        </div>
+      </section>
+
       <Contact />
       <Footer />
       <ScrollToTop />
@@ -296,25 +409,27 @@ const PrivatePage = () => {
   );
 };
 
-interface BenefitProps {
-  icon: React.ReactNode;
+interface ProcessStepProps {
+  number: string;
   title: string;
   description: string;
 }
 
-const Benefit = ({ icon, title, description }: BenefitProps) => (
+const ProcessStep = ({ number, title, description }: ProcessStepProps) => (
   <motion.div 
     whileInView={{ opacity: 1, y: 0 }}
-    initial={{ opacity: 0, y: 30 }}
+    initial={{ opacity: 0, y: 20 }}
     transition={{ duration: 0.5 }}
     viewport={{ once: true, margin: "-100px" }}
-    className="flex flex-col items-center text-center p-6"
+    className="relative"
   >
-    <div className="mb-4 bg-wine/10 w-16 h-16 rounded-full flex items-center justify-center text-wine">
-      {icon}
-    </div>
-    <h3 className="text-xl font-medium mb-3">{title}</h3>
-    <p className="text-muted-foreground">{description}</p>
+    <div className="text-4xl font-light text-wine/20 mb-4">{number}</div>
+    <h4 className="text-lg font-medium mb-2">{title}</h4>
+    <p className="text-sm text-muted-foreground">{description}</p>
+    
+    {/* Connector line, only show for non-last items on desktop */}
+    <div className="hidden md:block absolute top-8 right-0 h-[2px] w-1/2 bg-wine/10 -z-10 last:hidden"></div>
+    <div className="hidden md:block absolute top-8 left-1/2 h-[2px] w-1/2 bg-wine/10 -z-10 first:hidden"></div>
   </motion.div>
 );
 
@@ -323,81 +438,61 @@ interface ProductCategoryProps {
   title: string;
   description: string;
   features: string[];
-  color: string;
-  textColor: string;
+  image: string;
 }
 
-const ProductCategory = ({ icon, title, description, features, color, textColor }: ProductCategoryProps) => (
+const ProductCategory = ({ icon, title, description, features, image }: ProductCategoryProps) => (
   <motion.div 
     whileInView={{ opacity: 1, y: 0 }}
     initial={{ opacity: 0, y: 30 }}
     transition={{ duration: 0.5 }}
     viewport={{ once: true, margin: "-100px" }}
-    className="p-6 rounded-lg bg-white border border-background/20 hover:shadow-md transition-shadow h-full flex flex-col"
+    className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center"
   >
-    <div className={cn("w-12 h-12 rounded-full flex items-center justify-center mb-4", color)}>
-      <div className={textColor}>{icon}</div>
+    <div className="order-2 md:order-1">
+      <div className="mb-4 bg-wine-light/20 w-12 h-12 rounded-full flex items-center justify-center text-wine">
+        {icon}
+      </div>
+      <h3 className="text-xl font-medium mb-3">{title}</h3>
+      <p className="text-muted-foreground mb-4">{description}</p>
+      <ul className="space-y-2">
+        {features.map((feature, index) => (
+          <li key={index} className="flex items-start">
+            <span className="text-wine flex-shrink-0 mr-2">•</span> 
+            <span className="text-sm text-muted-foreground">{feature}</span>
+          </li>
+        ))}
+      </ul>
     </div>
-    <h3 className="text-lg font-medium mb-2">{title}</h3>
-    <p className="text-sm text-muted-foreground mb-4">{description}</p>
-    <ul className="mt-auto space-y-2">
-      {features.map((feature, index) => (
-        <li key={index} className="text-sm flex items-start">
-          <span className="text-wine mr-2">•</span> {feature}
-        </li>
-      ))}
-    </ul>
-  </motion.div>
-);
-
-interface ProductCardProps {
-  image: string;
-  title: string;
-  category: string;
-  price: string;
-}
-
-const ProductCard = ({ image, title, category, price }: ProductCardProps) => (
-  <div className="group rounded-lg overflow-hidden bg-white shadow-sm hover:shadow-md transition-all hover-lift">
-    <div className="relative h-72 overflow-hidden">
-      <img 
-        src={image} 
-        alt={title} 
-        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-      />
-    </div>
-    <div className="p-5">
-      <p className="text-xs text-muted-foreground mb-1">{category}</p>
-      <h4 className="font-medium text-lg mb-2">{title}</h4>
-      <div className="flex justify-between items-center">
-        <p className="text-wine text-sm italic">Maßanfertigung</p>
-        <p className="font-medium">{price}</p>
+    <div className="order-1 md:order-2">
+      <div className="relative rounded-lg overflow-hidden shadow-lg h-64">
+        <img 
+          src={image} 
+          alt={title} 
+          className="w-full h-full object-cover"
+        />
       </div>
     </div>
-  </div>
+  </motion.div>
 );
 
-interface TestimonialProps {
-  quote: string;
-  author: string;
-  role: string;
+interface BenefitItemProps {
+  title: string;
+  description: string;
 }
 
-const Testimonial = ({ quote, author, role }: TestimonialProps) => (
-  <motion.div 
-    whileInView={{ opacity: 1, y: 0 }}
-    initial={{ opacity: 0, y: 20 }}
-    transition={{ duration: 0.5 }}
-    viewport={{ once: true, margin: "-100px" }}
-    className="bg-white rounded-lg p-6 shadow-sm"
-  >
-    <div className="text-wine text-2xl mb-2">"</div>
-    <p className="text-muted-foreground mb-4 italic">{quote}</p>
-    <div>
-      <p className="font-medium">{author}</p>
-      <p className="text-sm text-muted-foreground">{role}</p>
+const BenefitItem = ({ title, description }: BenefitItemProps) => (
+  <div className="flex gap-4">
+    <div className="flex-shrink-0 mt-1">
+      <div className="w-5 h-5 bg-wine rounded-full flex items-center justify-center">
+        <Check className="text-white w-3 h-3" />
+      </div>
     </div>
-  </motion.div>
+    <div>
+      <h4 className="text-lg font-medium mb-1">{title}</h4>
+      <p className="text-muted-foreground text-sm">{description}</p>
+    </div>
+  </div>
 );
 
 interface FaqItemProps {
@@ -417,51 +512,5 @@ const FaqItem = ({ question, answer }: FaqItemProps) => (
     <p className="text-sm text-muted-foreground">{answer}</p>
   </motion.div>
 );
-
-// Sample products data
-const products = [
-  { 
-    id: 1, 
-    image: "/product-1.jpg", 
-    title: "Esstisch aus Weinfässern", 
-    category: "Möbel",
-    price: "Ab 1.890 €"
-  },
-  { 
-    id: 2, 
-    image: "/product-2.jpg", 
-    title: "Weinregal aus Fassdauben", 
-    category: "Weinlagerung",
-    price: "Ab 590 €"
-  },
-  { 
-    id: 3, 
-    image: "/product-3.jpg", 
-    title: "Couchtisch aus Fassböden", 
-    category: "Möbel",
-    price: "Ab 890 €"
-  },
-  { 
-    id: 4, 
-    image: "/product-4.jpg", 
-    title: "Stuhl aus Weinfässern", 
-    category: "Sitzmöbel",
-    price: "Ab 490 €"
-  },
-  { 
-    id: 5, 
-    image: "/product-5.jpg", 
-    title: "Leuchter aus Fassdauben", 
-    category: "Beleuchtung",
-    price: "Ab 290 €"
-  },
-  { 
-    id: 6, 
-    image: "/product-6.jpg", 
-    title: "Weinkühler aus Fässern", 
-    category: "Accessoires",
-    price: "Ab 190 €"
-  }
-];
 
 export default PrivatePage;

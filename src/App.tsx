@@ -8,7 +8,6 @@ import { LazyMotion, domAnimation } from "framer-motion";
 import Index from "./pages/Index";
 import BusinessPage from "./pages/BusinessPage";
 import PrivatePage from "./pages/PrivatePage";
-import WeinliebhaberPage from "./pages/WeinliebhaberPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,7 +23,6 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/business" element={<BusinessPage />} />
             <Route path="/private" element={<PrivatePage />} />
-            <Route path="/weinliebhaber" element={<WeinliebhaberPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
