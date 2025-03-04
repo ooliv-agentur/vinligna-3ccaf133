@@ -1,6 +1,6 @@
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Building, Wine } from 'lucide-react';
+import { ArrowDown, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
@@ -45,38 +45,28 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-base md:text-lg text-white/90 max-w-2xl mx-auto mb-8"
+          className="text-base md:text-lg text-white/90 max-w-2xl mx-auto mb-10"
         >
           Wir verwandeln gebrauchte Barrique-Fässer in elegante, einzigartige Möbelstücke, die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
         </motion.p>
 
-        {/* CTA Buttons */}
+        {/* Single CTA Button */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col md:flex-row gap-4 justify-center mb-16"
+          className="flex justify-center mb-16"
         >
-          <Link to="/business">
-            <CustomerButton 
-              title="Für Weingüter & Gastronomie"
-              description="Maßgeschneiderte Lösungen für Weingüter & Hotellerie"
-              icon={<Building className="w-6 h-6" />}
-              variant="business"
-            />
-          </Link>
-          
-          <Link to="/private">
-            <CustomerButton 
-              title="Für Weinliebhaber"
-              description="Exklusive Möbel für Weinenthusiasten"
-              icon={<Wine className="w-6 h-6" />}
-              variant="private"
-            />
-          </Link>
+          <a 
+            href="#cta" 
+            className="group px-8 py-4 rounded-full bg-wine/90 backdrop-blur-sm text-white hover:bg-wine transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl"
+          >
+            <span className="font-medium">Entdecken Sie unsere Kollektionen</span>
+            <ArrowDown className="w-5 h-5 group-hover:animate-bounce" />
+          </a>
         </motion.div>
 
-        {/* Scroll indicator - Repositioned above the fold */}
+        {/* Scroll indicator */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -90,41 +80,6 @@ const Hero = () => {
         </motion.div>
       </div>
     </section>
-  );
-};
-
-interface CustomerButtonProps {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-  variant: 'business' | 'private';
-}
-
-const CustomerButton = ({ title, description, icon, variant }: CustomerButtonProps) => {
-  return (
-    <div 
-      className={cn(
-        "group relative flex flex-col items-start text-left p-6 md:p-8 rounded-lg transition-all duration-300 hover-lift overflow-hidden border w-full max-w-md",
-        variant === 'business' 
-          ? "bg-foreground/90 backdrop-blur-sm text-background border-foreground/20" 
-          : "bg-wine/90 backdrop-blur-sm text-white border-wine/20"
-      )}
-    >
-      <div className="flex items-center gap-4 mb-3">
-        <div className={cn(
-          "rounded-full p-2",
-          variant === 'business' ? "bg-background/10" : "bg-white/10"
-        )}>
-          {icon}
-        </div>
-        <h3 className="text-xl font-medium">{title}</h3>
-      </div>
-      <p className="text-sm opacity-80 mb-4">{description}</p>
-      <div className="mt-auto flex items-center text-sm font-medium">
-        <span>Mehr erfahren</span>
-        <ArrowRight className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" />
-      </div>
-    </div>
   );
 };
 
