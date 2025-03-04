@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -70,7 +69,7 @@ const Hero = () => {
 
         <motion.h1 
           variants={itemVariants}
-          className="text-4xl md:text-6xl lg:text-7xl font-light mb-10 leading-tight tracking-tight text-center max-w-5xl mx-auto"
+          className="text-4xl md:text-6xl lg:text-7xl font-light mb-10 leading-tight md:leading-tight tracking-tight text-center max-w-5xl mx-auto"
         >
           <motion.span
             initial={{ opacity: 0 }}
@@ -84,7 +83,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.8 }}
-            className="font-medium block mt-0 bg-gradient-to-r from-wine to-wine-light bg-clip-text text-transparent text-balance leading-tight py-2"
+            className="font-medium block bg-gradient-to-r from-wine to-wine-light bg-clip-text text-transparent text-balance leading-tight"
           >
             recycelten Weinfässern
           </motion.span>
