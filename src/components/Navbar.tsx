@@ -35,10 +35,11 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <NavLink href="#about">About</NavLink>
-          <NavLink href="#business">For Business</NavLink>
-          <NavLink href="#private">For Enthusiasts</NavLink>
-          <NavLink href="#contact">Contact</NavLink>
+          <NavLink href="/">Home</NavLink>
+          <NavLink href="#business">Weingüter & Gastronomie</NavLink>
+          <NavLink href="#private">Weinliebhaber</NavLink>
+          <NavLink href="#about">Über uns</NavLink>
+          <NavLink href="#contact">Kontakt</NavLink>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -65,17 +66,20 @@ const Navbar = () => {
           className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md shadow-md py-4"
         >
           <nav className="flex flex-col space-y-4 px-6">
-            <MobileNavLink href="#about" onClick={() => setIsMobileMenuOpen(false)}>
-              About
+            <MobileNavLink href="/" onClick={() => setIsMobileMenuOpen(false)}>
+              Home
             </MobileNavLink>
             <MobileNavLink href="#business" onClick={() => setIsMobileMenuOpen(false)}>
-              For Business
+              Weingüter & Gastronomie
             </MobileNavLink>
             <MobileNavLink href="#private" onClick={() => setIsMobileMenuOpen(false)}>
-              For Enthusiasts
+              Weinliebhaber
+            </MobileNavLink>
+            <MobileNavLink href="#about" onClick={() => setIsMobileMenuOpen(false)}>
+              Über uns
             </MobileNavLink>
             <MobileNavLink href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
-              Contact
+              Kontakt
             </MobileNavLink>
           </nav>
         </motion.div>

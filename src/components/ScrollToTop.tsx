@@ -33,7 +33,7 @@ const ScrollToTop = () => {
         'fixed bottom-6 right-6 z-50 p-3 bg-foreground text-background rounded-full shadow-lg transition-all duration-300 hover:bg-foreground/90',
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
       )}
-      aria-label="Scroll to top"
+      aria-label="Nach oben scrollen"
     >
       <ArrowUp className="h-5 w-5" />
     </button>

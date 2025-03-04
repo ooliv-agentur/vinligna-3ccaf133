@@ -35,8 +35,8 @@ const Contact = () => {
       
       // Show success toast
       toast({
-        title: "Message Sent Successfully",
-        description: "We'll get back to you within 24 hours.",
+        title: "Nachricht erfolgreich gesendet",
+        description: "Wir melden uns innerhalb von 24 Stunden bei Ihnen.",
         variant: "default",
       });
     }, 1500);
@@ -59,13 +59,13 @@ const Contact = () => {
             className="text-center mb-16"
           >
             <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-4">
-              Get in Touch
+              Kontakt aufnehmen
             </span>
             <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
-              Let's Create Something <span className="font-medium">Extraordinary</span>
+              Lassen Sie uns etwas <span className="font-medium">Außergewöhnliches</span> erschaffen
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Whether you're a business looking for custom wine furniture, or a wine enthusiast seeking a statement piece for your home, we're here to help.
+              Ob Sie ein Unternehmen sind, das maßgeschneiderte Weinmöbel sucht, oder ein Weinliebhaber, der ein Statement-Stück für Ihr Zuhause sucht, wir sind für Sie da.
             </p>
           </motion.div>
 
@@ -76,7 +76,7 @@ const Contact = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true, margin: "-100px" }}
             >
-              <h3 className="text-2xl font-light mb-6">Send us a message</h3>
+              <h3 className="text-2xl font-light mb-6">Senden Sie uns eine Nachricht</h3>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
@@ -84,7 +84,7 @@ const Contact = () => {
                       htmlFor="name" 
                       className="block text-sm font-medium text-muted-foreground mb-2"
                     >
-                      Full Name
+                      Vollständiger Name
                     </label>
                     <input
                       type="text"
@@ -94,7 +94,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 bg-oak-light/20 border border-oak/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-oak/30 transition-all"
-                      placeholder="Your name"
+                      placeholder="Ihr Name"
                     />
                   </div>
                   <div>
@@ -102,7 +102,7 @@ const Contact = () => {
                       htmlFor="email" 
                       className="block text-sm font-medium text-muted-foreground mb-2"
                     >
-                      Email Address
+                      E-Mail-Adresse
                     </label>
                     <input
                       type="email"
@@ -112,7 +112,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 bg-oak-light/20 border border-oak/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-oak/30 transition-all"
-                      placeholder="your.email@example.com"
+                      placeholder="ihre.email@beispiel.de"
                     />
                   </div>
                 </div>
@@ -123,7 +123,7 @@ const Contact = () => {
                       htmlFor="phone" 
                       className="block text-sm font-medium text-muted-foreground mb-2"
                     >
-                      Phone Number (Optional)
+                      Telefonnummer (Optional)
                     </label>
                     <input
                       type="tel"
@@ -132,7 +132,7 @@ const Contact = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full px-4 py-3 bg-oak-light/20 border border-oak/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-oak/30 transition-all"
-                      placeholder="+1 (555) 000-0000"
+                      placeholder="+49 (000) 000-0000"
                     />
                   </div>
                   <div>
@@ -140,7 +140,7 @@ const Contact = () => {
                       htmlFor="interest" 
                       className="block text-sm font-medium text-muted-foreground mb-2"
                     >
-                      I'm interested in
+                      Ich interessiere mich für
                     </label>
                     <select
                       id="interest"
@@ -150,10 +150,10 @@ const Contact = () => {
                       className="w-full px-4 py-3 bg-oak-light/20 border border-oak/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-oak/30 transition-all appearance-none"
                       style={{ backgroundImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%236b7280' viewBox='0 0 16 16'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 6 4 4 4-4'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 0.75rem center', backgroundSize: '1rem' }}
                     >
-                      <option value="business">Business Solutions</option>
-                      <option value="private">Private Collection</option>
-                      <option value="consultation">Design Consultation</option>
-                      <option value="other">Other Inquiry</option>
+                      <option value="business">Businesslösungen</option>
+                      <option value="private">Privatkollektion</option>
+                      <option value="consultation">Designberatung</option>
+                      <option value="other">Andere Anfrage</option>
                     </select>
                   </div>
                 </div>
@@ -163,7 +163,7 @@ const Contact = () => {
                     htmlFor="message" 
                     className="block text-sm font-medium text-muted-foreground mb-2"
                   >
-                    Your Message
+                    Ihre Nachricht
                   </label>
                   <textarea
                     id="message"
@@ -173,7 +173,7 @@ const Contact = () => {
                     required
                     rows={5}
                     className="w-full px-4 py-3 bg-oak-light/20 border border-oak/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-oak/30 transition-all resize-none"
-                    placeholder="Tell us about your project or inquiry..."
+                    placeholder="Erzählen Sie uns von Ihrem Projekt oder Ihrer Anfrage..."
                   />
                 </div>
 
@@ -191,11 +191,11 @@ const Contact = () => {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
-                      Sending...
+                      Senden...
                     </>
                   ) : (
                     <>
-                      <span>Send Message</span>
+                      <span>Nachricht senden</span>
                       <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
                     </>
                   )}
@@ -213,18 +213,18 @@ const Contact = () => {
                 <div className="relative rounded-lg overflow-hidden h-64 mb-8">
                   <img 
                     src="/contact-image.jpg" 
-                    alt="VINLIGNA workshop" 
+                    alt="VINLIGNA Werkstatt" 
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   <div className="absolute bottom-0 p-6 text-white">
-                    <h3 className="text-xl font-medium mb-1">Visit Our Workshop</h3>
-                    <p className="text-white/80 text-sm">See the craftsmanship in person</p>
+                    <h3 className="text-xl font-medium mb-1">Besuchen Sie unsere Werkstatt</h3>
+                    <p className="text-white/80 text-sm">Erleben Sie die Handwerkskunst persönlich</p>
                   </div>
                 </div>
 
                 <div className="bg-oak-light/30 rounded-lg p-6 mb-8">
-                  <h3 className="text-xl font-medium mb-4">Why Choose VINLIGNA?</h3>
+                  <h3 className="text-xl font-medium mb-4">Warum VINLIGNA wählen?</h3>
                   <ul className="space-y-3">
                     {benefits.map((benefit, index) => (
                       <li key={index} className="flex items-start">
@@ -238,12 +238,12 @@ const Contact = () => {
                 </div>
 
                 <div className="bg-wine/10 rounded-lg p-6">
-                  <h3 className="text-xl font-medium mb-4">Contact Information</h3>
+                  <h3 className="text-xl font-medium mb-4">Kontaktinformationen</h3>
                   <div className="space-y-3 text-sm">
-                    <p><strong className="font-medium">Email:</strong> <a href="mailto:info@vinligna.com" className="text-wine hover:underline">info@vinligna.com</a></p>
-                    <p><strong className="font-medium">Phone:</strong> <a href="tel:+123456789" className="hover:underline">+1 (234) 567-890</a></p>
-                    <p><strong className="font-medium">Workshop Address:</strong><br />VINLIGNA Atelier<br />123 Barrel Lane, Wine Valley<br />Crafton, CA 94123</p>
-                    <p className="text-muted-foreground pt-2">Open for visits by appointment only</p>
+                    <p><strong className="font-medium">E-Mail:</strong> <a href="mailto:info@vinligna.com" className="text-wine hover:underline">info@vinligna.com</a></p>
+                    <p><strong className="font-medium">Telefon:</strong> <a href="tel:+4963623094990" className="hover:underline">+49 6362 309 49 90</a></p>
+                    <p><strong className="font-medium">Werkstattadresse:</strong><br />VINLIGNA Atelier<br />Industriestraße 19, 67821 Alsenz<br />Deutschland</p>
+                    <p className="text-muted-foreground pt-2">Besuche nur nach Vereinbarung möglich</p>
                   </div>
                 </div>
               </div>
@@ -256,12 +256,12 @@ const Contact = () => {
 };
 
 const benefits = [
-  "Each piece tells the unique story of the barrel it came from",
-  "Combining traditional craftsmanship with modern design",
-  "Sustainably sourced materials with full traceability",
-  "Completely customizable to match your space and style",
-  "Expert consultation throughout the design process",
-  "Long-lasting quality built to be passed down generations"
+  "Jedes Stück erzählt die einzigartige Geschichte des Fasses, aus dem es stammt",
+  "Kombination aus traditioneller Handwerkskunst und modernem Design",
+  "Nachhaltig beschaffte Materialien mit vollständiger Rückverfolgbarkeit",
+  "Vollständig anpassbar an Ihren Raum und Stil",
+  "Fachkundige Beratung während des gesamten Designprozesses",
+  "Langlebige Qualität, die über Generationen weitergegeben werden kann"
 ];
 
 export default Contact;

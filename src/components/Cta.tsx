@@ -22,10 +22,10 @@ const Cta = () => {
             viewport={{ once: true, margin: "-100px" }}
           >
             <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
-              Are You Ready to <span className="font-medium">Transform Your Space</span>?
+              Sind Sie bereit, Ihren Raum zu <span className="font-medium">transformieren</span>?
             </h2>
             <p className="text-white/80 mb-10 max-w-2xl mx-auto">
-              Whether you're a business looking for custom wine furniture, or a wine enthusiast seeking a statement piece for your home, discover how VINLIGNA can bring the history of wine into your space.
+              Egal, ob Sie ein Unternehmen sind, das maßgeschneiderte Weinmöbel sucht, oder ein Weinliebhaber, der ein Statement-Stück für Ihr Zuhause sucht, entdecken Sie, wie VINLIGNA die Geschichte des Weins in Ihren Raum bringen kann.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -33,7 +33,7 @@ const Cta = () => {
                 href="#business" 
                 className="inline-flex items-center justify-center text-sm font-medium bg-foreground text-background py-3 px-6 rounded-lg border border-white/20 hover:bg-foreground/80 transition-colors group"
               >
-                <span>Custom Solutions for Businesses</span>
+                <span>Maßgeschneiderte Lösungen für Unternehmen</span>
                 <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
               </a>
               
@@ -41,7 +41,7 @@ const Cta = () => {
                 href="#private" 
                 className="inline-flex items-center justify-center text-sm font-medium bg-wine text-white py-3 px-6 rounded-lg hover:bg-wine-dark transition-colors group"
               >
-                <span>Exclusive Designs for Wine Enthusiasts</span>
+                <span>Exklusive Designs für Weinliebhaber</span>
                 <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
               </a>
             </div>

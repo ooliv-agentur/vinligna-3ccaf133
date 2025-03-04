@@ -16,13 +16,13 @@ const BusinessSection = () => {
             className="text-center mb-16 md:mb-24"
           >
             <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-4">
-              For Businesses
+              Für Weingüter & Gastronomie
             </span>
             <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
-              Custom Solutions for <span className="font-medium">Wineries & Hospitality</span>
+              Maßgeschneiderte Weinfass Möbel für <span className="font-medium">Weingüter, Hotels & Restaurants</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Elevate your business space with bespoke furniture that tells your unique story. From tasting rooms to hotel lobbies, our custom pieces create unforgettable experiences.
+              Werten Sie Ihren Geschäftsraum mit maßgefertigten Möbeln auf, die Ihre einzigartige Geschichte erzählen. Von Verkostungsräumen bis zu Hotelfoyers schaffen unsere Unikate unvergessliche Erlebnisse.
             </p>
           </motion.div>
 
@@ -37,7 +37,7 @@ const BusinessSection = () => {
               <div className="relative z-10 rounded-lg overflow-hidden shadow-xl">
                 <img 
                   src="/business-main.jpg" 
-                  alt="Custom wine bar for business" 
+                  alt="Maßgefertigte Weinbar für Unternehmen" 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -52,20 +52,20 @@ const BusinessSection = () => {
             >
               <BusinessSolution 
                 icon={<Wine className="w-5 h-5" />}
-                title="Custom Tasting Room Furniture"
-                description="Create an immersive experience with furniture that connects visitors to your wine's heritage."
+                title="Maßgefertigte Fassmöbel für Verkostungsräume"
+                description="Schaffen Sie ein immersives Erlebnis mit Möbeln, die Ihre Besucher mit dem Erbe Ihres Weins verbinden."
               />
               
               <BusinessSolution 
                 icon={<Building className="w-5 h-5" />}
-                title="Hospitality & Restaurant Solutions"
-                description="Distinguished bars, tables, and seating that set your establishment apart."
+                title="Lösungen für Gastronomie & Hotellerie"
+                description="Hochwertige Theken, Tische und Sitzmöbel, die Ihr Etablissement von anderen abheben."
               />
               
               <BusinessSolution 
                 icon={<Factory className="w-5 h-5" />}
-                title="Upcycle Your Own Barrels"
-                description="Transform your retired barrels into bespoke furniture that tells your winery's story."
+                title="Eigene Fässer wiederverwerten"
+                description="Verwandeln Sie Ihre ausrangierten Fässer in maßgeschneiderte Möbel, die die Geschichte Ihres Weinguts erzählen."
               />
 
               <div className="mt-10">
@@ -73,7 +73,7 @@ const BusinessSection = () => {
                   href="#contact" 
                   className="inline-flex items-center text-sm font-medium bg-foreground text-background py-3 px-6 rounded-lg hover:bg-foreground/90 transition-colors group"
                 >
-                  <span>Request Business Consultation</span>
+                  <span>Geschäftsberatung anfragen</span>
                   <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
                 </a>
               </div>
@@ -88,25 +88,25 @@ const BusinessSection = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="mt-24"
           >
-            <h3 className="text-2xl font-light mb-8 text-center">Featured Business Projects</h3>
+            <h3 className="text-2xl font-light mb-8 text-center">Ausgewählte Businessprojekte</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <ProjectCard 
                 image="/project-b2b-1.jpg"
-                title="Custom Wine Bar"
-                client="La Terre Winery"
-                category="Tasting Room"
+                title="Maßgefertigte Weinbar"
+                client="Weingut La Terre"
+                category="Verkostungsraum"
               />
               <ProjectCard 
                 image="/project-b2b-2.jpg"
-                title="Barrel Dining Tables"
-                client="Bordeaux Restaurant"
-                category="Restaurant"
+                title="Esstische aus Fässern"
+                client="Restaurant Bordeaux"
+                category="Gastronomie"
               />
               <ProjectCard 
                 image="/project-b2b-3.jpg"
-                title="Reception Desk"
+                title="Empfangstheke"
                 client="Grand Cru Hotel"
-                category="Hospitality"
+                category="Hotellerie"
               />
             </div>
           </motion.div>
@@ -125,7 +125,7 @@ interface BusinessSolutionProps {
 const BusinessSolution = ({ icon, title, description }: BusinessSolutionProps) => (
   <div className="mb-8 flex">
     <div className="mr-4 mt-1 flex-shrink-0">
-      <div className="bg-oak-light w-10 h-10 rounded-full flex items-center justify-center text-foreground">
+      <div className="bg-wine-light w-10 h-10 rounded-full flex items-center justify-center text-foreground">
         {icon}
       </div>
     </div>

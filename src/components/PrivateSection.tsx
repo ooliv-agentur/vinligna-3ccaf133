@@ -16,13 +16,13 @@ const PrivateSection = () => {
             className="text-center mb-16 md:mb-24"
           >
             <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-4">
-              For Wine Enthusiasts
+              Für Weinliebhaber
             </span>
             <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
-              Exclusive Furniture for <span className="font-medium">Wine Lovers</span>
+              Exklusive Möbel aus Weinfässern für <span className="font-medium">Ihr Zuhause</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Bring the charm and history of wine culture into your home with our handcrafted pieces. Each item carries the unique character of the barrels that once housed fine wines.
+              Bringen Sie den Charme und die Geschichte der Weinkultur in Ihr Zuhause mit unseren handgefertigten Möbelstücken. Jedes Stück trägt den einzigartigen Charakter der Fässer, die einst edle Weine beherbergten.
             </p>
           </motion.div>
 
@@ -56,22 +56,22 @@ const PrivateSection = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <CategoryCard 
                 icon={<Armchair className="w-6 h-6" />}
-                title="Furniture Collection"
-                description="Unique centerpiece dining tables, chairs, and wine racks to elevate your home."
+                title="Möbelkollektion"
+                description="Einzigartige Esstische, Stühle und Weinregale, die Ihr Zuhause aufwerten."
                 color="bg-wine/10"
                 textColor="text-wine-dark"
               />
               <CategoryCard 
                 icon={<Home className="w-6 h-6" />}
-                title="Home & Wine Accessories"
-                description="From wine coolers to serving trays, perfect for wine nights and hosting."
+                title="Wohn- & Weinaccessoires"
+                description="Von Weinkühlern bis zu Serviertabletts, perfekt für Weinabende und zum Gastgeben."
                 color="bg-oak/10"
                 textColor="text-oak-dark"
               />
               <CategoryCard 
                 icon={<Gift className="w-6 h-6" />}
-                title="Bespoke Gifts"
-                description="Custom-designed pieces that make extraordinary gifts for wine aficionados."
+                title="Maßgeschneiderte Geschenke"
+                description="Individuell gestaltete Stücke, die außergewöhnliche Geschenke für Weinliebhaber darstellen."
                 color="bg-foreground/10"
                 textColor="text-foreground"
               />
@@ -82,7 +82,7 @@ const PrivateSection = () => {
                 href="#contact" 
                 className="inline-flex items-center text-sm font-medium bg-wine text-white py-3 px-6 rounded-lg hover:bg-wine-dark transition-colors group"
               >
-                <span>Request Personal Consultation</span>
+                <span>Persönliche Beratung anfordern</span>
                 <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
               </a>
             </div>
@@ -139,44 +139,44 @@ const products = [
   { 
     id: 1, 
     image: "/product-1.jpg", 
-    title: "Wine Barrel Dining Table", 
-    price: "From €1,200", 
-    category: "Furniture" 
+    title: "Esstisch aus Weinfässern", 
+    price: "Ab €1.200", 
+    category: "Möbel" 
   },
   { 
     id: 2, 
     image: "/product-2.jpg", 
-    title: "Barrel Stave Wine Rack", 
+    title: "Weinregal aus Fassdauben", 
     price: "€350", 
-    category: "Wine Storage" 
+    category: "Weinlagerung" 
   },
   { 
     id: 3, 
     image: "/product-3.jpg", 
-    title: "Barrel Head Coffee Table", 
+    title: "Couchtisch aus Fassböden", 
     price: "€680", 
-    category: "Furniture" 
+    category: "Möbel" 
   },
   { 
     id: 4, 
     image: "/product-4.jpg", 
-    title: "Wine Barrel Chair", 
+    title: "Stuhl aus Weinfässern", 
     price: "€420", 
-    category: "Seating" 
+    category: "Sitzmöbel" 
   },
   { 
     id: 5, 
     image: "/product-5.jpg", 
-    title: "Barrel Stave Chandelier", 
+    title: "Leuchter aus Fassdauben", 
     price: "€580", 
-    category: "Lighting" 
+    category: "Beleuchtung" 
   },
   { 
     id: 6, 
     image: "/product-6.jpg", 
-    title: "Wine Barrel Cooler", 
+    title: "Weinkühler aus Fässern", 
     price: "€320", 
-    category: "Accessories" 
+    category: "Accessoires" 
   }
 ];
 

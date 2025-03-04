@@ -21,9 +21,9 @@ const Hero = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-block mb-6 px-3 py-1 bg-oak-light/90 backdrop-blur-sm text-oak-dark text-xs tracking-widest uppercase rounded-full"
+          className="inline-block mb-6 px-3 py-1 bg-wine-light/90 backdrop-blur-sm text-oak-dark text-xs tracking-widest uppercase rounded-full"
         >
-          Sustainable Luxury
+          Nachhaltige Eleganz
         </motion.div>
 
         {/* Heading */}
@@ -33,8 +33,8 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-4xl md:text-6xl lg:text-7xl font-light text-white mb-6 leading-tight tracking-tight"
         >
-          Exquisite Furniture from <br className="hidden md:block" />
-          <span className="font-medium">Recycled Wine Barrels</span>
+          Exklusive Fassmöbel aus <br className="hidden md:block" />
+          <span className="font-medium">recycelten Weinfässern</span>
         </motion.h1>
 
         {/* Subheading */}
@@ -44,7 +44,7 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-base md:text-lg text-white/90 max-w-2xl mx-auto mb-12"
         >
-          We transform used Barrique casks into elegant, one-of-a-kind pieces that seamlessly blend tradition, craftsmanship, and sustainability.
+          Wir verwandeln gebrauchte Barrique-Fässer in elegante, einzigartige Möbelstücke, die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -56,16 +56,16 @@ const Hero = () => {
         >
           <CustomerButton 
             href="#business"
-            title="For Businesses"
-            description="Custom Solutions for Wineries & Hospitality"
+            title="Für Weingüter & Gastronomie"
+            description="Maßgeschneiderte Lösungen für Weingüter & Hotellerie"
             icon={<Building className="w-6 h-6" />}
             variant="business"
           />
           
           <CustomerButton 
             href="#private"
-            title="For Enthusiasts"
-            description="Exclusive Furniture for Wine Lovers"
+            title="Für Weinliebhaber"
+            description="Exklusive Möbel für Weinenthusiasten"
             icon={<Wine className="w-6 h-6" />}
             variant="private"
           />
@@ -78,7 +78,7 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.7 }}
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
         >
-          <span className="text-white/70 text-sm mb-2">Scroll to explore</span>
+          <span className="text-white/70 text-sm mb-2">Scrollen Sie, um mehr zu entdecken</span>
           <div className="w-0.5 h-12 bg-white/20 relative overflow-hidden">
             <div className="w-full h-1/2 bg-white/80 absolute top-0 animate-[scrollDown_2s_ease-in-out_infinite]" />
           </div>
@@ -118,7 +118,7 @@ const CustomerButton = ({ href, title, description, icon, variant }: CustomerBut
       </div>
       <p className="text-sm opacity-80 mb-4">{description}</p>
       <div className="mt-auto flex items-center text-sm font-medium">
-        <span>Learn more</span>
+        <span>Mehr erfahren</span>
         <ArrowRight className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" />
       </div>
     </a>

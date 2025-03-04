@@ -10,11 +10,11 @@
     
     --oak-light: 30 30% 90%;
     --oak: 30 30% 60%;
-    --oak-dark: 30 30% 40%;
+    --oak-dark: 20 34% 27%; /* #5C3B2E - dark wood brown */
     
-    --wine-light: 340 30% 70%;
-    --wine: 340 60% 40%;
-    --wine-dark: 340 60% 25%;
+    --wine-light: 20 65% 89%; /* #EDE0D4 - warm beige */
+    --wine: 20 57% 53%; /* #D96B37 - soft terracotta */
+    --wine-dark: 20 57% 40%; /* darker terracotta */
 
     --card: 0 0% 100%;
     --card-foreground: 20 12% 10%;
