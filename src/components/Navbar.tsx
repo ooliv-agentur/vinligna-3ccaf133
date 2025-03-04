@@ -31,7 +31,9 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between">
         <a href="/" className="inline-block" aria-label="VINLIGNA">
           <img 
-            src="/lovable-uploads/50941805-7198-4381-a214-435f243a45b4.png" 
+            src={isScrolled 
+              ? "/lovable-uploads/eef04cda-cc19-4e97-9136-dcd93f60b698.png" 
+              : "/lovable-uploads/50941805-7198-4381-a214-435f243a45b4.png"} 
             alt="VINLIGNA" 
             className="h-6 md:h-8" 
           />
@@ -39,14 +41,17 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <NavLink href="#business">Weingüter, Gastronomie & Hotellerie</NavLink>
-          <NavLink href="#private">Weinliebhaber & Privatkunden</NavLink>
-          <NavLink href="#contact">Kontakt</NavLink>
+          <NavLink href="#business" isScrolled={isScrolled}>Weingüter, Gastronomie & Hotellerie</NavLink>
+          <NavLink href="#private" isScrolled={isScrolled}>Weinliebhaber & Privatkunden</NavLink>
+          <NavLink href="#contact" isScrolled={isScrolled}>Kontakt</NavLink>
         </nav>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden focus:outline-none text-white"
+          className={cn(
+            "md:hidden focus:outline-none",
+            isScrolled ? "text-foreground" : "text-white"
+          )}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -88,12 +93,18 @@ interface NavLinkProps {
   href: string;
   children: React.ReactNode;
   onClick?: () => void;
+  isScrolled?: boolean;
 }
 
-const NavLink = ({ href, children }: NavLinkProps) => (
+const NavLink = ({ href, children, isScrolled }: NavLinkProps) => (
   <a
     href={href}
-    className="text-sm font-medium text-white hover:text-white/80 transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-white hover:after:w-full after:transition-all after:duration-300"
+    className={cn(
+      "text-sm font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 hover:after:w-full after:transition-all after:duration-300",
+      isScrolled 
+        ? "text-foreground hover:text-foreground/80 after:bg-foreground" 
+        : "text-white hover:text-white/80 after:bg-white"
+    )}
   >
     {children}
   </a>
