@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -41,7 +42,7 @@ const scaleIn = {
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center px-4 sm:px-6 py-12 bg-black">
+    <section className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center px-6 py-12 bg-black">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.15 }}
@@ -99,7 +100,7 @@ const Hero = () => {
 
         <motion.div
           variants={scaleIn}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 w-full px-0"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 w-full"
         >
           <EntryCard 
             title="Ich bin"

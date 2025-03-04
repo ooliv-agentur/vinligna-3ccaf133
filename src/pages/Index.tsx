@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -32,6 +31,24 @@ const Index = () => {
     // Page entry animation - add a class to body when page is loaded
     document.body.classList.add('page-loaded');
 
+    // Add custom CSS for mobile hero cards to match philosophy section width
+    const addMobileCardStyles = () => {
+      const styleElement = document.createElement('style');
+      styleElement.id = 'mobile-card-styles';
+      styleElement.innerHTML = `
+        @media (max-width: 768px) {
+          .container .grid {
+            margin-left: -1.5rem;
+            margin-right: -1.5rem;
+            width: calc(100% + 3rem);
+          }
+        }
+      `;
+      document.head.appendChild(styleElement);
+    };
+
+    addMobileCardStyles();
+
     // Cleanup
     return () => {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -40,6 +57,11 @@ const Index = () => {
         });
       });
       document.body.classList.remove('page-loaded');
+
+      const styleElement = document.getElementById('mobile-card-styles');
+      if (styleElement) {
+        styleElement.remove();
+      }
     };
   }, []);
 
