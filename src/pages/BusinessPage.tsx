@@ -106,12 +106,12 @@ const BusinessPage = () => {
         </div>
       </section>
 
-      {/* Image Section - Simplified, no parallax */}
+      {/* Image Section - New image */}
       <section className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden">
         <div 
           className="absolute inset-0 w-full h-full"
           style={{ 
-            backgroundImage: "url('/lovable-uploads/9ad79fc1-cf6d-4e7d-9277-819dde52a980.png')",
+            backgroundImage: "url('/lovable-uploads/b64c24af-644b-40b4-a0a8-544dd26efa62.png')",
             backgroundSize: "cover",
             backgroundPosition: "center"
           }}
