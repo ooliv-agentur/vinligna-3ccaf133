@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -102,21 +101,25 @@ const Hero = () => {
           variants={scaleIn}
           className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-8 w-full max-w-5xl mx-auto"
         >
-          <EntryCard 
-            title="Ich bin"
-            subtitle="Winzer, Gastronom oder Hotelier"
-            description="Maßgeschneiderte Lösungen für Ihre Marke"
-            link="/business"
-            imageSrc="/lovable-uploads/112627aa-d494-4e9d-939e-39625817461d.png"
-          />
+          <div className="w-[90%] mx-auto md:w-full">
+            <EntryCard 
+              title="Ich bin"
+              subtitle="Winzer, Gastronom oder Hotelier"
+              description="Maßgeschneiderte Lösungen für Ihre Marke"
+              link="/business"
+              imageSrc="/lovable-uploads/112627aa-d494-4e9d-939e-39625817461d.png"
+            />
+          </div>
 
-          <EntryCard 
-            title="Ich bin"
-            subtitle="Weinliebhaber"
-            description="Exklusive Designs für Ihr Zuhause"
-            link="/private"
-            imageSrc="/lovable-uploads/e9d912cb-d45d-4016-8e8b-8250bd78de47.png"
-          />
+          <div className="w-[90%] mx-auto md:w-full">
+            <EntryCard 
+              title="Ich bin"
+              subtitle="Weinliebhaber"
+              description="Exklusive Designs für Ihr Zuhause"
+              link="/private"
+              imageSrc="/lovable-uploads/e9d912cb-d45d-4016-8e8b-8250bd78de47.png"
+            />
+          </div>
         </motion.div>
 
         <motion.div 
