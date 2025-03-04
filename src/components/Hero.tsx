@@ -9,10 +9,13 @@ const Hero = () => {
       {/* Background image with overlay */}
       <div className="absolute inset-0 z-0">
         <div 
-          className="absolute inset-0 bg-[url('/hero-bg.jpg')] bg-cover bg-center bg-no-repeat"
-          style={{ backgroundPosition: '50% 30%' }}
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ 
+            backgroundImage: "url('/lovable-uploads/befad945-4608-49fa-ab3a-639ae22cff0f.png')",
+            backgroundPosition: '50% 50%' 
+          }}
         />
-        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 bg-black/40" /> {/* Slightly darker overlay for better text readability */}
       </div>
 
       <div className="container relative z-10 mx-auto max-w-5xl text-center">
