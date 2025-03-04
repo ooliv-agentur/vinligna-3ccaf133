@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { Table, Armchair, Layers } from 'lucide-react';
 import { ProductCard } from './ProductCard';
@@ -71,9 +70,21 @@ const ProductsSection = () => {
           >
             <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 max-w-3xl mx-auto border border-white/10">
               <h3 className="text-xl font-medium mb-4 text-white">Besonderheit für Winzer</h3>
-              <p className="text-white/70 mb-0">
-                Für Winzer bieten wir die Möglichkeit, Möbel aus Ihren eigenen, nicht mehr genutzten Weinfässern fertigen zu lassen. Diese können auf Wunsch mit eingebrannten Logos oder individuellen Markenzeichen veredelt werden, sodass Ihre Gäste sofort die Verbindung zu Ihrem Weingut erkennen.
-              </p>
+              
+              <div className="flex flex-col md:flex-row gap-8 items-center">
+                <div className="w-full md:w-1/2">
+                  <p className="text-white/70 mb-0">
+                    Für Winzer bieten wir die Möglichkeit, Möbel aus Ihren eigenen, nicht mehr genutzten Weinfässern fertigen zu lassen. Diese können auf Wunsch mit eingebrannten Logos oder individuellen Markenzeichen veredelt werden, sodass Ihre Gäste sofort die Verbindung zu Ihrem Weingut erkennen.
+                  </p>
+                </div>
+                <div className="w-full md:w-1/2 rounded-lg overflow-hidden">
+                  <img 
+                    src="/lovable-uploads/672910a2-3c69-4f9c-8f94-bacb529ccda5.png" 
+                    alt="Weingut mit Weinfässern" 
+                    className="w-full h-auto object-cover rounded-lg transition-transform duration-500 hover:scale-105"
+                  />
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
