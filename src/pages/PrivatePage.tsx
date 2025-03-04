@@ -198,16 +198,6 @@ const PrivatePage = () => {
                 image="/lovable-uploads/ccaefbf7-98fe-4699-a949-fd82a00ba26d.png"
               />
             </div>
-
-            <div className="text-center">
-              <a 
-                href="#products" 
-                className="inline-flex items-center text-sm font-medium bg-foreground text-background py-3 px-6 rounded-lg hover:bg-foreground/90 transition-colors group"
-              >
-                <span>Alle Produkte entdecken</span>
-                <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-              </a>
-            </div>
           </div>
         </div>
       </section>

@@ -71,37 +71,52 @@ const GalleryItem = ({ image, title, category }: GalleryItemProps) => (
   </div>
 );
 
-// Sample gallery items
+// Updated gallery items with new images
 const galleryItems = [
   { 
-    image: "/product-1.jpg", 
-    title: "Esstisch aus Weinfassdauben", 
-    category: "Möbelkollektion" 
+    image: "/lovable-uploads/b8ccf011-269c-4d03-9fab-ec9ce9533125.png", 
+    title: "Fassdauben-Wandpaneele", 
+    category: "Wandgestaltung" 
   },
   { 
-    image: "/product-2.jpg", 
-    title: "Weinregal aus Barrique-Fässern", 
-    category: "Weinlagerung" 
-  },
-  { 
-    image: "/product-3.jpg", 
-    title: "Couchtisch mit Glasplatte", 
-    category: "Wohnzimmermöbel" 
-  },
-  { 
-    image: "/product-4.jpg", 
-    title: "Designstuhl aus Fassdauben", 
+    image: "/lovable-uploads/112627aa-d494-4e9d-939e-39625817461d.png", 
+    title: "Designstuhl mit Metallgestell", 
     category: "Sitzmöbel" 
   },
   { 
-    image: "/product-5.jpg", 
-    title: "Hängelampe aus Fassringen", 
-    category: "Beleuchtung" 
+    image: "/lovable-uploads/8a04c9c9-5b3b-4585-8717-9b2c85d1d3c0.png", 
+    title: "Serviertablett aus Fassdauben", 
+    category: "Accessoires" 
   },
   { 
-    image: "/product-6.jpg", 
-    title: "Weinkühler aus Fassboden", 
-    category: "Accessoires" 
+    image: "/lovable-uploads/035a7515-089b-446d-ad34-076e3a7e4e7a.png", 
+    title: "Detail einer Fassdaubenplatte", 
+    category: "Materialdetail" 
+  },
+  { 
+    image: "/lovable-uploads/b76b103c-cb5b-478f-9710-6d7835023833.png", 
+    title: "Barhocker aus Eichenholz", 
+    category: "Sitzmöbel" 
+  },
+  { 
+    image: "/lovable-uploads/ab9f2933-6513-46ff-aaa7-a7ba417f3859.png", 
+    title: "Rundhocker mit Metallgestell", 
+    category: "Sitzmöbel" 
+  },
+  { 
+    image: "/lovable-uploads/c68a3594-9eee-429e-bcba-b99a121cbd1d.png", 
+    title: "Detailansicht Holzmaserung", 
+    category: "Materialdetail" 
+  },
+  { 
+    image: "/lovable-uploads/9f2ed395-b8b4-45ec-91f1-51a11aae8cbd.png", 
+    title: "Holzhocker mit Fassdauben-Sitz", 
+    category: "Sitzmöbel" 
+  },
+  { 
+    image: "/lovable-uploads/9474a86e-3029-4095-9f7d-bdab1f66558d.png", 
+    title: "Eichenholz Rundtisch", 
+    category: "Tische" 
   }
 ];
 
