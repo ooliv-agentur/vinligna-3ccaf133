@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, Phone, Mail, MapPin } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface FaqItemProps {
@@ -118,34 +118,6 @@ const BusinessFaq = () => {
             {faqs.map((faq, index) => (
               <FaqItem key={index} {...faq} />
             ))}
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="mt-16 pt-6 border-t border-oak/10 max-w-lg mx-auto text-center"
-          >
-            <h3 className="text-xl font-medium mb-6">Kontakt</h3>
-            <div className="space-y-3 text-muted-foreground">
-              <p className="flex items-center justify-center gap-2">
-                <MapPin size={18} className="text-wine"/>
-                VinLignum Holzmanufaktur GmbH & Co. KG
-              </p>
-              <p className="flex items-center justify-center gap-2">
-                <MapPin size={18} className="text-wine invisible"/>
-                Industriestraße 19, 67821 Alsenz
-              </p>
-              <p className="flex items-center justify-center gap-2">
-                <Mail size={18} className="text-wine"/>
-                <a href="mailto:info@vinligna.de" className="hover:text-wine transition-colors">info@vinligna.de</a>
-              </p>
-              <p className="flex items-center justify-center gap-2">
-                <Phone size={18} className="text-wine"/>
-                <a href="tel:+4963623094990" className="hover:text-wine transition-colors">+49 6362 309 49 90</a>
-              </p>
-            </div>
           </motion.div>
         </div>
       </div>
