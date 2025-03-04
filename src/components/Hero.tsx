@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { ArrowRight, Building, Wine } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -8,14 +7,12 @@ const Hero = () => {
     <section className="relative min-h-[100vh] overflow-hidden flex flex-col items-center justify-center px-6 py-24 md:py-32">
       {/* Background image with overlay */}
       <div className="absolute inset-0 z-0">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ 
-            backgroundImage: "url('/lovable-uploads/befad945-4608-49fa-ab3a-639ae22cff0f.png')",
-            backgroundPosition: '50% 50%' 
-          }}
+        <img 
+          src="/lovable-uploads/befad945-4608-49fa-ab3a-639ae22cff0f.png"
+          alt="Weinfass-Hintergrund"
+          className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-black/40" /> {/* Slightly darker overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/40" /> {/* Overlay for better text readability */}
       </div>
 
       <div className="container relative z-10 mx-auto max-w-5xl text-center">
