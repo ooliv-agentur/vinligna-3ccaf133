@@ -102,21 +102,25 @@ const Hero = () => {
           variants={scaleIn}
           className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 w-full flex-grow"
         >
-          <EntryCard 
-            title="Ich bin"
-            subtitle="Winzer, Gastronom oder Hotelier"
-            description="Maßgeschneiderte Lösungen für Ihre Marke"
-            link="/business"
-            imageSrc="/lovable-uploads/112627aa-d494-4e9d-939e-39625817461d.png"
-          />
+          <div className="w-full md:w-auto md:transform-none transform scale-[1.2] h-[150%]">
+            <EntryCard 
+              title="Ich bin"
+              subtitle="Winzer, Gastronom oder Hotelier"
+              description="Maßgeschneiderte Lösungen für Ihre Marke"
+              link="/business"
+              imageSrc="/lovable-uploads/112627aa-d494-4e9d-939e-39625817461d.png"
+            />
+          </div>
 
-          <EntryCard 
-            title="Ich bin"
-            subtitle="Weinliebhaber"
-            description="Exklusive Designs für Ihr Zuhause"
-            link="/private"
-            imageSrc="/lovable-uploads/e9d912cb-d45d-4016-8e8b-8250bd78de47.png"
-          />
+          <div className="w-full md:w-auto md:transform-none transform scale-[1.2] h-[150%]">
+            <EntryCard 
+              title="Ich bin"
+              subtitle="Weinliebhaber"
+              description="Exklusive Designs für Ihr Zuhause"
+              link="/private"
+              imageSrc="/lovable-uploads/e9d912cb-d45d-4016-8e8b-8250bd78de47.png"
+            />
+          </div>
         </motion.div>
 
         <motion.div 
@@ -173,7 +177,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
         to={link} 
         className="block h-full group relative"
       >
-        <div className="relative aspect-[16/9] md:aspect-[16/11] rounded-lg overflow-hidden h-full">
+        <div className="relative aspect-[16/15] md:aspect-[16/11] rounded-lg overflow-hidden h-full">
           <motion.div
             initial={{ filter: "blur(10px)" }}
             animate={{ filter: "blur(0px)" }}
