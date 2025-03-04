@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -102,8 +101,8 @@ const Hero = () => {
           variants={scaleIn}
           className="flex flex-col items-center w-full"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-8 w-full max-w-5xl mx-auto">
-            <div className="w-full flex justify-center">
+          <div className="w-full max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-8 w-full">
               <div className="w-full">
                 <EntryCard 
                   title="Ich bin"
@@ -113,9 +112,7 @@ const Hero = () => {
                   imageSrc="/lovable-uploads/112627aa-d494-4e9d-939e-39625817461d.png"
                 />
               </div>
-            </div>
 
-            <div className="w-full flex justify-center">
               <div className="w-full">
                 <EntryCard 
                   title="Ich bin"
