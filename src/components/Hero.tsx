@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -53,7 +54,7 @@ const Hero = () => {
       />
 
       <motion.div 
-        className="container z-10 mx-auto max-w-6xl flex flex-col h-full pt-24 md:pt-32"
+        className="container z-10 mx-auto max-w-6xl flex flex-col h-full pt-12 md:pt-16"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
