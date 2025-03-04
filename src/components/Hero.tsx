@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -111,7 +112,7 @@ const Hero = () => {
               style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
             >
               <EntryCard 
-                title="Ich bin"
+                title=""
                 subtitle="Winzer, Gastronom oder Hotelier"
                 description="Maßgeschneiderte Lösungen für Ihre Marke"
                 link="/business"
@@ -124,7 +125,7 @@ const Hero = () => {
               style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
             >
               <EntryCard 
-                title="Ich bin"
+                title=""
                 subtitle="Weinliebhaber"
                 description="Exklusive Designs für Ihr Zuhause"
                 link="/private"
