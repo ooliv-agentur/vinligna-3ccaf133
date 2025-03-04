@@ -1,7 +1,6 @@
-
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, ArrowRight } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 // Animation variants
@@ -161,32 +160,6 @@ const Faq = () => {
                 <FaqItem key={index} {...faq} />
               ))}
             </div>
-          </motion.div>
-
-          {/* Call-to-action */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="mt-16 text-center"
-          >
-            <a href="#contact" className="inline-flex items-center text-wine hover:text-wine-light transition-colors cursor-pointer group">
-              <span className="text-lg">Weitere Informationen anfragen</span>
-              <motion.div
-                animate={{ x: [0, 5, 0] }}
-                transition={{ 
-                  duration: 1.5, 
-                  repeat: Infinity, 
-                  repeatType: "loop", 
-                  ease: "easeInOut",
-                  repeatDelay: 1
-                }}
-                className="ml-2"
-              >
-                <ArrowRight size={20} />
-              </motion.div>
-            </a>
           </motion.div>
         </div>
       </div>
