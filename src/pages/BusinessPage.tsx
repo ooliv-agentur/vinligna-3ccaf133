@@ -78,7 +78,7 @@ const BusinessPage = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="font-normal block mt-4 text-wine"
+              className="font-normal block mt-4 text-gradient"
             >
               Weingüter, Gastronomie & Hotellerie
             </motion.span>
@@ -113,13 +113,13 @@ const BusinessPage = () => {
       {/* Parallax Image Section */}
       <section className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden bg-black">
         <motion.div 
-          className="absolute inset-0 w-full h-full bg-cover bg-center"
+          className="absolute inset-0 w-full h-full bg-cover bg-fixed bg-center"
           style={{ 
+            backgroundImage: "url('/lovable-uploads/9ad79fc1-cf6d-4e7d-9277-819dde52a980.png')",
             y: parallaxY,
-            backgroundImage: "url('/lovable-uploads/9ad79fc1-cf6d-4e7d-9277-819dde52a980.png')"
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/70"></div>
         </motion.div>
       </section>
 
@@ -135,7 +135,7 @@ const BusinessPage = () => {
               className="text-center mb-12"
             >
               <h2 className="section-title text-white">
-                Über <span className="highlight">VINLIGNA</span>
+                Über <span className="text-gradient">VINLIGNA</span>
               </h2>
             </motion.div>
             
@@ -172,7 +172,7 @@ const BusinessPage = () => {
                 Unsere Produkte
               </span>
               <h2 className="section-title text-white">
-                Maßgeschneiderte <span className="highlight">Weinfass-Möbel</span>
+                Maßgeschneiderte <span className="text-gradient">Weinfass-Möbel</span>
               </h2>
               <p className="text-white/70 max-w-2xl mx-auto">
                 Unsere Möbel sind vollständig individualisierbar und auf die speziellen Bedürfnisse von Weingütern, Restaurants und Hotels ausgerichtet.
@@ -249,7 +249,7 @@ const BusinessPage = () => {
                 Ihre Vorteile
               </span>
               <h2 className="section-title text-white">
-                Vorteile für <span className="highlight">Ihr Unternehmen</span>
+                Vorteile für <span className="text-gradient">Ihr Unternehmen</span>
               </h2>
               <p className="text-white/70 max-w-2xl mx-auto">
                 Entdecken Sie, warum VINLIGNA die erste Wahl für Weingüter, Gastronomiebetriebe und Hotels ist.
@@ -341,7 +341,7 @@ const BusinessPage = () => {
                 Galerie
               </span>
               <h2 className="section-title text-white">
-                Unsere <span className="highlight">Projekte</span>
+                Unsere <span className="text-gradient">Projekte</span>
               </h2>
               <p className="text-white/70 max-w-2xl mx-auto">
                 Unsere Galerie zeigt ausgewählte Projekte, die wir bereits für namhafte Weingüter und Restaurants realisiert haben. Entdecken Sie unsere maßgefertigten Tische, Theken und Regale, die in verschiedenen Gastronomie- und Hotelbetrieben zum Einsatz kommen. Jedes Möbelstück ist ein Unikat und erzählt die Geschichte des Weins, von dem es inspiriert wurde.
