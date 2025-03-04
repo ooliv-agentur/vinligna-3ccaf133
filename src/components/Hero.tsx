@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -98,14 +97,11 @@ const Hero = () => {
           die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
         </motion.p>
 
-        {/* Card container with consistent max-width */}
-        <motion.div
-          variants={scaleIn}
-          className="flex flex-col items-center w-full"
-          style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-        >
-          <div className="w-full max-w-5xl mx-auto">
-            {/* Top two tiles in a grid */}
+        <div className="w-full max-w-5xl mx-auto px-0">
+          <motion.div
+            variants={scaleIn}
+            className="w-full mb-10 md:mb-8"
+          >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-8 w-full">
               <div className="w-full">
                 <EntryCard 
@@ -127,8 +123,8 @@ const Hero = () => {
                 />
               </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
 
         <motion.div 
           variants={fadeIn}
