@@ -25,9 +25,6 @@ const TeamMember = ({ name, role, image, altText }: TeamMemberProps) => (
         <h3 className="text-2xl font-medium text-white mb-1">{name}</h3>
         <p className="text-wine mt-1 opacity-90">{role}</p>
         <div className="w-12 h-0.5 bg-wine mt-3 mb-3 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 delay-200"></div>
-        <p className="text-white/70 text-sm transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-300">
-          Experte mit Leidenschaft für Qualität und herausragendes Design
-        </p>
       </div>
     </div>
   </motion.div>
@@ -37,7 +34,7 @@ const TeamSection = () => {
   return (
     <section className="py-32 md:py-44 bg-black text-white overflow-hidden">
       <div className="container mx-auto px-6">
-        <div className="max-w-screen-xl mx-auto scale-110 transform origin-center">
+        <div className="max-w-screen-xl mx-auto scale-120 transform origin-center">
           {/* Section title and subtitle */}
           <motion.div
             variants={fadeIn}
@@ -62,7 +59,7 @@ const TeamSection = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             <TeamMember 
               name="Rüdiger Gries" 
