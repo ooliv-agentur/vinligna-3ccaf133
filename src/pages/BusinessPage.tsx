@@ -1,7 +1,6 @@
-
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Check, Table, Armchair, Layers } from 'lucide-react';
+import { ArrowRight, Check, Table, Armchair, Layers, GalleryVertical } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
@@ -242,6 +241,81 @@ const BusinessPage = () => {
         </div>
       </section>
 
+      {/* Gallery Section */}
+      <section className="py-24 md:py-32 bg-background overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="max-w-screen-xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="text-center mb-16 md:mb-24"
+            >
+              <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-4">
+                Unsere Projekte
+              </span>
+              <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
+                Unsere <span className="font-medium">Galerie</span>
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Unsere Galerie zeigt ausgewählte Projekte, die wir bereits für namhafte Weingüter und Restaurants realisiert haben. Entdecken Sie unsere maßgefertigten Tische, Theken und Regale, die in verschiedenen Gastronomie- und Hotelbetrieben zum Einsatz kommen. Jedes Möbelstück ist ein Unikat und erzählt die Geschichte des Weins, von dem es inspiriert wurde.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <GalleryItem 
+                image="/lovable-uploads/94f2d719-f448-460a-bee6-8ffd7d37af7c.png"
+                title="Weingut-Theke"
+                category="Verkostungsbereich"
+              />
+              <GalleryItem 
+                image="/lovable-uploads/ce069aff-5e1d-415f-adba-547b6495298d.png"
+                title="Weinfass-Tisch"
+                category="Restaurant"
+              />
+              <GalleryItem 
+                image="/lovable-uploads/87b6ac6c-025f-40d2-9b09-73f8ee6e25b8.png"
+                title="Barhocker-Set"
+                category="Weinbar"
+              />
+              <GalleryItem 
+                image="/lovable-uploads/e9d912cb-d45d-4016-8e8b-8250bd78de47.png"
+                title="Weinregal"
+                category="Vinothek"
+              />
+              <GalleryItem 
+                image="/lovable-uploads/bb8a99d9-97f3-42b4-85ad-94d0c5d74fff.png"
+                title="Besprechungstisch"
+                category="Weingut"
+              />
+              <GalleryItem 
+                image="/lovable-uploads/d5f56555-b294-42a9-b01c-5d95a80b0613.png"
+                title="Empfangstheke"
+                category="Hotellobby"
+              />
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="mt-12 text-center"
+            >
+              <a 
+                href="#contact" 
+                className="inline-flex items-center text-sm font-medium bg-foreground text-background py-3 px-6 rounded-lg hover:bg-foreground/90 transition-colors group"
+              >
+                <GalleryVertical className="w-4 h-4 mr-2" />
+                <span>Mehr Projekte entdecken</span>
+                <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+              </a>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Benefits Section */}
       <section className="py-24 md:py-32 bg-oak-light/5 overflow-hidden">
         <div className="container mx-auto px-6">
@@ -394,6 +468,36 @@ const BenefitItem = ({ title, description }: BenefitItemProps) => (
       <p className="text-muted-foreground text-sm">{description}</p>
     </div>
   </div>
+);
+
+interface GalleryItemProps {
+  image: string;
+  title: string;
+  category: string;
+}
+
+const GalleryItem = ({ image, title, category }: GalleryItemProps) => (
+  <motion.div 
+    whileInView={{ opacity: 1, y: 0 }}
+    initial={{ opacity: 0, y: 20 }}
+    transition={{ duration: 0.5 }}
+    viewport={{ once: true, margin: "-100px" }}
+    className="group cursor-pointer"
+  >
+    <div className="relative rounded-lg overflow-hidden shadow-sm transition-shadow duration-300 group-hover:shadow-md">
+      <div className="h-64 overflow-hidden">
+        <img 
+          src={image} 
+          alt={title} 
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+      </div>
+      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+        <h4 className="text-white font-medium">{title}</h4>
+        <p className="text-white/80 text-sm">{category}</p>
+      </div>
+    </div>
+  </motion.div>
 );
 
 export default BusinessPage;
