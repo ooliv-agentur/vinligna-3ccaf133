@@ -4,7 +4,6 @@ import { ArrowRight, Check, Wine, Heart, ShieldCheck, Table, BookOpen } from 'lu
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
-import Cta from '@/components/Cta';
 import ScrollToTop from '@/components/ScrollToTop';
 import TeamSection from '@/components/TeamSection';
 import ProductGallery from '@/components/ProductGallery';
@@ -307,16 +306,6 @@ const PrivatePage = () => {
                   title="Vielfältige Auswahl"
                   description="Ob Tische, Stühle, Sideboards oder kleine Accessoires – VINLIGNA bietet Ihnen eine Vielzahl an Produkten, die perfekt zu Ihrem Lebensstil und Ihrer Einrichtung passen."
                 />
-                
-                <div className="pt-4">
-                  <a 
-                    href="#contact" 
-                    className="inline-flex items-center text-sm font-medium bg-foreground text-background py-3 px-6 rounded-lg hover:bg-foreground/90 transition-colors group"
-                  >
-                    <span>Verwandeln Sie Ihre Räumlichkeiten</span>
-                    <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-                  </a>
-                </div>
               </div>
             </div>
           </div>
@@ -328,27 +317,6 @@ const PrivatePage = () => {
 
       {/* FAQ Section */}
       <Faq />
-
-      {/* CTA Section */}
-      <section className="py-20 bg-wine-light/10">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-light mb-6">
-              Verleihen Sie Ihrem Zuhause eine <span className="font-medium">besondere Note</span>
-            </h2>
-            <p className="text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Verleihen Sie Ihrem Zuhause eine besondere Note mit maßgefertigten Möbeln aus Fassdauben. Jedes Stück ist ein Unikat, das Ihre Leidenschaft für Wein und Design widerspiegelt. Kontaktieren Sie uns jetzt für eine unverbindliche Beratung und lassen Sie uns Ihre Vision verwirklichen.
-            </p>
-            <a 
-              href="#contact" 
-              className="inline-flex items-center text-sm font-medium bg-wine text-white py-3 px-6 rounded-lg hover:bg-wine-dark transition-colors group"
-            >
-              <span>Unverbindliche Beratung anfragen</span>
-              <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
-          </div>
-        </div>
-      </section>
 
       <Footer />
       <ScrollToTop />
