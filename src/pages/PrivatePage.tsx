@@ -386,7 +386,7 @@ interface ProductCategoryProps {
 }
 
 const ProductCategory = ({ icon, title, description, image }: ProductCategoryProps) => (
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center hover-scale">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start hover-scale">
     <div className="order-2 md:order-1">
       <div className="mb-4 bg-wine-light/20 w-12 h-12 rounded-full flex items-center justify-center text-wine">
         {icon}
