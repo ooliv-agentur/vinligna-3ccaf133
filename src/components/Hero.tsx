@@ -6,30 +6,15 @@ import { Link } from 'react-router-dom';
 const Hero = () => {
   return (
     <section className="relative min-h-[100vh] overflow-hidden flex flex-col items-center justify-center px-6 py-24 md:py-32 bg-black">
-      {/* Background Video with low opacity */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
-        <video 
-          autoPlay 
-          muted 
-          loop 
-          playsInline
-          className="absolute w-full h-full object-cover opacity-20"
-        >
-          <source src="/woodworking-sawdust.mp4" type="video/mp4" />
-          {/* Fallback for browsers that don't support video */}
-          Your browser does not support the video tag.
-        </video>
-      </div>
-
-      <div className="container relative z-10 mx-auto max-w-5xl text-center">
-        {/* Badge - simplified */}
+      <div className="container relative z-10 mx-auto max-w-5xl">
+        {/* Badge */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-block mb-8 px-3 py-1 bg-white/10 text-white text-xs tracking-widest uppercase border border-white/10"
+          className="inline-block mb-8 px-3 py-1 bg-white/10 text-white text-xs tracking-widest uppercase"
         >
-          Nachhaltige Eleganz
+          NACHHALTIGE ELEGANZ
         </motion.div>
 
         {/* Heading - more minimal */}
@@ -43,7 +28,7 @@ const Hero = () => {
           <span className="font-medium">recycelten Weinfässern</span>
         </motion.h1>
 
-        {/* Subheading - simplified */}
+        {/* Subheading */}
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -53,14 +38,14 @@ const Hero = () => {
           Wir verwandeln gebrauchte Barrique-Fässer in elegante, einzigartige Möbelstücke, die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
         </motion.p>
 
-        {/* Minimalist Entry Cards */}
+        {/* Entry Cards - redesigned to match reference */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto mb-20"
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto mb-20"
         >
-          {/* Business Entry Point - Minimalist Design */}
+          {/* Business Entry Point */}
           <EntryCard 
             title="Weingüter & Gastronomie"
             description="Maßgeschneiderte Lösungen für Ihre Marke"
@@ -69,7 +54,7 @@ const Hero = () => {
             delay={0.4}
           />
 
-          {/* Private Entry Point - Minimalist Design */}
+          {/* Private Entry Point */}
           <EntryCard 
             title="Weinliebhaber"
             description="Exklusive Designs für Ihr Zuhause"
@@ -79,7 +64,7 @@ const Hero = () => {
           />
         </motion.div>
 
-        {/* Scroll indicator - minimalist */}
+        {/* Scroll indicator */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -111,42 +96,44 @@ const EntryCard = ({ title, description, link, imageSrc, delay }: EntryCardProps
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, delay }}
       whileHover={{ 
-        scale: 1.02,
+        scale: 1.01,
         transition: { duration: 0.2 }
       }}
+      className="relative"
     >
       <Link 
         to={link} 
-        className="block h-full group relative"
+        className="block relative aspect-[4/3] overflow-hidden group border border-[#FF5733]" // Orange border from reference image
       >
-        {/* Card image with overlay */}
-        <div className="relative aspect-[4/3] rounded-md overflow-hidden">
-          <img 
-            src={imageSrc} 
-            alt={title} 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent" />
+        {/* Image */}
+        <img 
+          src={imageSrc} 
+          alt={title} 
+          className="w-full h-full object-cover"
+        />
+        
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20" />
+        
+        {/* Content layout similar to reference image */}
+        <div className="absolute inset-0 p-6 flex flex-col justify-between">
+          {/* Title area */}
+          <div>
+            <h3 className="text-2xl text-white font-light mb-1">{title}</h3>
+            <p className="text-white/70 text-sm">{description}</p>
+          </div>
           
-          {/* New hover effect: Reveal content with subtle slide and fade */}
-          <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
-            <div className="relative z-10">
-              <h3 className="text-2xl font-light text-white mb-1">{title}</h3>
-              <p className="text-white/70 mb-6 text-sm">{description}</p>
-              
-              <div className="flex items-center text-white text-sm font-light">
-                <span className="relative overflow-hidden">
-                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-0 translate-x-0">Entdecken</span>
-                  <span className="absolute bottom-0 left-0 w-0 h-px bg-white transition-all duration-300 group-hover:w-full"></span>
-                </span>
-                <motion.div
-                  initial={{ x: 0 }}
-                  className="ml-2 transition-all duration-300 group-hover:translate-x-1"
-                >
-                  <ArrowRight size={16} className="text-white" />
-                </motion.div>
-              </div>
-            </div>
+          {/* "Entdecken" with modern hover effect */}
+          <div className="flex items-center text-white text-sm mt-4">
+            <span className="relative">
+              <span className="block">Entdecken</span>
+              <span className="absolute bottom-0 left-0 w-0 h-px bg-white transition-all duration-300 ease-in-out group-hover:w-full"></span>
+            </span>
+            <motion.div 
+              className="ml-2 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0"
+            >
+              <ArrowRight size={16} />
+            </motion.div>
           </div>
         </div>
       </Link>
