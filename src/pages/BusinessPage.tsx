@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Factory, Building, Wine, GlassWater, Check } from 'lucide-react';
@@ -9,6 +8,7 @@ import Cta from '@/components/Cta';
 import ScrollToTop from '@/components/ScrollToTop';
 import { cn } from '@/lib/utils';
 import BusinessFaq from '@/components/BusinessFaq';
+import TeamSection from '@/components/TeamSection';
 
 const BusinessPage = () => {
   useEffect(() => {
@@ -143,6 +143,9 @@ const BusinessPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Team Section */}
+      <TeamSection />
 
       {/* Products Section */}
       <section className="py-24 md:py-32 bg-oak-light/5 overflow-hidden">
