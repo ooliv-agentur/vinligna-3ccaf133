@@ -172,7 +172,7 @@ const BusinessPage = () => {
                 icon={<Building className="w-6 h-6" />}
                 title="Weinregale und Präsentationsmöbel"
                 description="Unsere maßgeschneiderten Regale bieten Ihnen die Möglichkeit, Ihre Weinauswahl stilvoll und übersichtlich zu präsentieren. Diese exklusiven Möbelstücke sind ein Highlight in jeder Vinothek."
-                image="/project-b2b-3.jpg"
+                image="/lovable-uploads/e9d912cb-d45d-4016-8e8b-8250bd78de47.png"
               />
             </div>
             
