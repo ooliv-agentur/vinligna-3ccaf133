@@ -109,28 +109,24 @@ const EntryCard = ({ title, description, link, imageSrc, delay }: EntryCardProps
           <img 
             src={imageSrc} 
             alt={title} 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent" />
           
-          {/* New hover effect: Reveal content with subtle slide and fade */}
-          <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
-            <div className="relative z-10">
-              <h3 className="text-2xl font-light text-white mb-1">{title}</h3>
-              <p className="text-white/70 mb-6 text-sm">{description}</p>
-              
-              <div className="flex items-center text-white text-sm font-light">
-                <span className="relative overflow-hidden">
-                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-0 translate-x-0">Entdecken</span>
-                  <span className="absolute bottom-0 left-0 w-0 h-px bg-white transition-all duration-300 group-hover:w-full"></span>
-                </span>
-                <motion.div
-                  initial={{ x: 0 }}
-                  className="ml-2 transition-all duration-300 group-hover:translate-x-1"
-                >
-                  <ArrowRight size={16} className="text-white" />
-                </motion.div>
-              </div>
+          {/* Card content */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-left">
+            <h3 className="text-2xl font-light text-white mb-1">{title}</h3>
+            <p className="text-white/70 mb-6 text-sm">{description}</p>
+            
+            <div className="flex items-center text-white text-sm font-light group">
+              <span className="border-b border-white/30 group-hover:border-white transition-colors duration-300">Entdecken</span>
+              <motion.div
+                initial={{ x: 0 }}
+                whileHover={{ x: 5 }}
+                className="ml-2"
+              >
+                <ArrowRight size={16} className="text-white transition-transform duration-300 group-hover:translate-x-1" />
+              </motion.div>
             </div>
           </div>
         </div>
