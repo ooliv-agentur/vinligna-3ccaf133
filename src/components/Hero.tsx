@@ -98,13 +98,13 @@ const Hero = () => {
           die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
         </motion.p>
 
-        {/* Completely new tile container structure with identical tile styling */}
+        {/* Completely updated tile container structure with fixed image dimensions */}
         <motion.div
           variants={scaleIn}
           className="w-full max-w-5xl mx-auto mb-10 md:mb-8"
         >
           <div className="flex flex-col w-full items-center md:grid md:grid-cols-2 gap-10 md:gap-8">
-            <div className="w-full min-w-full max-w-none">
+            <div className="w-full min-w-full max-w-none p-0 m-0">
               <EntryCard 
                 title="Ich bin"
                 subtitle="Winzer, Gastronom oder Hotelier"
@@ -114,7 +114,7 @@ const Hero = () => {
               />
             </div>
             
-            <div className="w-full min-w-full max-w-none">
+            <div className="w-full min-w-full max-w-none p-0 m-0">
               <EntryCard 
                 title="Ich bin"
                 subtitle="Weinliebhaber"
@@ -174,20 +174,20 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
     <motion.div
       whileHover={{ y: -5 }}
       transition={{ type: "spring", stiffness: 300 }}
-      className="w-full h-full"
+      className="w-full min-w-full max-w-none flex flex-col p-0 m-0"
     >
       <Link 
         to={link} 
-        className="block h-full group relative"
+        className="block w-full min-w-full max-w-none group relative p-0 m-0"
       >
-        <div className="relative rounded-lg overflow-hidden h-full">
-          <div className="block md:hidden w-full h-full">
-            <div className="aspect-[16/14] w-full">
+        <div className="relative rounded-lg overflow-hidden w-full min-w-full max-w-none p-0 m-0">
+          <div className="block md:hidden w-full min-w-full max-w-none p-0 m-0">
+            <div className="aspect-[16/14] w-full min-w-full max-w-none p-0 m-0">
               <motion.div
                 initial={{ filter: "blur(10px)" }}
                 animate={{ filter: "blur(0px)" }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="absolute inset-0"
+                className="absolute inset-0 w-full h-full p-0 m-0"
               >
                 <img 
                   src={imageSrc} 
@@ -228,13 +228,13 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
             </div>
           </div>
 
-          <div className="hidden md:block h-full">
-            <div className="aspect-[16/12] h-full">
+          <div className="hidden md:block h-full w-full min-w-full max-w-none p-0 m-0">
+            <div className="aspect-[16/12] h-full w-full min-w-full max-w-none p-0 m-0">
               <motion.div
                 initial={{ filter: "blur(10px)" }}
                 animate={{ filter: "blur(0px)" }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="absolute inset-0"
+                className="absolute inset-0 w-full h-full p-0 m-0"
               >
                 <img 
                   src={imageSrc} 
