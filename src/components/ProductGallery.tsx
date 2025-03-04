@@ -38,7 +38,7 @@ const ProductGallery = () => {
             <span className="inline-block text-sm font-medium tracking-widest uppercase text-wine mb-4">
               Unsere Produkte
             </span>
-            <h2 className="text-4xl md:text-5xl font-light mb-6 tracking-wider">
+            <h2 className="text-4xl md:text-5xl font-light mb-6">
               Handwerkskunst aus <span className="text-wine">Eichenholz</span>
             </h2>
             <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
