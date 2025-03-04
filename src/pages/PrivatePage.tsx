@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, Wine, Heart, ShieldCheck, Table, BookOpen } from 'lucide-react';
@@ -93,7 +92,7 @@ const PrivatePage = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-base md:text-lg text-white/90 max-w-2xl mx-auto mb-8"
           >
-            Bringen Sie die Eleganz und Geschichte der Weinkultur in Ihr Zuhause mit unseren handgefertigten Unikaten, die Nachhaltigkeit und Luxus perfekt verbinden.
+            Bringen Sie die Eleganz und Geschichte der Weinkultur in Ihr Zuhause mit unseren handgefertigten Unikaten, die Nachhaltigkeit und Luxus vereinen.
           </motion.p>
         </div>
       </section>
@@ -175,10 +174,6 @@ const PrivatePage = () => {
                 icon={<Table className="w-6 h-6" />}
                 title="Tische aus Fassdauben"
                 description="Unsere handgefertigten Tische bringen den Charme und die Geschichte des Weins in Ihr Zuhause. Jeder Tisch ist ein Unikat, gefertigt aus recycelten Weinfässern, die zuvor für die Reifung edler Weine verwendet wurden. Die rustikale, aber elegante Ästhetik dieser Möbelstücke macht sie ideal für Weinverkostungen oder gesellige Abende."
-                features={[
-                  "Rustikal und elegant, handgefertigt aus recycelten Weinfässern",
-                  "Perfekt für Esszimmer, Weinkeller oder als luxuriöser Akzent in Ihrem Wohnbereich"
-                ]}
                 image="/lovable-uploads/ce069aff-5e1d-415f-adba-547b6495298d.png"
               />
               
@@ -186,10 +181,6 @@ const PrivatePage = () => {
                 icon={<BookOpen className="w-6 h-6" />}
                 title="Sideboards und Regale"
                 description="Unsere maßgefertigten Sideboards und Regale vereinen Ästhetik und Funktionalität. Sie bieten nicht nur Stauraum, sondern setzen auch stilvolle Akzente in Ihrem Zuhause. Die natürliche Maserung des Eichenholzes sorgt dafür, dass jedes Möbelstück einzigartig ist."
-                features={[
-                  "Zeitlos und elegant, perfekt für die Präsentation von Weinen oder dekorativen Gegenständen",
-                  "Ideal für Weinkeller, Wohnzimmer oder Esszimmer"
-                ]}
                 image="/lovable-uploads/e9d912cb-d45d-4016-8e8b-8250bd78de47.png"
               />
               
@@ -197,10 +188,6 @@ const PrivatePage = () => {
                 icon={<Table className="w-6 h-6" />}
                 title="Stühle und Sitzmöbel"
                 description="Unsere Stühle und Barhocker aus Fassdauben verbinden Komfort mit einem unverwechselbaren Design. Jedes Möbelstück erzählt die Geschichte des Weins und verleiht Ihrem Raum eine warme, einladende Atmosphäre."
-                features={[
-                  "Modern und individuell, handgefertigt aus Fassdauben",
-                  "Perfekt für Essbereiche, Küchen oder als Design-Highlight in Ihrem Weinkeller"
-                ]}
                 image="/lovable-uploads/87b6ac6c-025f-40d2-9b09-73f8ee6e25b8.png"
               />
               
@@ -208,10 +195,6 @@ const PrivatePage = () => {
                 icon={<Wine className="w-6 h-6" />}
                 title="Accessoires und Geschenkartikel"
                 description="Neben Möbelstücken bieten wir auch eine Auswahl an kleineren Accessoires, die sich perfekt als stilvolle Dekoration oder als Geschenke für Weinliebhaber eignen. Jedes Accessoire wird aus recycelten Weinfässern gefertigt und verleiht Ihrem Zuhause das gewisse Etwas."
-                features={[
-                  "Weinkühler, Schneidbretter, Ablageschalen, Kerzenständer",
-                  "Ideal als Geschenk oder zur Verschönerung Ihrer Wohnräume"
-                ]}
                 image="/lovable-uploads/bb8a99d9-97f3-42b4-85ad-94d0c5d74fff.png"
               />
             </div>
@@ -369,11 +352,7 @@ const PrivatePage = () => {
                 answer="Unsere Möbel entstehen durch Upcycling alter Weinfässer, die sonst entsorgt würden. So erhalten sie ein zweites Leben als stilvolle Designmöbel und tragen zur Ressourcenschonung und Nachhaltigkeit bei."
               />
               <FaqItem 
-                question="Sind Möbel aus Weinfässern für den Außenbereich geeignet?"
-                answer="Ja! Einige unserer Möbel sind für den Garten oder die Terrasse konzipiert. Sie erhalten eine spezielle wetterfeste Versiegelung, um sie vor Feuchtigkeit und UV-Strahlung zu schützen."
-              />
-              <FaqItem 
-                question="Kann ich Möbel aus meinem eigenen Weinfass anfertigen lassen?"
+                question="Sind Möbel aus meinem eigenen Weinfass anfertigen lassen?"
                 answer="Ja, wir bieten individuelle Maßanfertigungen an. Wenn Sie ein besonderes Fass besitzen, können wir daraus ein einzigartiges Möbelstück für Ihren Weinkeller oder Wohnbereich gestalten."
               />
             </div>
@@ -437,11 +416,10 @@ interface ProductCategoryProps {
   icon: React.ReactNode;
   title: string;
   description: string;
-  features: string[];
   image: string;
 }
 
-const ProductCategory = ({ icon, title, description, features, image }: ProductCategoryProps) => (
+const ProductCategory = ({ icon, title, description, image }: ProductCategoryProps) => (
   <motion.div 
     whileInView={{ opacity: 1, y: 0 }}
     initial={{ opacity: 0, y: 30 }}
@@ -455,14 +433,6 @@ const ProductCategory = ({ icon, title, description, features, image }: ProductC
       </div>
       <h3 className="text-xl font-medium mb-3">{title}</h3>
       <p className="text-muted-foreground mb-4">{description}</p>
-      <ul className="space-y-2">
-        {features.map((feature, index) => (
-          <li key={index} className="flex items-start">
-            <span className="text-wine flex-shrink-0 mr-2">•</span> 
-            <span className="text-sm text-muted-foreground">{feature}</span>
-          </li>
-        ))}
-      </ul>
     </div>
     <div className="order-1 md:order-2">
       <div className="relative rounded-lg overflow-hidden shadow-lg h-64">
