@@ -3,11 +3,7 @@ import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
-import BusinessSection from '@/components/BusinessSection';
-import PrivateSection from '@/components/PrivateSection';
-import Contact from '@/components/Contact';
 import Cta from '@/components/Cta';
-import Faq from '@/components/Faq';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 
@@ -46,11 +42,7 @@ const Index = () => {
       <Navbar />
       <Hero />
       <About />
-      <BusinessSection />
-      <PrivateSection />
       <Cta />
-      <Contact />
-      <Faq />
       <Footer />
       <ScrollToTop />
     </div>

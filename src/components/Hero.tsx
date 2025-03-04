@@ -1,6 +1,7 @@
 
 import { motion } from 'framer-motion';
 import { ArrowRight, Building, Wine } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const Hero = () => {
@@ -56,21 +57,23 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col md:flex-row gap-4 justify-center mb-16"
         >
-          <CustomerButton 
-            href="#business"
-            title="Für Weingüter & Gastronomie"
-            description="Maßgeschneiderte Lösungen für Weingüter & Hotellerie"
-            icon={<Building className="w-6 h-6" />}
-            variant="business"
-          />
+          <Link to="/business">
+            <CustomerButton 
+              title="Für Weingüter & Gastronomie"
+              description="Maßgeschneiderte Lösungen für Weingüter & Hotellerie"
+              icon={<Building className="w-6 h-6" />}
+              variant="business"
+            />
+          </Link>
           
-          <CustomerButton 
-            href="#private"
-            title="Für Weinliebhaber"
-            description="Exklusive Möbel für Weinenthusiasten"
-            icon={<Wine className="w-6 h-6" />}
-            variant="private"
-          />
+          <Link to="/private">
+            <CustomerButton 
+              title="Für Weinliebhaber"
+              description="Exklusive Möbel für Weinenthusiasten"
+              icon={<Wine className="w-6 h-6" />}
+              variant="private"
+            />
+          </Link>
         </motion.div>
 
         {/* Scroll indicator - Repositioned above the fold */}
@@ -91,17 +94,15 @@ const Hero = () => {
 };
 
 interface CustomerButtonProps {
-  href: string;
   title: string;
   description: string;
   icon: React.ReactNode;
   variant: 'business' | 'private';
 }
 
-const CustomerButton = ({ href, title, description, icon, variant }: CustomerButtonProps) => {
+const CustomerButton = ({ title, description, icon, variant }: CustomerButtonProps) => {
   return (
-    <a 
-      href={href}
+    <div 
       className={cn(
         "group relative flex flex-col items-start text-left p-6 md:p-8 rounded-lg transition-all duration-300 hover-lift overflow-hidden border w-full max-w-md",
         variant === 'business' 
@@ -123,7 +124,7 @@ const CustomerButton = ({ href, title, description, icon, variant }: CustomerBut
         <span>Mehr erfahren</span>
         <ArrowRight className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" />
       </div>
-    </a>
+    </div>
   );
 };
 
