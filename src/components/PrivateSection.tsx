@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { ArrowRight, Home, Gift, Armchair } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -132,6 +133,7 @@ const CategoryCard = ({ icon, title, description, color, textColor }: CategoryCa
   </div>
 );
 
+// B2C-specific benefits for private customers
 const products = [
   { 
     id: 1, 
