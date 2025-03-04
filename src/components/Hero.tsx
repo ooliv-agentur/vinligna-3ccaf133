@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -99,7 +100,7 @@ const Hero = () => {
 
         <motion.div
           variants={scaleIn}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full"
+          className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-8 w-full max-w-[90%] mx-auto md:max-w-full"
         >
           <EntryCard 
             title="Ich bin"
