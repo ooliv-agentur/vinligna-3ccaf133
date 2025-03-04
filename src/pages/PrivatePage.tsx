@@ -8,6 +8,7 @@ import ScrollToTop from '@/components/ScrollToTop';
 import TeamSection from '@/components/TeamSection';
 import ProductGallery from '@/components/ProductGallery';
 import Faq from '@/components/Faq';
+import ProductionProcess from '@/components/ProductionProcess';
 import { cn } from '@/lib/utils';
 
 const PrivatePage = () => {
@@ -206,52 +207,7 @@ const PrivatePage = () => {
       <ProductGallery />
       
       {/* Process Section */}
-      <section className="py-24 md:py-32 bg-background overflow-hidden">
-        <div className="container mx-auto px-6">
-          <div className="max-w-screen-xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="text-center mb-16 md:mb-24"
-            >
-              <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-4">
-                Unser Produktionsprozess
-              </span>
-              <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
-                Vom Fass zum <span className="font-medium">Möbelstück</span>
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Entdecken Sie, wie wir hochwertige Barrique-Fässer in exklusive Möbelstücke für Ihr Zuhause verwandeln.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <ProcessStep 
-                number="01"
-                title="Fassauswahl"
-                description="Wir wählen sorgfältig alte Barrique-Fässer aus Eichenholz aus, die zuvor in Weingütern zur Reifung edler Weine genutzt wurden. Jedes Fass bringt seine eigene Geschichte und individuelle Holzmaserung mit."
-              />
-              <ProcessStep 
-                number="02"
-                title="Verarbeitung"
-                description="Die Fässer werden in Fassdauben zerlegt, gereinigt und für die Fertigung vorbereitet. Dabei wird die einzigartige Struktur des Holzes bewahrt, um jedem Möbelstück eine unverwechselbare Optik zu verleihen."
-              />
-              <ProcessStep 
-                number="03"
-                title="Maßanfertigung"
-                description="Sie bestimmen das Design, die Größe und das Finish Ihres Möbelstücks. Jedes Stück wird individuell für Sie gefertigt und genau auf Ihre Bedürfnisse und Wünsche abgestimmt."
-              />
-              <ProcessStep 
-                number="04"
-                title="Endveredelung"
-                description="Jedes Möbelstück wird poliert und erhält eine hochwertige Veredelung, die die natürliche Schönheit des Holzes unterstreicht. Das fertige Möbelstück erzählt die Geschichte des Weins und bringt diese in Ihr Zuhause."
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <ProductionProcess isB2C={true} />
 
       {/* Benefits Section */}
       <section className="py-24 md:py-32 bg-oak-light/5 overflow-hidden">
