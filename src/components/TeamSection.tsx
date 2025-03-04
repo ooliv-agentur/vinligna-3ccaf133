@@ -14,20 +14,16 @@ const TeamMember = ({ name, role, image, altText }: TeamMemberProps) => (
     variants={fadeIn}
     className="group relative"
   >
-    <div className="aspect-[4/5] overflow-hidden rounded-lg bg-white/5 backdrop-blur-sm border border-wine/20 shadow-xl shadow-black/20 transform transition-all duration-500 group-hover:scale-110">
+    <div className="aspect-[4/5] overflow-hidden rounded-lg bg-white/5 backdrop-blur-sm border border-white/10">
       <img 
         src={image} 
         alt={altText || `${name} - ${role}`} 
-        className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+        className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-500"></div>
-      <div className="absolute inset-0 flex flex-col justify-end p-6 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-        <h3 className="text-2xl font-medium text-white mb-1">{name}</h3>
-        <p className="text-wine mt-1 opacity-90">{role}</p>
-        <div className="w-12 h-0.5 bg-wine mt-3 mb-3 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 delay-200"></div>
-        <p className="text-white/70 text-sm transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-300">
-          Experte mit Leidenschaft für Qualität und herausragendes Design
-        </p>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+      <div className="absolute inset-0 flex flex-col justify-end p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+        <h3 className="text-xl font-medium text-white">{name}</h3>
+        <p className="text-wine mt-1">{role}</p>
       </div>
     </div>
   </motion.div>
@@ -37,7 +33,7 @@ const TeamSection = () => {
   return (
     <section className="py-32 md:py-44 bg-black text-white overflow-hidden">
       <div className="container mx-auto px-6">
-        <div className="max-w-screen-xl mx-auto scale-110 transform origin-center">
+        <div className="max-w-screen-xl mx-auto">
           {/* Section title and subtitle */}
           <motion.div
             variants={fadeIn}
@@ -62,7 +58,7 @@ const TeamSection = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
           >
             <TeamMember 
               name="Rüdiger Gries" 
