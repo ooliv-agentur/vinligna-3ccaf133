@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { ArrowRight, Building, Wine } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -8,8 +9,8 @@ const Hero = () => {
       {/* Background image with overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/lovable-uploads/befad945-4608-49fa-ab3a-639ae22cff0f.png"
-          alt="Weinfass-Hintergrund"
+          src="/lovable-uploads/bd5f84a4-a4f9-423f-88f7-1fce764501b2.png"
+          alt="Weinfass-Workshop mit historischer Wandkunst"
           className="w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-black/40" /> {/* Overlay for better text readability */}
