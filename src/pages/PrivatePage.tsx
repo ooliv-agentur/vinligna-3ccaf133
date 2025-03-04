@@ -323,6 +323,9 @@ const PrivatePage = () => {
         </div>
       </section>
 
+      {/* Contact Section */}
+      <Contact />
+
       {/* FAQ Section */}
       <Faq />
 
@@ -347,7 +350,6 @@ const PrivatePage = () => {
         </div>
       </section>
 
-      <Contact />
       <Footer />
       <ScrollToTop />
     </div>
