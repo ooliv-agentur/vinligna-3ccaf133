@@ -73,7 +73,7 @@ const About = () => {
                 className="absolute -bottom-8 -right-8 w-48 h-48 md:w-64 md:h-64 rounded-lg overflow-hidden shadow-xl border border-white/20"
               >
                 <img 
-                  src="/about-detail.jpg" 
+                  src="/lovable-uploads/e0b43253-a61b-417b-ae4e-62e3d7bc17d1.png" 
                   alt="Barrel detail craftsmanship" 
                   className="w-full h-full object-cover"
                 />
