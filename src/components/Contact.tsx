@@ -48,11 +48,11 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-32 md:py-44 bg-background overflow-hidden relative">
+    <section id="contact" className="py-32 md:py-44 bg-black overflow-hidden relative">
       {/* Background pattern */}
       <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
-        <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-wine/10 to-transparent"></div>
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-oak/10 to-transparent"></div>
+        <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-wine/20 to-transparent"></div>
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-oak/20 to-transparent"></div>
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
@@ -66,10 +66,10 @@ const Contact = () => {
           <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-4">
             Kontakt
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 leading-tight text-white">
             Lassen Sie uns ins <span className="font-medium">Gespräch</span> kommen
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-white/70 text-lg max-w-2xl mx-auto">
             Ob Sie ein maßgeschneidertes Möbelstück suchen oder Fragen zu unseren Produkten haben,
             wir sind für Sie da.
           </p>
@@ -82,14 +82,14 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="lg:col-span-3 bg-black/5 backdrop-blur-sm rounded-3xl p-10"
+            className="lg:col-span-3 bg-white/5 backdrop-blur-sm rounded-3xl p-10"
           >
             <form onSubmit={handleSubmit} className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label 
                     htmlFor="name" 
-                    className="block text-sm font-medium text-foreground/80"
+                    className="block text-sm font-medium text-white/80"
                   >
                     Name
                   </label>
@@ -100,14 +100,14 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-foreground/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-wine/30 transition-all"
+                    className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-wine/30 transition-all text-white"
                     placeholder="Ihr vollständiger Name"
                   />
                 </div>
                 <div className="space-y-2">
                   <label 
                     htmlFor="email" 
-                    className="block text-sm font-medium text-foreground/80"
+                    className="block text-sm font-medium text-white/80"
                   >
                     E-Mail
                   </label>
@@ -118,7 +118,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-foreground/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-wine/30 transition-all"
+                    className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-wine/30 transition-all text-white"
                     placeholder="ihre.email@beispiel.de"
                   />
                 </div>
@@ -128,7 +128,7 @@ const Contact = () => {
                 <div className="space-y-2">
                   <label 
                     htmlFor="phone" 
-                    className="block text-sm font-medium text-foreground/80"
+                    className="block text-sm font-medium text-white/80"
                   >
                     Telefon (Optional)
                   </label>
@@ -138,14 +138,14 @@ const Contact = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-foreground/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-wine/30 transition-all"
+                    className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-wine/30 transition-all text-white"
                     placeholder="+49 123 456 7890"
                   />
                 </div>
                 <div className="space-y-2">
                   <label 
                     htmlFor="interest" 
-                    className="block text-sm font-medium text-foreground/80"
+                    className="block text-sm font-medium text-white/80"
                   >
                     Interesse
                   </label>
@@ -154,8 +154,8 @@ const Contact = () => {
                     name="interest"
                     value={formData.interest}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-foreground/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-wine/30 transition-all appearance-none"
-                    style={{ backgroundImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%236b7280' viewBox='0 0 16 16'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 6 4 4 4-4'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', backgroundSize: '1rem' }}
+                    className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-wine/30 transition-all appearance-none text-white"
+                    style={{ backgroundImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23ffffff' viewBox='0 0 16 16'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 6 4 4 4-4'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', backgroundSize: '1rem' }}
                   >
                     <option value="business">Businesslösungen</option>
                     <option value="private">Privatkollektion</option>
@@ -168,7 +168,7 @@ const Contact = () => {
               <div className="space-y-2">
                 <label 
                   htmlFor="message" 
-                  className="block text-sm font-medium text-foreground/80"
+                  className="block text-sm font-medium text-white/80"
                 >
                   Nachricht
                 </label>
@@ -179,7 +179,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={4}
-                  className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-foreground/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-wine/30 transition-all resize-none"
+                  className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-wine/30 transition-all resize-none text-white"
                   placeholder="Beschreiben Sie Ihr Projekt oder Ihre Anfrage..."
                 />
               </div>
@@ -221,8 +221,8 @@ const Contact = () => {
             className="lg:col-span-2 space-y-8"
           >
             {/* Contact Info Card */}
-            <div className="bg-black/5 backdrop-blur-sm rounded-3xl p-8">
-              <h3 className="text-xl font-light mb-6">Kontaktinformationen</h3>
+            <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8">
+              <h3 className="text-xl font-light mb-6 text-white">Kontaktinformationen</h3>
               <div className="space-y-4 text-sm">
                 <div className="flex items-start">
                   <div className="w-6 h-6 mt-0.5 mr-3 flex items-center justify-center rounded-full bg-wine/10">
@@ -231,7 +231,7 @@ const Contact = () => {
                     </svg>
                   </div>
                   <div>
-                    <p className="font-medium mb-1">E-Mail</p>
+                    <p className="font-medium mb-1 text-white">E-Mail</p>
                     <a href="mailto:info@vinligna.com" className="text-wine hover:underline">info@vinligna.com</a>
                   </div>
                 </div>
@@ -243,8 +243,8 @@ const Contact = () => {
                     </svg>
                   </div>
                   <div>
-                    <p className="font-medium mb-1">Telefon</p>
-                    <a href="tel:+4963623094990" className="hover:text-wine">+49 6362 309 49 90</a>
+                    <p className="font-medium mb-1 text-white">Telefon</p>
+                    <a href="tel:+4963623094990" className="text-white/80 hover:text-wine">+49 6362 309 49 90</a>
                   </div>
                 </div>
                 
@@ -256,14 +256,14 @@ const Contact = () => {
                     </svg>
                   </div>
                   <div>
-                    <p className="font-medium mb-1">Werkstattadresse</p>
-                    <address className="not-italic">
+                    <p className="font-medium mb-1 text-white">Werkstattadresse</p>
+                    <address className="not-italic text-white/80">
                       VinLignum Holzmanufaktur GmbH & Co. KG<br />
                       Industriestraße 19<br />
                       67821 Alsenz<br />
                       Deutschland
                     </address>
-                    <p className="text-xs text-muted-foreground mt-2">Besuche nur nach Vereinbarung</p>
+                    <p className="text-xs text-white/50 mt-2">Besuche nur nach Vereinbarung</p>
                   </div>
                 </div>
               </div>
@@ -271,14 +271,14 @@ const Contact = () => {
             
             {/* Benefits Card */}
             <div className="bg-wine/5 backdrop-blur-sm rounded-3xl p-8">
-              <h3 className="text-xl font-light mb-6">Warum VINLIGNA?</h3>
+              <h3 className="text-xl font-light mb-6 text-white">Warum VINLIGNA?</h3>
               <ul className="space-y-3">
                 {benefits.slice(0, 4).map((benefit, index) => (
                   <li key={index} className="flex items-start">
                     <div className="mt-0.5 mr-3 flex-shrink-0 w-5 h-5 bg-wine rounded-full flex items-center justify-center">
                       <Check className="text-white w-3 h-3" />
                     </div>
-                    <p className="text-sm">{benefit}</p>
+                    <p className="text-sm text-white/80">{benefit}</p>
                   </li>
                 ))}
               </ul>
