@@ -104,6 +104,16 @@ const Hero = () => {
           die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
         </motion.p>
 
+        {/* Added selection guidance text */}
+        <motion.div
+          variants={itemVariants} 
+          className="text-center mb-6"
+        >
+          <span className="text-wine text-xl font-medium">Wählen Sie Ihren Bereich</span>
+          <div className="w-16 h-0.5 bg-wine mx-auto mt-2 mb-4"></div>
+          <p className="text-white/70">Bitte wählen Sie aus, ob Sie als Unternehmen oder Privatperson interessiert sind</p>
+        </motion.div>
+
         {/* Entry Cards - full width, larger and with magnetic hover effect */}
         <motion.div
           variants={scaleIn}
