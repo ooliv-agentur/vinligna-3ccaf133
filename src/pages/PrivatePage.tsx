@@ -8,6 +8,7 @@ import Cta from '@/components/Cta';
 import ScrollToTop from '@/components/ScrollToTop';
 import TeamSection from '@/components/TeamSection';
 import ProductGallery from '@/components/ProductGallery';
+import Faq from '@/components/Faq';
 import { cn } from '@/lib/utils';
 
 const PrivatePage = () => {
@@ -323,32 +324,7 @@ const PrivatePage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-oak-light/10">
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl font-light mb-12 text-center">Häufig gestellte <span className="font-medium">Fragen</span></h2>
-            
-            <div className="space-y-6">
-              <FaqItem 
-                question="Was sind Möbel aus Weinfässern?"
-                answer="Möbel aus Weinfässern sind handgefertigte Unikate, die aus recycelten Barrique-Fässern gefertigt werden. Sie bringen den Charakter und die Geschichte des Weins in Ihr Zuhause und verbinden rustikalen Charme mit exklusivem Design."
-              />
-              <FaqItem 
-                question="Welche Möbel aus Weinfässern gibt es bei VINLIGNA?"
-                answer="Unser Sortiment umfasst Tische, Stühle, Regale, Sideboards und Dekorationsartikel. Jedes Stück wird nach Ihren Wünschen gestaltet und kann perfekt in Weinkeller, Wohnräume oder Esszimmer integriert werden."
-              />
-              <FaqItem 
-                question="Warum sind Möbel aus Weinfässern nachhaltig?"
-                answer="Unsere Möbel entstehen durch Upcycling alter Weinfässer, die sonst entsorgt würden. So erhalten sie ein zweites Leben als stilvolle Designmöbel und tragen zur Ressourcenschonung und Nachhaltigkeit bei."
-              />
-              <FaqItem 
-                question="Sind Möbel aus meinem eigenen Weinfass anfertigen lassen?"
-                answer="Ja, wir bieten individuelle Maßanfertigungen an. Wenn Sie ein besonderes Fass besitzen, können wir daraus ein einzigartiges Möbelstück für Ihren Weinkeller oder Wohnbereich gestalten."
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <Faq />
 
       {/* CTA Section */}
       <section className="py-20 bg-wine-light/10">
@@ -453,24 +429,6 @@ const BenefitItem = ({ title, description }: BenefitItemProps) => (
       <p className="text-muted-foreground text-sm">{description}</p>
     </div>
   </div>
-);
-
-interface FaqItemProps {
-  question: string;
-  answer: string;
-}
-
-const FaqItem = ({ question, answer }: FaqItemProps) => (
-  <motion.div 
-    whileInView={{ opacity: 1, y: 0 }}
-    initial={{ opacity: 0, y: 20 }}
-    transition={{ duration: 0.5 }}
-    viewport={{ once: true, margin: "-100px" }}
-    className="bg-white rounded-lg p-5 shadow-sm"
-  >
-    <h4 className="font-medium mb-2">{question}</h4>
-    <p className="text-sm text-muted-foreground">{answer}</p>
-  </motion.div>
 );
 
 export default PrivatePage;
