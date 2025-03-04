@@ -1,6 +1,7 @@
 
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import TextArrowButton from '../TextArrowButton';
 
 const HeroSection = () => {
   return (
@@ -45,14 +46,9 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
+          className="text-center"
         >
-          <a 
-            href="#contact" 
-            className="inline-flex items-center justify-center bg-wine hover:bg-wine-light text-white px-8 py-4 rounded-md transition-colors duration-300 group"
-          >
-            <span>Jetzt anfragen</span>
-            <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-          </a>
+          <TextArrowButton text="Jetzt anfragen" href="#contact" />
         </motion.div>
       </div>
 

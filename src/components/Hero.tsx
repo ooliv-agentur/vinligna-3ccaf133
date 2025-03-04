@@ -1,7 +1,7 @@
-
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import TextArrowButton from './TextArrowButton';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -230,22 +230,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                 <h2 className="text-2xl font-medium text-white mb-3">{subtitle}</h2>
                 <p className="text-white/70 mb-6 text-base font-light">{description}</p>
                 
-                <div className="flex items-center text-white text-base font-light">
-                  <span className="relative group-hover:text-wine transition-colors duration-300">
-                    Entdecken
-                    <motion.span
-                      className="absolute bottom-0 left-0 w-full h-[1px] bg-white/30"
-                      whileHover={{ scaleX: 1 }}
-                      initial={{ scaleX: 0 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </span>
-                  <motion.div
-                    className="ml-3"
-                  >
-                    <ArrowRight size={18} className="text-wine" />
-                  </motion.div>
-                </div>
+                <TextArrowButton text="Entdecken" href={link} />
               </div>
             </div>
           </div>
@@ -285,37 +270,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                 <h2 className="text-2xl sm:text-3xl font-medium text-white mb-3">{subtitle}</h2>
                 <p className="text-white/70 mb-6 sm:mb-8 text-base font-light">{description}</p>
                 
-                <div className="flex items-center text-white text-base font-light overflow-hidden relative">
-                  <span className="relative group-hover:text-wine transition-colors duration-300">
-                    Entdecken
-                    <motion.span
-                      className="absolute bottom-0 left-0 w-full h-[1px] bg-white/30"
-                      whileHover={{ scaleX: 1 }}
-                      initial={{ scaleX: 0 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </span>
-                  <motion.div
-                    initial={{ x: 0 }}
-                    whileHover={{ x: 10 }}
-                    animate={{ x: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="ml-3"
-                  >
-                    <motion.div
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ 
-                        duration: 1.5, 
-                        repeat: Infinity, 
-                        repeatType: "loop", 
-                        ease: "easeInOut",
-                        repeatDelay: 1
-                      }}
-                    >
-                      <ArrowRight size={18} className="text-wine" />
-                    </motion.div>
-                  </motion.div>
-                </div>
+                <TextArrowButton text="Entdecken" href={link} />
               </div>
             </div>
           </div>
