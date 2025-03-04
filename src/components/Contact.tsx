@@ -66,7 +66,7 @@ const Contact = () => {
           <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-4">
             Kontakt
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 leading-tight text-white">
+          <h2 className="text-4xl md:text-5xl font-light mb-8 leading-tight text-white">
             Lassen Sie uns ins <span className="font-medium">Gespräch</span> kommen
           </h2>
           <p className="text-white/70 text-lg max-w-2xl mx-auto">
