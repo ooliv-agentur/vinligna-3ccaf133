@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -54,7 +53,7 @@ const Hero = () => {
       />
 
       <motion.div 
-        className="container z-10 mx-auto max-w-6xl flex flex-col h-full pt-12 md:pt-16"
+        className="container z-10 mx-auto max-w-6xl flex flex-col h-full pt-6 md:pt-8"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -100,7 +99,7 @@ const Hero = () => {
 
         <motion.div
           variants={scaleIn}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 w-full"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full"
         >
           <EntryCard 
             title="Ich bin"
@@ -222,7 +221,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
           </div>
 
           <div className="hidden md:block h-full">
-            <div className="aspect-[16/14] h-full">
+            <div className="aspect-[16/12] h-full">
               <motion.div
                 initial={{ filter: "blur(10px)" }}
                 animate={{ filter: "blur(0px)" }}
