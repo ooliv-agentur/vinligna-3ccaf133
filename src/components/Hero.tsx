@@ -42,7 +42,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-base md:text-lg text-white/90 max-w-2xl mx-auto mb-12"
+          className="text-base md:text-lg text-white/90 max-w-2xl mx-auto mb-8"
         >
           Wir verwandeln gebrauchte Barrique-Fässer in elegante, einzigartige Möbelstücke, die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
         </motion.p>
@@ -52,7 +52,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col md:flex-row gap-4 justify-center"
+          className="flex flex-col md:flex-row gap-4 justify-center mb-16"
         >
           <CustomerButton 
             href="#business"
@@ -71,12 +71,12 @@ const Hero = () => {
           />
         </motion.div>
 
-        {/* Scroll indicator */}
+        {/* Scroll indicator - Repositioned above the fold */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+          className="flex flex-col items-center"
         >
           <span className="text-white/70 text-sm mb-2">Scrollen Sie, um mehr zu entdecken</span>
           <div className="w-0.5 h-12 bg-white/20 relative overflow-hidden">
