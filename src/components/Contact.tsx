@@ -228,7 +228,7 @@ const Contact = () => {
                   <ul className="space-y-3">
                     {benefits.map((benefit, index) => (
                       <li key={index} className="flex items-start">
-                        <div className="mt-1 mr-3 flex-shrink-0 w-5 h-5 bg-wine rounded-full flex items-center justify-center">
+                        <div className="mt-0.5 mr-3 flex-shrink-0 w-5 h-5 bg-wine rounded-full flex items-center justify-center">
                           <Check className="text-white w-3 h-3" />
                         </div>
                         <p className="text-muted-foreground text-sm">{benefit}</p>
