@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Check, Table, Armchair, Layers } from 'lucide-react';
@@ -54,7 +55,8 @@ const BusinessPage = () => {
     <div className="min-h-screen overflow-x-hidden bg-black">
       <Navbar />
       
-      <section className="relative min-h-[90vh] flex items-center justify-center px-6 pt-32 pb-20 overflow-hidden bg-black">
+      {/* Hero Section */}
+      <section className="relative h-[90vh] flex items-center justify-center px-6 pt-32 pb-20 overflow-hidden bg-black">
         <div className="container relative z-10 mx-auto max-w-5xl text-center">
           <motion.div 
             initial={{ opacity: 0 }}
@@ -76,7 +78,7 @@ const BusinessPage = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="font-normal block mt-4 text-[#c69c6d]"
+              className="font-normal block mt-4 text-wine"
             >
               Weingüter, Gastronomie & Hotellerie
             </motion.span>
@@ -99,7 +101,7 @@ const BusinessPage = () => {
           >
             <a 
               href="#contact" 
-              className="inline-flex items-center justify-center bg-[#c69c6d] hover:bg-[#d5ab7d] text-white px-8 py-4 rounded-md transition-colors duration-300 group"
+              className="inline-flex items-center justify-center bg-wine hover:bg-wine-light text-white px-8 py-4 rounded-md transition-colors duration-300 group"
             >
               <span>Jetzt anfragen</span>
               <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
@@ -108,22 +110,20 @@ const BusinessPage = () => {
         </div>
       </section>
 
-      <motion.section 
-        className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden bg-black"
-      >
+      {/* Parallax Image Section */}
+      <section className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden bg-black">
         <motion.div 
-          className="absolute inset-0 w-full h-full"
+          className="absolute inset-0 w-full h-full bg-cover bg-center"
           style={{ 
             y: parallaxY,
-            backgroundImage: "url('/lovable-uploads/9ad79fc1-cf6d-4e7d-9277-819dde52a980.png')",
-            backgroundSize: "cover",
-            backgroundPosition: "center 30%"
+            backgroundImage: "url('/lovable-uploads/9ad79fc1-cf6d-4e7d-9277-819dde52a980.png')"
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-90" />
         </motion.div>
-      </motion.section>
+      </section>
 
+      {/* About Section */}
       <section className="section-padding bg-black">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
@@ -157,6 +157,7 @@ const BusinessPage = () => {
 
       <TeamSection />
 
+      {/* Products Section */}
       <section className="section-padding-lg bg-black overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="max-w-screen-xl mx-auto">
@@ -233,6 +234,7 @@ const BusinessPage = () => {
 
       <ProductionProcess isB2C={false} />
 
+      {/* Benefits Section */}
       <section className="section-padding-lg bg-black overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="max-w-screen-xl mx-auto">
@@ -324,6 +326,7 @@ const BusinessPage = () => {
         </div>
       </section>
 
+      {/* Gallery Section */}
       <section className="section-padding bg-black">
         <div className="container mx-auto px-6">
           <div className="max-w-screen-xl mx-auto">

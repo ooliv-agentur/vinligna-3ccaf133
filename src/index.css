@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -117,7 +116,7 @@
   
   /* Buttons */
   .btn-primary {
-    @apply inline-block px-8 py-4 bg-wine hover:bg-wine-light text-white rounded-md transition-colors duration-300 text-lg;
+    @apply inline-block px-8 py-4 bg-wine hover:bg-wine-dark text-white rounded-md transition-colors duration-300 text-lg;
   }
   
   .btn-secondary {
@@ -126,7 +125,7 @@
   
   /* Text highlights */
   .highlight {
-    @apply font-medium bg-gradient-to-r from-wine to-wine-light bg-clip-text text-transparent;
+    @apply font-medium text-wine;
   }
 }
 
