@@ -106,18 +106,14 @@ const BusinessPage = () => {
         </div>
       </section>
 
-      {/* Image Section - New image */}
-      <section className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden">
-        <div 
-          className="absolute inset-0 w-full h-full"
-          style={{ 
-            backgroundImage: "url('/lovable-uploads/b64c24af-644b-40b4-a0a8-544dd26efa62.png')",
-            backgroundSize: "cover",
-            backgroundPosition: "center"
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"></div>
-        </div>
+      {/* Image Section - Using img instead of background-image */}
+      <section className="relative w-full overflow-hidden">
+        <img 
+          src="/lovable-uploads/795a3d50-95b0-4b77-9758-0b469218b2fe.png" 
+          alt="Weinfass Möbel Showroom" 
+          className="w-full h-[60vh] md:h-[70vh] object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"></div>
       </section>
 
       {/* About Section */}
