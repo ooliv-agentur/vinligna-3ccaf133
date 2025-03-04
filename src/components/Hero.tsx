@@ -6,6 +6,21 @@ import { Link } from 'react-router-dom';
 const Hero = () => {
   return (
     <section className="relative min-h-[100vh] overflow-hidden flex flex-col items-center justify-center px-6 py-24 md:py-32 bg-black">
+      {/* Background Video with low opacity */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          className="absolute w-full h-full object-cover opacity-20"
+        >
+          <source src="/woodworking-sawdust.mp4" type="video/mp4" />
+          {/* Fallback for browsers that don't support video */}
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
       <div className="container relative z-10 mx-auto max-w-5xl text-center">
         {/* Badge - simplified */}
         <motion.div 
