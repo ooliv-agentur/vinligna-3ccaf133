@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -42,7 +43,7 @@ const scaleIn = {
 
 const Hero = () => {
   return (
-    <section className="relative h-screen overflow-hidden flex flex-col items-center justify-center px-6 py-12 bg-black">
+    <section className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center px-6 py-12 bg-black">
       {/* Background Texture/Gradient Animation */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -56,7 +57,7 @@ const Hero = () => {
 
       {/* Main Content Container */}
       <motion.div 
-        className="container z-10 mx-auto max-w-6xl"
+        className="container z-10 mx-auto max-w-6xl flex flex-col h-full"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -74,7 +75,7 @@ const Hero = () => {
         {/* Heading - larger and animated with character staggering */}
         <motion.h1 
           variants={itemVariants}
-          className="text-5xl md:text-7xl lg:text-8xl font-light text-white mb-12 leading-tight tracking-tight text-center max-w-5xl mx-auto"
+          className="text-5xl md:text-7xl lg:text-8xl font-light text-white mb-10 leading-tight tracking-tight text-center max-w-5xl mx-auto"
         >
           <motion.span
             initial={{ opacity: 0 }}
@@ -97,7 +98,7 @@ const Hero = () => {
         {/* Subheading - simplified and animated */}
         <motion.p 
           variants={itemVariants}
-          className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-16 text-center leading-relaxed"
+          className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-12 text-center leading-relaxed"
         >
           Wir verwandeln gebrauchte Barrique-Fässer in elegante, einzigartige Möbelstücke, 
           die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
@@ -106,7 +107,7 @@ const Hero = () => {
         {/* Entry Cards - full width, larger and with magnetic hover effect */}
         <motion.div
           variants={scaleIn}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 w-full mb-24"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 w-full flex-grow"
         >
           {/* Business Entry Point - Reimagined Design */}
           <EntryCard 
@@ -127,10 +128,10 @@ const Hero = () => {
           />
         </motion.div>
 
-        {/* Scroll indicator - animated */}
+        {/* Scroll indicator - animated and fixed to bottom */}
         <motion.div 
           variants={fadeIn}
-          className="flex flex-col items-center"
+          className="flex flex-col items-center absolute bottom-8 left-0 right-0"
         >
           <motion.span 
             initial={{ opacity: 0 }}
@@ -183,7 +184,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
         className="block h-full group relative"
       >
         {/* Card with parallax effect on hover */}
-        <div className="relative aspect-[16/9] rounded-lg overflow-hidden">
+        <div className="relative aspect-[16/10] rounded-lg overflow-hidden h-full">
           {/* Image with blur-up loading effect */}
           <motion.div
             initial={{ filter: "blur(10px)" }}
