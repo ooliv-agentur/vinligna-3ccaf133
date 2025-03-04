@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -48,7 +49,11 @@ const Index = () => {
       <Hero />
       <About />
       <ProductGallery />
-      <Contact />
+      <Contact 
+        subtitle="Kontakt"
+        title="Lassen Sie uns ins <span class=\"highlight\">Gespräch</span> kommen"
+        description="Wir sind für all Ihre Fragen da - egal ob Privatperson oder Unternehmen. Nehmen Sie Kontakt auf und entdecken Sie die Welt der Möbel aus Weinfässern."
+      />
       <Faq />
       <Footer />
       <ScrollToTop />

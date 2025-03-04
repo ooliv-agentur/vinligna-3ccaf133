@@ -5,7 +5,17 @@ import ContactInfo from './contact/ContactInfo';
 import BenefitsCard from './contact/BenefitsCard';
 import { benefits } from './contact/contactConstants';
 
-const Contact = () => {
+interface ContactProps {
+  subtitle?: string;
+  title?: string;
+  description?: string;
+}
+
+const Contact = ({ 
+  subtitle = "Kontakt",
+  title = "Lassen Sie uns ins <span class=\"highlight\">Gespräch</span> kommen",
+  description = "Ob Sie ein maßgeschneidertes Möbelstück suchen oder Fragen zu unseren Produkten haben, wir sind für Sie da."
+}: ContactProps) => {
   return (
     <section id="contact" className="py-32 md:py-44 bg-black overflow-hidden relative">
       {/* Background pattern */}
@@ -23,14 +33,14 @@ const Contact = () => {
           className="max-w-screen-xl mx-auto text-center mb-16 md:mb-24"
         >
           <span className="section-subtitle">
-            Kontakt
+            {subtitle}
           </span>
-          <h2 className="section-title-large text-white">
-            Lassen Sie uns ins <span className="highlight">Gespräch</span> kommen
-          </h2>
+          <h2 
+            className="section-title-large text-white"
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
           <p className="text-white/70 text-lg max-w-2xl mx-auto">
-            Ob Sie ein maßgeschneidertes Möbelstück suchen oder Fragen zu unseren Produkten haben,
-            wir sind für Sie da.
+            {description}
           </p>
         </motion.div>
 

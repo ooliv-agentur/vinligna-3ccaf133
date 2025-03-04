@@ -367,7 +367,11 @@ const PrivatePage = () => {
       </section>
 
       {/* Contact Section */}
-      <Contact />
+      <Contact 
+        subtitle="Privatkunden Kontakt"
+        title="Ihr persönliches <span class=\"highlight\">Wohnerlebnis</span>"
+        description="Bringen Sie die Eleganz und Geschichte der Weinkultur in Ihr Zuhause. Kontaktieren Sie uns für eine individuelle Beratung und maßgeschneiderte Möbelstücke, die perfekt zu Ihrem Lebensstil passen."
+      />
 
       {/* FAQ Section */}
       <Faq />
