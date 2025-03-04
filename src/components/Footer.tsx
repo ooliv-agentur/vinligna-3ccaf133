@@ -13,7 +13,7 @@ const Footer = () => {
             <div className="md:col-span-4">
               <a href="/" className="inline-block mb-6">
                 <img 
-                  src="/vinligna-logo.svg" 
+                  src="/lovable-uploads/eef04cda-cc19-4e97-9136-dcd93f60b698.png" 
                   alt="VINLIGNA" 
                   className="h-8 brightness-0 invert" 
                 />

@@ -31,7 +31,7 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between">
         <a href="/" className="inline-block" aria-label="VINLIGNA">
           <img 
-            src="/vinligna-logo.svg" 
+            src="/lovable-uploads/eef04cda-cc19-4e97-9136-dcd93f60b698.png" 
             alt="VINLIGNA" 
             className="h-6 md:h-8" 
           />
