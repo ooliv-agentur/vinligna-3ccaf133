@@ -31,7 +31,7 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between">
         <a href="/" className="inline-block" aria-label="VINLIGNA">
           <img 
-            src="/lovable-uploads/eef04cda-cc19-4e97-9136-dcd93f60b698.png" 
+            src="/lovable-uploads/50941805-7198-4381-a214-435f243a45b4.png" 
             alt="VINLIGNA" 
             className="h-6 md:h-8" 
           />
@@ -46,7 +46,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden focus:outline-none"
+          className="md:hidden focus:outline-none text-white"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -93,7 +93,7 @@ interface NavLinkProps {
 const NavLink = ({ href, children }: NavLinkProps) => (
   <a
     href={href}
-    className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-foreground hover:after:w-full after:transition-all after:duration-300"
+    className="text-sm font-medium text-white hover:text-white/80 transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-white hover:after:w-full after:transition-all after:duration-300"
   >
     {children}
   </a>
