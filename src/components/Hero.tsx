@@ -38,12 +38,12 @@ const Hero = () => {
           Wir verwandeln gebrauchte Barrique-Fässer in elegante, einzigartige Möbelstücke, die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
         </motion.p>
 
-        {/* Minimalist Entry Cards */}
+        {/* Minimalist Entry Cards - expanded to full width */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto mb-20"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 w-full mb-20"
         >
           {/* Business Entry Point - Minimalist Design */}
           <EntryCard 
