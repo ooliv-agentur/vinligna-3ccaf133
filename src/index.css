@@ -75,6 +75,61 @@
   }
 }
 
+@layer components {
+  /* Section styles */
+  .section-padding {
+    @apply py-20 md:py-32;
+  }
+  
+  .section-padding-lg {
+    @apply py-24 md:py-40;
+  }
+  
+  .section-title-container {
+    @apply text-center mb-16;
+  }
+  
+  .section-subtitle {
+    @apply inline-block text-sm font-medium tracking-widest uppercase text-wine mb-4;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-light mb-6 leading-tight;
+  }
+  
+  .section-title-large {
+    @apply text-4xl md:text-5xl font-light mb-6 leading-tight;
+  }
+  
+  /* Image treatments */
+  .image-hover {
+    @apply transition-transform duration-500 hover:scale-105;
+  }
+  
+  .image-card {
+    @apply relative aspect-[4/5] overflow-hidden rounded-2xl;
+  }
+
+  /* Feature cards */
+  .feature-card {
+    @apply bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 transition-all duration-300 hover:bg-white/10;
+  }
+  
+  /* Buttons */
+  .btn-primary {
+    @apply inline-block px-8 py-4 bg-wine hover:bg-wine-light text-white rounded-md transition-colors duration-300 text-lg;
+  }
+  
+  .btn-secondary {
+    @apply inline-block px-8 py-4 bg-transparent border border-wine text-wine hover:bg-wine/10 rounded-md transition-colors duration-300 text-lg;
+  }
+  
+  /* Text highlights */
+  .highlight {
+    @apply font-medium bg-gradient-to-r from-wine to-wine-light bg-clip-text text-transparent;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -86,6 +141,51 @@
   
   .bg-glass {
     @apply bg-white/10 backdrop-blur-sm border border-white/10;
+  }
+  
+  .bg-glass-dark {
+    @apply bg-black/60 backdrop-blur-md border border-white/5;
+  }
+  
+  /* Animation utilities */
+  .fade-in {
+    @apply opacity-0 animate-[fade-in_0.6s_ease_forwards];
+  }
+  
+  .fade-in-delay-1 {
+    @apply opacity-0 animate-[fade-in_0.6s_ease_forwards_0.2s];
+  }
+  
+  .fade-in-delay-2 {
+    @apply opacity-0 animate-[fade-in_0.6s_ease_forwards_0.4s];
+  }
+  
+  .fade-in-delay-3 {
+    @apply opacity-0 animate-[fade-in_0.6s_ease_forwards_0.6s];
+  }
+  
+  .slide-up {
+    @apply opacity-0 translate-y-[10px] animate-[slide-up_0.6s_ease_forwards];
+  }
+  
+  .slide-up-delay-1 {
+    @apply opacity-0 translate-y-[10px] animate-[slide-up_0.6s_ease_forwards_0.2s];
+  }
+  
+  .slide-up-delay-2 {
+    @apply opacity-0 translate-y-[10px] animate-[slide-up_0.6s_ease_forwards_0.4s];
+  }
+  
+  .slide-up-delay-3 {
+    @apply opacity-0 translate-y-[10px] animate-[slide-up_0.6s_ease_forwards_0.6s];
+  }
+  
+  .hover-lift {
+    @apply transition-transform duration-300 ease-out hover:-translate-y-1;
+  }
+  
+  .hover-scale {
+    @apply transition-transform duration-300 ease-out hover:scale-105;
   }
 }
 
@@ -99,42 +199,47 @@
   }
 }
 
-.fade-in {
-  opacity: 0;
-  animation: fade-in 0.6s ease forwards;
+/* Framer Motion animations can be made consistent by applying these classes */
+.motion-fade-in {
+  @apply opacity-0;
 }
 
-.fade-in-delay-1 {
-  opacity: 0;
-  animation: fade-in 0.6s ease forwards 0.2s;
+.motion-slide-up {
+  @apply opacity-0 translate-y-5;
 }
 
-.fade-in-delay-2 {
-  opacity: 0;
-  animation: fade-in 0.6s ease forwards 0.4s;
+.motion-slide-right {
+  @apply opacity-0 -translate-x-5;
 }
 
-.fade-in-delay-3 {
-  opacity: 0;
-  animation: fade-in 0.6s ease forwards 0.6s;
+.motion-slide-left {
+  @apply opacity-0 translate-x-5;
 }
 
-.slide-up {
-  opacity: 0;
-  transform: translateY(10px);
-  animation: slide-up 0.6s ease forwards;
+.motion-scale {
+  @apply opacity-0 scale-95;
 }
 
-.slide-up-delay-1 {
-  opacity: 0;
-  transform: translateY(10px);
-  animation: slide-up 0.6s ease forwards 0.2s;
+/* Animation durations */
+.duration-300 {
+  transition-duration: 300ms;
 }
 
-.slide-up-delay-2 {
-  opacity: 0;
-  transform: translateY(10px);
-  animation: slide-up 0.6s ease forwards 0.4s;
+.duration-500 {
+  transition-duration: 500ms;
+}
+
+.duration-700 {
+  transition-duration: 700ms;
+}
+
+/* Ease functions */
+.ease-out-expo {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ease-out-back {
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Glass morphism */
@@ -150,21 +255,6 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Custom hover transitions */
-.hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.hover-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-/* Monochrome overlay gradients */
-.overlay-mono-dark {
-  background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
 }
 
 /* Additional animations */

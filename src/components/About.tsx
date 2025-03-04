@@ -23,7 +23,7 @@ const About = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="inline-block text-sm font-medium tracking-widest uppercase text-wine mb-6"
+                className="section-subtitle"
               >
                 Unsere Philosophie
               </motion.span>
@@ -33,9 +33,9 @@ const About = () => {
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="text-4xl md:text-5xl font-light mb-10 leading-tight"
+                className="section-title-large"
               >
-                Die Kunst der <span className="font-medium bg-gradient-to-r from-wine to-wine-light bg-clip-text text-transparent">Nachhaltigkeit</span>
+                Die Kunst der <span className="highlight">Nachhaltigkeit</span>
               </motion.h2>
               
               <motion.div
@@ -62,7 +62,7 @@ const About = () => {
               >
                 <a 
                   href="#gallery" 
-                  className="inline-block px-8 py-4 bg-wine hover:bg-wine-light text-white rounded-md transition-colors duration-300 text-lg"
+                  className="btn-primary"
                 >
                   Unsere Kreationen entdecken
                 </a>
@@ -77,16 +77,16 @@ const About = () => {
               viewport={{ once: true, margin: "-100px" }}
               className="relative"
             >
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
+              <div className="image-card">
                 <img 
                   src="/lovable-uploads/a5803ca8-92c1-4b97-b7a2-6e6c1fefd43e.png" 
                   alt="Werkstatt mit Weinfässern und daraus gefertigten Möbelstücken" 
-                  className="w-full h-full object-cover object-center transition-transform duration-500"
+                  className="w-full h-full object-cover object-center image-hover"
                 />
                 
                 {/* Decorative elements */}
                 <div className="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none" />
-                <div className="absolute bottom-6 left-6 right-6 p-8 bg-black/60 backdrop-blur-md rounded-xl">
+                <div className="absolute bottom-6 left-6 right-6 p-8 bg-glass-dark rounded-xl">
                   <span className="text-wine text-sm uppercase tracking-wider">Nachhaltige Materialien</span>
                   <h3 className="text-white text-xl font-medium mt-2">Jedes Stück erzählt eine Geschichte</h3>
                 </div>
