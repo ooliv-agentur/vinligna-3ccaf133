@@ -1,5 +1,5 @@
-
 import { motion } from 'framer-motion';
+import TextArrowButton from './TextArrowButton';
 
 const About = () => {
   return (
@@ -60,12 +60,10 @@ const About = () => {
                 viewport={{ once: true }}
                 className="mt-10"
               >
-                <a 
+                <TextArrowButton 
+                  text="Unsere Kreationen entdecken" 
                   href="#gallery" 
-                  className="btn-primary"
-                >
-                  Unsere Kreationen entdecken
-                </a>
+                />
               </motion.div>
             </motion.div>
             
