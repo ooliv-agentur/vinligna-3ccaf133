@@ -1,37 +1,62 @@
 
 import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+
+// Animation variants
+const fadeIn = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1.0] }
+  }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3
+    }
+  }
+};
 
 const ProductGallery = () => {
   return (
-    <section className="py-20 bg-background">
+    <section className="py-32 md:py-44 bg-black text-white overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="max-w-screen-xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="text-center mb-12"
+            className="text-center mb-20"
           >
-            <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-4">
+            <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-6">
               Galerie
             </span>
-            <h2 className="text-3xl font-light mb-6">
-              Unsere <span className="font-medium">Kreationen</span>
+            <h2 className="text-4xl md:text-5xl font-light mb-8 leading-tight">
+              Unsere <span className="font-medium bg-gradient-to-r from-wine to-wine-light bg-clip-text text-transparent">Kreationen</span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Unsere Galerie zeigt eine Auswahl an maßgefertigten Möbeln, die wir bereits für Privatkunden gefertigt haben. Von Tischen bis hin zu Sideboards – sehen Sie, wie unsere Möbel in stilvollen Weinkellern und Wohnräumen zur Geltung kommen. Jedes Möbelstück bringt Eleganz und Geschichte in Ihr Zuhause.
+            <p className="text-white/80 text-xl max-w-3xl mx-auto">
+              Unsere Galerie zeigt eine Auswahl an maßgefertigten Möbeln, die wir bereits für Privatkunden gefertigt haben. Von Tischen bis hin zu Sideboards – sehen Sie, wie unsere Möbel in stilvollen Weinkellern und Wohnräumen zur Geltung kommen.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
             {galleryItems.map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true, margin: "-100px" }}
+                variants={fadeIn}
               >
                 <GalleryItem 
                   image={item.image}
@@ -40,7 +65,33 @@ const ProductGallery = () => {
                 />
               </motion.div>
             ))}
-          </div>
+          </motion.div>
+          
+          {/* Call-to-action */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="mt-16 text-center"
+          >
+            <div className="inline-flex items-center text-wine hover:text-wine-light transition-colors cursor-pointer group">
+              <span className="text-lg">Alle Kreationen entdecken</span>
+              <motion.div
+                animate={{ x: [0, 5, 0] }}
+                transition={{ 
+                  duration: 1.5, 
+                  repeat: Infinity, 
+                  repeatType: "loop", 
+                  ease: "easeInOut",
+                  repeatDelay: 1
+                }}
+                className="ml-2"
+              >
+                <ArrowRight size={20} />
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
@@ -54,24 +105,25 @@ interface GalleryItemProps {
 }
 
 const GalleryItem = ({ image, title, category }: GalleryItemProps) => (
-  <div className="group rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-    <div className="relative h-64 overflow-hidden">
+  <div className="group relative overflow-hidden rounded-lg bg-white/5 backdrop-blur-sm border border-white/10">
+    <div className="relative aspect-square overflow-hidden">
       <img 
         src={image} 
         alt={title} 
-        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        className="w-full h-full object-cover transition-transform duration-1000"
       />
-    </div>
-    <div className="p-4 bg-white border-t">
-      <h4 className="font-medium">{title}</h4>
-      <p className="text-sm text-muted-foreground">
-        <span className="text-wine">{category}</span>
-      </p>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      <div className="absolute inset-0 p-6 flex flex-col justify-end translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+        <h4 className="font-medium text-xl text-white mb-1">{title}</h4>
+        <p className="text-wine">
+          {category}
+        </p>
+      </div>
     </div>
   </div>
 );
 
-// Updated gallery items with new images
+// Gallery items with images
 const galleryItems = [
   { 
     image: "/lovable-uploads/b8ccf011-269c-4d03-9fab-ec9ce9533125.png", 

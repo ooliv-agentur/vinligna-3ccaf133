@@ -1,8 +1,29 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+
+// Animation variants
+const fadeIn = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1.0] }
+  }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3
+    }
+  }
+};
 
 interface FaqItemProps {
   question: string;
@@ -13,32 +34,35 @@ const FaqItem = ({ question, answer }: FaqItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-b border-oak/10">
+    <motion.div 
+      variants={fadeIn}
+      className="border-b border-white/10"
+    >
       <button
-        className="flex w-full items-center justify-between py-4 text-left"
+        className="flex w-full items-center justify-between py-6 text-left"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="font-medium">{question}</span>
+        <span className="font-medium text-lg text-white">{question}</span>
         <ChevronDown 
           className={cn(
-            "h-5 w-5 text-wine transition-transform duration-200",
+            "h-6 w-6 text-wine transition-transform duration-300",
             isOpen && "rotate-180"
           )} 
         />
       </button>
       <div 
         className={cn(
-          "grid transition-all duration-200 ease-in-out",
-          isOpen ? "grid-rows-[1fr] opacity-100 pb-4" : "grid-rows-[0fr] opacity-0"
+          "grid transition-all duration-300 ease-in-out",
+          isOpen ? "grid-rows-[1fr] opacity-100 pb-6" : "grid-rows-[0fr] opacity-0"
         )}
       >
         <div className="overflow-hidden">
-          <div className="text-muted-foreground">
+          <div className="text-white/70 text-lg">
             {answer}
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -87,52 +111,83 @@ const Faq = () => {
   ];
 
   return (
-    <section id="faq" className="py-24 md:py-32 bg-oak-light/10">
-      <div className="container mx-auto px-6">
+    <section id="faq" className="py-32 md:py-44 bg-black text-white relative overflow-hidden">
+      {/* Background elements */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.15 }}
+        transition={{ duration: 2 }}
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E")`,
+        }}
+      />
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-screen-xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
-            <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-4">
+            <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-6">
               HÄUFIG GESTELLTE FRAGEN
             </span>
-            <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
-              Alles über unsere <span className="font-medium">Fassmöbel</span>
+            <h2 className="text-4xl md:text-5xl font-light mb-8 leading-tight">
+              Alles über unsere <span className="font-medium bg-gradient-to-r from-wine to-wine-light bg-clip-text text-transparent">Fassmöbel</span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-white/80 text-xl max-w-3xl mx-auto">
               Hier finden Sie Antworten auf die häufigsten Fragen zu unseren exklusiven Möbeln aus recycelten Weinfässern.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-0">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="space-y-0"
-            >
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-0 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12"
+          >
+            <div className="space-y-0">
               {faqs.slice(0, 5).map((faq, index) => (
                 <FaqItem key={index} {...faq} />
               ))}
-            </motion.div>
+            </div>
             
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="space-y-0"
-            >
-              {faqs.slice(5, 10).map((faq, index) => (
+            <div className="space-y-0">
+              {faqs.slice(5).map((faq, index) => (
                 <FaqItem key={index} {...faq} />
               ))}
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
+
+          {/* Call-to-action */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="mt-16 text-center"
+          >
+            <div className="inline-flex items-center text-wine hover:text-wine-light transition-colors cursor-pointer group">
+              <span className="text-lg">Weitere Informationen anfragen</span>
+              <motion.div
+                animate={{ x: [0, 5, 0] }}
+                transition={{ 
+                  duration: 1.5, 
+                  repeat: Infinity, 
+                  repeatType: "loop", 
+                  ease: "easeInOut",
+                  repeatDelay: 1
+                }}
+                className="ml-2"
+              >
+                <ArrowRight size={20} />
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

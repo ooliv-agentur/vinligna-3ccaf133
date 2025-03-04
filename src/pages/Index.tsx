@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
+import ProductGallery from '@/components/ProductGallery';
+import TeamSection from '@/components/TeamSection';
 import Faq from '@/components/Faq';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
@@ -27,6 +29,9 @@ const Index = () => {
       });
     });
 
+    // Page entry animation - add a class to body when page is loaded
+    document.body.classList.add('page-loaded');
+
     // Cleanup
     return () => {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -34,14 +39,17 @@ const Index = () => {
           e.preventDefault();
         });
       });
+      document.body.classList.remove('page-loaded');
     };
   }, []);
 
   return (
-    <div className="min-h-screen overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden bg-black">
       <Navbar />
       <Hero />
       <About />
+      <ProductGallery />
+      <TeamSection />
       <Faq />
       <Footer />
       <ScrollToTop />
