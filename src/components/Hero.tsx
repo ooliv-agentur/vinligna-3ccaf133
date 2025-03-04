@@ -71,7 +71,7 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.7 }}
           className="flex flex-col items-center"
         >
-          <span className="text-white/60 text-sm mb-2">Scrollen Sie für mehr</span>
+          <span className="text-white/60 text-sm mb-2">Mehr entdecken</span>
           <div className="w-px h-12 bg-white/20 relative overflow-hidden">
             <div className="w-full h-1/2 bg-white/60 absolute top-0 animate-[scrollDown_2s_ease-in-out_infinite]" />
           </div>
