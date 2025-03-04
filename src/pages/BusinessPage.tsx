@@ -123,22 +123,6 @@ const BusinessPage = () => {
               <p>
                 VINLIGNA bietet handgefertigte, exklusive Möbel aus recycelten Barrique-Fässern für Weingüter, Gastronomiebetriebe und die Hotellerie. Unser Ziel ist es, maßgeschneiderte Möbelstücke zu schaffen, die nicht nur einzigartig sind, sondern auch nachhaltig produziert werden. Durch die Wiederverwendung von edlen Eichenholz-Weinfässern verleihen wir Ihren Räumlichkeiten einen einzigartigen Charme und schaffen gleichzeitig ein exklusives Ambiente, das Ihre Gäste begeistern wird.
               </p>
-              
-              <h3 className="text-xl font-medium mt-8 mb-4">Unser Team</h3>
-              <p>
-                VINLIGNA arbeitet in enger Kooperation mit dem Manufakturhof Alsenz. Dort werden unsere Möbel von einem erfahrenen Team aus Handwerkern entworfen und gefertigt:
-              </p>
-              
-              <ul className="list-disc pl-5 space-y-2">
-                <li>Rüdiger Gries: Leitung von Administration und Finanzen</li>
-                <li>Michael Messinger: Leiter der Produktentwicklung und Bau von Musterstücken</li>
-                <li>Horst Hebel: Tischler und Produktionsleiter</li>
-                <li>Rei Suzuki: Verantwortlich für den Vertrieb und die Betreuung unserer Geschäftskunden</li>
-              </ul>
-              
-              <p>
-                Mit über 19 Jahren Erfahrung in der Verarbeitung von Massivholz fertigt das Team jedes Stück mit höchster Präzision, um Ihren Anforderungen gerecht zu werden.
-              </p>
             </motion.div>
           </div>
         </div>
