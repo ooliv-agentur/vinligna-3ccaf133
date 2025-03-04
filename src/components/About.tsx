@@ -61,10 +61,10 @@ const About = () => {
                 className="mt-10"
               >
                 <a 
-                  href="#contact" 
+                  href="#gallery" 
                   className="inline-block px-8 py-4 bg-wine hover:bg-wine-light text-white rounded-md transition-colors duration-300 text-lg"
                 >
-                  Unser Ansatz entdecken
+                  Unsere Kreationen entdecken
                 </a>
               </motion.div>
             </motion.div>
