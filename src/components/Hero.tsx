@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -91,7 +92,7 @@ const Hero = () => {
 
         <motion.p 
           variants={itemVariants}
-          className="text-base md:text-lg text-white/80 max-w-2xl mx-auto mb-12 text-center leading-relaxed"
+          className="text-base md:text-lg text-white/80 max-w-2xl mx-auto mb-8 md:mb-12 text-center leading-relaxed"
         >
           Wir verwandeln gebrauchte Barrique-Fässer in elegante, einzigartige Möbelstücke, 
           die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
@@ -99,7 +100,7 @@ const Hero = () => {
 
         <motion.div
           variants={scaleIn}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 w-full flex-grow"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 w-full flex-grow"
         >
           <EntryCard 
             title="Ich bin"
@@ -120,7 +121,7 @@ const Hero = () => {
 
         <motion.div 
           variants={fadeIn}
-          className="flex flex-col items-center absolute bottom-8 left-0 right-0"
+          className="hidden md:flex flex-col items-center absolute bottom-8 left-0 right-0"
         >
           <motion.span 
             initial={{ opacity: 0 }}
@@ -172,7 +173,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
         to={link} 
         className="block h-full group relative"
       >
-        <div className="relative aspect-[16/10] rounded-lg overflow-hidden h-full">
+        <div className="relative aspect-[16/9] md:aspect-[16/11] rounded-lg overflow-hidden h-full">
           <motion.div
             initial={{ filter: "blur(10px)" }}
             animate={{ filter: "blur(0px)" }}
@@ -193,10 +194,10 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
             className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/30"
           />
           
-          <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10 text-left transform transition-all duration-300 group-hover:translate-y-0">
-            <div className="mb-1 text-white/70 text-lg">{title}</div>
-            <h2 className="text-3xl font-medium text-white mb-2">{subtitle}</h2>
-            <p className="text-white/70 mb-8 text-base font-light">{description}</p>
+          <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 md:p-8 text-left transform transition-all duration-300 group-hover:translate-y-0">
+            <div className="mb-1 text-white/70 text-base sm:text-lg">{title}</div>
+            <h2 className="text-2xl sm:text-3xl font-medium text-white mb-2">{subtitle}</h2>
+            <p className="text-white/70 mb-4 sm:mb-8 text-sm sm:text-base font-light">{description}</p>
             
             <div className="flex items-center text-white text-base font-light overflow-hidden relative">
               <span className="relative group-hover:text-wine transition-colors duration-300">
@@ -225,7 +226,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                     repeatDelay: 1
                   }}
                 >
-                  <ArrowRight size={20} className="text-wine" />
+                  <ArrowRight size={18} className="text-wine" />
                 </motion.div>
               </motion.div>
             </div>
