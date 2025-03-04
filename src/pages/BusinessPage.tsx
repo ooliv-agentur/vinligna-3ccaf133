@@ -309,10 +309,12 @@ const BusinessPage = () => {
         </div>
       </section>
 
+      {/* Contact Section */}
+      <Contact />
+      
       {/* FAQ Section */}
       <BusinessFaq />
 
-      <Contact />
       <Footer />
       <ScrollToTop />
     </div>
