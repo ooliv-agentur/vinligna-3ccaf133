@@ -39,7 +39,6 @@ const PrivateSection = () => {
                 <ProductCard 
                   image={product.image}
                   title={product.title}
-                  price={product.price}
                   category={product.category}
                 />
               </motion.div>
@@ -96,11 +95,10 @@ const PrivateSection = () => {
 interface ProductCardProps {
   image: string;
   title: string;
-  price: string;
   category: string;
 }
 
-const ProductCard = ({ image, title, price, category }: ProductCardProps) => (
+const ProductCard = ({ image, title, category }: ProductCardProps) => (
   <div className="group rounded-lg overflow-hidden bg-white shadow-sm hover:shadow-md transition-all hover-lift">
     <div className="relative h-72 overflow-hidden">
       <img 
@@ -112,7 +110,7 @@ const ProductCard = ({ image, title, price, category }: ProductCardProps) => (
     <div className="p-5">
       <p className="text-xs text-muted-foreground mb-1">{category}</p>
       <h4 className="font-medium text-lg mb-2">{title}</h4>
-      <p className="text-wine font-medium">{price}</p>
+      <p className="text-wine text-sm italic">Maßanfertigung nach Kundenwunsch</p>
     </div>
   </div>
 );
@@ -140,42 +138,36 @@ const products = [
     id: 1, 
     image: "/product-1.jpg", 
     title: "Esstisch aus Weinfässern", 
-    price: "Ab €1.200", 
     category: "Möbel" 
   },
   { 
     id: 2, 
     image: "/product-2.jpg", 
     title: "Weinregal aus Fassdauben", 
-    price: "€350", 
     category: "Weinlagerung" 
   },
   { 
     id: 3, 
     image: "/product-3.jpg", 
     title: "Couchtisch aus Fassböden", 
-    price: "€680", 
     category: "Möbel" 
   },
   { 
     id: 4, 
     image: "/product-4.jpg", 
     title: "Stuhl aus Weinfässern", 
-    price: "€420", 
     category: "Sitzmöbel" 
   },
   { 
     id: 5, 
     image: "/product-5.jpg", 
     title: "Leuchter aus Fassdauben", 
-    price: "€580", 
     category: "Beleuchtung" 
   },
   { 
     id: 6, 
     image: "/product-6.jpg", 
     title: "Weinkühler aus Fässern", 
-    price: "€320", 
     category: "Accessoires" 
   }
 ];
