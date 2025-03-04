@@ -98,36 +98,36 @@ const Hero = () => {
           die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
         </motion.p>
 
-        {/* Unified single container for all tiles with consistent width */}
-        <motion.div 
-          variants={scaleIn}
-          className="w-full max-w-5xl mx-auto px-0 mb-10 md:mb-8"
-        >
-          {/* Grid for all card items */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-8">
-            {/* First Card */}
-            <div className="w-full">
-              <EntryCard 
-                title="Ich bin"
-                subtitle="Winzer, Gastronom oder Hotelier"
-                description="Maßgeschneiderte Lösungen für Ihre Marke"
-                link="/business"
-                imageSrc="/lovable-uploads/112627aa-d494-4e9d-939e-39625817461d.png"
-              />
-            </div>
+        {/* Wrapper with flex column for consistent width of all tiles */}
+        <div className="w-full max-w-5xl mx-auto flex flex-col items-center px-0">
+          <motion.div 
+            variants={scaleIn}
+            className="w-full mb-10 md:mb-8"
+          >
+            {/* Simple flex column layout to ensure consistent width */}
+            <div className="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-8 w-full">
+              <div className="w-full">
+                <EntryCard 
+                  title="Ich bin"
+                  subtitle="Winzer, Gastronom oder Hotelier"
+                  description="Maßgeschneiderte Lösungen für Ihre Marke"
+                  link="/business"
+                  imageSrc="/lovable-uploads/112627aa-d494-4e9d-939e-39625817461d.png"
+                />
+              </div>
 
-            {/* Second Card */}
-            <div className="w-full">
-              <EntryCard 
-                title="Ich bin"
-                subtitle="Weinliebhaber"
-                description="Exklusive Designs für Ihr Zuhause"
-                link="/private"
-                imageSrc="/lovable-uploads/e9d912cb-d45d-4016-8e8b-8250bd78de47.png"
-              />
+              <div className="w-full">
+                <EntryCard 
+                  title="Ich bin"
+                  subtitle="Weinliebhaber"
+                  description="Exklusive Designs für Ihr Zuhause"
+                  link="/private"
+                  imageSrc="/lovable-uploads/e9d912cb-d45d-4016-8e8b-8250bd78de47.png"
+                />
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
 
         <motion.div 
           variants={fadeIn}
