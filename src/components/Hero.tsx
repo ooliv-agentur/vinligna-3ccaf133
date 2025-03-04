@@ -7,13 +7,23 @@ import { cn } from '@/lib/utils';
 const Hero = () => {
   return (
     <section className="relative min-h-[100vh] overflow-hidden flex flex-col items-center justify-center px-6 py-24 md:py-32">
-      {/* Background image with overlay */}
+      {/* Background video with overlay */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="/lovable-uploads/bd5f84a4-a4f9-423f-88f7-1fce764501b2.png"
-          alt="Weinfass-Workshop mit historischer Wandkunst"
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          playsInline
           className="w-full h-full object-cover object-center"
-        />
+        >
+          <source src="/lovable-uploads/hero-background-video.mp4" type="video/mp4" />
+          {/* Fallback to image if video cannot be played */}
+          <img 
+            src="/lovable-uploads/bd5f84a4-a4f9-423f-88f7-1fce764501b2.png"
+            alt="Weinfass-Workshop mit historischer Wandkunst"
+            className="w-full h-full object-cover object-center"
+          />
+        </video>
         {/* Darker gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/40" />
       </div>
