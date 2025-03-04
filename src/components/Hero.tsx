@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -97,7 +98,9 @@ const Hero = () => {
           die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
         </motion.p>
 
+        {/* Unified container for all tiles with consistent width settings */}
         <div className="w-full max-w-5xl mx-auto px-0">
+          {/* Top two tiles in a grid */}
           <motion.div
             variants={scaleIn}
             className="w-full mb-10 md:mb-8"
