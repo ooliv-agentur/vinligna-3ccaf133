@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -100,7 +99,7 @@ const Hero = () => {
 
         <motion.div
           variants={scaleIn}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 w-full flex-grow"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 w-full"
         >
           <EntryCard 
             title="Ich bin"
@@ -167,131 +166,118 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
     <motion.div
       whileHover={{ y: -5 }}
       transition={{ type: "spring", stiffness: 300 }}
-      className="w-full h-full md:h-auto"
+      className="w-full h-full"
     >
       <Link 
         to={link} 
         className="block h-full group relative"
       >
-        <div className="relative md:aspect-[16/14] rounded-lg overflow-hidden h-full">
-          {/* Mobile version */}
-          <div className="md:hidden w-[120%] h-[140%] -ml-[10%]">
-            <motion.div
-              initial={{ filter: "blur(10px)" }}
-              animate={{ filter: "blur(0px)" }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="absolute inset-0"
-            >
-              <img 
-                src={imageSrc} 
-                alt={subtitle} 
-                className="w-full h-full object-cover" 
-              />
-            </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0.7 }}
-              whileHover={{ opacity: 0.9 }}
-              transition={{ duration: 0.3 }}
-              className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/30"
-            />
-            
-            <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-7 text-left transform transition-all duration-300 group-hover:translate-y-0">
-              <div className="mb-1 text-white/70 text-base">{title}</div>
-              <h2 className="text-2xl font-medium text-white mb-3">{subtitle}</h2>
-              <p className="text-white/70 mb-6 text-sm font-light">{description}</p>
+        <div className="relative rounded-lg overflow-hidden h-full">
+          <div className="block md:hidden w-full h-full">
+            <div className="aspect-[4/5] w-full">
+              <motion.div
+                initial={{ filter: "blur(10px)" }}
+                animate={{ filter: "blur(0px)" }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="absolute inset-0"
+              >
+                <img 
+                  src={imageSrc} 
+                  alt={subtitle} 
+                  className="w-full h-full object-cover" 
+                />
+              </motion.div>
               
-              <div className="flex items-center text-white text-base font-light overflow-hidden relative">
-                <span className="relative group-hover:text-wine transition-colors duration-300">
-                  Entdecken
-                  <motion.span
-                    className="absolute bottom-0 left-0 w-full h-[1px] bg-white/30"
-                    whileHover={{ scaleX: 1 }}
-                    initial={{ scaleX: 0 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </span>
-                <motion.div
-                  initial={{ x: 0 }}
-                  whileHover={{ x: 10 }}
-                  animate={{ x: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="ml-3"
-                >
+              <motion.div 
+                initial={{ opacity: 0.7 }}
+                whileHover={{ opacity: 0.9 }}
+                transition={{ duration: 0.3 }}
+                className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/30"
+              />
+              
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-left">
+                <div className="mb-1 text-white/70 text-base">{title}</div>
+                <h2 className="text-2xl font-medium text-white mb-3">{subtitle}</h2>
+                <p className="text-white/70 mb-6 text-base font-light">{description}</p>
+                
+                <div className="flex items-center text-white text-base font-light">
+                  <span className="relative group-hover:text-wine transition-colors duration-300">
+                    Entdecken
+                    <motion.span
+                      className="absolute bottom-0 left-0 w-full h-[1px] bg-white/30"
+                      whileHover={{ scaleX: 1 }}
+                      initial={{ scaleX: 0 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </span>
                   <motion.div
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ 
-                      duration: 1.5, 
-                      repeat: Infinity, 
-                      repeatType: "loop", 
-                      ease: "easeInOut",
-                      repeatDelay: 1
-                    }}
+                    className="ml-3"
                   >
                     <ArrowRight size={18} className="text-wine" />
                   </motion.div>
-                </motion.div>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Desktop version */}
-          <div className="hidden md:block">
-            <motion.div
-              initial={{ filter: "blur(10px)" }}
-              animate={{ filter: "blur(0px)" }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="absolute inset-0"
-            >
-              <img 
-                src={imageSrc} 
-                alt={subtitle} 
-                className="w-full h-full object-cover" 
-              />
-            </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0.7 }}
-              whileHover={{ opacity: 0.9 }}
-              transition={{ duration: 0.3 }}
-              className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/30"
-            />
-            
-            <div className="absolute bottom-0 left-0 right-0 p-8 text-left transform transition-all duration-300 group-hover:translate-y-0">
-              <div className="mb-1 text-white/70 text-base">{title}</div>
-              <h2 className="text-2xl sm:text-3xl font-medium text-white mb-3">{subtitle}</h2>
-              <p className="text-white/70 mb-6 sm:mb-8 text-base font-light">{description}</p>
+          <div className="hidden md:block h-full">
+            <div className="aspect-[16/14] h-full">
+              <motion.div
+                initial={{ filter: "blur(10px)" }}
+                animate={{ filter: "blur(0px)" }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="absolute inset-0"
+              >
+                <img 
+                  src={imageSrc} 
+                  alt={subtitle} 
+                  className="w-full h-full object-cover" 
+                />
+              </motion.div>
               
-              <div className="flex items-center text-white text-base font-light overflow-hidden relative">
-                <span className="relative group-hover:text-wine transition-colors duration-300">
-                  Entdecken
-                  <motion.span
-                    className="absolute bottom-0 left-0 w-full h-[1px] bg-white/30"
-                    whileHover={{ scaleX: 1 }}
-                    initial={{ scaleX: 0 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </span>
-                <motion.div
-                  initial={{ x: 0 }}
-                  whileHover={{ x: 10 }}
-                  animate={{ x: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="ml-3"
-                >
+              <motion.div 
+                initial={{ opacity: 0.7 }}
+                whileHover={{ opacity: 0.9 }}
+                transition={{ duration: 0.3 }}
+                className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/30"
+              />
+              
+              <div className="absolute bottom-0 left-0 right-0 p-8 text-left transform transition-all duration-300 group-hover:translate-y-0">
+                <div className="mb-1 text-white/70 text-base">{title}</div>
+                <h2 className="text-2xl sm:text-3xl font-medium text-white mb-3">{subtitle}</h2>
+                <p className="text-white/70 mb-6 sm:mb-8 text-base font-light">{description}</p>
+                
+                <div className="flex items-center text-white text-base font-light overflow-hidden relative">
+                  <span className="relative group-hover:text-wine transition-colors duration-300">
+                    Entdecken
+                    <motion.span
+                      className="absolute bottom-0 left-0 w-full h-[1px] bg-white/30"
+                      whileHover={{ scaleX: 1 }}
+                      initial={{ scaleX: 0 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </span>
                   <motion.div
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ 
-                      duration: 1.5, 
-                      repeat: Infinity, 
-                      repeatType: "loop", 
-                      ease: "easeInOut",
-                      repeatDelay: 1
-                    }}
+                    initial={{ x: 0 }}
+                    whileHover={{ x: 10 }}
+                    animate={{ x: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="ml-3"
                   >
-                    <ArrowRight size={18} className="text-wine" />
+                    <motion.div
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ 
+                        duration: 1.5, 
+                        repeat: Infinity, 
+                        repeatType: "loop", 
+                        ease: "easeInOut",
+                        repeatDelay: 1
+                      }}
+                    >
+                      <ArrowRight size={18} className="text-wine" />
+                    </motion.div>
                   </motion.div>
-                </motion.div>
+                </div>
               </div>
             </div>
           </div>
