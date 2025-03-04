@@ -84,7 +84,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.8 }}
-            className="font-medium block mt-2 bg-gradient-to-r from-wine to-wine-light bg-clip-text text-transparent text-balance leading-tight py-2"
+            className="font-medium block mt-0 bg-gradient-to-r from-wine to-wine-light bg-clip-text text-transparent text-balance leading-tight py-2"
           >
             recycelten Weinfässern
           </motion.span>
