@@ -88,7 +88,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.8 }}
-            className="font-medium block mt-2 bg-gradient-to-r from-wine to-wine-light bg-clip-text text-transparent"
+            className="font-medium block mt-2 bg-gradient-to-r from-wine to-wine-light bg-clip-text text-transparent text-balance"
           >
             recycelten Weinfässern
           </motion.span>
@@ -102,16 +102,6 @@ const Hero = () => {
           Wir verwandeln gebrauchte Barrique-Fässer in elegante, einzigartige Möbelstücke, 
           die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
         </motion.p>
-
-        {/* Added selection guidance text */}
-        <motion.div
-          variants={itemVariants} 
-          className="text-center mb-6"
-        >
-          <span className="text-wine text-xl font-medium">Wählen Sie Ihren Bereich</span>
-          <div className="w-16 h-0.5 bg-wine mx-auto mt-2 mb-4"></div>
-          <p className="text-white/70">Bitte wählen Sie aus, ob Sie als Unternehmen oder Privatperson interessiert sind</p>
-        </motion.div>
 
         {/* Entry Cards - full width, larger and with magnetic hover effect */}
         <motion.div
