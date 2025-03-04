@@ -1,6 +1,5 @@
-
 import { useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Check, Table, Armchair, Layers } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -13,8 +12,10 @@ import ProductionProcess from '@/components/ProductionProcess';
 import { fadeIn, staggerContainer, slideUp } from '@/lib/motion';
 
 const BusinessPage = () => {
+  const { scrollY } = useScroll();
+  const parallaxY = useTransform(scrollY, [0, 500], [0, 100]);
+
   useEffect(() => {
-    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -32,17 +33,14 @@ const BusinessPage = () => {
       });
     });
 
-    // Scroll to top when the page loads
     window.scrollTo(0, 0);
 
-    // Update page title and meta description for SEO
     document.title = "VINLIGNA | Maßgeschneiderte Weinfass-Möbel für Weingüter & Gastronomie";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute("content", "Maßgefertigte, nachhaltige Weinfass-Möbel für Weingüter, Restaurants und Hotels. Werten Sie Ihren Geschäftsraum mit einzigartigen Unikaten auf.");
     }
 
-    // Cleanup
     return () => {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.removeEventListener('click', function (e) {
@@ -56,113 +54,76 @@ const BusinessPage = () => {
     <div className="min-h-screen overflow-x-hidden bg-black">
       <Navbar />
       
-      {/* Hero Section - Updated to match site style */}
-      <section className="relative min-h-[90vh] flex items-center justify-center px-6 pt-32 pb-20 overflow-hidden">
-        {/* Dynamic background with gradient */}
-        <div className="absolute inset-0 z-0 bg-black">
-          <div className="absolute inset-0 bg-gradient-to-b from-wine/10 via-black to-black/90 opacity-70" />
-          
-          {/* Subtle pattern overlay */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.05 }}
-            transition={{ duration: 2 }}
-            className="absolute inset-0 z-0"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E")`,
-            }}
-          />
-        </div>
-
+      <section className="relative min-h-[90vh] flex items-center justify-center px-6 pt-32 pb-20 overflow-hidden bg-black">
         <div className="container relative z-10 mx-auto max-w-5xl text-center">
           <motion.div 
-            variants={fadeIn}
-            initial="hidden"
-            animate="visible"
-            className="inline-block mb-6 px-3 py-1 bg-white/5 backdrop-blur-sm text-wine-light text-xs tracking-widest uppercase rounded-full border border-white/10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="inline-block mb-6 px-4 py-1.5 bg-black/50 backdrop-blur-sm text-wine-light text-xs tracking-widest uppercase rounded-full border border-wine/20"
           >
-            Für Geschäftskunden
+            FÜR GESCHÄFTSKUNDEN
           </motion.div>
 
           <motion.h1 
-            variants={fadeIn}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 0.1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-light mb-6 leading-tight tracking-tight"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-light mb-6 leading-tight tracking-tight"
           >
             <span className="block text-white">Weinfass Möbel für</span>
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="font-medium block mt-2 bg-gradient-to-r from-wine to-wine-light bg-clip-text text-transparent"
+              className="font-normal block mt-4 text-[#c69c6d]"
             >
               Weingüter, Gastronomie & Hotellerie
             </motion.span>
           </motion.h1>
 
           <motion.p 
-            variants={fadeIn}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 0.2 }}
-            className="text-base md:text-lg text-white/80 max-w-2xl mx-auto mb-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="text-base md:text-lg text-white/80 max-w-2xl mx-auto mb-16"
           >
             Werten Sie Ihre Räumlichkeiten mit individuell gefertigten Möbeln aus recycelten Weinfässern auf. Erzählen Sie die Geschichte Ihres Unternehmens durch zeitlose, nachhaltige Unikate.
           </motion.p>
           
           <motion.div
-            variants={fadeIn}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 0.3 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="mb-20"
           >
             <a 
               href="#contact" 
-              className="btn-primary group"
+              className="inline-flex items-center justify-center bg-[#c69c6d] hover:bg-[#d5ab7d] text-white px-8 py-4 rounded-md transition-colors duration-300 group"
             >
               <span>Jetzt anfragen</span>
               <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
           </motion.div>
-          
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="flex flex-col items-center absolute bottom-8 left-0 right-0"
-          >
-            <motion.span 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.7 }}
-              transition={{ duration: 1, delay: 1.2, repeat: Infinity, repeatType: "reverse" }}
-              className="text-white/60 text-sm mb-2"
-            >
-              Mehr entdecken
-            </motion.span>
-            <motion.div 
-              initial={{ height: 0 }}
-              animate={{ height: 60 }}
-              transition={{ duration: 1, delay: 1.4 }}
-              className="w-px bg-white/20 relative overflow-hidden"
-            >
-              <motion.div 
-                initial={{ y: -60 }}
-                animate={{ y: 60 }}
-                transition={{ 
-                  duration: 1.5, 
-                  repeat: Infinity, 
-                  ease: "easeInOut" 
-                }}
-                className="w-full h-1/2 bg-white/60 absolute"
-              />
-            </motion.div>
-          </motion.div>
         </div>
       </section>
 
-      {/* About Us Section */}
+      <motion.section 
+        className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden bg-black"
+      >
+        <motion.div 
+          className="absolute inset-0 w-full h-full"
+          style={{ 
+            y: parallaxY,
+            backgroundImage: "url('/lovable-uploads/9ad79fc1-cf6d-4e7d-9277-819dde52a980.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center 30%"
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
+        </motion.div>
+      </motion.section>
+
       <section className="section-padding bg-black">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
@@ -194,10 +155,8 @@ const BusinessPage = () => {
         </div>
       </section>
 
-      {/* Team Section */}
       <TeamSection />
 
-      {/* Products Section */}
       <section className="section-padding-lg bg-black overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="max-w-screen-xl mx-auto">
@@ -272,10 +231,8 @@ const BusinessPage = () => {
         </div>
       </section>
 
-      {/* Process Section */}
       <ProductionProcess isB2C={false} />
 
-      {/* Benefits Section */}
       <section className="section-padding-lg bg-black overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="max-w-screen-xl mx-auto">
@@ -367,7 +324,6 @@ const BusinessPage = () => {
         </div>
       </section>
 
-      {/* Product Gallery */}
       <section className="section-padding bg-black">
         <div className="container mx-auto px-6">
           <div className="max-w-screen-xl mx-auto">
@@ -414,10 +370,8 @@ const BusinessPage = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
       <Contact />
       
-      {/* FAQ Section */}
       <BusinessFaq />
 
       <Footer />
@@ -426,7 +380,6 @@ const BusinessPage = () => {
   );
 };
 
-// ProcessStep Component
 interface ProcessStepProps {
   number: string;
   title: string;
@@ -442,13 +395,11 @@ const ProcessStep = ({ number, title, description }: ProcessStepProps) => (
     <h4 className="text-lg font-medium mb-2 text-white">{title}</h4>
     <p className="text-sm text-white/60">{description}</p>
     
-    {/* Connector line, only show for non-last items on desktop */}
     <div className="hidden md:block absolute top-8 right-0 h-[2px] w-1/2 bg-wine/10 -z-10 last:hidden"></div>
     <div className="hidden md:block absolute top-8 left-1/2 h-[2px] w-1/2 bg-wine/10 -z-10 first:hidden"></div>
   </motion.div>
 );
 
-// ProductCard Component
 interface ProductCardProps {
   icon: React.ReactNode;
   title: string;
@@ -475,7 +426,6 @@ const ProductCard = ({ icon, title, description, image }: ProductCardProps) => (
   </div>
 );
 
-// BenefitItem Component
 interface BenefitItemProps {
   title: string;
   description: string;
@@ -495,7 +445,6 @@ const BenefitItem = ({ title, description }: BenefitItemProps) => (
   </div>
 );
 
-// Gallery Item Component
 interface GalleryItemProps {
   image: string;
   title: string;
@@ -520,7 +469,6 @@ const GalleryItem = ({ image, title, category }: GalleryItemProps) => (
   </div>
 );
 
-// Gallery items data
 const galleryItems = [
   { 
     image: "/lovable-uploads/b8ccf011-269c-4d03-9fab-ec9ce9533125.png", 
