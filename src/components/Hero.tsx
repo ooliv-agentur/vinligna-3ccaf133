@@ -1,9 +1,7 @@
-
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// Animation variants for staggered animations
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -44,25 +42,22 @@ const scaleIn = {
 const Hero = () => {
   return (
     <section className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center px-6 py-12 bg-black">
-      {/* Background Texture/Gradient Animation */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.15 }}
         transition={{ duration: 2 }}
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E")`,
         }}
       />
 
-      {/* Main Content Container */}
       <motion.div 
         className="container z-10 mx-auto max-w-6xl flex flex-col h-full"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {/* Badge - animated */}
         <motion.div 
           variants={itemVariants}
           className="flex justify-center mb-8"
@@ -72,7 +67,6 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* Heading - larger and animated with character staggering */}
         <motion.h1 
           variants={itemVariants}
           className="text-5xl md:text-7xl lg:text-8xl font-light mb-10 leading-tight tracking-tight text-center max-w-5xl mx-auto"
@@ -81,7 +75,7 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="block"
+            className="block text-white"
           >
             Exklusive Fassmöbel aus
           </motion.span>
@@ -95,7 +89,6 @@ const Hero = () => {
           </motion.span>
         </motion.h1>
 
-        {/* Subheading - simplified and animated */}
         <motion.p 
           variants={itemVariants}
           className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-12 text-center leading-relaxed"
@@ -104,12 +97,10 @@ const Hero = () => {
           die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
         </motion.p>
 
-        {/* Entry Cards - full width, larger and with magnetic hover effect */}
         <motion.div
           variants={scaleIn}
           className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 w-full flex-grow"
         >
-          {/* Business Entry Point - Reimagined Design */}
           <EntryCard 
             title="Ich bin"
             subtitle="Winzer, Gastronom oder Hotelier"
@@ -118,7 +109,6 @@ const Hero = () => {
             imageSrc="/lovable-uploads/112627aa-d494-4e9d-939e-39625817461d.png"
           />
 
-          {/* Private Entry Point - Reimagined Design */}
           <EntryCard 
             title="Ich bin"
             subtitle="Weinliebhaber"
@@ -128,7 +118,6 @@ const Hero = () => {
           />
         </motion.div>
 
-        {/* Scroll indicator - animated and fixed to bottom */}
         <motion.div 
           variants={fadeIn}
           className="flex flex-col items-center absolute bottom-8 left-0 right-0"
@@ -183,9 +172,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
         to={link} 
         className="block h-full group relative"
       >
-        {/* Card with parallax effect on hover */}
         <div className="relative aspect-[16/10] rounded-lg overflow-hidden h-full">
-          {/* Image with blur-up loading effect */}
           <motion.div
             initial={{ filter: "blur(10px)" }}
             animate={{ filter: "blur(0px)" }}
@@ -199,7 +186,6 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
             />
           </motion.div>
           
-          {/* Gradient overlay with animated opacity */}
           <motion.div 
             initial={{ opacity: 0.7 }}
             whileHover={{ opacity: 0.9 }}
@@ -207,7 +193,6 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
             className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/30"
           />
           
-          {/* Card content with enhanced animations */}
           <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10 text-left transform transition-all duration-300 group-hover:translate-y-0">
             <div className="mb-1 text-white/70 text-lg">{title}</div>
             <h2 className="text-3xl font-medium text-white mb-2">{subtitle}</h2>
