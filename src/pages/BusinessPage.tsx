@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, Table, Armchair, Layers } from 'lucide-react';
@@ -269,7 +268,7 @@ const BusinessPage = () => {
               <div className="md:col-span-2 lg:col-span-1">
                 <div className="h-full">
                   <img 
-                    src="/project-b2b-1.jpg" 
+                    src="/lovable-uploads/bb8a99d9-97f3-42b4-85ad-94d0c5d74fff.png" 
                     alt="Maßgefertigte Weinfass-Möbel" 
                     className="w-full h-full object-cover rounded-lg shadow-md"
                   />
