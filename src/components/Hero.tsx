@@ -121,7 +121,8 @@ const Hero = () => {
         >
           {/* Business Entry Point - Reimagined Design */}
           <EntryCard 
-            title="Weingüter & Gastronomie"
+            title="Ich bin"
+            subtitle="Winzer oder Gastronom"
             description="Maßgeschneiderte Lösungen für Ihre Marke"
             link="/business"
             imageSrc="/lovable-uploads/112627aa-d494-4e9d-939e-39625817461d.png"
@@ -129,7 +130,8 @@ const Hero = () => {
 
           {/* Private Entry Point - Reimagined Design */}
           <EntryCard 
-            title="Weinliebhaber"
+            title="Ich bin"
+            subtitle="Weinliebhaber"
             description="Exklusive Designs für Ihr Zuhause"
             link="/private"
             imageSrc="/lovable-uploads/e9d912cb-d45d-4016-8e8b-8250bd78de47.png"
@@ -174,12 +176,13 @@ const Hero = () => {
 
 interface EntryCardProps {
   title: string;
+  subtitle: string;
   description: string;
   link: string;
   imageSrc: string;
 }
 
-const EntryCard = ({ title, description, link, imageSrc }: EntryCardProps) => {
+const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardProps) => {
   return (
     <motion.div
       whileHover={{ y: -5 }}
@@ -201,7 +204,7 @@ const EntryCard = ({ title, description, link, imageSrc }: EntryCardProps) => {
           >
             <img 
               src={imageSrc} 
-              alt={title} 
+              alt={subtitle} 
               className="w-full h-full object-cover" 
             />
           </motion.div>
@@ -216,8 +219,9 @@ const EntryCard = ({ title, description, link, imageSrc }: EntryCardProps) => {
           
           {/* Card content with enhanced animations */}
           <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10 text-left transform transition-all duration-300 group-hover:translate-y-0">
-            <h3 className="text-3xl font-light text-white mb-3">{title}</h3>
-            <p className="text-white/70 mb-8 text-lg font-light">{description}</p>
+            <div className="mb-1 text-white/70 text-lg">{title}</div>
+            <h3 className="text-3xl font-medium text-white mb-2">{subtitle}</h3>
+            <p className="text-white/70 mb-8 text-base font-light">{description}</p>
             
             <div className="flex items-center text-white text-base font-light overflow-hidden relative">
               <span className="relative group-hover:text-wine transition-colors duration-300">
