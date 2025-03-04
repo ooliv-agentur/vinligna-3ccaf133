@@ -1,6 +1,6 @@
 
 import { motion } from 'framer-motion';
-import { Wine, Hammer, Ruler, Sparkles } from 'lucide-react';
+import { Barrel, PencilRuler, Sparkles } from 'lucide-react';
 
 interface ProcessStepProps {
   number: string;
@@ -32,6 +32,27 @@ const ProcessStep = ({ number, title, description, icon }: ProcessStepProps) => 
   </motion.div>
 );
 
+// Custom SVG for barrel stave icon
+const StaveIcon = ({ size = 48, strokeWidth = 0.8 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={strokeWidth}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M6 3c0 0 1.8 1.5 6 1.5 4.2 0 6-1.5 6-1.5" />
+    <path d="M18 21c0 0-1.8-1.5-6-1.5-4.2 0-6 1.5-6 1.5" />
+    <path d="M6 8c0 0 1.8 1.5 6 1.5 4.2 0 6-1.5 6-1.5" />
+    <path d="M6 16c0 0 1.8-1.5 6-1.5 4.2 0 6 1.5 6 1.5" />
+    <path d="M4 3c0 0 0 17 0 18" />
+    <path d="M20 3c0 0 0 17 0 18" />
+  </svg>
+);
+
 interface ProductionProcessProps {
   isB2C?: boolean;
 }
@@ -47,25 +68,25 @@ const ProductionProcess = ({ isB2C = false }: ProductionProcessProps) => {
         number: "01",
         title: "Auswahl der Fässer",
         description: "Wir wählen sorgfältig gebrauchte Barrique-Fässer aus, die jahrelang edle Weine beherbergt haben und eine besondere Geschichte erzählen.",
-        icon: <Wine strokeWidth={1.5} size={48} />
+        icon: <Barrel strokeWidth={0.8} size={48} />
       },
       {
         number: "02",
         title: "Handwerkliche Verarbeitung",
         description: "Mit traditionellen Handwerkstechniken zerlegen wir die Fässer und verarbeiten die edlen Hölzer zu einzigartigen Wohnaccessoires und Möbelstücken.",
-        icon: <Hammer strokeWidth={1.5} size={48} />
+        icon: <StaveIcon strokeWidth={0.8} size={48} />
       },
       {
         number: "03",
         title: "Individuelle Gestaltung",
         description: "Wir gestalten Ihr Wunschmöbel nach Ihren persönlichen Vorstellungen und passen es optimal an Ihren Wohnraum an.",
-        icon: <Ruler strokeWidth={1.5} size={48} />
+        icon: <PencilRuler strokeWidth={0.8} size={48} />
       },
       {
         number: "04",
         title: "Perfekte Vollendung",
         description: "Die Oberflächen werden mit hochwertigen Ölen und Wachsen veredelt, um die einzigartige Holzmaserung zur Geltung zu bringen und langlebigen Schutz zu bieten.",
-        icon: <Sparkles strokeWidth={1.5} size={48} />
+        icon: <Sparkles strokeWidth={0.8} size={48} />
       }
     ]
   };
@@ -79,25 +100,25 @@ const ProductionProcess = ({ isB2C = false }: ProductionProcessProps) => {
         number: "01",
         title: "Fassauswahl",
         description: "Wir verwenden sorgfältig ausgewählte, alte Barrique-Fässer, die aus Weingütern stammen und für die Reifung von Wein verwendet wurden.",
-        icon: <Wine strokeWidth={1.5} size={48} />
+        icon: <Barrel strokeWidth={0.8} size={48} />
       },
       {
         number: "02",
         title: "Verarbeitung",
         description: "Die Fässer werden in Fassdauben zerlegt und von unseren Handwerkern zu einzigartigen Möbelstücken weiterverarbeitet.",
-        icon: <Hammer strokeWidth={1.5} size={48} />
+        icon: <StaveIcon strokeWidth={0.8} size={48} />
       },
       {
         number: "03",
         title: "Maßanfertigung",
         description: "Jedes Möbelstück wird in enger Zusammenarbeit mit Ihnen entworfen und exakt an Ihre Anforderungen angepasst.",
-        icon: <Ruler strokeWidth={1.5} size={48} />
+        icon: <PencilRuler strokeWidth={0.8} size={48} />
       },
       {
         number: "04",
         title: "Endveredelung",
         description: "Die fertigen Möbelstücke werden mit einem speziellen Finish versehen, das die natürliche Schönheit des Holzes hervorhebt.",
-        icon: <Sparkles strokeWidth={1.5} size={48} />
+        icon: <Sparkles strokeWidth={0.8} size={48} />
       }
     ]
   };
