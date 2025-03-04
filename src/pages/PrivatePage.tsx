@@ -195,7 +195,7 @@ const PrivatePage = () => {
                 icon={<Wine className="w-6 h-6" />}
                 title="Accessoires und Geschenkartikel"
                 description="Neben Möbelstücken bieten wir auch eine Auswahl an kleineren Accessoires, die sich perfekt als stilvolle Dekoration oder als Geschenke für Weinliebhaber eignen. Jedes Accessoire wird aus recycelten Weinfässern gefertigt und verleiht Ihrem Zuhause das gewisse Etwas."
-                image="/lovable-uploads/bb8a99d9-97f3-42b4-85ad-94d0c5d74fff.png"
+                image="/lovable-uploads/ccaefbf7-98fe-4699-a949-fd82a00ba26d.png"
               />
             </div>
 
