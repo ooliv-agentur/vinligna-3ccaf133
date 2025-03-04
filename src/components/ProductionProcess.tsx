@@ -1,6 +1,5 @@
-
 import { motion } from 'framer-motion';
-import { Barrel, PencilRuler, Sparkles } from 'lucide-react';
+import { Package, PencilRuler, Sparkles } from 'lucide-react';
 
 interface ProcessStepProps {
   number: string;
@@ -30,6 +29,27 @@ const ProcessStep = ({ number, title, description, icon }: ProcessStepProps) => 
     <div className="hidden md:block absolute top-8 right-0 h-[2px] w-1/2 bg-wine/10 -z-10 last:hidden"></div>
     <div className="hidden md:block absolute top-8 left-1/2 h-[2px] w-1/2 bg-wine/10 -z-10 first:hidden"></div>
   </motion.div>
+);
+
+// Custom SVG for barrel icon since Barrel isn't available in lucide-react
+const BarrelIcon = ({ size = 48, strokeWidth = 0.8 }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={strokeWidth}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M8 2v20" />
+    <path d="M16 2v20" />
+    <path d="M4 8c0 0 1.5-1.5 8-1.5s8 1.5 8 1.5" />
+    <path d="M4 16c0 0 1.5 1.5 8 1.5s8-1.5 8-1.5" />
+    <path d="M4 4h16" />
+    <path d="M4 20h16" />
+  </svg>
 );
 
 // Custom SVG for barrel stave icon
@@ -68,7 +88,7 @@ const ProductionProcess = ({ isB2C = false }: ProductionProcessProps) => {
         number: "01",
         title: "Auswahl der Fässer",
         description: "Wir wählen sorgfältig gebrauchte Barrique-Fässer aus, die jahrelang edle Weine beherbergt haben und eine besondere Geschichte erzählen.",
-        icon: <Barrel strokeWidth={0.8} size={48} />
+        icon: <BarrelIcon strokeWidth={0.8} size={48} />
       },
       {
         number: "02",
@@ -100,7 +120,7 @@ const ProductionProcess = ({ isB2C = false }: ProductionProcessProps) => {
         number: "01",
         title: "Fassauswahl",
         description: "Wir verwenden sorgfältig ausgewählte, alte Barrique-Fässer, die aus Weingütern stammen und für die Reifung von Wein verwendet wurden.",
-        icon: <Barrel strokeWidth={0.8} size={48} />
+        icon: <BarrelIcon strokeWidth={0.8} size={48} />
       },
       {
         number: "02",
