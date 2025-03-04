@@ -242,7 +242,7 @@ const Contact = () => {
                   <div className="space-y-3 text-sm">
                     <p><strong className="font-medium">E-Mail:</strong> <a href="mailto:info@vinligna.com" className="text-wine hover:underline">info@vinligna.com</a></p>
                     <p><strong className="font-medium">Telefon:</strong> <a href="tel:+4963623094990" className="hover:underline">+49 6362 309 49 90</a></p>
-                    <p><strong className="font-medium">Werkstattadresse:</strong><br />VINLIGNA Atelier<br />Industriestraße 19, 67821 Alsenz<br />Deutschland</p>
+                    <p><strong className="font-medium">Werkstattadresse:</strong><br />VinLignum Holzmanufaktur GmbH & Co. KG<br />Industriestraße 19, 67821 Alsenz<br />Deutschland</p>
                     <p className="text-muted-foreground pt-2">Besuche nur nach Vereinbarung möglich</p>
                   </div>
                 </div>
