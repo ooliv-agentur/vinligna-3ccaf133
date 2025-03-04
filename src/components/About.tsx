@@ -60,7 +60,7 @@ const About = () => {
                 className="relative z-10 rounded-lg overflow-hidden shadow-xl"
               >
                 <img 
-                  src="/about-main.jpg" 
+                  src="/lovable-uploads/7d68f803-8997-4648-9249-af03963b23eb.png" 
                   alt="Handcrafted wine barrel furniture" 
                   className="w-full h-full object-cover"
                 />
