@@ -48,207 +48,242 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="max-w-screen-xl mx-auto">
+    <section id="contact" className="py-32 md:py-44 bg-background overflow-hidden relative">
+      {/* Background pattern */}
+      <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+        <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-wine/10 to-transparent"></div>
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-oak/10 to-transparent"></div>
+      </div>
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="max-w-screen-xl mx-auto text-center mb-16 md:mb-24"
+        >
+          <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-4">
+            Kontakt
+          </span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 leading-tight">
+            Lassen Sie uns ins <span className="font-medium">Gespräch</span> kommen
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Ob Sie ein maßgeschneidertes Möbelstück suchen oder Fragen zu unseren Produkten haben,
+            wir sind für Sie da.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
+          {/* Form Column - 3 spans */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="text-center mb-16"
+            className="lg:col-span-3 bg-black/5 backdrop-blur-sm rounded-3xl p-10"
           >
-            <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-4">
-              Kontakt aufnehmen
-            </span>
-            <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
-              Lassen Sie uns etwas <span className="font-medium">Außergewöhnliches</span> erschaffen
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Ob Sie ein Unternehmen sind, das maßgeschneiderte Weinmöbel sucht, oder ein Weinliebhaber, der ein Statement-Stück für Ihr Zuhause sucht, wir sind für Sie da.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-start">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true, margin: "-100px" }}
-            >
-              <h3 className="text-2xl font-light mb-6">Senden Sie uns eine Nachricht</h3>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label 
-                      htmlFor="name" 
-                      className="block text-sm font-medium text-muted-foreground mb-2"
-                    >
-                      Vollständiger Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 bg-oak-light/20 border border-oak/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-oak/30 transition-all"
-                      placeholder="Ihr Name"
-                    />
-                  </div>
-                  <div>
-                    <label 
-                      htmlFor="email" 
-                      className="block text-sm font-medium text-muted-foreground mb-2"
-                    >
-                      E-Mail-Adresse
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 bg-oak-light/20 border border-oak/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-oak/30 transition-all"
-                      placeholder="ihre.email@beispiel.de"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label 
-                      htmlFor="phone" 
-                      className="block text-sm font-medium text-muted-foreground mb-2"
-                    >
-                      Telefonnummer (Optional)
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-oak-light/20 border border-oak/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-oak/30 transition-all"
-                      placeholder="+49 (000) 000-0000"
-                    />
-                  </div>
-                  <div>
-                    <label 
-                      htmlFor="interest" 
-                      className="block text-sm font-medium text-muted-foreground mb-2"
-                    >
-                      Ich interessiere mich für
-                    </label>
-                    <select
-                      id="interest"
-                      name="interest"
-                      value={formData.interest}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-oak-light/20 border border-oak/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-oak/30 transition-all appearance-none"
-                      style={{ backgroundImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%236b7280' viewBox='0 0 16 16'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 6 4 4 4-4'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 0.75rem center', backgroundSize: '1rem' }}
-                    >
-                      <option value="business">Businesslösungen</option>
-                      <option value="private">Privatkollektion</option>
-                      <option value="consultation">Designberatung</option>
-                      <option value="other">Andere Anfrage</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div>
+            <form onSubmit={handleSubmit} className="space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
                   <label 
-                    htmlFor="message" 
-                    className="block text-sm font-medium text-muted-foreground mb-2"
+                    htmlFor="name" 
+                    className="block text-sm font-medium text-foreground/80"
                   >
-                    Ihre Nachricht
+                    Name
                   </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
                     onChange={handleChange}
                     required
-                    rows={5}
-                    className="w-full px-4 py-3 bg-oak-light/20 border border-oak/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-oak/30 transition-all resize-none"
-                    placeholder="Erzählen Sie uns von Ihrem Projekt oder Ihrer Anfrage..."
+                    className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-foreground/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-wine/30 transition-all"
+                    placeholder="Ihr vollständiger Name"
                   />
                 </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={cn(
-                    "inline-flex items-center text-sm font-medium bg-foreground text-background py-3 px-6 rounded-lg transition-all group",
-                    isSubmitting ? "opacity-70 cursor-not-allowed" : "hover:bg-foreground/90"
-                  )}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-background" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Senden...
-                    </>
-                  ) : (
-                    <>
-                      <span>Nachricht senden</span>
-                      <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-                    </>
-                  )}
-                </button>
-              </form>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true, margin: "-100px" }}
-            >
-              <div className="sticky top-32">
-                <div className="relative rounded-lg overflow-hidden h-64 mb-8">
-                  <img 
-                    src="/lovable-uploads/d5f56555-b294-42a9-b01c-5d95a80b0613.png" 
-                    alt="VINLIGNA Werkstatt" 
-                    className="w-full h-full object-cover"
+                <div className="space-y-2">
+                  <label 
+                    htmlFor="email" 
+                    className="block text-sm font-medium text-foreground/80"
+                  >
+                    E-Mail
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-foreground/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-wine/30 transition-all"
+                    placeholder="ihre.email@beispiel.de"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                  <div className="absolute bottom-0 p-6 text-white">
-                    <h3 className="text-xl font-medium mb-1">Besuchen Sie unsere Werkstatt</h3>
-                    <p className="text-white/80 text-sm">Erleben Sie die Handwerkskunst persönlich</p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label 
+                    htmlFor="phone" 
+                    className="block text-sm font-medium text-foreground/80"
+                  >
+                    Telefon (Optional)
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-foreground/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-wine/30 transition-all"
+                    placeholder="+49 123 456 7890"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label 
+                    htmlFor="interest" 
+                    className="block text-sm font-medium text-foreground/80"
+                  >
+                    Interesse
+                  </label>
+                  <select
+                    id="interest"
+                    name="interest"
+                    value={formData.interest}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-foreground/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-wine/30 transition-all appearance-none"
+                    style={{ backgroundImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%236b7280' viewBox='0 0 16 16'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 6 4 4 4-4'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', backgroundSize: '1rem' }}
+                  >
+                    <option value="business">Businesslösungen</option>
+                    <option value="private">Privatkollektion</option>
+                    <option value="consultation">Designberatung</option>
+                    <option value="other">Andere Anfrage</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label 
+                  htmlFor="message" 
+                  className="block text-sm font-medium text-foreground/80"
+                >
+                  Nachricht
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={4}
+                  className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-foreground/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-wine/30 transition-all resize-none"
+                  placeholder="Beschreiben Sie Ihr Projekt oder Ihre Anfrage..."
+                />
+              </div>
+
+              <motion.button
+                type="submit"
+                disabled={isSubmitting}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className={cn(
+                  "inline-flex items-center justify-center w-full md:w-auto text-sm font-medium bg-wine text-white py-3 px-8 rounded-xl transition-all",
+                  isSubmitting ? "opacity-70 cursor-not-allowed" : "hover:bg-wine-dark"
+                )}
+              >
+                {isSubmitting ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Wird gesendet...
+                  </>
+                ) : (
+                  <>
+                    <span>Nachricht senden</span>
+                    <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                  </>
+                )}
+              </motion.button>
+            </form>
+          </motion.div>
+
+          {/* Info Column - 2 spans */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="lg:col-span-2 space-y-8"
+          >
+            {/* Contact Info Card */}
+            <div className="bg-black/5 backdrop-blur-sm rounded-3xl p-8">
+              <h3 className="text-xl font-light mb-6">Kontaktinformationen</h3>
+              <div className="space-y-4 text-sm">
+                <div className="flex items-start">
+                  <div className="w-6 h-6 mt-0.5 mr-3 flex items-center justify-center rounded-full bg-wine/10">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3.5 h-3.5 text-wine">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-medium mb-1">E-Mail</p>
+                    <a href="mailto:info@vinligna.com" className="text-wine hover:underline">info@vinligna.com</a>
                   </div>
                 </div>
-
-                <div className="bg-oak-light/30 rounded-lg p-6 mb-8">
-                  <h3 className="text-xl font-medium mb-4">Warum VINLIGNA wählen?</h3>
-                  <ul className="space-y-3">
-                    {benefits.map((benefit, index) => (
-                      <li key={index} className="flex items-start">
-                        <div className="mt-0.5 mr-3 flex-shrink-0 w-5 h-5 bg-wine rounded-full flex items-center justify-center">
-                          <Check className="text-white w-3 h-3" />
-                        </div>
-                        <p className="text-muted-foreground text-sm">{benefit}</p>
-                      </li>
-                    ))}
-                  </ul>
+                
+                <div className="flex items-start">
+                  <div className="w-6 h-6 mt-0.5 mr-3 flex items-center justify-center rounded-full bg-wine/10">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3.5 h-3.5 text-wine">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-medium mb-1">Telefon</p>
+                    <a href="tel:+4963623094990" className="hover:text-wine">+49 6362 309 49 90</a>
+                  </div>
                 </div>
-
-                <div className="bg-wine/10 rounded-lg p-6">
-                  <h3 className="text-xl font-medium mb-4">Kontaktinformationen</h3>
-                  <div className="space-y-3 text-sm">
-                    <p><strong className="font-medium">E-Mail:</strong> <a href="mailto:info@vinligna.com" className="text-wine hover:underline">info@vinligna.com</a></p>
-                    <p><strong className="font-medium">Telefon:</strong> <a href="tel:+4963623094990" className="hover:underline">+49 6362 309 49 90</a></p>
-                    <p><strong className="font-medium">Werkstattadresse:</strong><br />VinLignum Holzmanufaktur GmbH & Co. KG<br />Industriestraße 19, 67821 Alsenz<br />Deutschland</p>
-                    <p className="text-muted-foreground pt-2">Besuche nur nach Vereinbarung möglich</p>
+                
+                <div className="flex items-start">
+                  <div className="w-6 h-6 mt-0.5 mr-3 flex items-center justify-center rounded-full bg-wine/10">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3.5 h-3.5 text-wine">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-medium mb-1">Werkstattadresse</p>
+                    <address className="not-italic">
+                      VinLignum Holzmanufaktur GmbH & Co. KG<br />
+                      Industriestraße 19<br />
+                      67821 Alsenz<br />
+                      Deutschland
+                    </address>
+                    <p className="text-xs text-muted-foreground mt-2">Besuche nur nach Vereinbarung</p>
                   </div>
                 </div>
               </div>
-            </motion.div>
-          </div>
+            </div>
+            
+            {/* Benefits Card */}
+            <div className="bg-wine/5 backdrop-blur-sm rounded-3xl p-8">
+              <h3 className="text-xl font-light mb-6">Warum VINLIGNA?</h3>
+              <ul className="space-y-3">
+                {benefits.slice(0, 4).map((benefit, index) => (
+                  <li key={index} className="flex items-start">
+                    <div className="mt-0.5 mr-3 flex-shrink-0 w-5 h-5 bg-wine rounded-full flex items-center justify-center">
+                      <Check className="text-white w-3 h-3" />
+                    </div>
+                    <p className="text-sm">{benefit}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
@@ -256,12 +291,12 @@ const Contact = () => {
 };
 
 const benefits = [
-  "Jedes Stück erzählt die einzigartige Geschichte des Fasses, aus dem es stammt",
-  "Kombination aus traditioneller Handwerkskunst und modernem Design",
-  "Nachhaltig beschaffte Materialien mit vollständiger Rückverfolgbarkeit",
-  "Vollständig anpassbar an Ihren Raum und Stil",
-  "Fachkundige Beratung während des gesamten Designprozesses",
-  "Langlebige Qualität, die über Generationen weitergegeben werden kann"
+  "Einzigartige Möbel aus authentischen Weinfässern",
+  "Perfekte Kombination aus Tradition und modernem Design",
+  "Nachhaltige Materialien mit vollständiger Rückverfolgbarkeit",
+  "Maßgeschneiderte Anpassung an Ihre Bedürfnisse",
+  "Fachkundige Beratung während des gesamten Prozesses",
+  "Langlebige Qualität für Generationen"
 ];
 
 export default Contact;
