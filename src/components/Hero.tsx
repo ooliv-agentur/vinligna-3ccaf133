@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -98,15 +97,13 @@ const Hero = () => {
           die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
         </motion.p>
 
-        {/* Wrapper with flex column for consistent width of all tiles */}
-        <div className="w-full max-w-5xl mx-auto flex flex-col items-center px-0">
+        <div className="w-full max-w-5xl">
           <motion.div 
             variants={scaleIn}
             className="w-full mb-10 md:mb-8"
           >
-            {/* Simple flex column layout to ensure consistent width */}
-            <div className="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-8 w-full">
-              <div className="w-full">
+            <div className="flex flex-col md:grid md:grid-cols-2 gap-10 md:gap-8">
+              <div className="w-full min-w-full max-w-none flex-shrink-0 flex-grow-0">
                 <EntryCard 
                   title="Ich bin"
                   subtitle="Winzer, Gastronom oder Hotelier"
@@ -116,7 +113,7 @@ const Hero = () => {
                 />
               </div>
 
-              <div className="w-full">
+              <div className="w-full min-w-full max-w-none flex-shrink-0 flex-grow-0">
                 <EntryCard 
                   title="Ich bin"
                   subtitle="Weinliebhaber"
