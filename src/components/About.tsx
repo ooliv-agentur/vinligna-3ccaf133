@@ -79,7 +79,7 @@ const About = () => {
             >
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
                 <img 
-                  src="/lovable-uploads/bad0a833-f25c-4023-b909-d79fcfb29912.png" 
+                  src="/lovable-uploads/a5803ca8-92c1-4b97-b7a2-6e6c1fefd43e.png" 
                   alt="Werkstatt mit Weinfässern und daraus gefertigten Möbelstücken" 
                   className="w-full h-full object-cover object-center transition-transform duration-500"
                 />
