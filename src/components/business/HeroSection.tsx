@@ -10,7 +10,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="inline-block mb-6 px-4 py-1.5 bg-black/50 backdrop-blur-sm text-wine-light text-xs tracking-widest uppercase rounded-full border border-wine/20"
+          className="inline-block mb-6 px-6 py-2 bg-transparent text-white text-sm tracking-widest uppercase rounded-full border border-white/20"
         >
           FÜR GESCHÄFTSKUNDEN
         </motion.div>
