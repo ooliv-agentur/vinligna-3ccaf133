@@ -75,7 +75,7 @@ const Hero = () => {
         {/* Heading - larger and animated with character staggering */}
         <motion.h1 
           variants={itemVariants}
-          className="text-5xl md:text-7xl lg:text-8xl font-light text-white mb-10 leading-tight tracking-tight text-center max-w-5xl mx-auto"
+          className="text-5xl md:text-7xl lg:text-8xl font-light mb-10 leading-tight tracking-tight text-center max-w-5xl mx-auto"
         >
           <motion.span
             initial={{ opacity: 0 }}
@@ -89,7 +89,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.8 }}
-            className="font-medium block mt-2 bg-gradient-to-r from-wine to-wine-light bg-clip-text text-transparent text-balance"
+            className="font-medium block mt-2 bg-gradient-to-r from-wine to-wine-light bg-clip-text text-transparent text-balance leading-tight py-2"
           >
             recycelten Weinfässern
           </motion.span>
