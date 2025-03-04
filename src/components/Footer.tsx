@@ -59,7 +59,7 @@ const Footer = () => {
                 <FooterLink href="#about">Unsere Geschichte</FooterLink>
                 <FooterLink href="#about">Handwerkskunst</FooterLink>
                 <FooterLink href="#about">Nachhaltigkeit</FooterLink>
-                <FooterLink href="#contact">Werkstatt besuchen</FooterLink>
+                <FooterLink href="#faq">Häufige Fragen</FooterLink>
               </ul>
             </div>
             

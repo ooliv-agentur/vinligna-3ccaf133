@@ -7,6 +7,7 @@ import BusinessSection from '@/components/BusinessSection';
 import PrivateSection from '@/components/PrivateSection';
 import Contact from '@/components/Contact';
 import Cta from '@/components/Cta';
+import Faq from '@/components/Faq';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 
@@ -49,6 +50,7 @@ const Index = () => {
       <PrivateSection />
       <Cta />
       <Contact />
+      <Faq />
       <Footer />
       <ScrollToTop />
     </div>
