@@ -43,13 +43,13 @@ const TeamSection = () => {
             className="text-center mb-16 md:mb-24"
           >
             <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-4">
-              Unser Team
+              Die Meister der Fassmöbel
             </span>
             <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
-              Handwerkskunst mit <span className="font-medium">Leidenschaft</span>
+              Kreativität trifft <span className="font-medium">Weinkultur</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Entdecken Sie die erfahrenen Handwerker hinter unseren einzigartigen Weinfass-Möbeln. Mit über 19 Jahren Erfahrung in der Holzverarbeitung fertigt unser Team jedes Stück mit höchster Präzision.
+              Begegnen Sie den talentierten Kunsthandwerkern, die Ihre Vision in einzigartige Möbelstücke verwandeln. Unser leidenschaftliches Team verbindet traditionelles Handwerk mit innovativem Design, um Ihnen ein Stück Weingeschichte für Ihr Zuhause zu schaffen.
             </p>
           </motion.div>
 

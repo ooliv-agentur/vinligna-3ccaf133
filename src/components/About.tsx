@@ -16,36 +16,36 @@ const About = () => {
                 viewport={{ once: true, margin: "-100px" }}
               >
                 <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-4">
-                  Unser Ansatz
+                  Die Philosophie hinter VINLIGNA
                 </span>
                 <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
-                  Ein nachhaltiges zweites Leben für <br />
-                  <span className="font-medium">Weinfässer</span>
+                  Ein Hauch Weinkultur für <br />
+                  <span className="font-medium">Ihr Zuhause</span>
                 </h2>
                 <p className="text-muted-foreground mb-6">
-                  Jedes VINLIGNA-Stück wird aus recycelten Barrique-Fässern gefertigt und gibt dem edlen Eichenholz ein zweites Leben. Jedes Möbelstück erzählt eine Geschichte – von Zeit, von Wein und von zeitloser Eleganz.
+                  In jedem VINLIGNA-Stück vereinen sich Jahrhunderte alte Tradition mit modernem Design. Wir verwandeln ausgediente Barrique-Fässer in edle Möbelkunstwerke und bewahren dabei die Geschichte und den Charakter des Holzes, das einst edle Weine beherbergte.
                 </p>
                 <p className="text-muted-foreground mb-6">
-                  Ob es sich um eine maßgeschneiderte Weinbar für ein Hotel oder einen besonderen Esstisch für einen privaten Weinliebhaber handelt, VINLIGNA verkörpert sowohl Luxus als auch Nachhaltigkeit.
+                  Unsere Möbel erzählen Geschichten von Weinbergen, Kellereien und Reifeprozessen. Sie bringen die Seele des Weins in Ihr Zuhause – als Ausdruck Ihrer Leidenschaft für Wein und exklusives Design.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 mt-8">
                   <FeatureCard 
-                    title="Authentische Handwerkskunst" 
-                    description="Jedes Stück wird von erfahrenen Handwerkern gefertigt" 
+                    title="Traditionelle Handwerkskunst" 
+                    description="Von Meistern gefertigt, die die Seele des Holzes verstehen" 
                   />
                   <FeatureCard 
-                    title="Nachhaltige Eleganz" 
-                    description="Upcycling gealterter Barrique-Fässer in zeitlose Designs" 
+                    title="Luxuriöses Upcycling" 
+                    description="Eine nachhaltige Transformation von Weinfässern zu Designobjekten" 
                   />
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4 mt-4">
                   <FeatureCard 
-                    title="100% Individualisierbar" 
-                    description="Von der Holzoberfläche bis zur Gravur Ihres Logos" 
+                    title="Persönliche Designberatung" 
+                    description="Maßgeschneiderte Lösungen für Ihren individuellen Geschmack" 
                   />
                   <FeatureCard 
-                    title="Designed to Impress" 
-                    description="Ob im gehobenen Restaurant oder in Ihrer privaten Weinlounge" 
+                    title="Limitierte Stücke" 
+                    description="Exklusive Einzelstücke mit einzigartigem Charakter" 
                   />
                 </div>
               </motion.div>
