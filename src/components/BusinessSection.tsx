@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { ArrowRight, Factory, Building, Wine } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -80,7 +79,6 @@ const BusinessSection = () => {
             </motion.div>
           </div>
 
-          {/* Project Showcase */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

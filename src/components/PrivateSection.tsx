@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { ArrowRight, Home, Gift, Armchair } from 'lucide-react';
 import { cn } from '@/lib/utils';
