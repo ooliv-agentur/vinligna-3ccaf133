@@ -8,6 +8,7 @@ import ScrollToTop from '@/components/ScrollToTop';
 import BusinessFaq from '@/components/BusinessFaq';
 import TeamSection from '@/components/TeamSection';
 import ProductGallery from '@/components/ProductGallery';
+import ProductionProcess from '@/components/ProductionProcess';
 
 const BusinessPage = () => {
   useEffect(() => {
@@ -194,52 +195,7 @@ const BusinessPage = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-24 md:py-32 bg-background overflow-hidden">
-        <div className="container mx-auto px-6">
-          <div className="max-w-screen-xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="text-center mb-16 md:mb-24"
-            >
-              <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-4">
-                Unser Produktionsprozess
-              </span>
-              <h2 className="text-3xl md:text-4xl font-light mb-6 leading-tight">
-                Vom Fass zum <span className="font-medium">Möbelstück</span>
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Entdecken Sie, wie wir hochwertige Barrique-Fässer in exklusive Möbelstücke für Ihr Unternehmen verwandeln.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <ProcessStep 
-                number="01"
-                title="Fassauswahl"
-                description="Wir verwenden sorgfältig ausgewählte, alte Barrique-Fässer, die aus Weingütern stammen und für die Reifung von Wein verwendet wurden."
-              />
-              <ProcessStep 
-                number="02"
-                title="Verarbeitung"
-                description="Die Fässer werden in Fassdauben zerlegt und von unseren Handwerkern zu einzigartigen Möbelstücken weiterverarbeitet."
-              />
-              <ProcessStep 
-                number="03"
-                title="Maßanfertigung"
-                description="Jedes Möbelstück wird in enger Zusammenarbeit mit Ihnen entworfen und exakt an Ihre Anforderungen angepasst."
-              />
-              <ProcessStep 
-                number="04"
-                title="Endveredelung"
-                description="Die fertigen Möbelstücke werden mit einem speziellen Finish versehen, das die natürliche Schönheit des Holzes hervorhebt."
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <ProductionProcess isB2C={false} />
 
       {/* Benefits Section */}
       <section className="py-24 md:py-32 bg-oak-light/5 overflow-hidden">
