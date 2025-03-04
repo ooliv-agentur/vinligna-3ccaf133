@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check } from 'lucide-react';
@@ -63,10 +62,10 @@ const Contact = () => {
           viewport={{ once: true, margin: "-100px" }}
           className="max-w-screen-xl mx-auto text-center mb-16 md:mb-24"
         >
-          <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-4">
+          <span className="section-subtitle">
             Kontakt
           </span>
-          <h2 className="text-4xl md:text-5xl font-light mb-8 leading-tight text-white">
+          <h2 className="section-title-large text-white">
             Lassen Sie uns ins <span className="font-medium">Gespräch</span> kommen
           </h2>
           <p className="text-white/70 text-lg max-w-2xl mx-auto">
