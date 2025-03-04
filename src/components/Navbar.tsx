@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showContactForm, setShowContactForm] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,7 +23,7 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    if (isMobileMenuOpen) {
+    if (isMobileMenuOpen || showContactForm) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -30,7 +31,20 @@ const Navbar = () => {
     return () => {
       document.body.style.overflow = '';
     };
+  }, [isMobileMenuOpen, showContactForm]);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) {
+      setShowContactForm(false);
+    }
   }, [isMobileMenuOpen]);
+
+  const handleContactClick = (e: React.MouseEvent) => {
+    if (isMobileMenuOpen) {
+      e.preventDefault();
+      setShowContactForm(true);
+    }
+  };
 
   return (
     <header
@@ -73,7 +87,7 @@ const Navbar = () => {
       </div>
 
       <AnimatePresence>
-        {isMobileMenuOpen && (
+        {isMobileMenuOpen && !showContactForm && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -181,14 +195,109 @@ const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1, duration: 0.5 }}
               >
-                <a 
-                  href="/#contact" 
-                  onClick={() => setIsMobileMenuOpen(false)}
+                <button 
+                  onClick={handleContactClick}
                   className="inline-flex items-center justify-center bg-wine hover:bg-wine-light text-white px-6 py-3 rounded-md transition-colors duration-300"
                 >
                   Kontakt aufnehmen
-                </a>
+                </button>
               </motion.div>
+            </div>
+          </motion.div>
+        )}
+
+        {showContactForm && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-black/95 backdrop-blur-md z-40 md:hidden flex flex-col"
+          >
+            <div className="flex flex-col h-full px-6 py-12 overflow-auto">
+              <div className="flex justify-between items-center mb-8">
+                <img 
+                  src="/lovable-uploads/50941805-7198-4381-a214-435f243a45b4.png" 
+                  alt="VINLIGNA" 
+                  className="h-6" 
+                />
+                <button
+                  className="text-white focus:outline-none"
+                  onClick={() => setShowContactForm(false)}
+                  aria-label="Close contact form"
+                >
+                  <X className="h-6 w-6" />
+                </button>
+              </div>
+              
+              <div className="text-center mb-6">
+                <h2 className="text-white text-2xl font-light mb-2">Lassen Sie uns ins</h2>
+                <h2 className="text-wine text-2xl font-light mb-4">Gespräch kommen</h2>
+                <p className="text-white/80 text-sm">
+                  Wir sind für all Ihre Fragen da - egal ob Privatperson oder Unternehmen. 
+                  Nehmen Sie Kontakt auf und entdecken Sie die Welt der Möbel aus Weinfässern.
+                </p>
+              </div>
+              
+              <form className="mt-6 space-y-4">
+                <div>
+                  <label className="block text-white/60 text-sm mb-1">Name</label>
+                  <input 
+                    type="text" 
+                    placeholder="Ihr vollständiger Name" 
+                    className="w-full bg-white/10 border border-white/20 rounded-md px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-1 focus:ring-wine"
+                  />
+                </div>
+                
+                <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
+                  <div className="flex-1">
+                    <label className="block text-white/60 text-sm mb-1">Email</label>
+                    <input 
+                      type="email" 
+                      placeholder="Ihre Email-Adresse" 
+                      className="w-full bg-white/10 border border-white/20 rounded-md px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-1 focus:ring-wine"
+                    />
+                  </div>
+                  
+                  <div className="flex-1">
+                    <label className="block text-white/60 text-sm mb-1">Telefon</label>
+                    <input 
+                      type="tel" 
+                      placeholder="Ihre Telefonnummer" 
+                      className="w-full bg-white/10 border border-white/20 rounded-md px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-1 focus:ring-wine"
+                    />
+                  </div>
+                </div>
+                
+                <div>
+                  <label className="block text-white/60 text-sm mb-1">Nachricht</label>
+                  <textarea 
+                    rows={4} 
+                    placeholder="Wie können wir Ihnen helfen?" 
+                    className="w-full bg-white/10 border border-white/20 rounded-md px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-1 focus:ring-wine"
+                  ></textarea>
+                </div>
+                
+                <button 
+                  type="submit"
+                  className="w-full bg-wine hover:bg-wine-light text-white py-3 rounded-md transition-colors duration-300 mt-4"
+                >
+                  Nachricht senden
+                </button>
+                
+                <div className="text-white/60 text-xs text-center mt-4">
+                  Wir werden Ihre Daten vertraulich behandeln und nur für die Bearbeitung Ihrer Anfrage verwenden.
+                </div>
+              </form>
+              
+              <div className="mt-auto pt-8 flex justify-center">
+                <button
+                  onClick={() => setShowContactForm(false)}
+                  className="text-white/60 hover:text-white transition-colors"
+                >
+                  Zurück zum Menü
+                </button>
+              </div>
             </div>
           </motion.div>
         )}
