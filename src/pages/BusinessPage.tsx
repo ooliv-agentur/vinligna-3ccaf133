@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, Table, Armchair, Layers } from 'lucide-react';
@@ -94,7 +93,6 @@ const BusinessPage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="mb-20"
           >
             <a 
               href="#contact" 
@@ -106,23 +104,22 @@ const BusinessPage = () => {
           </motion.div>
         </div>
 
-        {/* Directly add the uploaded image as a background */}
+        {/* Hero background with overlay */}
         <div 
-          className="absolute inset-0 -z-10"
+          className="absolute inset-0 w-full h-full -z-10"
           style={{
-            backgroundImage: `url('/lovable-uploads/58ff8116-9477-4e49-a7fb-b5d41fb8339c.png')`,
+            backgroundImage: `url('/lovable-uploads/3a04196f-9e44-4ccd-adb0-b0f1f13a34be.png')`,
             backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            opacity: 0.5
+            backgroundPosition: 'center'
           }}
         ></div>
         <div className="absolute inset-0 -z-10 bg-black/60"></div>
       </section>
 
-      {/* Image Section - Using img tag */}
-      <section className="relative w-full h-[60vh] md:h-[70vh] overflow-hidden">
+      {/* Full-width image section with the new furniture showroom image */}
+      <section className="w-full h-[90vh] relative">
         <img 
-          src="/lovable-uploads/58ff8116-9477-4e49-a7fb-b5d41fb8339c.png" 
+          src="/lovable-uploads/3a04196f-9e44-4ccd-adb0-b0f1f13a34be.png" 
           alt="Weinfass Möbel Showroom" 
           className="w-full h-full object-cover"
         />
