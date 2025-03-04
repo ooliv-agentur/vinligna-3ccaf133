@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -102,25 +101,21 @@ const Hero = () => {
           variants={scaleIn}
           className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 w-full flex-grow"
         >
-          <div className="w-full md:w-auto md:transform-none transform scale-[1.2] h-[150%]">
-            <EntryCard 
-              title="Ich bin"
-              subtitle="Winzer, Gastronom oder Hotelier"
-              description="Maßgeschneiderte Lösungen für Ihre Marke"
-              link="/business"
-              imageSrc="/lovable-uploads/112627aa-d494-4e9d-939e-39625817461d.png"
-            />
-          </div>
+          <EntryCard 
+            title="Ich bin"
+            subtitle="Winzer, Gastronom oder Hotelier"
+            description="Maßgeschneiderte Lösungen für Ihre Marke"
+            link="/business"
+            imageSrc="/lovable-uploads/112627aa-d494-4e9d-939e-39625817461d.png"
+          />
 
-          <div className="w-full md:w-auto md:transform-none transform scale-[1.2] h-[150%]">
-            <EntryCard 
-              title="Ich bin"
-              subtitle="Weinliebhaber"
-              description="Exklusive Designs für Ihr Zuhause"
-              link="/private"
-              imageSrc="/lovable-uploads/e9d912cb-d45d-4016-8e8b-8250bd78de47.png"
-            />
-          </div>
+          <EntryCard 
+            title="Ich bin"
+            subtitle="Weinliebhaber"
+            description="Exklusive Designs für Ihr Zuhause"
+            link="/private"
+            imageSrc="/lovable-uploads/e9d912cb-d45d-4016-8e8b-8250bd78de47.png"
+          />
         </motion.div>
 
         <motion.div 
@@ -177,7 +172,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
         to={link} 
         className="block h-full group relative"
       >
-        <div className="relative aspect-[16/15] md:aspect-[16/11] rounded-lg overflow-hidden h-full">
+        <div className="relative aspect-[16/11] md:aspect-[16/14] rounded-lg overflow-hidden h-full">
           <motion.div
             initial={{ filter: "blur(10px)" }}
             animate={{ filter: "blur(0px)" }}
@@ -198,10 +193,10 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
             className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/30"
           />
           
-          <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 md:p-8 text-left transform transition-all duration-300 group-hover:translate-y-0">
+          <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-7 md:p-8 text-left transform transition-all duration-300 group-hover:translate-y-0">
             <div className="mb-1 text-white/70 text-base sm:text-lg">{title}</div>
-            <h2 className="text-2xl sm:text-3xl font-medium text-white mb-2">{subtitle}</h2>
-            <p className="text-white/70 mb-4 sm:mb-8 text-sm sm:text-base font-light">{description}</p>
+            <h2 className="text-2xl sm:text-3xl font-medium text-white mb-3">{subtitle}</h2>
+            <p className="text-white/70 mb-6 sm:mb-8 text-sm sm:text-base font-light">{description}</p>
             
             <div className="flex items-center text-white text-base font-light overflow-hidden relative">
               <span className="relative group-hover:text-wine transition-colors duration-300">
