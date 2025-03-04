@@ -1,6 +1,5 @@
-
 import { useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowRight, Check, Table, Armchair, Layers } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -13,9 +12,6 @@ import ProductionProcess from '@/components/ProductionProcess';
 import { fadeIn, staggerContainer, slideUp } from '@/lib/motion';
 
 const BusinessPage = () => {
-  const { scrollY } = useScroll();
-  const parallaxY = useTransform(scrollY, [0, 500], [0, 100]);
-
   useEffect(() => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
@@ -110,17 +106,18 @@ const BusinessPage = () => {
         </div>
       </section>
 
-      {/* Parallax Image Section */}
-      <section className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden bg-black">
-        <motion.div 
-          className="absolute inset-0 w-full h-full bg-cover bg-fixed bg-center"
+      {/* Image Section - Simplified, no parallax */}
+      <section className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden">
+        <div 
+          className="absolute inset-0 w-full h-full"
           style={{ 
             backgroundImage: "url('/lovable-uploads/9ad79fc1-cf6d-4e7d-9277-819dde52a980.png')",
-            y: parallaxY,
+            backgroundSize: "cover",
+            backgroundPosition: "center"
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/70"></div>
-        </motion.div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"></div>
+        </div>
       </section>
 
       {/* About Section */}
