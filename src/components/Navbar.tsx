@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -67,7 +68,8 @@ const Navbar = () => {
       <header
         className={cn(
           'fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ease-in-out py-4 px-4 sm:px-6 md:px-12',
-          isScrolled ? 'bg-background/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
+          isScrolled ? 'bg-background/90 backdrop-blur-md shadow-sm' : 'bg-transparent',
+          showContactForm ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'
         )}
       >
         <div className="container mx-auto flex items-center justify-between relative">
@@ -91,7 +93,8 @@ const Navbar = () => {
             <button
               className={cn(
                 "focus:outline-none relative z-[400]",
-                isMobileMenuOpen ? "text-white" : (isScrolled ? "text-foreground" : "text-white")
+                isMobileMenuOpen ? "text-white" : (isScrolled ? "text-foreground" : "text-white"),
+                showContactForm ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'
               )}
               onClick={handleToggleMobileMenu}
               aria-label="Toggle menu"
@@ -227,7 +230,7 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[90] bg-black"
+            className="fixed inset-0 z-[150] bg-black"
             style={{
               touchAction: "none"
             }}
@@ -240,7 +243,7 @@ const Navbar = () => {
                   className="h-6" 
                 />
                 <button
-                  className="text-white focus:outline-none z-[300]"
+                  className="text-white focus:outline-none"
                   onClick={() => setShowContactForm(false)}
                   aria-label="Close contact form"
                 >
