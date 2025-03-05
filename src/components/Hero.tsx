@@ -264,7 +264,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc, buttonText = 
                 <h2 className="text-2xl sm:text-3xl font-medium text-background dark:text-white mb-3">{subtitle}</h2>
                 <p className="text-background/70 dark:text-white/70 mb-6 sm:mb-8 text-base font-light">{description}</p>
                 
-                <div className="inline-block px-6 py-2 bg-transparent border border-white/20 text-white text-sm tracking-widest uppercase rounded-full">
+                <div className="inline-block px-6 py-2 bg-transparent text-foreground text-sm tracking-widest uppercase rounded-full border border-foreground/20">
                   {buttonText}
                 </div>
               </div>
