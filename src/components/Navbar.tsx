@@ -66,12 +66,12 @@ const Navbar = () => {
     <>
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-40 transition-all duration-300 ease-in-out py-4 px-4 sm:px-6 md:px-12',
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-4 px-4 sm:px-6 md:px-12',
           isScrolled ? 'bg-background/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
         )}
       >
-        <div className="container mx-auto flex items-center justify-between">
-          <Link to="/" className="inline-block z-[200]" aria-label="VINLIGNA">
+        <div className="container mx-auto flex items-center justify-between relative">
+          <Link to="/" className="inline-block z-[300]" aria-label="VINLIGNA">
             <img 
               src={logoSrc}
               alt="VINLIGNA" 
@@ -86,11 +86,11 @@ const Navbar = () => {
             <ThemeToggle isScrolled={isScrolled} />
           </nav>
 
-          <div className="md:hidden flex items-center space-x-4 z-[200]">
+          <div className="md:hidden flex items-center space-x-4 z-[300]">
             <ThemeToggle isScrolled={isScrolled} className="mr-2" />
             <button
               className={cn(
-                "focus:outline-none relative",
+                "focus:outline-none relative z-[300]",
                 isMobileMenuOpen ? "text-white" : (isScrolled ? "text-foreground" : "text-white")
               )}
               onClick={handleToggleMobileMenu}
@@ -114,7 +114,7 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[150] bg-black"
+            className="fixed inset-0 z-[200] bg-black"
             style={{
               touchAction: "none"
             }}
@@ -227,7 +227,7 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[150] bg-black"
+            className="fixed inset-0 z-[200] bg-black"
             style={{
               touchAction: "none"
             }}
@@ -240,7 +240,7 @@ const Navbar = () => {
                   className="h-6" 
                 />
                 <button
-                  className="text-white focus:outline-none z-[999]"
+                  className="text-white focus:outline-none z-[300]"
                   onClick={() => setShowContactForm(false)}
                   aria-label="Close contact form"
                 >

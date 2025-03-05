@@ -27,7 +27,7 @@ const ThemeToggle = ({ className = '', isScrolled }: ThemeToggleProps) => {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className={`w-6 h-6 flex items-center justify-center transition-colors duration-300 rounded-full ${className}`}
+      className={`w-6 h-6 flex items-center justify-center transition-colors duration-300 rounded-full relative z-[300] ${className}`}
       aria-label="Toggle theme"
     >
       {theme === 'dark' ? (
