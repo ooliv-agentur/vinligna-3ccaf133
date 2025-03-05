@@ -1,6 +1,6 @@
 
 import { motion } from 'framer-motion';
-import { Table, Armchair, Layers, Wine, PenTool } from 'lucide-react';
+import { Table, Armchair, Layers, Wine, Hotel } from 'lucide-react';
 import { ProductCard } from './ProductCard';
 import { fadeIn, staggerContainer, slideUp } from '@/lib/motion';
 
@@ -86,7 +86,7 @@ const ProductsSection = () => {
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="mt-0.5 bg-wine rounded-full p-1 flex-shrink-0">
-                        <PenTool className="w-4 h-4 text-white" />
+                        <Hotel className="w-4 h-4 text-white" />
                       </div>
                       <p className="text-white/70 text-sm text-left">
                         <span className="text-white font-medium block mb-1">Für Restaurants & Hotels</span>
