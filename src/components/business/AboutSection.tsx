@@ -68,13 +68,18 @@ const AboutSection = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-8 md:p-12"
           >
-            <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-wine px-6 py-2 rounded-full">
-              <span className="text-white font-medium">Unsere Philosophie</span>
+            {/* Repositioned philosophy button to center and made it one line */}
+            <div className="absolute -top-6 left-1/2 -translate-x-1/2">
+              <div className="bg-wine px-6 py-2 rounded-full whitespace-nowrap">
+                <span className="text-white font-medium">Unsere Philosophie</span>
+              </div>
             </div>
-            <div className="flex flex-col md:flex-row gap-8 items-center">
+            
+            <div className="flex flex-col md:flex-row gap-8 items-center pt-6">
               <div className="w-full md:w-1/2 text-center md:text-right">
-                <h3 className="text-gradient text-2xl md:text-3xl font-normal mb-4">Nachhaltig</h3>
-                <h3 className="text-gradient text-2xl md:text-3xl font-normal mb-4">Einzigartig</h3>
+                {/* Increased spacing to "Nachhaltig" */}
+                <h3 className="text-gradient text-2xl md:text-3xl font-normal mb-8">Nachhaltig</h3>
+                <h3 className="text-gradient text-2xl md:text-3xl font-normal mb-8">Einzigartig</h3>
                 <h3 className="text-gradient text-2xl md:text-3xl font-normal">Exklusiv</h3>
               </div>
               <div className="w-px h-32 bg-gradient-to-b from-transparent via-wine/50 to-transparent hidden md:block"></div>
