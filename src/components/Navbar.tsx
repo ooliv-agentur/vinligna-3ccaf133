@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -47,11 +48,13 @@ const Navbar = () => {
     // Scroll to contact section
     const contactSection = document.getElementById('contact');
     if (contactSection) {
-      const offsetTop = contactSection.offsetTop;
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
+      setTimeout(() => {
+        const offsetTop = contactSection.offsetTop;
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth'
+        });
+      }, 100); // Small delay to ensure menu is closed first
     }
   };
 
