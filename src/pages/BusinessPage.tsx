@@ -68,6 +68,7 @@ const BusinessPage = () => {
         subtitle="Business Kontakt"
         title='Ihre maßgeschneiderte <span class="highlight">Geschäftslösung</span>'
         description="Werten Sie Ihre Räumlichkeiten auf und schaffen Sie ein einzigartiges Ambiente für Ihre Kunden. Kontaktieren Sie uns für individuelle Beratung und maßgeschneiderte Angebote für Ihr Unternehmen."
+        formSource="Weingüter, Gastronomie & Hotellerie"
       />
       <BusinessFaq />
       <Footer />

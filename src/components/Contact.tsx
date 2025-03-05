@@ -9,12 +9,14 @@ interface ContactProps {
   subtitle?: string;
   title?: string;
   description?: string;
+  formSource?: string;
 }
 
 const Contact = ({ 
   subtitle = "Kontakt",
   title = "Lassen Sie uns ins <span class=\"highlight\">Gespräch</span> kommen",
-  description = "Ob Sie ein maßgeschneidertes Möbelstück suchen oder Fragen zu unseren Produkten haben, wir sind für Sie da."
+  description = "Ob Sie ein maßgeschneidertes Möbelstück suchen oder Fragen zu unseren Produkten haben, wir sind für Sie da.",
+  formSource
 }: ContactProps) => {
   return (
     <section id="contact" className="py-20 md:py-32 lg:py-44 bg-black overflow-hidden relative">
@@ -53,7 +55,7 @@ const Contact = ({
             viewport={{ once: true, margin: "-100px" }}
             className="lg:col-span-3 bg-white/5 backdrop-blur-sm rounded-3xl p-6 md:p-10"
           >
-            <ContactForm />
+            <ContactForm formSource={formSource} />
           </motion.div>
 
           {/* Info Column - 2 spans */}

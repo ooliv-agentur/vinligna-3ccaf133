@@ -4,9 +4,16 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
+import { sendEmailNotifications } from '@/utils/emailService';
+import { useLocation } from 'react-router-dom';
 
-const ContactForm = () => {
+interface ContactFormProps {
+  formSource?: string;
+}
+
+const ContactForm = ({ formSource }: ContactFormProps) => {
   const { toast } = useToast();
+  const location = useLocation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -16,30 +23,67 @@ const ContactForm = () => {
     interest: 'business', // Default value
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Determine the form source based on the current route or provided prop
+  const getFormSource = (): string => {
+    if (formSource) return formSource;
+    
+    const path = location.pathname;
+    if (path === '/business' || path.includes('business')) {
+      return "Weingüter, Gastronomie & Hotellerie";
+    } else if (path === '/private' || path.includes('private')) {
+      return "Weinliebhaber & Privatkunden";
+    } else {
+      return "VINLIGNA Startseite";
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        message: '',
-        interest: 'business',
+    try {
+      // Send email notifications
+      const source = getFormSource();
+      const success = await sendEmailNotifications({
+        ...formData,
+        formSource: source
       });
       
-      // Show success toast
+      if (success) {
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          message: '',
+          interest: 'business',
+        });
+        
+        // Show success toast
+        toast({
+          title: "Nachricht erfolgreich gesendet",
+          description: "Vielen Dank für Ihre Nachricht! Wir haben Ihre Anfrage erhalten und melden uns in Kürze bei Ihnen.",
+          variant: "default",
+        });
+      } else {
+        // Show error toast
+        toast({
+          title: "Fehler beim Senden",
+          description: "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      // Show error toast
       toast({
-        title: "Nachricht erfolgreich gesendet",
-        description: "Wir melden uns innerhalb von 24 Stunden bei Ihnen.",
-        variant: "default",
+        title: "Fehler beim Senden",
+        description: "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.",
+        variant: "destructive",
       });
-    }, 1500);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
