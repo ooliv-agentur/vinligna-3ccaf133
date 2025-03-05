@@ -45,14 +45,14 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center px-4 sm:px-6 py-10 sm:py-12 bg-mode-black">
       <motion.div 
-        className="container z-10 mx-auto max-w-6xl flex flex-col h-full pt-4 sm:pt-6 md:pt-8 items-center"
+        className="container z-10 mx-auto max-w-6xl flex flex-col h-full pt-20 sm:pt-24 md:pt-28 items-center"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         <motion.div 
           variants={itemVariants}
-          className="flex justify-center mb-6 sm:mb-8"
+          className="flex justify-center mb-8 sm:mb-10"
         >
           <div className="inline-block mb-4 sm:mb-6 px-4 py-1.5 sm:px-6 sm:py-2 bg-transparent text-foreground text-xs sm:text-sm tracking-widest uppercase rounded-full border border-foreground/20">
             NACHHALTIGE ELEGANZ
