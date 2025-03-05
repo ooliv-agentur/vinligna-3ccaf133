@@ -54,7 +54,7 @@ const Hero = () => {
           variants={itemVariants}
           className="flex justify-center mb-8"
         >
-          <div className="inline-block mb-6 px-6 py-2 bg-wine text-white text-sm tracking-widest uppercase rounded-full">
+          <div className="inline-block mb-6 px-6 py-2 bg-transparent text-foreground text-sm tracking-widest uppercase rounded-full border border-foreground/20">
             NACHHALTIGE ELEGANZ
           </div>
         </motion.div>
@@ -221,7 +221,9 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                 <h2 className="text-2xl font-medium text-background dark:text-white mb-3">{subtitle}</h2>
                 <p className="text-background/70 dark:text-white/70 mb-6 text-base font-light">{description}</p>
                 
-                <TextArrowButton text="Entdecken" href={link} />
+                <div className="inline-block px-6 py-2 bg-transparent text-white text-sm tracking-widest uppercase rounded-full border border-white/20">
+                  Entdecken
+                </div>
               </div>
             </div>
           </div>
@@ -261,7 +263,9 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                 <h2 className="text-2xl sm:text-3xl font-medium text-background dark:text-white mb-3">{subtitle}</h2>
                 <p className="text-background/70 dark:text-white/70 mb-6 sm:mb-8 text-base font-light">{description}</p>
                 
-                <TextArrowButton text="Entdecken" href={link} />
+                <div className="inline-block px-6 py-2 bg-transparent text-white text-sm tracking-widest uppercase rounded-full border border-white/20">
+                  Entdecken
+                </div>
               </div>
             </div>
           </div>
