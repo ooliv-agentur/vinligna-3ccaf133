@@ -1,6 +1,7 @@
 
 import { motion } from 'framer-motion';
 import { fadeIn, staggerContainer } from '@/lib/motion';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface TeamMemberProps {
   name: string;
@@ -9,25 +10,42 @@ interface TeamMemberProps {
   altText?: string;
 }
 
-const TeamMember = ({ name, role, image, altText }: TeamMemberProps) => (
-  <motion.div
-    variants={fadeIn}
-    className="group relative"
-  >
-    <div className="aspect-[4/5] overflow-hidden rounded-lg bg-foreground/5 backdrop-blur-sm border border-foreground/10">
-      <img 
-        src={image} 
-        alt={altText || `${name} - ${role}`} 
-        className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/20 to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
-      <div className="absolute inset-0 flex flex-col justify-end p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-        <h3 className="text-xl font-medium text-foreground">{name}</h3>
-        <p className="text-wine mt-1">{role}</p>
+const TeamMember = ({ name, role, image, altText }: TeamMemberProps) => {
+  const isMobile = useIsMobile();
+  
+  return (
+    <motion.div
+      variants={fadeIn}
+      className="group relative"
+    >
+      <div className="aspect-[4/5] overflow-hidden rounded-lg bg-foreground/5 backdrop-blur-sm border border-foreground/10">
+        <img 
+          src={image} 
+          alt={altText || `${name} - ${role}`} 
+          className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+        />
+        {/* Overlay and info for desktop (hover effect) */}
+        {!isMobile && (
+          <>
+            <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/20 to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 flex flex-col justify-end p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+              <h3 className="text-xl font-medium text-foreground">{name}</h3>
+              <p className="text-wine mt-1">{role}</p>
+            </div>
+          </>
+        )}
       </div>
-    </div>
-  </motion.div>
-);
+      
+      {/* Static info display for mobile */}
+      {isMobile && (
+        <div className="mt-3 text-center">
+          <h3 className="text-lg font-medium text-foreground">{name}</h3>
+          <p className="text-wine text-sm mt-0.5">{role}</p>
+        </div>
+      )}
+    </motion.div>
+  );
+};
 
 const TeamSection = () => {
   return (
