@@ -357,39 +357,66 @@
   animation: pulse-glow 2s infinite;
 }
 
-.dark .bg-black {
-  @apply bg-black;
+.dark {
+  background-color: #000000;
 }
 
-.bg-black {
-  @apply bg-white dark:bg-black;
+.bg-mode-black {
+  background-color: #ffffff;
 }
 
-.text-white {
-  @apply text-foreground dark:text-white;
+.dark .bg-mode-black {
+  background-color: #000000;
 }
 
-.text-white\/80, .text-white\/70, .text-white\/60 {
-  @apply text-foreground/80 dark:text-white/80;
+.text-mode-white {
+  color: var(--foreground);
+}
+
+.dark .text-mode-white {
+  color: #ffffff;
+}
+
+.text-mode-white-80 {
+  color: rgba(var(--foreground), 0.8);
+}
+
+.dark .text-mode-white-80 {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* Theme transition effects */
 * {
-  @apply transition-colors duration-300;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .dark .image-card .absolute.inset-0 {
-  @apply border-white/10;
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .image-card .absolute.inset-0 {
-  @apply border-black/10 dark:border-white/10;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark .image-card .absolute.inset-0 {
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .dark .bg-glass-dark {
-  @apply bg-black/60 backdrop-blur-md border-white/5;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  border-color: rgba(255, 255, 255, 0.05);
 }
 
 .bg-glass-dark {
-  @apply bg-white/80 backdrop-blur-md border-black/5 dark:bg-black/60 dark:border-white/5;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark .bg-glass-dark {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-color: rgba(255, 255, 255, 0.05);
 }
