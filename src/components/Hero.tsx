@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -42,14 +43,14 @@ const scaleIn = {
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center px-6 py-12 bg-black">
+    <section className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center px-6 py-12 bg-mode-black">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.15 }}
         transition={{ duration: 2 }}
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23000000' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E")`,
         }}
       />
 
@@ -63,7 +64,7 @@ const Hero = () => {
           variants={itemVariants}
           className="flex justify-center mb-8"
         >
-          <div className="px-5 py-2 bg-white/10 backdrop-blur-sm text-white text-sm tracking-widest uppercase border border-white/20 rounded-full">
+          <div className="px-5 py-2 bg-wine text-white text-sm tracking-widest uppercase border border-wine/20 rounded-full">
             Nachhaltige Eleganz
           </div>
         </motion.div>
@@ -76,7 +77,7 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="block text-white"
+            className="block text-mode-white"
           >
             Exklusive Fassmöbel aus
           </motion.span>
@@ -92,7 +93,7 @@ const Hero = () => {
 
         <motion.p 
           variants={itemVariants}
-          className="text-base text-white/80 max-w-2xl mx-auto mb-8 md:mb-12 text-center leading-relaxed"
+          className="text-base text-mode-white-80 max-w-2xl mx-auto mb-8 md:mb-12 text-center leading-relaxed"
         >
           Wir verwandeln gebrauchte Barrique-Fässer in elegante, einzigartige Möbelstücke, 
           die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
@@ -143,7 +144,7 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.7 }}
             transition={{ duration: 1, delay: 1.2, repeat: Infinity, repeatType: "reverse" }}
-            className="text-white text-sm mb-2"
+            className="text-mode-white text-sm mb-2"
           >
             Mehr entdecken
           </motion.span>
@@ -151,7 +152,7 @@ const Hero = () => {
             initial={{ height: 0 }}
             animate={{ height: 60 }}
             transition={{ duration: 1, delay: 1.4 }}
-            className="w-px bg-white/20 relative overflow-hidden"
+            className="w-px bg-foreground/20 relative overflow-hidden"
           >
             <motion.div 
               initial={{ y: -60 }}
@@ -161,7 +162,7 @@ const Hero = () => {
                 repeat: Infinity, 
                 ease: "easeInOut" 
               }}
-              className="w-full h-1/2 bg-white/60 absolute"
+              className="w-full h-1/2 bg-foreground/60 absolute"
             />
           </motion.div>
         </motion.div>
@@ -222,13 +223,13 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                 initial={{ opacity: 0.7 }}
                 whileHover={{ opacity: 0.9 }}
                 transition={{ duration: 0.3 }}
-                className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/30"
+                className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/70 to-foreground/30"
               />
               
               <div className="absolute bottom-0 left-0 right-0 p-6 text-left">
-                <div className="mb-1 text-white/70 text-base">{title}</div>
-                <h2 className="text-2xl font-medium text-white mb-3">{subtitle}</h2>
-                <p className="text-white/70 mb-6 text-base font-light">{description}</p>
+                <div className="mb-1 text-background dark:text-white/70 text-base">{title}</div>
+                <h2 className="text-2xl font-medium text-background dark:text-white mb-3">{subtitle}</h2>
+                <p className="text-background/70 dark:text-white/70 mb-6 text-base font-light">{description}</p>
                 
                 <TextArrowButton text="Entdecken" href={link} />
               </div>
@@ -262,13 +263,13 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                 initial={{ opacity: 0.7 }}
                 whileHover={{ opacity: 0.9 }}
                 transition={{ duration: 0.3 }}
-                className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/30"
+                className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/70 to-foreground/30"
               />
               
               <div className="absolute bottom-0 left-0 right-0 p-8 text-left transform transition-all duration-300 group-hover:translate-y-0">
-                <div className="mb-1 text-white/70 text-base">{title}</div>
-                <h2 className="text-2xl sm:text-3xl font-medium text-white mb-3">{subtitle}</h2>
-                <p className="text-white/70 mb-6 sm:mb-8 text-base font-light">{description}</p>
+                <div className="mb-1 text-background dark:text-white/70 text-base">{title}</div>
+                <h2 className="text-2xl sm:text-3xl font-medium text-background dark:text-white mb-3">{subtitle}</h2>
+                <p className="text-background/70 dark:text-white/70 mb-6 sm:mb-8 text-base font-light">{description}</p>
                 
                 <TextArrowButton text="Entdecken" href={link} />
               </div>
