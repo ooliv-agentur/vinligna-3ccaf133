@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, Wine, Heart, ShieldCheck, Table, BookOpen } from 'lucide-react';
@@ -81,7 +80,7 @@ const PrivatePage = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="font-normal block mt-4 text-gradient"
+              className="font-normal text-gradient"
             >
               Handgefertigte Unikate für Weinliebhaber
             </motion.span>

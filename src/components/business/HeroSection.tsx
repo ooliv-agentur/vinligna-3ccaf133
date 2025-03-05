@@ -27,7 +27,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="font-normal block mt-4 text-gradient"
+            className="font-normal text-gradient"
           >
             Weingüter, Gastronomie & Hotellerie
           </motion.span>
