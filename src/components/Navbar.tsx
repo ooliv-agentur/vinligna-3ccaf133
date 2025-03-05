@@ -71,7 +71,7 @@ const Navbar = () => {
         )}
       >
         <div className="container mx-auto flex items-center justify-between">
-          <Link to="/" className="inline-block" aria-label="VINLIGNA">
+          <Link to="/" className="inline-block z-[200]" aria-label="VINLIGNA">
             <img 
               src={logoSrc}
               alt="VINLIGNA" 
@@ -86,20 +86,24 @@ const Navbar = () => {
             <ThemeToggle isScrolled={isScrolled} />
           </nav>
 
-          <button
-            className={cn(
-              "md:hidden focus:outline-none z-[200]",
-              isMobileMenuOpen ? "text-white fixed right-4 sm:right-6" : (isScrolled ? "text-foreground" : "text-white")
-            )}
-            onClick={handleToggleMobileMenu}
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
-          </button>
+          <div className="md:hidden flex items-center space-x-4 z-[200]">
+            <ThemeToggle isScrolled={isScrolled} className="mr-2" />
+            <button
+              className={cn(
+                "focus:outline-none relative",
+                isMobileMenuOpen ? "text-white" : (isScrolled ? "text-foreground" : "text-white")
+              )}
+              onClick={handleToggleMobileMenu}
+              aria-label="Toggle menu"
+            >
+              <span className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0'}`}>
+                <X className="h-6 w-6" />
+              </span>
+              <span className={`flex items-center justify-center transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}>
+                <Menu className="h-6 w-6" />
+              </span>
+            </button>
+          </div>
         </div>
       </header>
 
@@ -116,26 +120,8 @@ const Navbar = () => {
             }}
           >
             <div className="flex flex-col justify-between h-full px-4 sm:px-6 py-16 sm:py-20">
-              <div className="flex justify-between items-center mb-8 sm:mb-12">
-                <motion.div 
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1, duration: 0.3 }}
-                >
-                  <img 
-                    src="/lovable-uploads/50941805-7198-4381-a214-435f243a45b4.png" 
-                    alt="VINLIGNA" 
-                    className="h-6 sm:h-8" 
-                  />
-                </motion.div>
-                
-                <button
-                  className="text-white focus:outline-none"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  aria-label="Close menu"
-                >
-                  <X className="h-6 w-6" />
-                </button>
+              <div className="mb-8 sm:mb-12">
+                {/* Logo is now in the header and stays fixed */}
               </div>
               
               <motion.nav 
