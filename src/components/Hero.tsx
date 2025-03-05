@@ -61,7 +61,7 @@ const Hero = () => {
 
         <motion.h1 
           variants={itemVariants}
-          className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-light mb-6 sm:mb-10 leading-tight md:leading-tight tracking-tight text-center max-w-5xl mx-auto"
+          className="text-4xl sm:text-4xl md:text-6xl lg:text-7xl font-light mb-6 sm:mb-10 leading-tight md:leading-tight tracking-tight text-center max-w-5xl mx-auto"
         >
           <motion.span
             initial={{ opacity: 0 }}
