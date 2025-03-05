@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -6,12 +5,13 @@ import { Menu, X, Mail, Phone, MapPin, Wine, User, Home } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import ThemeToggle from './ThemeToggle';
 import { useTheme } from 'next-themes';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [showContactForm, setShowContactForm] = useState(false);
   const { theme } = useTheme();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,7 +27,7 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    if (isMobileMenuOpen || showContactForm) {
+    if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -35,23 +35,24 @@ const Navbar = () => {
     return () => {
       document.body.style.overflow = '';
     };
-  }, [isMobileMenuOpen, showContactForm]);
-
-  useEffect(() => {
-    if (!isMobileMenuOpen) {
-      setShowContactForm(false);
-    }
   }, [isMobileMenuOpen]);
-
-  const handleContactClick = (e: React.MouseEvent) => {
-    if (isMobileMenuOpen) {
-      e.preventDefault();
-      setShowContactForm(true);
-    }
-  };
 
   const handleToggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const handleContactClick = () => {
+    setIsMobileMenuOpen(false); // Close the mobile menu
+    
+    // Scroll to contact section
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      const offsetTop = contactSection.offsetTop;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
   };
 
   const logoSrc = "/lovable-uploads/eef04cda-cc19-4e97-9136-dcd93f60b698.png"; // Always use dark logo
@@ -68,8 +69,7 @@ const Navbar = () => {
       <header
         className={cn(
           'fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ease-in-out py-4 px-4 sm:px-6 md:px-12',
-          isScrolled ? 'bg-background/90 backdrop-blur-md shadow-sm' : 'bg-transparent',
-          showContactForm ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'
+          isScrolled ? 'bg-background/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
         )}
       >
         <div className="container mx-auto flex items-center justify-between relative">
@@ -93,8 +93,7 @@ const Navbar = () => {
             <button
               className={cn(
                 "focus:outline-none relative z-[400]",
-                isMobileMenuOpen ? "text-white" : (isScrolled ? "text-foreground" : "text-white"),
-                showContactForm ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'
+                isMobileMenuOpen ? "text-white" : (isScrolled ? "text-foreground" : "text-white")
               )}
               onClick={handleToggleMobileMenu}
               aria-label="Toggle menu"
@@ -111,7 +110,7 @@ const Navbar = () => {
       </header>
 
       <AnimatePresence>
-        {isMobileMenuOpen && !showContactForm && (
+        {isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -220,105 +219,6 @@ const Navbar = () => {
                   Kontakt aufnehmen
                 </button>
               </motion.div>
-            </div>
-          </motion.div>
-        )}
-
-        {showContactForm && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[150] bg-black"
-            style={{
-              touchAction: "none"
-            }}
-          >
-            <div className="flex flex-col h-full px-4 sm:px-6 py-10 sm:py-12">
-              <div className="flex justify-between items-center mb-6 sm:mb-8">
-                <img 
-                  src="/lovable-uploads/50941805-7198-4381-a214-435f243a45b4.png" 
-                  alt="VINLIGNA" 
-                  className="h-6" 
-                />
-                <button
-                  className="text-white focus:outline-none"
-                  onClick={() => setShowContactForm(false)}
-                  aria-label="Close contact form"
-                >
-                  <X className="h-6 w-6" />
-                </button>
-              </div>
-              
-              <div className="text-center mb-4 sm:mb-6">
-                <h2 className="text-white text-xl sm:text-2xl font-light mb-1 sm:mb-2">Lassen Sie uns ins</h2>
-                <h2 className="text-wine text-xl sm:text-2xl font-light mb-3 sm:mb-4">Gespräch kommen</h2>
-                <p className="text-white/80 text-xs sm:text-sm">
-                  Wir sind für all Ihre Fragen da - egal ob Privatperson oder Unternehmen. 
-                  Nehmen Sie Kontakt auf und entdecken Sie die Welt der Möbel aus Weinfässern.
-                </p>
-              </div>
-              
-              <form className="mt-4 sm:mt-6 space-y-3 sm:space-y-4">
-                <div>
-                  <label className="block text-white/60 text-sm mb-1">Name</label>
-                  <input 
-                    type="text" 
-                    placeholder="Ihr vollständiger Name" 
-                    className="w-full bg-white/10 border border-white/20 rounded-md px-3 py-2 sm:px-4 sm:py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-1 focus:ring-wine"
-                  />
-                </div>
-                
-                <div className="flex flex-col space-y-3 sm:space-y-4 md:flex-row md:space-y-0 md:space-x-4">
-                  <div className="flex-1">
-                    <label className="block text-white/60 text-sm mb-1">Email</label>
-                    <input 
-                      type="email" 
-                      placeholder="Ihre Email-Adresse" 
-                      className="w-full bg-white/10 border border-white/20 rounded-md px-3 py-2 sm:px-4 sm:py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-1 focus:ring-wine"
-                    />
-                  </div>
-                  
-                  <div className="flex-1">
-                    <label className="block text-white/60 text-sm mb-1">Telefon</label>
-                    <input 
-                      type="tel" 
-                      placeholder="Ihre Telefonnummer" 
-                      className="w-full bg-white/10 border border-white/20 rounded-md px-3 py-2 sm:px-4 sm:py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-1 focus:ring-wine"
-                    />
-                  </div>
-                </div>
-                
-                <div>
-                  <label className="block text-white/60 text-sm mb-1">Nachricht</label>
-                  <textarea 
-                    rows={4} 
-                    placeholder="Wie können wir Ihnen helfen?" 
-                    className="w-full bg-white/10 border border-white/20 rounded-md px-3 py-2 sm:px-4 sm:py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-1 focus:ring-wine"
-                  ></textarea>
-                </div>
-                
-                <button 
-                  type="submit"
-                  className="w-full bg-wine hover:bg-wine-light text-white py-2.5 sm:py-3 rounded-md transition-colors duration-300 mt-3 sm:mt-4"
-                >
-                  Nachricht senden
-                </button>
-                
-                <div className="text-white/60 text-xs text-center mt-3 sm:mt-4">
-                  Wir werden Ihre Daten vertraulich behandeln und nur für die Bearbeitung Ihrer Anfrage verwenden.
-                </div>
-              </form>
-              
-              <div className="mt-auto pt-6 sm:pt-8 flex justify-center">
-                <button
-                  onClick={() => setShowContactForm(false)}
-                  className="text-white/60 hover:text-white transition-colors"
-                >
-                  Zurück zum Menü
-                </button>
-              </div>
             </div>
           </motion.div>
         )}
