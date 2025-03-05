@@ -76,7 +76,7 @@ const ProductsSection = () => {
                 <div className="w-full md:w-1/2">
                   <ul className="space-y-4">
                     <li className="flex items-start gap-3">
-                      <div className="mt-1 bg-wine rounded-full p-1 flex-shrink-0">
+                      <div className="mt-0.5 bg-wine rounded-full p-1 flex-shrink-0">
                         <Wine className="w-4 h-4 text-white" />
                       </div>
                       <p className="text-white/70 text-sm text-left">
@@ -85,7 +85,7 @@ const ProductsSection = () => {
                       </p>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="mt-1 bg-wine rounded-full p-1 flex-shrink-0">
+                      <div className="mt-0.5 bg-wine rounded-full p-1 flex-shrink-0">
                         <PenTool className="w-4 h-4 text-white" />
                       </div>
                       <p className="text-white/70 text-sm text-left">
