@@ -16,7 +16,7 @@ const Footer = () => {
                 <img 
                   src="/lovable-uploads/eef04cda-cc19-4e97-9136-dcd93f60b698.png" 
                   alt="VINLIGNA" 
-                  className="h-8 brightness-0 invert"
+                  className={theme === 'dark' ? "h-8 brightness-0 invert" : "h-8"}
                 />
               </a>
               <p className="text-white/70 mb-8 max-w-xs dark:text-white/70">
