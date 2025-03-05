@@ -51,12 +51,15 @@ const Navbar = () => {
   };
 
   // Choose logo based on theme and scroll state
-  const logoSrc = isScrolled
-    ? "/lovable-uploads/eef04cda-cc19-4e97-9136-dcd93f60b698.png" // Always use dark logo when scrolled
-    : "/lovable-uploads/50941805-7198-4381-a214-435f243a45b4.png"; // Light logo for dark backgrounds
+  const logoSrc = "/lovable-uploads/eef04cda-cc19-4e97-9136-dcd93f60b698.png"; // Always use dark logo
     
-  // Apply inversion based on theme and scroll state
-  const shouldInvertLogo = (isScrolled && theme === 'light') || (!isScrolled && theme === 'dark');
+  // Apply appropriate logo styling based on theme and scroll state
+  const logoClass = cn(
+    "h-6 md:h-8",
+    isScrolled
+      ? (theme === 'dark' ? "brightness-0 invert" : "")  // Dark theme on scroll: invert, Light theme: normal
+      : (theme === 'dark' ? "brightness-0 invert" : "")  // Dark theme no scroll: invert, Light theme: normal
+  );
 
   return (
     <header
@@ -70,10 +73,7 @@ const Navbar = () => {
           <img 
             src={logoSrc}
             alt="VINLIGNA" 
-            className={cn(
-              "h-6 md:h-8",
-              shouldInvertLogo ? "invert dark:invert-0" : "invert-0 dark:invert"
-            )}
+            className={logoClass}
           />
         </Link>
 

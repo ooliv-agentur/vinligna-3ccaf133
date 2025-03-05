@@ -19,7 +19,7 @@ const AboutSection = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="text-center mb-16"
           >
-            <h2 className="section-title text-white">
+            <h2 className="section-title text-mode-white">
               Über <span className="text-gradient font-normal">VINLIGNA</span>
             </h2>
           </motion.div>
@@ -38,7 +38,7 @@ const AboutSection = () => {
                 <Quote size={80} strokeWidth={1} />
               </div>
               <div className="border-l-2 border-wine pl-6 py-2">
-                <p className="text-xl md:text-2xl font-light italic text-white/90 leading-relaxed">
+                <p className="text-xl md:text-2xl font-light italic text-foreground dark:text-white/90 leading-relaxed">
                   Handgefertigte, exklusive Möbel aus recycelten Barrique-Fässern für Weingüter, Gastronomiebetriebe und die Hotellerie.
                 </p>
               </div>
@@ -53,7 +53,7 @@ const AboutSection = () => {
               viewport={{ once: true, margin: "-100px" }}
               className="flex items-center"
             >
-              <p className="text-white/80 text-lg leading-relaxed">
+              <p className="text-foreground/80 dark:text-white/80 text-lg leading-relaxed">
                 Unser Ziel ist es, maßgeschneiderte Möbelstücke zu schaffen, die nicht nur einzigartig sind, sondern auch nachhaltig produziert werden. Durch die Wiederverwendung von edlen Eichenholz-Weinfässern verleihen wir Ihren Räumlichkeiten einen einzigartigen Charme und schaffen gleichzeitig ein exklusives Ambiente, das Ihre Gäste begeistern wird.
               </p>
             </motion.div>
@@ -79,7 +79,7 @@ const AboutSection = () => {
               </div>
               <div className="w-px h-32 bg-gradient-to-b from-transparent via-wine/50 to-transparent hidden md:block"></div>
               <div className="w-full md:w-1/2">
-                <p className="text-white/80 text-lg leading-relaxed">
+                <p className="text-foreground/80 dark:text-white/80 text-lg leading-relaxed">
                   Mit jedem unserer Möbelstücke erzählen wir eine Geschichte von Handwerkskunst, Nachhaltigkeit und zeitlosem Design – perfekt für Räume, in denen Menschen zusammenkommen, genießen und verweilen.
                 </p>
               </div>

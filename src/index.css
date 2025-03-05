@@ -487,3 +487,18 @@
 .bg-black {
   background-color: #ffffff;
 }
+
+/* Fix for quote text color in About section */
+.text-xl.md\:text-2xl.font-light.italic.text-white\/90 {
+  @apply text-foreground dark:text-white/90;
+}
+
+/* Wine buttons with white text in both themes */
+.bg-wine, .hover\:bg-wine-dark:hover {
+  color: white !important;
+}
+
+/* Wine icons in both themes */
+.text-wine svg {
+  color: hsl(var(--wine)) !important;
+}
