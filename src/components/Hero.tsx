@@ -9,18 +9,18 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3
+      staggerChildren: 0.15,
+      delayChildren: 0.2
     }
   }
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1.0] }
+    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] }
   }
 };
 
@@ -28,53 +28,53 @@ const fadeIn = {
   hidden: { opacity: 0 },
   visible: { 
     opacity: 1,
-    transition: { duration: 1.2, ease: [0.25, 0.1, 0.25, 1.0] }
+    transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1.0] }
   }
 };
 
 const scaleIn = {
-  hidden: { scale: 0.9, opacity: 0 },
+  hidden: { scale: 0.95, opacity: 0 },
   visible: { 
     scale: 1, 
     opacity: 1,
-    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1.0] }
+    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] }
   }
 };
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center px-6 py-12 bg-mode-black">
+    <section className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center px-4 sm:px-6 py-10 sm:py-12 bg-mode-black">
       <motion.div 
-        className="container z-10 mx-auto max-w-6xl flex flex-col h-full pt-6 md:pt-8 items-center"
+        className="container z-10 mx-auto max-w-6xl flex flex-col h-full pt-4 sm:pt-6 md:pt-8 items-center"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         <motion.div 
           variants={itemVariants}
-          className="flex justify-center mb-8"
+          className="flex justify-center mb-6 sm:mb-8"
         >
-          <div className="inline-block mb-6 px-6 py-2 bg-transparent text-foreground text-sm tracking-widest uppercase rounded-full border border-foreground/20">
+          <div className="inline-block mb-4 sm:mb-6 px-4 py-1.5 sm:px-6 sm:py-2 bg-transparent text-foreground text-xs sm:text-sm tracking-widest uppercase rounded-full border border-foreground/20">
             NACHHALTIGE ELEGANZ
           </div>
         </motion.div>
 
         <motion.h1 
           variants={itemVariants}
-          className="text-4xl md:text-6xl lg:text-7xl font-light mb-10 leading-tight md:leading-tight tracking-tight text-center max-w-5xl mx-auto"
+          className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-light mb-6 sm:mb-10 leading-tight md:leading-tight tracking-tight text-center max-w-5xl mx-auto"
         >
           <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="block text-mode-white"
           >
             Exklusive Fassmöbel aus
           </motion.span>
           <motion.span
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.8 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             className="font-medium block bg-gradient-to-r from-wine to-wine-light bg-clip-text text-transparent text-balance leading-tight"
           >
             recycelten Weinfässern
@@ -83,7 +83,7 @@ const Hero = () => {
 
         <motion.p 
           variants={itemVariants}
-          className="text-base text-mode-white-80 max-w-2xl mx-auto mb-8 md:mb-12 text-center leading-relaxed"
+          className="text-sm sm:text-base text-mode-white-80 max-w-2xl mx-auto mb-6 sm:mb-8 md:mb-12 text-center leading-relaxed"
         >
           Wir verwandeln gebrauchte Barrique-Fässer in elegante, einzigartige Möbelstücke, 
           die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
@@ -91,11 +91,11 @@ const Hero = () => {
 
         <motion.div
           variants={scaleIn}
-          className="w-full max-w-5xl mx-auto mb-10 md:mb-8 p-0 m-0"
-          style={{ padding: 0, margin: "2.5rem auto 2rem" }}
+          className="w-full max-w-5xl mx-auto mb-8 sm:mb-10 md:mb-8 p-0 m-0"
+          style={{ padding: 0, margin: "1.5rem auto 2rem" }}
         >
           <div 
-            className="flex flex-col w-full items-center md:grid md:grid-cols-2 gap-10 md:gap-8 p-0 m-0" 
+            className="flex flex-col w-full items-center md:grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-10 p-0 m-0" 
             style={{ padding: 0, margin: 0 }}
           >
             <div 
@@ -133,7 +133,7 @@ const Hero = () => {
           <motion.span 
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.7 }}
-            transition={{ duration: 1, delay: 1.2, repeat: Infinity, repeatType: "reverse" }}
+            transition={{ duration: 0.8, delay: 0.8, repeat: Infinity, repeatType: "reverse" }}
             className="text-mode-white text-sm mb-2"
           >
             Mehr entdecken
@@ -141,7 +141,7 @@ const Hero = () => {
           <motion.div 
             initial={{ height: 0 }}
             animate={{ height: 60 }}
-            transition={{ duration: 1, delay: 1.4 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
             className="w-px bg-foreground/20 relative overflow-hidden"
           >
             <motion.div 
@@ -195,9 +195,9 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
               style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
             >
               <motion.div
-                initial={{ filter: "blur(10px)" }}
+                initial={{ filter: "blur(5px)" }}
                 animate={{ filter: "blur(0px)" }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
                 className="absolute inset-0 w-full h-full p-0 m-0"
                 style={{ padding: 0, margin: 0 }}
               >
@@ -216,10 +216,10 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                 className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/70 to-foreground/30 dark:from-black/95 dark:via-black/70 dark:to-black/30"
               />
               
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-left">
-                <div className="mb-1 text-background dark:text-white/70 text-base">{title}</div>
-                <h2 className="text-2xl font-medium text-background dark:text-white mb-3">{subtitle}</h2>
-                <p className="text-background/70 dark:text-white/70 mb-6 text-base font-light">{description}</p>
+              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-left">
+                <div className="mb-1 text-background dark:text-white/70 text-sm sm:text-base">{title}</div>
+                <h2 className="text-xl sm:text-2xl font-medium text-background dark:text-white mb-2 sm:mb-3">{subtitle}</h2>
+                <p className="text-background/70 dark:text-white/70 mb-4 sm:mb-6 text-sm sm:text-base font-light">{description}</p>
                 
                 <div className="flex items-center">
                   <span className="text-wine font-medium mr-1">Entdecken</span>
@@ -238,9 +238,9 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
               style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
             >
               <motion.div
-                initial={{ filter: "blur(10px)" }}
+                initial={{ filter: "blur(5px)" }}
                 animate={{ filter: "blur(0px)" }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
                 className="absolute inset-0 w-full h-full p-0 m-0"
                 style={{ padding: 0, margin: 0 }}
               >

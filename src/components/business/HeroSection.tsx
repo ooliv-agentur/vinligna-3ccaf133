@@ -5,13 +5,13 @@ import TextArrowButton from '../TextArrowButton';
 
 const HeroSection = () => {
   return (
-    <section className="relative h-[90vh] flex items-center justify-center px-6 pt-32 pb-20 overflow-hidden">
+    <section className="relative h-[100vh] flex items-center justify-center px-4 sm:px-6 pt-20 pb-16 overflow-hidden">
       <div className="container relative z-10 mx-auto max-w-5xl text-center">
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="inline-block mb-6 px-6 py-2 bg-transparent text-foreground text-sm tracking-widest uppercase rounded-full border border-foreground/20"
+          transition={{ duration: 0.6 }}
+          className="inline-block mb-4 sm:mb-6 px-4 py-1.5 sm:px-6 sm:py-2 bg-transparent text-foreground text-xs sm:text-sm tracking-widest uppercase rounded-full border border-foreground/20"
         >
           FÜR GESCHÄFTSKUNDEN
         </motion.div>
@@ -19,14 +19,14 @@ const HeroSection = () => {
         <motion.h1 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-light mb-6 leading-tight tracking-tight"
+          transition={{ delay: 0.1, duration: 0.6 }}
+          className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-light mb-4 sm:mb-6 leading-tight tracking-tight"
         >
           <span className="block text-foreground">Weinfass Möbel für</span>
           <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="font-normal text-gradient"
           >
             Weingüter, Gastronomie & Hotellerie
@@ -36,8 +36,8 @@ const HeroSection = () => {
         <motion.p 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-          className="text-base md:text-lg text-foreground/80 max-w-2xl mx-auto mb-16"
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="text-sm sm:text-base md:text-lg text-foreground/80 max-w-2xl mx-auto mb-8 sm:mb-16"
         >
           Werten Sie Ihre Räumlichkeiten mit individuell gefertigten Möbeln aus recycelten Weinfässern auf. Erzählen Sie die Geschichte Ihres Unternehmens durch zeitlose, nachhaltige Unikate.
         </motion.p>
@@ -45,7 +45,7 @@ const HeroSection = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
           className="text-center"
         >
           <TextArrowButton text="Jetzt anfragen" href="#contact" />
