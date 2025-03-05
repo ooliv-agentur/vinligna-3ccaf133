@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -108,6 +107,7 @@ const Navbar = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 bg-black/95 backdrop-blur-md z-40 md:hidden flex flex-col"
+            style={{ top: 0, left: 0, right: 0, bottom: 0, position: 'fixed' }}
           >
             <div className="flex flex-col justify-between h-full px-6 py-20 overflow-auto">
               <motion.div 
@@ -227,6 +227,7 @@ const Navbar = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 bg-black/95 backdrop-blur-md z-40 md:hidden flex flex-col"
+            style={{ top: 0, left: 0, right: 0, bottom: 0, position: 'fixed' }}
           >
             <div className="flex flex-col h-full px-6 py-12 overflow-auto">
               <div className="flex justify-between items-center mb-8">
