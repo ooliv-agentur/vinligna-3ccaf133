@@ -91,13 +91,13 @@ const About = () => {
                 </div>
               </div>
               
-              {/* Decorative floating element - Changed from wine/orange to green */}
+              {/* Decorative floating element - Now visible on mobile */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
                 viewport={{ once: true }}
-                className="absolute -top-12 -right-8 bg-emerald-500/10 backdrop-blur-sm p-6 rounded-xl border border-emerald-500/20 hidden lg:block"
+                className="absolute -top-12 -right-8 bg-emerald-500/10 backdrop-blur-sm p-6 rounded-xl border border-emerald-500/20 block"
               >
                 <span className="block text-3xl font-medium text-emerald-400">100%</span>
                 <span className="text-white/90">nachhaltige Produktion</span>
