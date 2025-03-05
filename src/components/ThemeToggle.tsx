@@ -31,7 +31,7 @@ const ThemeToggle = ({ className = '', isScrolled }: ThemeToggleProps) => {
       aria-label="Toggle theme"
     >
       {theme === 'dark' ? (
-        <Sun className={`w-5 h-5 ${isScrolled ? 'text-foreground' : 'text-foreground'}`} />
+        <Sun className="w-5 h-5 text-foreground" />
       ) : (
         <Moon className="w-5 h-5 text-foreground" />
       )}

@@ -1,8 +1,10 @@
 
 import { motion } from 'framer-motion';
+import { useTheme } from 'next-themes';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { theme } = useTheme();
   
   return (
     <footer className="bg-foreground text-background">
@@ -14,7 +16,7 @@ const Footer = () => {
                 <img 
                   src="/lovable-uploads/eef04cda-cc19-4e97-9136-dcd93f60b698.png" 
                   alt="VINLIGNA" 
-                  className="h-8 dark:brightness-0 dark:invert" 
+                  className={theme === 'dark' ? "h-8 brightness-0 invert" : "h-8"}
                 />
               </a>
               <p className="text-background/70 mb-8 max-w-xs">

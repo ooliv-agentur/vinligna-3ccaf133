@@ -5,11 +5,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Mail, Phone, MapPin, Wine, User, Home } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import ThemeToggle from './ThemeToggle';
+import { useTheme } from 'next-themes';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showContactForm, setShowContactForm] = useState(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,6 +50,14 @@ const Navbar = () => {
     }
   };
 
+  // Choose logo based on theme and scroll state
+  const logoSrc = isScrolled
+    ? "/lovable-uploads/eef04cda-cc19-4e97-9136-dcd93f60b698.png" // Always use dark logo when scrolled
+    : "/lovable-uploads/50941805-7198-4381-a214-435f243a45b4.png"; // Light logo for dark backgrounds
+    
+  // Apply inversion based on theme and scroll state
+  const shouldInvertLogo = (isScrolled && theme === 'light') || (!isScrolled && theme === 'dark');
+
   return (
     <header
       className={cn(
@@ -58,11 +68,12 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between">
         <Link to="/" className="inline-block" aria-label="VINLIGNA">
           <img 
-            src={isScrolled 
-              ? "/lovable-uploads/eef04cda-cc19-4e97-9136-dcd93f60b698.png" 
-              : "/lovable-uploads/50941805-7198-4381-a214-435f243a45b4.png"} 
+            src={logoSrc}
             alt="VINLIGNA" 
-            className="h-6 md:h-8 dark:invert-0 invert" 
+            className={cn(
+              "h-6 md:h-8",
+              shouldInvertLogo ? "invert dark:invert-0" : "invert-0 dark:invert"
+            )}
           />
         </Link>
 
@@ -327,7 +338,7 @@ const NavLink = ({ to, children, isScrolled }: NavLinkProps) => {
           "text-sm font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 hover:after:w-full after:transition-all after:duration-300",
           isScrolled 
             ? "text-foreground hover:text-foreground/80 after:bg-foreground" 
-            : "text-white hover:text-white/80 after:bg-white dark:text-white"
+            : "text-foreground dark:text-white hover:text-foreground/80 dark:hover:text-white/80 after:bg-foreground dark:after:bg-white"
         )}
       >
         {children}
@@ -342,7 +353,7 @@ const NavLink = ({ to, children, isScrolled }: NavLinkProps) => {
         "text-sm font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 hover:after:w-full after:transition-all after:duration-300",
         isScrolled 
           ? "text-foreground hover:text-foreground/80 after:bg-foreground" 
-          : "text-white hover:text-white/80 after:bg-white dark:text-white"
+          : "text-foreground dark:text-white hover:text-foreground/80 dark:hover:text-white/80 after:bg-foreground dark:after:bg-white"
       )}
     >
       {children}
