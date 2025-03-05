@@ -53,10 +53,8 @@ const Navbar = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  // Choose logo based on theme and scroll state
   const logoSrc = "/lovable-uploads/eef04cda-cc19-4e97-9136-dcd93f60b698.png"; // Always use dark logo
     
-  // Apply appropriate logo styling based on theme and scroll state
   const logoClass = cn(
     "h-6 md:h-8",
     isScrolled
@@ -89,7 +87,7 @@ const Navbar = () => {
 
         <button
           className={cn(
-            "md:hidden focus:outline-none z-[100]",
+            "md:hidden focus:outline-none z-[200]",
             isMobileMenuOpen ? "text-white" : (isScrolled ? "text-foreground" : "text-white")
           )}
           onClick={handleToggleMobileMenu}
@@ -110,7 +108,7 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden"
+            className="fixed inset-0 md:hidden"
             style={{ 
               position: 'fixed',
               top: 0,
@@ -119,7 +117,8 @@ const Navbar = () => {
               bottom: 0,
               backgroundColor: 'rgba(0, 0, 0, 0.95)',
               backdropFilter: 'blur(10px)',
-              zIndex: 90
+              zIndex: 150,
+              overflowY: 'auto'
             }}
           >
             <div className="flex flex-col justify-between h-full px-6 py-20 overflow-auto">
@@ -239,7 +238,7 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden"
+            className="fixed inset-0 md:hidden"
             style={{ 
               position: 'fixed',
               top: 0,
@@ -248,7 +247,8 @@ const Navbar = () => {
               bottom: 0,
               backgroundColor: 'rgba(0, 0, 0, 0.95)',
               backdropFilter: 'blur(10px)',
-              zIndex: 90
+              zIndex: 150,
+              overflowY: 'auto'
             }}
           >
             <div className="flex flex-col h-full px-6 py-12 overflow-auto">
@@ -259,7 +259,7 @@ const Navbar = () => {
                   className="h-6" 
                 />
                 <button
-                  className="text-white focus:outline-none z-[100]"
+                  className="text-white focus:outline-none z-[200]"
                   onClick={() => setShowContactForm(false)}
                   aria-label="Close contact form"
                 >
