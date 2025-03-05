@@ -221,8 +221,9 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                 <h2 className="text-2xl font-medium text-background dark:text-white mb-3">{subtitle}</h2>
                 <p className="text-background/70 dark:text-white/70 mb-6 text-base font-light">{description}</p>
                 
-                <div className="inline-block px-6 py-2 bg-transparent text-white text-sm tracking-widest uppercase rounded-full border border-white/20">
-                  Entdecken
+                <div className="inline-flex items-center px-6 py-2 text-wine text-sm tracking-widest uppercase rounded-full border border-foreground/20">
+                  <span>Entdecken</span>
+                  <ArrowRight size={14} className="ml-2 text-wine" />
                 </div>
               </div>
             </div>
@@ -263,8 +264,9 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                 <h2 className="text-2xl sm:text-3xl font-medium text-background dark:text-white mb-3">{subtitle}</h2>
                 <p className="text-background/70 dark:text-white/70 mb-6 sm:mb-8 text-base font-light">{description}</p>
                 
-                <div className="inline-block px-6 py-2 bg-transparent text-white text-sm tracking-widest uppercase rounded-full border border-white/20">
-                  Entdecken
+                <div className="inline-flex items-center px-6 py-2 text-wine text-sm tracking-widest uppercase rounded-full border border-foreground/20">
+                  <span>Entdecken</span>
+                  <ArrowRight size={14} className="ml-2 text-wine" />
                 </div>
               </div>
             </div>
