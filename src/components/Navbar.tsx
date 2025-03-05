@@ -58,6 +58,22 @@ const Navbar = () => {
     }
   };
 
+  // New function to handle logo click
+  const handleLogoClick = () => {
+    // Close mobile menu if open
+    if (isMobileMenuOpen) {
+      setIsMobileMenuOpen(false);
+    }
+    
+    // Scroll to top with a slight delay to ensure menu closing animation completes
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }, 100);
+  };
+
   const logoSrc = "/lovable-uploads/eef04cda-cc19-4e97-9136-dcd93f60b698.png"; // Always use dark logo
     
   const logoClass = cn(
@@ -76,7 +92,12 @@ const Navbar = () => {
         )}
       >
         <div className="container mx-auto flex items-center justify-between relative">
-          <Link to="/" className="inline-block z-[400]" aria-label="VINLIGNA">
+          <Link 
+            to="/" 
+            className="inline-block z-[400]" 
+            aria-label="VINLIGNA"
+            onClick={handleLogoClick}
+          >
             <img 
               src={logoSrc}
               alt="VINLIGNA" 
