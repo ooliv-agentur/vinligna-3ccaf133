@@ -5,7 +5,7 @@ import { fadeIn, staggerContainer, slideUp } from '@/lib/motion';
 
 const BenefitsSection = () => {
   return (
-    <section className="section-padding-lg bg-black overflow-hidden">
+    <section className="section-padding-lg overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="max-w-screen-xl mx-auto">
           <motion.div
@@ -18,10 +18,10 @@ const BenefitsSection = () => {
             <span className="section-subtitle">
               Ihre Vorteile
             </span>
-            <h2 className="section-title text-white">
+            <h2 className="section-title text-foreground">
               Vorteile für <span className="text-gradient">Ihr Unternehmen</span>
             </h2>
-            <p className="text-white/70 max-w-2xl mx-auto">
+            <p className="text-foreground/70 max-w-2xl mx-auto">
               Entdecken Sie, warum VINLIGNA die erste Wahl für Weingüter, Gastronomiebetriebe und Hotels ist.
             </p>
           </motion.div>

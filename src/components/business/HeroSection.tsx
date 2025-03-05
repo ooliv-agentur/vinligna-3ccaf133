@@ -5,13 +5,13 @@ import TextArrowButton from '../TextArrowButton';
 
 const HeroSection = () => {
   return (
-    <section className="relative h-[90vh] flex items-center justify-center px-6 pt-32 pb-20 overflow-hidden bg-black">
+    <section className="relative h-[90vh] flex items-center justify-center px-6 pt-32 pb-20 overflow-hidden">
       <div className="container relative z-10 mx-auto max-w-5xl text-center">
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="inline-block mb-6 px-6 py-2 bg-transparent text-white text-sm tracking-widest uppercase rounded-full border border-white/20"
+          className="inline-block mb-6 px-6 py-2 bg-transparent text-foreground text-sm tracking-widest uppercase rounded-full border border-foreground/20"
         >
           FÜR GESCHÄFTSKUNDEN
         </motion.div>
@@ -22,7 +22,7 @@ const HeroSection = () => {
           transition={{ delay: 0.2, duration: 0.8 }}
           className="text-4xl md:text-6xl lg:text-7xl font-light mb-6 leading-tight tracking-tight"
         >
-          <span className="block text-white">Weinfass Möbel für</span>
+          <span className="block text-foreground">Weinfass Möbel für</span>
           <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -37,7 +37,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
-          className="text-base md:text-lg text-white/80 max-w-2xl mx-auto mb-16"
+          className="text-base md:text-lg text-foreground/80 max-w-2xl mx-auto mb-16"
         >
           Werten Sie Ihre Räumlichkeiten mit individuell gefertigten Möbeln aus recycelten Weinfässern auf. Erzählen Sie die Geschichte Ihres Unternehmens durch zeitlose, nachhaltige Unikate.
         </motion.p>
@@ -61,7 +61,7 @@ const HeroSection = () => {
           backgroundPosition: 'center'
         }}
       ></div>
-      <div className="absolute inset-0 -z-10 bg-black/60"></div>
+      <div className="absolute inset-0 -z-10 bg-background/60"></div>
     </section>
   );
 };

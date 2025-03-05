@@ -14,7 +14,7 @@ const Footer = () => {
                 <img 
                   src="/lovable-uploads/eef04cda-cc19-4e97-9136-dcd93f60b698.png" 
                   alt="VINLIGNA" 
-                  className="h-8 brightness-0 invert" 
+                  className="h-8 dark:brightness-0 dark:invert" 
                 />
               </a>
               <p className="text-background/70 mb-8 max-w-xs">
@@ -23,7 +23,7 @@ const Footer = () => {
             </div>
             
             <div className="md:col-span-3">
-              <h4 className="font-medium mb-4 text-white">Hauptseiten</h4>
+              <h4 className="font-medium mb-4 text-background">Hauptseiten</h4>
               <ul className="space-y-3">
                 <FooterLink href="/business">Weingüter, Gastronomie & Hotellerie</FooterLink>
                 <FooterLink href="/private">Weinliebhaber & Privatkunden</FooterLink>
@@ -31,7 +31,7 @@ const Footer = () => {
             </div>
             
             <div className="md:col-span-2">
-              <h4 className="font-medium mb-4 text-white">Kontakt</h4>
+              <h4 className="font-medium mb-4 text-background">Kontakt</h4>
               <ul className="space-y-3">
                 <FooterLink href="#contact">Kontakt aufnehmen</FooterLink>
                 <FooterLink href="mailto:info@vinligna.com">E-Mail senden</FooterLink>
@@ -40,7 +40,7 @@ const Footer = () => {
             </div>
             
             <div className="md:col-span-2">
-              <h4 className="font-medium mb-4 text-white">Rechtliches</h4>
+              <h4 className="font-medium mb-4 text-background">Rechtliches</h4>
               <ul className="space-y-3">
                 <FooterLink href="#impressum">Impressum</FooterLink>
                 <FooterLink href="#datenschutz">Datenschutz</FooterLink>
@@ -69,7 +69,7 @@ const FooterLink = ({ href, children }: FooterLinkProps) => (
   <li>
     <a 
       href={href} 
-      className="text-sm text-background/70 hover:text-white transition-colors"
+      className="text-sm text-background/70 hover:text-background transition-colors"
     >
       {children}
     </a>

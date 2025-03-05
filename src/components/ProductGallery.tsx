@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { GalleryItem } from './business/GalleryItem';
 
@@ -25,7 +24,7 @@ const staggerContainer = {
 
 const ProductGallery = () => {
   return (
-    <section className="py-32 md:py-44 bg-black text-white overflow-hidden" id="gallery">
+    <section className="py-32 md:py-44 text-foreground overflow-hidden" id="gallery">
       <div className="container mx-auto px-6">
         <div className="max-w-screen-xl mx-auto">
           {/* Headline and intro text */}
@@ -42,7 +41,7 @@ const ProductGallery = () => {
             <h2 className="section-title">
               Handwerkskunst aus <span className="text-wine">Eichenholz</span>
             </h2>
-            <p className="text-base text-gray-300 max-w-3xl mx-auto">
+            <p className="text-base text-foreground/70 max-w-3xl mx-auto">
               Entdecken Sie unsere einzigartigen Kreationen aus recycelten Weinfässern. 
               Jedes Stück erzählt seine eigene Geschichte von Tradition, Handwerk und Nachhaltigkeit.
             </p>
@@ -75,12 +74,6 @@ const ProductGallery = () => {
     </section>
   );
 };
-
-interface GalleryItemProps {
-  image: string;
-  title: string;
-  category: string;
-}
 
 // Gallery items with images
 const galleryItems = [

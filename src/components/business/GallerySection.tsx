@@ -53,7 +53,7 @@ const galleryItems = [
 
 const GallerySection = () => {
   return (
-    <section className="section-padding bg-black">
+    <section className="section-padding">
       <div className="container mx-auto px-6">
         <div className="max-w-screen-xl mx-auto">
           <motion.div
@@ -66,10 +66,10 @@ const GallerySection = () => {
             <span className="section-subtitle">
               Galerie
             </span>
-            <h2 className="section-title text-white">
+            <h2 className="section-title text-foreground">
               Unsere <span className="text-gradient">Projekte</span>
             </h2>
-            <p className="text-white/70 max-w-2xl mx-auto">
+            <p className="text-foreground/70 max-w-2xl mx-auto">
               Unsere Galerie zeigt ausgewählte Projekte, die wir bereits für namhafte Weingüter und Restaurants realisiert haben. Entdecken Sie unsere maßgefertigten Tische, Theken und Regale, die in verschiedenen Gastronomie- und Hotelbetrieben zum Einsatz kommen. Jedes Möbelstück ist ein Unikat und erzählt die Geschichte des Weins, von dem es inspiriert wurde.
             </p>
           </motion.div>

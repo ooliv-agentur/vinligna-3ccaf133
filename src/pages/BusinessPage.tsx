@@ -53,7 +53,7 @@ const BusinessPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-black">
+    <div className="min-h-screen overflow-x-hidden bg-background">
       <Navbar />
       
       <HeroSection />

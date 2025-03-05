@@ -14,15 +14,15 @@ const TeamMember = ({ name, role, image, altText }: TeamMemberProps) => (
     variants={fadeIn}
     className="group relative"
   >
-    <div className="aspect-[4/5] overflow-hidden rounded-lg bg-white/5 backdrop-blur-sm border border-white/10">
+    <div className="aspect-[4/5] overflow-hidden rounded-lg bg-foreground/5 backdrop-blur-sm border border-foreground/10">
       <img 
         src={image} 
         alt={altText || `${name} - ${role}`} 
         className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/20 to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
       <div className="absolute inset-0 flex flex-col justify-end p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-        <h3 className="text-xl font-medium text-white">{name}</h3>
+        <h3 className="text-xl font-medium text-foreground">{name}</h3>
         <p className="text-wine mt-1">{role}</p>
       </div>
     </div>
@@ -31,7 +31,7 @@ const TeamMember = ({ name, role, image, altText }: TeamMemberProps) => (
 
 const TeamSection = () => {
   return (
-    <section className="py-32 md:py-44 bg-black text-white overflow-hidden">
+    <section className="py-32 md:py-44 text-foreground overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="max-w-screen-xl mx-auto">
           {/* Section title and subtitle */}
@@ -45,10 +45,10 @@ const TeamSection = () => {
             <span className="section-subtitle">
               Unser Team
             </span>
-            <h2 className="section-title text-white">
+            <h2 className="section-title text-foreground">
               Die <span className="text-gradient">Experten</span> hinter VINLIGNA
             </h2>
-            <p className="text-white/70 max-w-2xl mx-auto">
+            <p className="text-foreground/70 max-w-2xl mx-auto">
               Unser Expertenteam vereint Leidenschaft für Handwerkskunst mit innovativem Design, um Ihre Vision zum Leben zu erwecken.
             </p>
           </motion.div>

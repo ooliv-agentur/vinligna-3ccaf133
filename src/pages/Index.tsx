@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -44,7 +43,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-black">
+    <div className="min-h-screen overflow-x-hidden bg-background">
       <Navbar />
       <Hero />
       <About />
