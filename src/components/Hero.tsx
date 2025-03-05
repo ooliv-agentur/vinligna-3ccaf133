@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -53,7 +54,7 @@ const Hero = () => {
           variants={itemVariants}
           className="flex justify-center mb-8"
         >
-          <div className="inline-block mb-6 px-6 py-2 bg-transparent text-foreground text-sm tracking-widest uppercase rounded-full border border-foreground/20">
+          <div className="inline-block mb-6 px-6 py-2 bg-wine text-white text-sm tracking-widest uppercase rounded-full border border-wine/20">
             NACHHALTIGE ELEGANZ
           </div>
         </motion.div>
@@ -212,7 +213,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                 initial={{ opacity: 0.7 }}
                 whileHover={{ opacity: 0.9 }}
                 transition={{ duration: 0.3 }}
-                className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/70 to-foreground/30"
+                className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/70 to-foreground/30 dark:from-black/95 dark:via-black/70 dark:to-black/30"
               />
               
               <div className="absolute bottom-0 left-0 right-0 p-6 text-left">
@@ -252,7 +253,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                 initial={{ opacity: 0.7 }}
                 whileHover={{ opacity: 0.9 }}
                 transition={{ duration: 0.3 }}
-                className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/70 to-foreground/30"
+                className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/70 to-foreground/30 dark:from-black/95 dark:via-black/70 dark:to-black/30"
               />
               
               <div className="absolute bottom-0 left-0 right-0 p-8 text-left transform transition-all duration-300 group-hover:translate-y-0">
