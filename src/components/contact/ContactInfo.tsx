@@ -8,7 +8,7 @@ const ContactInfo = () => {
       <h3 className="text-xl font-light mb-4 md:mb-6 text-white">Kontaktinformationen</h3>
       <div className="space-y-4 md:space-y-6 text-sm">
         <div className="flex items-start">
-          <div className="w-8 flex-shrink-0 flex items-center justify-center">
+          <div className="w-8 flex-shrink-0 flex items-center justify-center mt-0.5">
             <Mail size={18} className="text-wine" />
           </div>
           <div>
@@ -18,7 +18,7 @@ const ContactInfo = () => {
         </div>
         
         <div className="flex items-start">
-          <div className="w-8 flex-shrink-0 flex items-center justify-center">
+          <div className="w-8 flex-shrink-0 flex items-center justify-center mt-0.5">
             <Phone size={18} className="text-wine" />
           </div>
           <div>
@@ -28,7 +28,7 @@ const ContactInfo = () => {
         </div>
         
         <div className="flex items-start">
-          <div className="w-8 flex-shrink-0 flex items-center justify-center">
+          <div className="w-8 flex-shrink-0 flex items-center justify-center mt-0.5">
             <MapPin size={18} className="text-wine" />
           </div>
           <div>
