@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -116,18 +117,27 @@ const Navbar = () => {
             }}
           >
             <div className="flex flex-col justify-between h-full px-6 py-20">
-              <motion.div 
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1, duration: 0.5 }}
-                className="flex justify-center mb-12"
-              >
-                <img 
-                  src="/lovable-uploads/50941805-7198-4381-a214-435f243a45b4.png" 
-                  alt="VINLIGNA" 
-                  className="h-8" 
-                />
-              </motion.div>
+              <div className="flex justify-between items-center mb-12">
+                <motion.div 
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1, duration: 0.5 }}
+                >
+                  <img 
+                    src="/lovable-uploads/50941805-7198-4381-a214-435f243a45b4.png" 
+                    alt="VINLIGNA" 
+                    className="h-8" 
+                  />
+                </motion.div>
+                
+                <button
+                  className="text-white focus:outline-none"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  aria-label="Close menu"
+                >
+                  <X className="h-6 w-6" />
+                </button>
+              </div>
               
               <motion.nav 
                 className="mb-auto"
