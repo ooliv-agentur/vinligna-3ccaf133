@@ -34,7 +34,7 @@ const About = () => {
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="section-title-large"
+                className="section-title-large text-3xl md:text-5xl lg:text-6xl font-light mb-6 leading-tight"
               >
                 Die Kunst der <span className="highlight">Nachhaltigkeit</span>
               </motion.h2>

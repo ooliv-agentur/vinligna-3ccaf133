@@ -114,9 +114,9 @@
     }
   }
   
-  /* Standardized heading styles */
+  /* Standardized heading styles with proper hierarchy for all screen sizes */
   h1 {
-    @apply text-4xl md:text-6xl lg:text-7xl font-light leading-tight tracking-tight;
+    @apply text-5xl md:text-6xl lg:text-7xl font-light leading-tight tracking-tight;
   }
   
   h2 {
@@ -160,7 +160,7 @@
   }
   
   .section-title-large {
-    @apply text-4xl md:text-5xl lg:text-6xl font-light mb-6 leading-tight;
+    @apply text-3xl md:text-5xl lg:text-6xl font-light mb-6 leading-tight;
   }
   
   /* Image treatments */
