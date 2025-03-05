@@ -54,7 +54,7 @@ const Hero = () => {
           variants={itemVariants}
           className="flex justify-center mb-8"
         >
-          <div className="inline-block mb-6 px-6 py-2 bg-transparent text-foreground text-sm tracking-widest uppercase rounded-full border border-foreground/20">
+          <div className="inline-block mb-6 px-6 py-2 bg-wine text-white text-sm tracking-widest uppercase rounded-full">
             NACHHALTIGE ELEGANZ
           </div>
         </motion.div>
@@ -108,7 +108,6 @@ const Hero = () => {
                 description="Maßgeschneiderte Lösungen für Ihre Marke"
                 link="/business"
                 imageSrc="/lovable-uploads/112627aa-d494-4e9d-939e-39625817461d.png"
-                buttonText="FÜR GESCHÄFTSKUNDEN"
               />
             </div>
             
@@ -122,7 +121,6 @@ const Hero = () => {
                 description="Exklusive Designs für Ihr Zuhause"
                 link="/private"
                 imageSrc="/lovable-uploads/e9d912cb-d45d-4016-8e8b-8250bd78de47.png"
-                buttonText="FÜR WEINLIEBHABER"
               />
             </div>
           </div>
@@ -169,10 +167,9 @@ interface EntryCardProps {
   description: string;
   link: string;
   imageSrc: string;
-  buttonText?: string;
 }
 
-const EntryCard = ({ title, subtitle, description, link, imageSrc, buttonText = "Entdecken" }: EntryCardProps) => {
+const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardProps) => {
   return (
     <motion.div
       whileHover={{ y: -5 }}
@@ -264,9 +261,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc, buttonText = 
                 <h2 className="text-2xl sm:text-3xl font-medium text-background dark:text-white mb-3">{subtitle}</h2>
                 <p className="text-background/70 dark:text-white/70 mb-6 sm:mb-8 text-base font-light">{description}</p>
                 
-                <div className="inline-block px-6 py-2 bg-transparent text-foreground text-sm tracking-widest uppercase rounded-full border border-foreground/20">
-                  {buttonText}
-                </div>
+                <TextArrowButton text="Entdecken" href={link} />
               </div>
             </div>
           </div>
