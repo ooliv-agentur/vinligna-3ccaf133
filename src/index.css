@@ -386,6 +386,38 @@
   color: rgba(255, 255, 255, 0.8);
 }
 
+.text-mode-white-70 {
+  color: rgba(var(--foreground), 0.7);
+}
+
+.dark .text-mode-white-70 {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.text-mode-white-60 {
+  color: rgba(var(--foreground), 0.6);
+}
+
+.dark .text-mode-white-60 {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.border-foreground\/20 {
+  border-color: rgba(var(--foreground), 0.2);
+}
+
+.dark .border-foreground\/20 {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.border-white\/20 {
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.dark .border-white\/20 {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
 /* Theme transition effects */
 * {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;

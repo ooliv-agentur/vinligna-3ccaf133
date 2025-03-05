@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, Wine, Heart, ShieldCheck, Table, BookOpen } from 'lucide-react';
@@ -64,7 +65,7 @@ const PrivatePage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
-            className="inline-block mb-6 px-6 py-2 bg-transparent text-white text-sm tracking-widest uppercase rounded-full border border-white/20"
+            className="inline-block mb-6 px-6 py-2 bg-transparent text-white text-sm tracking-widest uppercase rounded-full border border-foreground/20"
           >
             FÜR WEINLIEBHABER
           </motion.div>
