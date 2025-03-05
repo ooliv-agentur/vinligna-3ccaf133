@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LazyMotion, domAnimation } from "framer-motion";
+import { ThemeProvider } from "./components/ThemeProvider";
 import Index from "./pages/Index";
 import BusinessPage from "./pages/BusinessPage";
 import PrivatePage from "./pages/PrivatePage";
@@ -14,21 +15,23 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <LazyMotion features={domAnimation}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/business" element={<BusinessPage />} />
-            <Route path="/private" element={<PrivatePage />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </LazyMotion>
+    <ThemeProvider>
+      <LazyMotion features={domAnimation}>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/business" element={<BusinessPage />} />
+              <Route path="/private" element={<PrivatePage />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </LazyMotion>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 

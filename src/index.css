@@ -4,6 +4,7 @@
 
 @layer base {
   :root {
+    /* Light mode variables */
     --background: 30 20% 98%;
     --foreground: 20 12% 10%;
     
@@ -47,6 +48,46 @@
 
     --radius: 0.5rem;
   }
+
+  .dark {
+    /* Dark mode variables */
+    --background: 0 0% 0%; /* Black background */
+    --foreground: 0 0% 100%; /* White text */
+    
+    --oak-light: 30 30% 90%;
+    --oak: 30 30% 60%;
+    --oak-dark: 20 34% 27%; /* #5C3B2E - dark wood brown */
+    
+    --wine-light: 20 65% 89%; /* #EDE0D4 - warm beige */
+    --wine: 20 57% 53%; /* #D96B37 - soft terracotta */
+    --wine-dark: 20 57% 40%; /* darker terracotta */
+
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 5%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 0% 85%;
+  }
+
+  ::selection {
+    @apply bg-wine/30 text-foreground;
+  }
 }
 
 @layer base {
@@ -55,7 +96,7 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased transition-colors duration-300;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   
@@ -314,4 +355,41 @@
 
 .pulse-glow {
   animation: pulse-glow 2s infinite;
+}
+
+.dark .bg-black {
+  @apply bg-black;
+}
+
+.bg-black {
+  @apply bg-white dark:bg-black;
+}
+
+.text-white {
+  @apply text-foreground dark:text-white;
+}
+
+.text-white\/80, .text-white\/70, .text-white\/60 {
+  @apply text-foreground/80 dark:text-white/80;
+}
+
+/* Theme transition effects */
+* {
+  @apply transition-colors duration-300;
+}
+
+.dark .image-card .absolute.inset-0 {
+  @apply border-white/10;
+}
+
+.image-card .absolute.inset-0 {
+  @apply border-black/10 dark:border-white/10;
+}
+
+.dark .bg-glass-dark {
+  @apply bg-black/60 backdrop-blur-md border-white/5;
+}
+
+.bg-glass-dark {
+  @apply bg-white/80 backdrop-blur-md border-black/5 dark:bg-black/60 dark:border-white/5;
 }

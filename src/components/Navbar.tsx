@@ -1,8 +1,10 @@
+
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Mail, Phone, MapPin, Wine, User, Home } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -60,7 +62,7 @@ const Navbar = () => {
               ? "/lovable-uploads/eef04cda-cc19-4e97-9136-dcd93f60b698.png" 
               : "/lovable-uploads/50941805-7198-4381-a214-435f243a45b4.png"} 
             alt="VINLIGNA" 
-            className="h-6 md:h-8" 
+            className="h-6 md:h-8 dark:invert-0 invert" 
           />
         </Link>
 
@@ -68,6 +70,7 @@ const Navbar = () => {
           <NavLink to="/business" isScrolled={isScrolled}>Weingüter, Gastronomie & Hotellerie</NavLink>
           <NavLink to="/private" isScrolled={isScrolled}>Weinliebhaber & Privatkunden</NavLink>
           <NavLink to="/#contact" isScrolled={isScrolled}>Kontakt</NavLink>
+          <ThemeToggle isScrolled={isScrolled} />
         </nav>
 
         <button
@@ -324,7 +327,7 @@ const NavLink = ({ to, children, isScrolled }: NavLinkProps) => {
           "text-sm font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 hover:after:w-full after:transition-all after:duration-300",
           isScrolled 
             ? "text-foreground hover:text-foreground/80 after:bg-foreground" 
-            : "text-white hover:text-white/80 after:bg-white"
+            : "text-white hover:text-white/80 after:bg-white dark:text-white"
         )}
       >
         {children}
@@ -339,7 +342,7 @@ const NavLink = ({ to, children, isScrolled }: NavLinkProps) => {
         "text-sm font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 hover:after:w-full after:transition-all after:duration-300",
         isScrolled 
           ? "text-foreground hover:text-foreground/80 after:bg-foreground" 
-          : "text-white hover:text-white/80 after:bg-white"
+          : "text-white hover:text-white/80 after:bg-white dark:text-white"
       )}
     >
       {children}

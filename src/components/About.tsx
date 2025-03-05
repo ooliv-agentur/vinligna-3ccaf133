@@ -6,7 +6,7 @@ const About = () => {
   return (
     <section id="about" className="py-40 md:py-60 bg-black text-white overflow-hidden relative">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-black" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-black dark:from-black dark:via-black/95 dark:to-black from-white via-white/95 to-white" />
       
       {/* Content */}
       <div className="container relative z-10 mx-auto px-6">
