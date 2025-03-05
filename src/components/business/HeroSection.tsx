@@ -1,6 +1,5 @@
 
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
 import TextArrowButton from '../TextArrowButton';
 
 const HeroSection = () => {
@@ -11,7 +10,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="inline-block mb-6 px-6 py-2 bg-transparent text-foreground text-sm tracking-widest uppercase rounded-full border border-foreground/20"
+          className="inline-block mb-6 px-6 py-2 bg-wine text-white text-sm tracking-widest uppercase rounded-full border border-wine/20"
         >
           FÜR GESCHÄFTSKUNDEN
         </motion.div>
