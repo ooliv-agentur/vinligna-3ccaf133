@@ -51,7 +51,7 @@ const Footer = () => {
             </div>
           </div>
           
-          <div className="border-t border-white/20 dark:border-white/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <div className="border-t border-gray-400 dark:border-white/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
             <div className="text-sm text-white/60 dark:text-white/60 mb-4 md:mb-0">
               © {currentYear} VinLignum Holzmanufaktur GmbH & Co. KG. Alle Rechte vorbehalten.
             </div>
