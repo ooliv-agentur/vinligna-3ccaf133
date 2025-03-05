@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -64,8 +63,8 @@ const Hero = () => {
           variants={itemVariants}
           className="flex justify-center mb-8"
         >
-          <div className="px-5 py-2 bg-wine text-white text-sm tracking-widest uppercase border border-wine/20 rounded-full">
-            Nachhaltige Eleganz
+          <div className="inline-block mb-6 px-6 py-2 bg-transparent text-foreground text-sm tracking-widest uppercase rounded-full border border-foreground/20">
+            NACHHALTIGE ELEGANZ
           </div>
         </motion.div>
 
