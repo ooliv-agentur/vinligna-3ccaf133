@@ -7,7 +7,7 @@ const Footer = () => {
   const { theme } = useTheme();
   
   return (
-    <footer className="bg-foreground text-background dark:bg-foreground dark:text-background">
+    <footer className="bg-black text-background dark:bg-foreground dark:text-background">
       <div className="container mx-auto px-6 py-16 md:py-20">
         <div className="max-w-screen-xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
@@ -19,13 +19,13 @@ const Footer = () => {
                   className={theme === 'dark' ? "h-8 brightness-0 invert" : "h-8"}
                 />
               </a>
-              <p className="text-background/70 mb-8 max-w-xs">
+              <p className="text-foreground mb-8 max-w-xs dark:text-background/70">
                 Exklusive Möbel aus recycelten Weinfässern, die Tradition, Handwerkskunst und Nachhaltigkeit vereinen.
               </p>
             </div>
             
             <div className="md:col-span-3">
-              <h4 className="font-medium mb-4 text-background">Hauptseiten</h4>
+              <h4 className="font-medium mb-4 text-foreground dark:text-background">Hauptseiten</h4>
               <ul className="space-y-3">
                 <FooterLink href="/business">Weingüter, Gastronomie & Hotellerie</FooterLink>
                 <FooterLink href="/private">Weinliebhaber & Privatkunden</FooterLink>
@@ -33,7 +33,7 @@ const Footer = () => {
             </div>
             
             <div className="md:col-span-2">
-              <h4 className="font-medium mb-4 text-background">Kontakt</h4>
+              <h4 className="font-medium mb-4 text-foreground dark:text-background">Kontakt</h4>
               <ul className="space-y-3">
                 <FooterLink href="#contact">Kontakt aufnehmen</FooterLink>
                 <FooterLink href="mailto:info@vinligna.com">E-Mail senden</FooterLink>
@@ -42,7 +42,7 @@ const Footer = () => {
             </div>
             
             <div className="md:col-span-2">
-              <h4 className="font-medium mb-4 text-background">Rechtliches</h4>
+              <h4 className="font-medium mb-4 text-foreground dark:text-background">Rechtliches</h4>
               <ul className="space-y-3">
                 <FooterLink href="#impressum">Impressum</FooterLink>
                 <FooterLink href="#datenschutz">Datenschutz</FooterLink>
@@ -51,8 +51,8 @@ const Footer = () => {
             </div>
           </div>
           
-          <div className="border-t border-background/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <div className="text-sm text-background/60 mb-4 md:mb-0">
+          <div className="border-t border-foreground/20 dark:border-background/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <div className="text-sm text-foreground/60 dark:text-background/60 mb-4 md:mb-0">
               © {currentYear} VinLignum Holzmanufaktur GmbH & Co. KG. Alle Rechte vorbehalten.
             </div>
           </div>
@@ -71,7 +71,7 @@ const FooterLink = ({ href, children }: FooterLinkProps) => (
   <li>
     <a 
       href={href} 
-      className="text-sm text-background/70 hover:text-background transition-colors"
+      className="text-sm text-foreground/70 hover:text-foreground transition-colors dark:text-background/70 dark:hover:text-background"
     >
       {children}
     </a>

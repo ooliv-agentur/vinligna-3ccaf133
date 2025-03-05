@@ -490,7 +490,11 @@
 
 /* Fix for quote text color in About section */
 .text-xl.md\:text-2xl.font-light.italic.text-white\/90 {
-  @apply text-foreground dark:text-white/90;
+  color: hsl(var(--foreground));
+}
+
+.dark .text-xl.md\:text-2xl.font-light.italic.text-white\/90 {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Wine buttons with white text in both themes */
