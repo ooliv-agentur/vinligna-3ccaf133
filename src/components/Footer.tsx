@@ -47,7 +47,7 @@ const Footer = () => {
               <ul className="space-y-3">
                 <FooterLink to="/impressum">Impressum</FooterLink>
                 <FooterLink to="/datenschutz">Datenschutz</FooterLink>
-                <FooterLink to="/datenschutz#cookies">Cookies</FooterLink>
+                <FooterLink to="/agb">AGB</FooterLink>
               </ul>
             </div>
           </div>
