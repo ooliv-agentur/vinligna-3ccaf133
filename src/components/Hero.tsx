@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -44,23 +45,23 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center px-4 sm:px-6 py-10 sm:py-12 bg-darkbg">
       <motion.div 
-        className="container z-10 mx-auto max-w-6xl flex flex-col h-full pt-20 sm:pt-24 md:pt-28 items-center"
+        className="container z-10 mx-auto max-w-6xl flex flex-col h-full pt-16 sm:pt-20 md:pt-24 pb-24 sm:pb-28 md:pb-32 items-center"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         <motion.div 
           variants={itemVariants}
-          className="flex justify-center mb-8 sm:mb-10"
+          className="flex justify-center mb-6 sm:mb-8"
         >
-          <div className="inline-block mb-4 sm:mb-6 px-4 py-1.5 sm:px-6 sm:py-2 bg-transparent text-foreground text-xs sm:text-sm tracking-widest uppercase rounded-full border border-foreground/20">
+          <div className="inline-block px-4 py-1.5 sm:px-6 sm:py-2 bg-transparent text-foreground text-xs sm:text-sm tracking-widest uppercase rounded-full border border-foreground/20">
             NACHHALTIGE ELEGANZ
           </div>
         </motion.div>
 
         <motion.h1 
           variants={itemVariants}
-          className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-light mb-6 sm:mb-10 leading-tight md:leading-tight tracking-tight text-center max-w-5xl mx-auto"
+          className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-light mb-6 sm:mb-8 leading-tight md:leading-tight tracking-tight text-center max-w-5xl mx-auto"
         >
           <motion.span
             initial={{ opacity: 0 }}
@@ -82,7 +83,7 @@ const Hero = () => {
 
         <motion.p 
           variants={itemVariants}
-          className="text-sm sm:text-base text-mode-white-80 max-w-2xl mx-auto mb-6 sm:mb-8 md:mb-12 text-center leading-relaxed"
+          className="text-sm sm:text-base text-mode-white-80 max-w-2xl mx-auto mb-6 sm:mb-8 text-center leading-relaxed"
         >
           Wir verwandeln gebrauchte Barrique-Fässer in elegante, einzigartige Möbelstücke, 
           die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
@@ -90,8 +91,8 @@ const Hero = () => {
 
         <motion.div
           variants={scaleIn}
-          className="w-full max-w-5xl mx-auto mb-8 sm:mb-10 md:mb-8 p-0 m-0"
-          style={{ padding: 0, margin: "1.5rem auto 2rem" }}
+          className="w-full max-w-5xl mx-auto mb-6 sm:mb-6 p-0 m-0"
+          style={{ padding: 0, margin: "0.5rem auto 1rem" }}
         >
           <div 
             className="flex flex-col w-full items-center md:grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-10 p-0 m-0" 
