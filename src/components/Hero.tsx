@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -42,7 +43,7 @@ const scaleIn = {
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center px-4 sm:px-6 py-10 sm:py-12 bg-darkbg">
+    <section className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center px-4 sm:px-6 py-10 sm:py-12 bg-mode-black">
       <motion.div 
         className="container z-10 mx-auto max-w-6xl flex flex-col h-full pt-20 sm:pt-24 md:pt-28 items-center"
         variants={containerVariants}
