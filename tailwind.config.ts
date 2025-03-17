@@ -76,7 +76,10 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				darkbg: '#505358', // Updated color for dark backgrounds
+				darkbg: {
+					DEFAULT: '#505358',
+					light: '#ffffff'
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

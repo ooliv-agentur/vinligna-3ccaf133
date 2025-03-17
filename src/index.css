@@ -358,7 +358,7 @@
 }
 
 .dark {
-  background-color: #000000;
+  background-color: #505358;
   color: #ffffff;
 }
 
@@ -367,7 +367,7 @@
 }
 
 .dark .bg-mode-black {
-  background-color: #000000;
+  background-color: #505358;
 }
 
 .text-mode-white {
@@ -541,9 +541,19 @@
 
 /* Fix for the black background - IMPORTANT ADDITION */
 .dark .bg-black, .dark .bg-darkbg {
-  background-color: #505358;
+  background-color: #505358 !important;
 }
 
 .bg-black, .bg-darkbg {
+  background-color: #ffffff;
+}
+
+/* Ensure dark mode color is applied properly */
+.dark section.bg-darkbg {
+  background-color: #505358 !important;
+}
+
+/* Override any conflicting styles */
+section.bg-darkbg {
   background-color: #ffffff;
 }
