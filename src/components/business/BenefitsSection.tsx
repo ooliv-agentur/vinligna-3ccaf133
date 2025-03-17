@@ -1,82 +1,78 @@
 
 import { motion } from 'framer-motion';
-import { BenefitItem } from './BenefitItem';
-import { fadeIn, staggerContainer, slideUp } from '@/lib/motion';
+import { fadeIn } from '@/lib/motion';
+import BenefitItem from './BenefitItem';
 
 const BenefitsSection = () => {
   return (
-    <section className="section-padding-lg overflow-hidden">
+    <section id="benefits" className="py-24 md:py-32 overflow-hidden bg-darkbg">
       <div className="container mx-auto px-6">
         <div className="max-w-screen-xl mx-auto">
+          {/* Heading */}
           <motion.div
-            variants={fadeIn}
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="section-title-container"
+            className="text-center mb-16 md:mb-24"
           >
-            <span className="section-subtitle">
-              Ihre Vorteile
-            </span>
-            <h2 className="section-title text-foreground">
-              Vorteile für <span className="text-gradient">Ihr Unternehmen</span>
+            <span className="section-subtitle">Ihre Vorteile</span>
+            <h2 className="section-title">
+              Vorteile für <span className="highlight">Ihr Unternehmen</span>
             </h2>
-            <p className="text-foreground/70 max-w-2xl mx-auto">
+            <p className="text-foreground/70 max-w-3xl mx-auto">
               Entdecken Sie, warum VINLIGNA die erste Wahl für Weingüter, Gastronomiebetriebe und Hotels ist.
             </p>
           </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.div 
-              variants={slideUp}
-              initial="hidden"
-              whileInView="visible"
+          
+          {/* Content Section */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Benefits */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="md:col-span-2 lg:col-span-1"
             >
-              <div className="h-full">
-                <img 
-                  src="/lovable-uploads/bb8a99d9-97f3-42b4-85ad-94d0c5d74fff.png" 
-                  alt="Maßgefertigte Weinfass-Möbel" 
-                  className="w-full h-full object-cover rounded-lg shadow-md image-hover"
-                />
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              className="md:col-span-2 lg:col-span-1 space-y-6"
-            >
-              <motion.div variants={fadeIn}>
+              <div className="space-y-8">
                 <BenefitItem 
                   title="Individuelle Lösungen"
                   description="Jedes Möbelstück wird maßgefertigt, um perfekt in Ihre Räumlichkeiten zu passen und Ihren individuellen Stil widerzuspiegeln."
                 />
-              </motion.div>
-              
-              <motion.div variants={fadeIn}>
+                
                 <BenefitItem 
                   title="Nachhaltigkeit und Upcycling"
                   description="Wir verwenden recycelte Weinfässer, die nicht mehr für die Weinproduktion genutzt werden. So entstehen aus alten Materialien neue, langlebige Möbelstücke."
                 />
-              </motion.div>
-              
-              <motion.div variants={fadeIn}>
+                
                 <BenefitItem 
                   title="Exklusives Design"
                   description="Unsere Möbelstücke aus Barrique-Eichenholz bieten eine besondere Optik, die Ihren Betrieb aufwertet und ein Gefühl von Exklusivität und Tradition vermittelt."
                 />
-              </motion.div>
-              
-              <motion.div variants={fadeIn}>
+                
                 <BenefitItem 
                   title="Langlebigkeit und Robustheit"
                   description="Das Eichenholz der Barrique-Fässer ist nicht nur ästhetisch ansprechend, sondern auch extrem robust und für den täglichen Einsatz in gastronomischen Betrieben ausgelegt."
                 />
-              </motion.div>
+              </div>
+            </motion.div>
+            
+            {/* Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="order-first lg:order-last"
+            >
+              <div className="relative rounded-lg overflow-hidden shadow-xl">
+                <img 
+                  src="/lovable-uploads/85d4a29e-509f-42f3-b7d7-52e5a3622dd9.png" 
+                  alt="Werkstatt mit Möbelherstellung" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-foreground/10"></div>
+              </div>
             </motion.div>
           </div>
         </div>
