@@ -62,6 +62,40 @@ const HeroSection = () => {
         }}
       ></div>
       <div className="absolute inset-0 -z-10" style={{ backgroundColor: "rgba(80, 83, 88, 0.6)" }}></div>
+      
+      {/* Mehr entdecken + animated line */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.8 }}
+        className="hidden md:flex flex-col items-center absolute bottom-8 left-0 right-0"
+      >
+        <motion.span 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.7 }}
+          transition={{ duration: 0.8, delay: 0.8, repeat: Infinity, repeatType: "reverse" }}
+          className="text-foreground text-sm mb-2"
+        >
+          Mehr entdecken
+        </motion.span>
+        <motion.div 
+          initial={{ height: 0 }}
+          animate={{ height: 60 }}
+          transition={{ duration: 0.8, delay: 0.9 }}
+          className="w-px bg-foreground/20 relative overflow-hidden"
+        >
+          <motion.div 
+            initial={{ y: -60 }}
+            animate={{ y: 60 }}
+            transition={{ 
+              duration: 1.5, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
+            className="w-full h-1/2 bg-foreground/60 absolute"
+          />
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
