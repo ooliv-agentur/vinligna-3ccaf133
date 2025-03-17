@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, Wine, Heart, ShieldCheck, Table, BookOpen } from 'lucide-react';
@@ -59,7 +58,7 @@ const PrivatePage = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-center justify-center px-6 pt-32 pb-20 overflow-hidden">
+      <section className="relative h-[90vh] flex items-center justify-center px-6 pt-32 pb-20 overflow-hidden bg-darkbg">
         <div className="container relative z-10 mx-auto max-w-5xl text-center">
           <motion.div 
             initial={{ opacity: 0 }}
@@ -106,17 +105,6 @@ const PrivatePage = () => {
           </motion.div>
         </div>
 
-        {/* Hero background with overlay */}
-        <div 
-          className="absolute inset-0 w-full h-full -z-10"
-          style={{
-            backgroundImage: `url('/lovable-uploads/bd5f84a4-a4f9-423f-88f7-1fce764501b2.png')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        ></div>
-        <div className="absolute inset-0 -z-10 bg-darkbg/60"></div>
-        
         {/* Mehr entdecken + animated line */}
         <motion.div 
           initial={{ opacity: 0 }}
