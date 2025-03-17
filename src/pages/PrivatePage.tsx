@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, Wine, Heart, ShieldCheck, Table, BookOpen } from 'lucide-react';
@@ -58,13 +59,13 @@ const PrivatePage = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-center justify-center px-6 pt-32 pb-20 overflow-hidden bg-darkbg">
+      <section className="relative h-[100vh] flex items-center justify-center px-4 sm:px-6 pt-20 pb-16 overflow-hidden" style={{ backgroundColor: "#505358" }}>
         <div className="container relative z-10 mx-auto max-w-5xl text-center">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="inline-block mb-6 px-6 py-2 bg-transparent text-white text-sm tracking-widest uppercase rounded-full border border-foreground/20"
+            transition={{ duration: 0.6 }}
+            className="inline-block mb-4 sm:mb-6 px-4 py-1.5 sm:px-6 sm:py-2 bg-transparent text-white text-xs sm:text-sm tracking-widest uppercase rounded-full border border-foreground/20"
           >
             FÜR WEINLIEBHABER
           </motion.div>
@@ -72,14 +73,14 @@ const PrivatePage = () => {
           <motion.h1 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="font-light mb-6 leading-tight tracking-tight"
+            transition={{ delay: 0.1, duration: 0.6 }}
+            className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-light mb-4 sm:mb-6 leading-tight tracking-tight"
           >
             <span className="block text-white">Möbel aus Weinfässern</span>
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.5 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               className="font-normal text-gradient"
             >
               Handgefertigte Unikate für Weinliebhaber
@@ -89,8 +90,8 @@ const PrivatePage = () => {
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-base md:text-lg text-white/80 max-w-2xl mx-auto mb-16"
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="text-sm sm:text-base md:text-lg text-white/80 max-w-2xl mx-auto mb-8 sm:mb-16"
           >
             Bringen Sie die Eleganz und Geschichte der Weinkultur in Ihr Zuhause mit unseren handgefertigten Unikaten, die Nachhaltigkeit und Luxus vereinen.
           </motion.p>
@@ -98,7 +99,7 @@ const PrivatePage = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
             className="text-center"
           >
             <TextArrowButton text="Jetzt anfragen" href="#contact" />
