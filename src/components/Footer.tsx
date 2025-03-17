@@ -46,8 +46,8 @@ const Footer = () => {
               <h4 className="font-medium mb-4 text-white dark:text-white">Rechtliches</h4>
               <ul className="space-y-3">
                 <FooterLink to="/impressum">Impressum</FooterLink>
-                <FooterLink to="/#datenschutz">Datenschutz</FooterLink>
-                <FooterLink to="/#cookies">Cookies</FooterLink>
+                <FooterLink to="/datenschutz">Datenschutz</FooterLink>
+                <FooterLink to="/datenschutz#cookies">Cookies</FooterLink>
               </ul>
             </div>
           </div>
