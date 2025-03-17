@@ -54,7 +54,7 @@ const PrivatePage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-black">
+    <div className="min-h-screen overflow-x-hidden bg-darkbg">
       <Navbar />
       
       {/* Hero Section */}
@@ -114,14 +114,14 @@ const PrivatePage = () => {
             backgroundPosition: 'center'
           }}
         ></div>
-        <div className="absolute inset-0 -z-10 bg-black/60"></div>
+        <div className="absolute inset-0 -z-10 bg-darkbg/60"></div>
       </section>
 
       {/* Full Width Image Section */}
       <FullWidthImageSection />
 
       {/* About Section */}
-      <section className="section-padding relative overflow-hidden bg-black">
+      <section className="section-padding relative overflow-hidden bg-darkbg">
         {/* Background decoration elements */}
         <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-wine/5 to-transparent opacity-30" />
         <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-wine/5 to-transparent opacity-30" />
@@ -209,7 +209,7 @@ const PrivatePage = () => {
       <TeamSection />
 
       {/* Products Section */}
-      <section className="section-padding-lg bg-black overflow-hidden">
+      <section className="section-padding-lg bg-darkbg overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="max-w-screen-xl mx-auto">
             <motion.div
@@ -284,7 +284,7 @@ const PrivatePage = () => {
       <ProductionProcess isB2C={true} />
 
       {/* Benefits Section */}
-      <section className="section-padding-lg bg-black overflow-hidden">
+      <section className="section-padding-lg bg-darkbg overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="max-w-screen-xl mx-auto">
             <motion.div
