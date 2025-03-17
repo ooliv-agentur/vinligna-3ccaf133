@@ -53,7 +53,7 @@ const galleryItems = [
 
 const GallerySection = () => {
   return (
-    <section className="section-padding">
+    <section className="section-padding bg-darkbg">
       <div className="container mx-auto px-6">
         <div className="max-w-screen-xl mx-auto">
           <motion.div

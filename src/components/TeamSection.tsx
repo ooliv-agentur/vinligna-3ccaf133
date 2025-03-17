@@ -27,7 +27,7 @@ const TeamMember = ({ name, role, image, altText }: TeamMemberProps) => {
         {/* Overlay and info for desktop (hover effect) */}
         {!isMobile && (
           <>
-            <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/20 to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-darkbg/70 via-darkbg/20 to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
             <div className="absolute inset-0 flex flex-col justify-end p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
               <h3 className="text-xl font-medium text-foreground">{name}</h3>
               <p className="text-wine mt-1">{role}</p>
@@ -58,7 +58,7 @@ const TeamSection = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="text-center mb-20"
+            className="section-title-container"
           >
             <span className="section-subtitle">
               Unser Team

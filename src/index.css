@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -211,7 +212,7 @@
   }
   
   .bg-glass-dark {
-    @apply bg-black/60 backdrop-blur-md border border-white/5;
+    @apply bg-darkbg/60 backdrop-blur-md border border-white/5;
   }
   
   /* Animation utilities */
@@ -556,4 +557,31 @@
 /* Override any conflicting styles */
 section.bg-darkbg {
   background-color: #ffffff;
+}
+
+/* From black gradient overlays to darkbg (color #505358) in dark mode */
+.dark .from-black\/95, .dark .via-black\/70, .dark .to-black\/30 {
+  --tw-gradient-from: rgba(80, 83, 88, 0.95);
+  --tw-gradient-to: rgba(80, 83, 88, 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.dark .via-black\/70 {
+  --tw-gradient-via: rgba(80, 83, 88, 0.7);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to);
+}
+
+.dark .to-black\/30 {
+  --tw-gradient-to: rgba(80, 83, 88, 0.3);
+}
+
+/* Team section overlay fixes */
+.dark .from-background\/70 {
+  --tw-gradient-from: rgba(80, 83, 88, 0.7);
+  --tw-gradient-to: rgba(80, 83, 88, 0);
+}
+
+.dark .via-background\/20 {
+  --tw-gradient-via: rgba(80, 83, 88, 0.2);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to);
 }
