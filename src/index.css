@@ -538,3 +538,12 @@
 .text-wine svg {
   color: hsl(var(--wine)) !important;
 }
+
+/* Fix for the black background - IMPORTANT ADDITION */
+.dark .bg-black, .dark .bg-darkbg {
+  background-color: #505358;
+}
+
+.bg-black, .bg-darkbg {
+  background-color: #ffffff;
+}
