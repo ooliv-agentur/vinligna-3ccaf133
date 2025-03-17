@@ -5,7 +5,7 @@ import TextArrowButton from '../TextArrowButton';
 
 const HeroSection = () => {
   return (
-    <section className="relative h-[100vh] flex items-center justify-center px-4 sm:px-6 pt-20 pb-16 overflow-hidden">
+    <section className="relative h-[100vh] flex items-center justify-center px-4 sm:px-6 pt-20 pb-16 overflow-hidden bg-darkbg">
       <div className="container relative z-10 mx-auto max-w-5xl text-center">
         <motion.div 
           initial={{ opacity: 0 }}
@@ -61,7 +61,7 @@ const HeroSection = () => {
           backgroundPosition: 'center'
         }}
       ></div>
-      <div className="absolute inset-0 -z-10 bg-background/60"></div>
+      <div className="absolute inset-0 -z-10 bg-darkbg/60"></div>
     </section>
   );
 };

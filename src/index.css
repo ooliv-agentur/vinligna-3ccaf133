@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -319,7 +318,7 @@
 }
 
 .glass-dark {
-  background: rgba(30, 30, 30, 0.7);
+  background: rgba(80, 83, 88, 0.7);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -556,32 +555,37 @@
 
 /* Override any conflicting styles */
 section.bg-darkbg {
-  background-color: #ffffff;
+  background-color: #505358;
 }
 
 /* From black gradient overlays to darkbg (color #505358) in dark mode */
-.dark .from-black\/95, .dark .via-black\/70, .dark .to-black\/30 {
+.dark .from-black\/95, .dark .via-black\/70, .dark .to-black\/30,
+.from-black\/95, .via-black\/70, .to-black\/30 {
   --tw-gradient-from: rgba(80, 83, 88, 0.95);
   --tw-gradient-to: rgba(80, 83, 88, 0);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
-.dark .via-black\/70 {
+.dark .via-black\/70,
+.via-black\/70 {
   --tw-gradient-via: rgba(80, 83, 88, 0.7);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to);
 }
 
-.dark .to-black\/30 {
+.dark .to-black\/30,
+.to-black\/30 {
   --tw-gradient-to: rgba(80, 83, 88, 0.3);
 }
 
 /* Team section overlay fixes */
-.dark .from-background\/70 {
+.dark .from-background\/70,
+.from-background\/70 {
   --tw-gradient-from: rgba(80, 83, 88, 0.7);
   --tw-gradient-to: rgba(80, 83, 88, 0);
 }
 
-.dark .via-background\/20 {
+.dark .via-background\/20,
+.via-background\/20 {
   --tw-gradient-via: rgba(80, 83, 88, 0.2);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to);
 }
