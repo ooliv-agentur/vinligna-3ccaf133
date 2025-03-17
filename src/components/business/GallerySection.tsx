@@ -98,6 +98,16 @@ const galleryItems = [
     image: "/lovable-uploads/9474a86e-3029-4095-9f7d-bdab1f66558d.png", 
     title: "Eichenholz Rundtisch", 
     category: "Tische" 
+  },
+  { 
+    image: "/lovable-uploads/b0ca96f4-380d-4b38-b0fb-7a2c9dee7570.png", 
+    title: "Designer-Stuhl aus Fassholz", 
+    category: "Sitzmöbel" 
+  },
+  { 
+    image: "/lovable-uploads/5a53bbed-9875-4004-aea2-164c6edf6c2b.png", 
+    title: "Rotweinfässer Dauben", 
+    category: "Materialdetail" 
   }
 ];
 
