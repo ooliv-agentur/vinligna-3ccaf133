@@ -49,7 +49,7 @@ const TeamMember = ({ name, role, image, altText }: TeamMemberProps) => {
 
 const TeamSection = () => {
   return (
-    <section className="py-32 md:py-44 text-foreground overflow-hidden">
+    <section className="py-32 md:py-44 text-foreground overflow-hidden" style={{ backgroundColor: "#505358" }}>
       <div className="container mx-auto px-6">
         <div className="max-w-screen-xl mx-auto">
           {/* Section title and subtitle */}

@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -362,6 +363,14 @@
   color: #ffffff;
 }
 
+.bg-darkbg {
+  background-color: #505358 !important;
+}
+
+.dark .bg-darkbg {
+  background-color: #505358 !important;
+}
+
 .bg-mode-black {
   background-color: #ffffff;
 }
@@ -545,7 +554,7 @@
 }
 
 .bg-black, .bg-darkbg {
-  background-color: #ffffff;
+  background-color: #505358 !important;
 }
 
 /* Ensure dark mode color is applied properly */
@@ -588,4 +597,17 @@ section.bg-darkbg {
 .via-background\/20 {
   --tw-gradient-via: rgba(80, 83, 88, 0.2);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to);
+}
+
+/* Black background overrides for hero images and backgrounds */
+.bg-darkbg\/60 {
+  background-color: rgba(80, 83, 88, 0.6) !important;
+}
+
+.from-darkbg\/70 {
+  --tw-gradient-from: rgba(80, 83, 88, 0.7) !important;
+}
+
+.via-darkbg\/20 {
+  --tw-gradient-via: rgba(80, 83, 88, 0.2) !important;
 }

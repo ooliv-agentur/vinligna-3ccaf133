@@ -5,7 +5,7 @@ import { fadeIn, staggerContainer, slideUp } from '@/lib/motion';
 
 const BenefitsSection = () => {
   return (
-    <section className="section-padding-lg overflow-hidden">
+    <section className="section-padding-lg overflow-hidden" style={{ backgroundColor: "#505358" }}>
       <div className="container mx-auto px-6">
         <div className="max-w-screen-xl mx-auto">
           <motion.div
