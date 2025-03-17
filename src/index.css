@@ -321,7 +321,7 @@
   background: rgba(30, 30, 30, 0.7);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Additional animations */
@@ -442,7 +442,7 @@
 }
 
 .dark .bg-glass-dark {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(80, 83, 88, 0.6);
   backdrop-filter: blur(8px);
   border-color: rgba(255, 255, 255, 0.05);
 }
@@ -513,7 +513,7 @@
 }
 
 .dark .bg-black {
-  background-color: #000000;
+  background-color: #505358;
 }
 
 .bg-black {

@@ -76,7 +76,8 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				darkbg: '#505358', // New color for black backgrounds
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

@@ -145,7 +145,7 @@ const ProductionProcess = ({ isB2C = false }: ProductionProcessProps) => {
   const content = isB2C ? contentB2C : contentB2B;
 
   return (
-    <section className="py-24 md:py-32 bg-black overflow-hidden">
+    <section className="py-24 md:py-32 bg-darkbg overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="max-w-screen-xl mx-auto">
           <motion.div

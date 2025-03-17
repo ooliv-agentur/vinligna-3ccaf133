@@ -6,7 +6,7 @@ import { fadeIn, staggerContainer, slideUp } from '@/lib/motion';
 
 const ProductsSection = () => {
   return (
-    <section className="section-padding-lg bg-black overflow-hidden">
+    <section className="section-padding-lg bg-darkbg overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="max-w-screen-xl mx-auto">
           <motion.div

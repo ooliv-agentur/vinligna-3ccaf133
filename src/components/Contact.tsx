@@ -19,7 +19,7 @@ const Contact = ({
   formSource
 }: ContactProps) => {
   return (
-    <section id="contact" className="py-20 md:py-32 lg:py-44 bg-black overflow-hidden relative">
+    <section id="contact" className="py-20 md:py-32 lg:py-44 bg-darkbg overflow-hidden relative">
       {/* Background pattern */}
       <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
         <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-wine/20 to-transparent"></div>

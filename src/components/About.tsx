@@ -4,9 +4,9 @@ import TextArrowButton from './TextArrowButton';
 
 const About = () => {
   return (
-    <section id="about" className="py-40 md:py-60 bg-black text-white overflow-hidden relative">
+    <section id="about" className="py-40 md:py-60 bg-darkbg text-white overflow-hidden relative">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-black dark:from-black dark:via-black/95 dark:to-black from-white via-white/95 to-white" />
+      <div className="absolute inset-0 bg-gradient-to-b from-darkbg via-darkbg/95 to-darkbg dark:from-darkbg dark:via-darkbg/95 dark:to-darkbg from-white via-white/95 to-white" />
       
       {/* Content */}
       <div className="container relative z-10 mx-auto px-6">

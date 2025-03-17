@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
@@ -110,7 +111,7 @@ const Faq = () => {
   ];
 
   return (
-    <section id="faq" className="py-32 md:py-44 bg-black text-white relative overflow-hidden">
+    <section id="faq" className="py-32 md:py-44 bg-darkbg text-white relative overflow-hidden">
       {/* Background elements */}
       <motion.div
         initial={{ opacity: 0 }}

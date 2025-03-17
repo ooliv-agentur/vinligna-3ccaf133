@@ -7,7 +7,7 @@ const Footer = () => {
   const { theme } = useTheme();
   
   return (
-    <footer className="bg-black text-white dark:bg-black dark:text-white">
+    <footer className="bg-darkbg text-white dark:bg-darkbg dark:text-white">
       <div className="container mx-auto px-6 py-16 md:py-20">
         <div className="max-w-screen-xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12">

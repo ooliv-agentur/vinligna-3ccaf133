@@ -88,7 +88,7 @@ const BusinessFaq = () => {
   ];
 
   return (
-    <section id="faq" className="py-24 md:py-32 bg-black relative overflow-hidden">
+    <section id="faq" className="py-24 md:py-32 bg-darkbg relative overflow-hidden">
       {/* Background elements */}
       <motion.div
         initial={{ opacity: 0 }}

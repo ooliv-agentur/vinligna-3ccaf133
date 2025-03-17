@@ -5,7 +5,7 @@ import { fadeIn, slideInLeft, slideInRight } from '@/lib/motion';
 
 const AboutSection = () => {
   return (
-    <section className="section-padding relative overflow-hidden bg-black">
+    <section className="section-padding relative overflow-hidden bg-darkbg">
       {/* Background decoration elements */}
       <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-wine/5 to-transparent opacity-30" />
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-wine/5 to-transparent opacity-30" />
