@@ -1,0 +1,60 @@
+
+@layer components {
+  /* Section styles */
+  .section-padding {
+    @apply py-20 md:py-32;
+  }
+  
+  .section-padding-lg {
+    @apply py-24 md:py-40;
+  }
+  
+  .section-title-container {
+    @apply text-center mb-16;
+  }
+  
+  .section-subtitle {
+    @apply inline-block text-sm font-medium tracking-widest uppercase text-wine mb-4;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-light mb-6 leading-tight;
+  }
+  
+  .section-title-large {
+    @apply text-3xl md:text-5xl lg:text-6xl font-light mb-6 leading-tight;
+  }
+  
+  /* Image treatments */
+  .image-hover {
+    @apply transition-transform duration-500 hover:scale-105;
+  }
+  
+  .image-card {
+    @apply relative aspect-[4/5] overflow-hidden rounded-2xl;
+  }
+
+  /* Feature cards */
+  .feature-card {
+    @apply bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 transition-all duration-300 hover:bg-white/10;
+  }
+  
+  /* Buttons */
+  .btn-primary {
+    @apply inline-block px-8 py-4 bg-wine hover:bg-wine-dark text-white rounded-md transition-colors duration-300 text-lg;
+  }
+  
+  .btn-secondary {
+    @apply inline-block px-8 py-4 bg-transparent border border-wine text-wine hover:bg-wine/10 rounded-md transition-colors duration-300 text-lg;
+  }
+  
+  /* Text highlights */
+  .highlight {
+    @apply font-medium text-gradient;
+  }
+  
+  /* Standardized paragraph styles */
+  .text-paragraph {
+    @apply text-base leading-relaxed;
+  }
+}

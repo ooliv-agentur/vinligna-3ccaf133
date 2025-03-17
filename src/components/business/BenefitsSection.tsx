@@ -1,7 +1,7 @@
 
 import { motion } from 'framer-motion';
-import { fadeIn } from '@/lib/motion';
-import BenefitItem from './BenefitItem';
+import { fadeIn, staggerContainer } from '@/lib/motion';
+import { BenefitItem } from '@/components/business/BenefitItem';
 
 const BenefitsSection = () => {
   return (
@@ -14,67 +14,58 @@ const BenefitsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="text-center mb-16 md:mb-24"
+            className="text-center mb-16"
           >
-            <span className="section-subtitle">Ihre Vorteile</span>
+            <span className="section-subtitle">Vorteile</span>
             <h2 className="section-title">
-              Vorteile für <span className="highlight">Ihr Unternehmen</span>
+              Warum VINLIGNA für Ihr <span className="highlight">Unternehmen</span>
             </h2>
             <p className="text-foreground/70 max-w-3xl mx-auto">
-              Entdecken Sie, warum VINLIGNA die erste Wahl für Weingüter, Gastronomiebetriebe und Hotels ist.
+              Maßgeschneiderte Lösungen aus Weinfässern für Weingüter, Restaurants, 
+              Hotels und Bars. Schaffen Sie ein unverwechselbares Ambiente, das Ihre 
+              Kunden begeistern wird und Ihren Räumlichkeiten Charakter verleiht.
             </p>
           </motion.div>
           
-          {/* Content Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Benefits */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true, margin: "-100px" }}
-            >
-              <div className="space-y-8">
-                <BenefitItem 
-                  title="Individuelle Lösungen"
-                  description="Jedes Möbelstück wird maßgefertigt, um perfekt in Ihre Räumlichkeiten zu passen und Ihren individuellen Stil widerzuspiegeln."
-                />
-                
-                <BenefitItem 
-                  title="Nachhaltigkeit und Upcycling"
-                  description="Wir verwenden recycelte Weinfässer, die nicht mehr für die Weinproduktion genutzt werden. So entstehen aus alten Materialien neue, langlebige Möbelstücke."
-                />
-                
-                <BenefitItem 
-                  title="Exklusives Design"
-                  description="Unsere Möbelstücke aus Barrique-Eichenholz bieten eine besondere Optik, die Ihren Betrieb aufwertet und ein Gefühl von Exklusivität und Tradition vermittelt."
-                />
-                
-                <BenefitItem 
-                  title="Langlebigkeit und Robustheit"
-                  description="Das Eichenholz der Barrique-Fässer ist nicht nur ästhetisch ansprechend, sondern auch extrem robust und für den täglichen Einsatz in gastronomischen Betrieben ausgelegt."
-                />
-              </div>
-            </motion.div>
-            
-            {/* Image */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="order-first lg:order-last"
-            >
-              <div className="relative rounded-lg overflow-hidden shadow-xl">
-                <img 
-                  src="/lovable-uploads/85d4a29e-509f-42f3-b7d7-52e5a3622dd9.png" 
-                  alt="Werkstatt mit Möbelherstellung" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-foreground/10"></div>
-              </div>
-            </motion.div>
-          </div>
+          {/* Benefits Grid */}
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            <BenefitItem 
+              icon="Wine" 
+              title="Weinkultur im Fokus" 
+              description="Verbinden Sie Ihr Unternehmen mit der reichen Tradition der Weinherstellung und erzählen Sie eine Geschichte, die Ihre Kunden berührt."
+            />
+            <BenefitItem 
+              icon="Recycle" 
+              title="Nachhaltige Unikate" 
+              description="Jedes Möbelstück ist ein Unikat und trägt zur Nachhaltigkeit bei, indem es ausgediente Weinfässer wiederverwertet."
+            />
+            <BenefitItem 
+              icon="Fingerprint" 
+              title="Einzigartiges Design" 
+              description="Heben Sie sich von der Konkurrenz ab mit maßgeschneiderten Möbeln, die speziell für Ihre Räumlichkeiten konzipiert sind."
+            />
+            <BenefitItem 
+              icon="Camera" 
+              title="Instagram-tauglich" 
+              description="Schaffen Sie fotogene Bereiche in Ihrem Lokal, die Kunden zum Teilen in sozialen Medien animieren und Ihre Reichweite erhöhen."
+            />
+            <BenefitItem 
+              icon="Users" 
+              title="Kundenerlebnis" 
+              description="Bieten Sie Ihren Gästen ein unvergessliches Ambiente, das sie immer wieder zurückkehren lässt und weiterempfehlen."
+            />
+            <BenefitItem 
+              icon="BadgeDollarSign" 
+              title="Werterhaltung" 
+              description="Investieren Sie in hochwertige Möbel mit langer Lebensdauer, die ihren Wert behalten und zur Wertsteigerung Ihres Unternehmens beitragen."
+            />
+          </motion.div>
         </div>
       </div>
     </section>
