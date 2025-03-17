@@ -9,6 +9,7 @@ import { ThemeProvider } from "./components/ThemeProvider";
 import Index from "./pages/Index";
 import BusinessPage from "./pages/BusinessPage";
 import PrivatePage from "./pages/PrivatePage";
+import ImpressumPage from "./pages/ImpressumPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,6 +26,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/business" element={<BusinessPage />} />
               <Route path="/private" element={<PrivatePage />} />
+              <Route path="/impressum" element={<ImpressumPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

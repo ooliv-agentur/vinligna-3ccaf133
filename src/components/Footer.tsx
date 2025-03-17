@@ -1,6 +1,7 @@
 
 import { motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -12,13 +13,13 @@ const Footer = () => {
         <div className="max-w-screen-xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
             <div className="md:col-span-5">
-              <a href="/" className="inline-block mb-6">
+              <Link to="/" className="inline-block mb-6">
                 <img 
                   src="/lovable-uploads/eef04cda-cc19-4e97-9136-dcd93f60b698.png" 
                   alt="VINLIGNA" 
                   className={theme === 'dark' ? "h-8 brightness-0 invert" : "h-8"}
                 />
-              </a>
+              </Link>
               <p className="text-white/70 mb-8 max-w-xs dark:text-white/70">
                 Exklusive Möbel aus recycelten Weinfässern, die Tradition, Handwerkskunst und Nachhaltigkeit vereinen.
               </p>
@@ -27,26 +28,26 @@ const Footer = () => {
             <div className="md:col-span-3">
               <h4 className="font-medium mb-4 text-white dark:text-white">Hauptseiten</h4>
               <ul className="space-y-3">
-                <FooterLink href="/business">Weingüter, Gastronomie & Hotellerie</FooterLink>
-                <FooterLink href="/private">Weinliebhaber & Privatkunden</FooterLink>
+                <FooterLink to="/business">Weingüter, Gastronomie & Hotellerie</FooterLink>
+                <FooterLink to="/private">Weinliebhaber & Privatkunden</FooterLink>
               </ul>
             </div>
             
             <div className="md:col-span-2">
               <h4 className="font-medium mb-4 text-white dark:text-white">Kontakt</h4>
               <ul className="space-y-3">
-                <FooterLink href="#contact">Kontakt aufnehmen</FooterLink>
-                <FooterLink href="mailto:info@vinligna.com">E-Mail senden</FooterLink>
-                <FooterLink href="tel:+4963623094990">Anrufen</FooterLink>
+                <FooterLink to="/#contact">Kontakt aufnehmen</FooterLink>
+                <FooterLinkExternal href="mailto:info@vinligna.com">E-Mail senden</FooterLinkExternal>
+                <FooterLinkExternal href="tel:+4963623094990">Anrufen</FooterLinkExternal>
               </ul>
             </div>
             
             <div className="md:col-span-2">
               <h4 className="font-medium mb-4 text-white dark:text-white">Rechtliches</h4>
               <ul className="space-y-3">
-                <FooterLink href="#impressum">Impressum</FooterLink>
-                <FooterLink href="#datenschutz">Datenschutz</FooterLink>
-                <FooterLink href="#cookies">Cookies</FooterLink>
+                <FooterLink to="/impressum">Impressum</FooterLink>
+                <FooterLink to="/#datenschutz">Datenschutz</FooterLink>
+                <FooterLink to="/#cookies">Cookies</FooterLink>
               </ul>
             </div>
           </div>
@@ -63,11 +64,27 @@ const Footer = () => {
 };
 
 interface FooterLinkProps {
+  to: string;
+  children: React.ReactNode;
+}
+
+const FooterLink = ({ to, children }: FooterLinkProps) => (
+  <li>
+    <Link 
+      to={to} 
+      className="text-sm text-white/70 hover:text-white transition-colors dark:text-white/70 dark:hover:text-white"
+    >
+      {children}
+    </Link>
+  </li>
+);
+
+interface FooterLinkExternalProps {
   href: string;
   children: React.ReactNode;
 }
 
-const FooterLink = ({ href, children }: FooterLinkProps) => (
+const FooterLinkExternal = ({ href, children }: FooterLinkExternalProps) => (
   <li>
     <a 
       href={href} 
