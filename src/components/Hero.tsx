@@ -212,7 +212,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                 initial={{ opacity: 0.7 }}
                 whileHover={{ opacity: 0.9 }}
                 transition={{ duration: 0.3 }}
-                className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/70 to-foreground/30 dark:from-black/95 dark:via-black/70 dark:to-black/30"
+                className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/70 to-foreground/30 dark:from-darkbg/95 dark:via-darkbg/70 dark:to-darkbg/30"
               />
               
               <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-left">
@@ -255,7 +255,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                 initial={{ opacity: 0.7 }}
                 whileHover={{ opacity: 0.9 }}
                 transition={{ duration: 0.3 }}
-                className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/70 to-foreground/30 dark:from-black/95 dark:via-black/70 dark:to-black/30"
+                className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/70 to-foreground/30 dark:from-darkbg/95 dark:via-darkbg/70 dark:to-darkbg/30"
               />
               
               <div className="absolute bottom-0 left-0 right-0 p-8 text-left transform transition-all duration-300 group-hover:translate-y-0">
