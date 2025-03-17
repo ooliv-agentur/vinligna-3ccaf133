@@ -20,6 +20,11 @@ const galleryItems = [
     category: "Accessoires" 
   },
   { 
+    image: "/lovable-uploads/1911550f-8f90-4564-aa29-6d30f92e3a3e.png", 
+    title: "Weinflaschenhalter aus Fassdauben", 
+    category: "Accessoires" 
+  },
+  { 
     image: "/lovable-uploads/035a7515-089b-446d-ad34-076e3a7e4e7a.png", 
     title: "Detail einer Fassdaubenplatte", 
     category: "Materialdetail" 
@@ -53,7 +58,7 @@ const galleryItems = [
 
 const GallerySection = () => {
   return (
-    <section className="section-padding bg-darkbg">
+    <section className="section-padding bg-darkbg" style={{ backgroundColor: "#505358" }}>
       <div className="container mx-auto px-6">
         <div className="max-w-screen-xl mx-auto">
           <motion.div
@@ -70,7 +75,7 @@ const GallerySection = () => {
               Unsere <span className="text-gradient">Projekte</span>
             </h2>
             <p className="text-foreground/70 max-w-2xl mx-auto">
-              Unsere Galerie zeigt ausgewählte Projekte, die wir bereits für namhafte Weingüter und Restaurants realisiert haben. Entdecken Sie unsere maßgefertigten Tische, Theken und Regale, die in verschiedenen Gastronomie- und Hotelbetrieben zum Einsatz kommen. Jedes Möbelstück ist ein Unikat und erzählt die Geschichte des Weins, von dem es inspiriert wurde.
+              Unsere Galerie zeigt ausgewählte Projekte, die wir bereits für namhafte Weingüter und Restaurants realisiert haben. Entdecken Sie unsere maßgefertigten Tische, Theken, Regale und exklusiven Accessoires wie Weinflaschenhalter, die in verschiedenen Gastronomie- und Hotelbetrieben zum Einsatz kommen. Jedes Möbelstück ist ein Unikat und erzählt die Geschichte des Weins, von dem es inspiriert wurde.
             </p>
           </motion.div>
 

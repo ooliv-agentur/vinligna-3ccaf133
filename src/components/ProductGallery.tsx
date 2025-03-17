@@ -25,8 +25,7 @@ const staggerContainer = {
 
 const ProductGallery = () => {
   return (
-    <section className="py-32 md:py-44 text-foreground overflow-hidden bg-darkbg" id="gallery">
-      {/* Note: Added bg-darkbg class to ensure proper styling */}
+    <section className="py-32 md:py-44 text-foreground overflow-hidden bg-darkbg" style={{ backgroundColor: "#505358" }} id="gallery">
       <div className="container mx-auto px-6">
         <div className="max-w-screen-xl mx-auto">
           {/* Headline and intro text */}
@@ -92,6 +91,11 @@ const galleryItems = [
   { 
     image: "/lovable-uploads/8a04c9c9-5b3b-4585-8717-9b2c85d1d3c0.png", 
     title: "Serviertablett aus Fassdauben", 
+    category: "Accessoires" 
+  },
+  { 
+    image: "/lovable-uploads/1911550f-8f90-4564-aa29-6d30f92e3a3e.png", 
+    title: "Weinflaschenhalter aus Fassdauben", 
     category: "Accessoires" 
   },
   { 
