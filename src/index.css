@@ -563,7 +563,7 @@
 }
 
 .dark .bg-black, .dark .bg-darkbg {
-  background-color: #505358 !important; /* Keep dark mode as is */
+  background-color: #505358 !important; /* Keep dark mode as the default gray */
 }
 
 /* Ensure section backgrounds are white in light mode */
@@ -581,7 +581,7 @@ section.bg-darkbg {
 }
 
 .dark section.bg-darkbg {
-  background-color: #505358 !important; /* Keep dark mode as is */
+  background-color: #505358 !important; /* Keep dark mode as the default gray */
 }
 
 /* Override section background colors */
@@ -657,3 +657,4 @@ section.bg-background {
 .hero-section .dark\:border-foreground\/20 {
   border-color: rgba(255, 255, 255, 0.2) !important;
 }
+
