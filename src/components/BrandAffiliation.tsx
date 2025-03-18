@@ -6,7 +6,7 @@ const BrandAffiliation = () => {
   const { isDarkMode } = useAppTheme();
   
   return (
-    <section className="py-12 bg-darkbg dark:bg-darkbg">
+    <section className="py-12 bg-white dark:bg-darkbg">
       <div className="container mx-auto px-6">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -15,7 +15,7 @@ const BrandAffiliation = () => {
           viewport={{ once: true }}
           className="flex flex-col items-center justify-center text-center"
         >
-          <p className="uppercase text-sm font-medium text-white/80 dark:text-white/80 mb-4">
+          <p className="uppercase text-sm font-medium text-foreground/70 dark:text-white/80 mb-4">
             Ein Unternehmen der
           </p>
           
@@ -30,7 +30,7 @@ const BrandAffiliation = () => {
             />
           </div>
           
-          <p className="uppercase text-sm font-medium text-white/80 dark:text-white/80">
+          <p className="uppercase text-sm font-medium text-foreground/70 dark:text-white/80">
             Gruppe
           </p>
         </motion.div>

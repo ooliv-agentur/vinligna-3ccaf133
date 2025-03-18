@@ -19,12 +19,12 @@ const NotFound = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="flex-grow flex items-center justify-center py-24 px-6">
+      <div className="flex-grow flex items-center justify-center py-24 px-6 bg-white dark:bg-background">
         <div className="text-center max-w-md">
           <div className="inline-block mb-8 p-4 rounded-full bg-oak-light">
             <h1 className="text-6xl font-light text-wine">404</h1>
           </div>
-          <h2 className="text-2xl font-medium mb-4">Page Not Found</h2>
+          <h2 className="text-2xl font-medium mb-4 text-foreground">Page Not Found</h2>
           <p className="text-muted-foreground mb-8">
             The page you are looking for doesn't exist or has been moved.
           </p>
