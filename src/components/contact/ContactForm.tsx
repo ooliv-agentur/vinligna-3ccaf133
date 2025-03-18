@@ -6,6 +6,7 @@ import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { sendEmailNotifications } from '@/utils/emailService';
 import { useLocation } from 'react-router-dom';
+import { useAppTheme } from '@/hooks/use-theme';
 
 interface ContactFormProps {
   formSource?: string;
@@ -14,6 +15,7 @@ interface ContactFormProps {
 const ContactForm = ({ formSource }: ContactFormProps) => {
   const { toast } = useToast();
   const location = useLocation();
+  const { isDarkMode } = useAppTheme();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -91,13 +93,25 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const inputClasses = cn(
+    "w-full px-4 py-3 rounded-xl focus:outline-none focus:ring-1 focus:ring-wine/30 transition-all",
+    isDarkMode 
+      ? "bg-white/5 border border-white/10 text-white" 
+      : "bg-white/50 border border-gray-200 text-gray-800"
+  );
+
+  const labelClasses = cn(
+    "block text-sm font-medium",
+    isDarkMode ? "text-white/80" : "text-gray-700"
+  );
+
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
           <label 
             htmlFor="name" 
-            className="block text-sm font-medium text-white/80"
+            className={labelClasses}
           >
             Name
           </label>
@@ -108,14 +122,14 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-wine/30 transition-all text-white"
+            className={inputClasses}
             placeholder="Ihr vollständiger Name"
           />
         </div>
         <div className="space-y-2">
           <label 
             htmlFor="email" 
-            className="block text-sm font-medium text-white/80"
+            className={labelClasses}
           >
             E-Mail
           </label>
@@ -126,7 +140,7 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-wine/30 transition-all text-white"
+            className={inputClasses}
             placeholder="ihre.email@beispiel.de"
           />
         </div>
@@ -136,7 +150,7 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
         <div className="space-y-2">
           <label 
             htmlFor="phone" 
-            className="block text-sm font-medium text-white/80"
+            className={labelClasses}
           >
             Telefon (Optional)
           </label>
@@ -146,14 +160,14 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-wine/30 transition-all text-white"
+            className={inputClasses}
             placeholder="+49 123 456 7890"
           />
         </div>
         <div className="space-y-2">
           <label 
             htmlFor="interest" 
-            className="block text-sm font-medium text-white/80"
+            className={labelClasses}
           >
             Interesse
           </label>
@@ -162,8 +176,15 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
             name="interest"
             value={formData.interest}
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-wine/30 transition-all appearance-none text-white"
-            style={{ backgroundImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23ffffff' viewBox='0 0 16 16'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 6 4 4 4-4'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', backgroundSize: '1rem' }}
+            className={cn(inputClasses, "appearance-none")}
+            style={{ 
+              backgroundImage: isDarkMode 
+                ? `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23ffffff' viewBox='0 0 16 16'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 6 4 4 4-4'/%3E%3C/svg%3E")` 
+                : `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23000000' viewBox='0 0 16 16'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 6 4 4 4-4'/%3E%3C/svg%3E")`,
+              backgroundRepeat: 'no-repeat', 
+              backgroundPosition: 'right 1rem center', 
+              backgroundSize: '1rem' 
+            }}
           >
             <option value="business">Businesslösungen</option>
             <option value="private">Privatkollektion</option>
@@ -176,7 +197,7 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
       <div className="space-y-2">
         <label 
           htmlFor="message" 
-          className="block text-sm font-medium text-white/80"
+          className={labelClasses}
         >
           Nachricht
         </label>
@@ -187,7 +208,7 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
           onChange={handleChange}
           required
           rows={4}
-          className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-wine/30 transition-all resize-none text-white"
+          className={cn(inputClasses, "resize-none")}
           placeholder="Beschreiben Sie Ihr Projekt oder Ihre Anfrage..."
         />
       </div>

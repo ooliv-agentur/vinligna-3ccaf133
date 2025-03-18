@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -174,7 +175,26 @@
 
   /* Feature cards */
   .feature-card {
-    @apply bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 transition-all duration-300 hover:bg-white/10;
+    background-color: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(8px);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 300ms;
+  }
+  
+  .feature-card:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .dark .feature-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .dark .feature-card:hover {
+    background-color: rgba(255, 255, 255, 0.1);
   }
   
   /* Buttons */
@@ -206,53 +226,90 @@
     @apply bg-gradient-to-r from-wine to-wine-light bg-clip-text text-transparent;
   }
   
+  /* Glass effects */
   .bg-glass {
-    @apply bg-white/10 backdrop-blur-sm border border-white/10;
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .dark .bg-glass {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
   
   .bg-glass-dark {
-    @apply bg-darkbg/60 backdrop-blur-md border border-white/5;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    border-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .dark .bg-glass-dark {
+    background-color: rgba(80, 83, 88, 0.6);
+    backdrop-filter: blur(8px);
+    border-color: rgba(255, 255, 255, 0.05);
   }
   
   /* Animation utilities */
   .fade-in {
-    @apply opacity-0 animate-[fade-in_0.6s_ease_forwards];
+    opacity: 0;
+    animation: fade-in 0.6s ease forwards;
   }
   
   .fade-in-delay-1 {
-    @apply opacity-0 animate-[fade-in_0.6s_ease_forwards_0.2s];
+    opacity: 0;
+    animation: fade-in 0.6s ease forwards 0.2s;
   }
   
   .fade-in-delay-2 {
-    @apply opacity-0 animate-[fade-in_0.6s_ease_forwards_0.4s];
+    opacity: 0;
+    animation: fade-in 0.6s ease forwards 0.4s;
   }
   
   .fade-in-delay-3 {
-    @apply opacity-0 animate-[fade-in_0.6s_ease_forwards_0.6s];
+    opacity: 0;
+    animation: fade-in 0.6s ease forwards 0.6s;
   }
   
   .slide-up {
-    @apply opacity-0 translate-y-[10px] animate-[slide-up_0.6s_ease_forwards];
+    opacity: 0;
+    transform: translateY(10px);
+    animation: slide-up 0.6s ease forwards;
   }
   
   .slide-up-delay-1 {
-    @apply opacity-0 translate-y-[10px] animate-[slide-up_0.6s_ease_forwards_0.2s];
+    opacity: 0;
+    transform: translateY(10px);
+    animation: slide-up 0.6s ease forwards 0.2s;
   }
   
   .slide-up-delay-2 {
-    @apply opacity-0 translate-y-[10px] animate-[slide-up_0.6s_ease_forwards_0.4s];
+    opacity: 0;
+    transform: translateY(10px);
+    animation: slide-up 0.6s ease forwards 0.4s;
   }
   
   .slide-up-delay-3 {
-    @apply opacity-0 translate-y-[10px] animate-[slide-up_0.6s_ease_forwards_0.6s];
+    opacity: 0;
+    transform: translateY(10px);
+    animation: slide-up 0.6s ease forwards 0.6s;
   }
   
   .hover-lift {
-    @apply transition-transform duration-300 ease-out hover:-translate-y-1;
+    transition: transform 300ms ease-out;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
   }
   
   .hover-scale {
-    @apply transition-transform duration-300 ease-out hover:scale-105;
+    transition: transform 300ms ease-out;
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.05);
   }
 }
 
@@ -266,25 +323,49 @@
   }
 }
 
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Framer Motion animations can be made consistent by applying these classes */
 .motion-fade-in {
-  @apply opacity-0;
+  opacity: 0;
 }
 
 .motion-slide-up {
-  @apply opacity-0 translate-y-5;
+  opacity: 0;
+  transform: translateY(5px);
 }
 
 .motion-slide-right {
-  @apply opacity-0 -translate-x-5;
+  opacity: 0;
+  transform: translateX(-5px);
 }
 
 .motion-slide-left {
-  @apply opacity-0 translate-x-5;
+  opacity: 0;
+  transform: translateX(5px);
 }
 
 .motion-scale {
-  @apply opacity-0 scale-95;
+  opacity: 0;
+  transform: scale(0.95);
 }
 
 /* Animation durations */
@@ -363,7 +444,7 @@
 }
 
 .bg-darkbg {
-  background-color: #505358 !important;
+  background-color: #ffffff !important;
 }
 
 .dark .bg-darkbg {
@@ -442,19 +523,6 @@
   border-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Fix for glass effect */
-.bg-glass-dark {
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(8px);
-  border-color: rgba(0, 0, 0, 0.05);
-}
-
-.dark .bg-glass-dark {
-  background-color: rgba(80, 83, 88, 0.6);
-  backdrop-filter: blur(8px);
-  border-color: rgba(255, 255, 255, 0.05);
-}
-
 /* Business page specific overrides */
 .dark .section-title {
   color: white;
@@ -504,20 +572,23 @@
   border-color: rgba(0, 0, 0, 0.1);
 }
 
-.dark .bg-white\/5 {
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
+/* These were causing circular dependencies - replaced with direct CSS properties */
 .bg-white\/5 {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  border-color: rgba(0, 0, 0, 0.05);
 }
 
-.dark .bg-white\/10 {
-  background-color: rgba(255, 255, 255, 0.1);
+.dark .bg-white\/5 {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .bg-white\/10 {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark .bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 .dark .bg-black {
@@ -584,128 +655,6 @@ section.bg-background {
 }
 
 /* Fix gradient backgrounds in light mode */
-.dark .from-black\/95, .dark .via-black\/70, .dark .to-black\/30,
-.from-black\/95, .via-black\/70, .to-black\/30 {
-  --tw-gradient-from: rgba(80, 83, 88, 0.95);
-  --tw-gradient-to: rgba(80, 83, 88, 0);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
-.dark .via-black\/70,
-.via-black\/70 {
-  --tw-gradient-via: rgba(80, 83, 88, 0.7);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to);
-}
-
-.dark .to-black\/30,
-.to-black\/30 {
-  --tw-gradient-to: rgba(80, 83, 88, 0.3);
-}
-
-/* Team section overlay fixes */
-.dark .from-background\/70,
-.from-background\/70 {
-  --tw-gradient-from: rgba(80, 83, 88, 0.7);
-  --tw-gradient-to: rgba(80, 83, 88, 0);
-}
-
-.dark .via-background\/20,
-.via-background\/20 {
-  --tw-gradient-via: rgba(80, 83, 88, 0.2);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to);
-}
-
-/* Black background overrides for hero images and backgrounds */
-.bg-darkbg\/60 {
-  background-color: rgba(80, 83, 88, 0.6) !important;
-}
-
-.from-darkbg\/70 {
-  --tw-gradient-from: rgba(80, 83, 88, 0.7) !important;
-}
-
-.via-darkbg\/20 {
-  --tw-gradient-via: rgba(80, 83, 88, 0.2) !important;
-}
-
-/* Override section background colors for light mode */
-.bg-darkbg {
-  background-color: #ffffff !important; /* White in light mode */
-}
-
-.dark .bg-darkbg {
-  background-color: #505358 !important; /* Keep dark mode as is */
-}
-
-/* Light mode specific improvements */
-.bg-glass-dark {
-  background-color: rgba(255, 255, 255, 0.9) !important;
-  backdrop-filter: blur(10px);
-  border-color: rgba(0, 0, 0, 0.05);
-}
-
-.dark .bg-glass-dark {
-  background-color: rgba(80, 83, 88, 0.7) !important;
-  backdrop-filter: blur(10px);
-  border-color: rgba(255, 255, 255, 0.05);
-}
-
-/* Improve text legibility in light mode */
-.text-white\/80 {
-  color: rgba(20, 20, 20, 0.8);
-}
-
-.dark .text-white\/80 {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.text-white\/70 {
-  color: rgba(20, 20, 20, 0.7);
-}
-
-.dark .text-white\/70 {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-/* Card improvements for light mode */
-.feature-card {
-  @apply bg-white shadow-sm border border-gray-100 hover:shadow-md;
-}
-
-.dark .feature-card {
-  @apply bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10;
-}
-
-/* Light mode box shadows for depth */
-.light-shadow {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-}
-
-.dark .light-shadow {
-  box-shadow: none;
-}
-
-/* Ensure section backgrounds are white in light mode */
-section {
-  background-color: #ffffff;
-}
-
-.dark section {
-  background-color: #505358;
-}
-
-/* Contact form refinement for light mode */
-.bg-white\/5 {
-  background-color: rgba(255, 255, 255, 0.5) !important;
-  border-color: rgba(0, 0, 0, 0.05);
-}
-
-.dark .bg-white\/5 {
-  background-color: rgba(255, 255, 255, 0.05) !important;
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-/* Fix gradient backgrounds in light mode */
 .from-black\/95, .via-black\/70, .to-black\/30 {
   --tw-gradient-from: rgba(20, 20, 20, 0.6);
   --tw-gradient-to: rgba(20, 20, 20, 0);
@@ -734,4 +683,81 @@ section {
 
 .dark .to-black\/30 {
   --tw-gradient-to: rgba(80, 83, 88, 0.3);
+}
+
+/* Team section overlay fixes */
+.from-background\/70 {
+  --tw-gradient-from: rgba(255, 255, 255, 0.7);
+  --tw-gradient-to: rgba(255, 255, 255, 0);
+}
+
+.dark .from-background\/70 {
+  --tw-gradient-from: rgba(80, 83, 88, 0.7);
+  --tw-gradient-to: rgba(80, 83, 88, 0);
+}
+
+.via-background\/20 {
+  --tw-gradient-via: rgba(255, 255, 255, 0.2);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to);
+}
+
+.dark .via-background\/20 {
+  --tw-gradient-via: rgba(80, 83, 88, 0.2);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to);
+}
+
+/* Black background overrides for hero images and backgrounds */
+.bg-darkbg\/60 {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.dark .bg-darkbg\/60 {
+  background-color: rgba(80, 83, 88, 0.6) !important;
+}
+
+.from-darkbg\/70 {
+  --tw-gradient-from: rgba(255, 255, 255, 0.7) !important;
+}
+
+.dark .from-darkbg\/70 {
+  --tw-gradient-from: rgba(80, 83, 88, 0.7) !important;
+}
+
+.via-darkbg\/20 {
+  --tw-gradient-via: rgba(255, 255, 255, 0.2) !important;
+}
+
+.dark .via-darkbg\/20 {
+  --tw-gradient-via: rgba(80, 83, 88, 0.2) !important;
+}
+
+/* Light mode specific improvements */
+.light-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.dark .light-shadow {
+  box-shadow: none;
+}
+
+/* Fix form input styling for light mode */
+input.bg-white\/5, textarea.bg-white\/5, select.bg-white\/5 {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  color: rgba(0, 0, 0, 0.8) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark input.bg-white\/5, .dark textarea.bg-white\/5, .dark select.bg-white\/5 {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Fix form label styling for light mode */
+label.text-white\/80 {
+  color: rgba(0, 0, 0, 0.8) !important;
+}
+
+.dark label.text-white\/80 {
+  color: rgba(255, 255, 255, 0.8) !important;
 }
