@@ -18,8 +18,8 @@ const FullWidthImageSection = () => {
         className="absolute inset-0 w-full h-full"
       >
         <img 
-          src="/lovable-uploads/3a04196f-9e44-4ccd-adb0-b0f1f13a34be.png" 
-          alt="Weinfass Möbel Showroom" 
+          src="/lovable-uploads/9c76dc44-3b91-4e5e-a7fe-abc0c9f6ab36.png" 
+          alt="Weinfass Möbel Werkstatt" 
           className="w-full h-full object-cover"
         />
       </motion.div>
