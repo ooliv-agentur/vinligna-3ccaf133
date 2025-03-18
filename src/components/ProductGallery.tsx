@@ -1,7 +1,6 @@
 
 import { motion } from 'framer-motion';
 import { GalleryItem } from './business/GalleryItem';
-import { themeColors } from '@/lib/theme-constants';
 
 // Animation variants
 const fadeIn = {
@@ -26,7 +25,7 @@ const staggerContainer = {
 
 const ProductGallery = () => {
   return (
-    <section className="py-32 md:py-44 text-foreground overflow-hidden bg-darkbg" style={{ backgroundColor: themeColors.dark.background }} id="gallery">
+    <section className="py-32 md:py-44 text-foreground overflow-hidden bg-darkbg" style={{ backgroundColor: "#505358" }} id="gallery">
       <div className="container mx-auto px-6">
         <div className="max-w-screen-xl mx-auto">
           {/* Headline and intro text */}

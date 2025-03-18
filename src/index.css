@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,7 +5,7 @@
 @layer base {
   :root {
     /* Light mode variables */
-    --background: 0 0% 100%; /* Pure white */
+    --background: 0 0% 100%; /* Changed to pure white (was 30 20% 98%) */
     --foreground: 20 12% 10%;
     
     --oak-light: 30 30% 90%;
@@ -55,14 +54,13 @@
     --background: 0 0% 0%; /* Black background */
     --foreground: 0 0% 100%; /* White text */
     
-    /* Brand colors remain the same in both modes */
     --oak-light: 30 30% 90%;
     --oak: 30 30% 60%;
-    --oak-dark: 20 34% 27%;
+    --oak-dark: 20 34% 27%; /* #5C3B2E - dark wood brown */
     
-    --wine-light: 20 65% 89%;
-    --wine: 20 57% 53%;
-    --wine-dark: 20 57% 40%;
+    --wine-light: 20 65% 89%; /* #EDE0D4 - warm beige */
+    --wine: 20 57% 53%; /* #D96B37 - soft terracotta */
+    --wine-dark: 20 57% 40%; /* darker terracotta */
 
     --card: 0 0% 5%;
     --card-foreground: 0 0% 98%;
@@ -208,7 +206,6 @@
     @apply bg-gradient-to-r from-wine to-wine-light bg-clip-text text-transparent;
   }
   
-  /* Glass morphism utilities */
   .bg-glass {
     @apply bg-white/10 backdrop-blur-sm border border-white/10;
   }
@@ -261,6 +258,11 @@
   /* Force white text in hero section regardless of theme */
   .hero-text-white {
     color: white !important;
+  }
+  
+  /* Override borders for hero section in light mode */
+  .border-white\/20 {
+    border-color: rgba(255, 255, 255, 0.2) !important;
   }
 }
 
@@ -365,24 +367,19 @@
   animation: pulse-glow 2s infinite;
 }
 
-/* Theme-specific styles */
-
-/* Dark mode background color */
 .dark {
   background-color: #505358;
   color: #ffffff;
 }
 
-/* Background color utilities for dark mode compatibility */
 .bg-darkbg {
-  background-color: #ffffff !important;
+  background-color: #505358 !important;
 }
 
 .dark .bg-darkbg {
   background-color: #505358 !important;
 }
 
-/* Standard themed backgrounds */
 .bg-mode-black {
   background-color: #ffffff;
 }
@@ -391,7 +388,6 @@
   background-color: #505358;
 }
 
-/* Text color utilities for theme compatibility */
 .text-mode-white {
   color: var(--foreground);
 }
@@ -424,7 +420,6 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
-/* Border utilities for theme compatibility */
 .border-foreground\/20 {
   border-color: rgba(var(--foreground), 0.2);
 }
@@ -448,12 +443,217 @@
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Hero section specific overrides */
-.hero-section section {
+/* Fix for image card borders */
+.image-card .absolute.inset-0 {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark .image-card .absolute.inset-0 {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Fix for glass effect */
+.bg-glass-dark {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark .bg-glass-dark {
+  background-color: rgba(80, 83, 88, 0.6);
+  backdrop-filter: blur(8px);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Business page specific overrides */
+.dark .section-title {
+  color: white;
+}
+
+.section-title {
+  color: var(--foreground);
+}
+
+.dark .text-white {
+  color: white;
+}
+
+.text-white {
+  color: var(--foreground);
+}
+
+.dark .text-white\/80 {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.text-white\/80 {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.dark .text-white\/70 {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.text-white\/70 {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.dark .text-white\/60 {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.text-white\/60 {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.dark .border-white\/10 {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.border-white\/10 {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark .bg-white\/5 {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.bg-white\/5 {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark .bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.bg-white\/10 {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark .bg-black {
+  background-color: #505358;
+}
+
+.bg-black {
+  background-color: #ffffff;
+}
+
+/* Fix for quote text color in About section */
+.text-xl.md\:text-2xl.font-light.italic.text-white\/90 {
+  color: hsl(var(--foreground));
+}
+
+.dark .text-xl.md\:text-2xl.font-light.italic.text-white\/90 {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Wine buttons with white text in both themes */
+.bg-wine, .hover\:bg-wine-dark:hover {
+  color: white !important;
+}
+
+/* Wine icons in both themes */
+.text-wine svg {
+  color: hsl(var(--wine)) !important;
+}
+
+/* Fix for the dark background - IMPORTANT ADDITION */
+.bg-black, .bg-darkbg {
+  background-color: #ffffff !important; /* Change to white in light mode */
+}
+
+.dark .bg-black, .dark .bg-darkbg {
+  background-color: #505358 !important; /* Keep dark mode as is */
+}
+
+/* Ensure section backgrounds are white in light mode */
+section {
+  background-color: #ffffff;
+}
+
+.dark section {
+  background-color: #505358;
+}
+
+/* Override any conflicting styles */
+section.bg-darkbg {
+  background-color: #ffffff !important; /* White in light mode */
+}
+
+.dark section.bg-darkbg {
+  background-color: #505358 !important; /* Keep dark mode as is */
+}
+
+/* Override section background colors */
+section.bg-background {
+  background-color: #ffffff !important;
+}
+
+.dark section.bg-background {
   background-color: #505358 !important;
 }
 
-.hero-section * {
-  --tw-text-opacity: 1;
-  color: rgba(255, 255, 255, var(--tw-text-opacity));
+/* Fix gradient backgrounds in light mode */
+.dark .from-black\/95, .dark .via-black\/70, .dark .to-black\/30,
+.from-black\/95, .via-black\/70, .to-black\/30 {
+  --tw-gradient-from: rgba(80, 83, 88, 0.95);
+  --tw-gradient-to: rgba(80, 83, 88, 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.dark .via-black\/70,
+.via-black\/70 {
+  --tw-gradient-via: rgba(80, 83, 88, 0.7);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to);
+}
+
+.dark .to-black\/30,
+.to-black\/30 {
+  --tw-gradient-to: rgba(80, 83, 88, 0.3);
+}
+
+/* Team section overlay fixes */
+.dark .from-background\/70,
+.from-background\/70 {
+  --tw-gradient-from: rgba(80, 83, 88, 0.7);
+  --tw-gradient-to: rgba(80, 83, 88, 0);
+}
+
+.dark .via-background\/20,
+.via-background\/20 {
+  --tw-gradient-via: rgba(80, 83, 88, 0.2);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to);
+}
+
+/* Black background overrides for hero images and backgrounds */
+.bg-darkbg\/60 {
+  background-color: rgba(80, 83, 88, 0.6) !important;
+}
+
+.from-darkbg\/70 {
+  --tw-gradient-from: rgba(80, 83, 88, 0.7) !important;
+}
+
+.via-darkbg\/20 {
+  --tw-gradient-via: rgba(80, 83, 88, 0.2) !important;
+}
+
+.hero-section .text-foreground,
+.hero-section .dark\:text-mode-white {
+  color: white !important;
+}
+
+.hero-section .bg-foreground\/20,
+.hero-section .dark\:bg-foreground\/20 {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.hero-section .bg-foreground\/60,
+.hero-section .dark\:bg-foreground\/60 {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.hero-section .border-foreground\/20,
+.hero-section .dark\:border-foreground\/20 {
+  border-color: rgba(255, 255, 255, 0.2) !important;
 }

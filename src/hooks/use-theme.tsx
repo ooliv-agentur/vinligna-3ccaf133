@@ -1,7 +1,6 @@
 
 import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
-import { getBackgroundColor, getTextColor } from '@/lib/theme-constants';
 
 export function useAppTheme() {
   const { theme, setTheme } = useTheme();
@@ -16,8 +15,7 @@ export function useAppTheme() {
   const isLightMode = mounted && theme === 'light';
   
   // Get background color based on theme
-  const backgroundColor = getBackgroundColor(isDarkMode);
-  const textColor = getTextColor(isDarkMode);
+  const backgroundColor = isDarkMode ? '#505358' : '#ffffff';
   
   return {
     theme,
@@ -25,7 +23,6 @@ export function useAppTheme() {
     isDarkMode,
     isLightMode,
     mounted,
-    backgroundColor,
-    textColor
+    backgroundColor
   };
 }

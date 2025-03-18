@@ -1,9 +1,9 @@
+
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAppTheme } from '@/hooks/use-theme';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { heroStyles, themeColors } from '@/lib/theme-constants';
 
 // Animation variants
 const containerVariants = {
@@ -46,12 +46,9 @@ const scaleIn = {
 const Hero = () => {
   const { isDarkMode } = useAppTheme();
   const isMobile = useIsMobile();
-  
+
   return (
-    <section 
-      className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center px-4 sm:px-6 py-10 sm:py-12" 
-      style={{ backgroundColor: themeColors.dark.background }} // Always use dark gray background for hero
-    >
+    <section className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center px-4 sm:px-6 py-10 sm:py-12 bg-white dark:bg-darkbg">
       <motion.div 
         className="container z-10 mx-auto max-w-6xl flex flex-col h-full pt-16 sm:pt-20 md:pt-24 pb-24 sm:pb-28 md:pb-32 items-center"
         variants={containerVariants}
@@ -181,6 +178,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
     >
       <Link to={link} className="block w-full group relative">
         <div className="relative rounded-lg overflow-hidden w-full">
+          {/* Card image and content - same structure for both mobile and desktop */}
           <div className="block w-full">
             <div className="aspect-[16/12] w-full">
               <motion.div
@@ -196,6 +194,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                 />
               </motion.div>
               
+              {/* Light overlay with lower opacity */}
               <div className="absolute inset-0 bg-black/30"></div>
               
               <div className="absolute bottom-0 left-0 right-0 p-6 text-left">

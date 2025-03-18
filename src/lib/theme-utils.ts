@@ -2,7 +2,6 @@
 import { useAppTheme } from '@/hooks/use-theme';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/lib/utils';
-import { themeColors } from './theme-constants';
 
 /**
  * Helper function to generate theme-aware classNames
@@ -49,23 +48,7 @@ export function overlayClass(opacity: 'light' | 'medium' | 'dark' | 'very-dark')
 /**
  * Get section background color based on theme
  */
-export function getSectionBackground(isDarkMode?: boolean) {
-  const { isDarkMode: isAppDarkMode } = useAppTheme();
-  const darkMode = isDarkMode !== undefined ? isDarkMode : isAppDarkMode;
-  
-  return darkMode ? themeColors.dark.background : themeColors.light.background;
-}
-
-/**
- * Apply hero section styles
- */
-export function heroSection(element: HTMLElement) {
-  // Force the gray background for hero sections
-  element.style.backgroundColor = themeColors.dark.background;
-  
-  // Ensure text is white
-  const textElements = element.querySelectorAll('h1, h2, h3, h4, p, span:not(.text-gradient)');
-  textElements.forEach(el => {
-    (el as HTMLElement).style.color = '#ffffff';
-  });
+export function getSectionBackground() {
+  const { isDarkMode } = useAppTheme();
+  return isDarkMode ? 'bg-darkbg' : 'bg-white';
 }
