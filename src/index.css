@@ -532,14 +532,16 @@
   color: var(--foreground);
 }
 
-.dark .text-white {
-  color: white;
-}
-
+/* Ensure card texts are always white for readability over image backgrounds */
 .text-white {
-  color: var(--foreground);
+  color: white !important;
 }
 
+.dark .text-white {
+  color: white !important;
+}
+
+/* These classes remain the same but with proper opacity */
 .dark .text-white\/80 {
   color: rgba(255, 255, 255, 0.8);
 }

@@ -191,8 +191,8 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                 />
               </motion.div>
               
-              {/* Light overlay with lower opacity */}
-              <div className="absolute inset-0 bg-black/30"></div>
+              {/* Darker overlay to ensure text visibility */}
+              <div className="absolute inset-0 bg-black/50"></div>
               
               <div className="absolute bottom-0 left-0 right-0 p-6 text-left">
                 {title && <div className="mb-1 text-white text-sm">{title}</div>}
