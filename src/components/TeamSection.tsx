@@ -13,6 +13,7 @@ interface TeamMemberProps {
 
 const TeamMember = ({ name, role, image, altText }: TeamMemberProps) => {
   const isMobile = useIsMobile();
+  const { isDarkMode } = useAppTheme();
   
   return (
     <motion.div
@@ -28,7 +29,11 @@ const TeamMember = ({ name, role, image, altText }: TeamMemberProps) => {
         {/* Overlay and info for desktop (hover effect) */}
         {!isMobile && (
           <>
-            <div className="absolute inset-0 bg-gradient-to-t from-darkbg/70 via-darkbg/20 to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+            <div className={`absolute inset-0 transition-opacity duration-300 opacity-0 group-hover:opacity-70 ${
+              isDarkMode 
+                ? 'bg-gradient-to-t from-darkbg/70 via-darkbg/20 to-transparent' 
+                : 'bg-gradient-to-t from-black/70 via-black/20 to-transparent'
+            }`}></div>
             <div className="absolute inset-0 flex flex-col justify-end p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
               <h3 className="text-xl font-medium text-foreground">{name}</h3>
               <p className="text-wine mt-1">{role}</p>
@@ -79,7 +84,7 @@ const TeamSection = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12"
           >
             <TeamMember 
               name="Rüdiger Gries" 
