@@ -4,7 +4,7 @@ import TextArrowButton from './TextArrowButton';
 
 const About = () => {
   return (
-    <section id="about" className="py-40 md:py-60 bg-darkbg text-white overflow-hidden relative">
+    <section id="about" className="py-40 md:py-60 bg-darkbg text-foreground dark:text-white overflow-hidden relative">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-darkbg via-darkbg/95 to-darkbg dark:from-darkbg dark:via-darkbg/95 dark:to-darkbg from-white via-white/95 to-white" />
       
@@ -34,7 +34,7 @@ const About = () => {
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="section-title-large text-3xl md:text-5xl lg:text-6xl font-light mb-6 leading-tight"
+                className="section-title-large text-3xl md:text-5xl lg:text-6xl font-light mb-6 leading-tight text-foreground dark:text-white"
               >
                 Die Kunst der <span className="highlight">Nachhaltigkeit</span>
               </motion.h2>
@@ -44,7 +44,7 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
                 viewport={{ once: true }}
-                className="space-y-6 text-base text-white/80"
+                className="space-y-6 text-base text-foreground/80 dark:text-white/80"
               >
                 <p>
                   Wir verwandeln ausgediente Weinfässer in zeitlose Möbelstücke, die die Geschichte des Weins in Ihr Zuhause bringen. Jedes Stück ist ein Unikat mit eigener Geschichte.

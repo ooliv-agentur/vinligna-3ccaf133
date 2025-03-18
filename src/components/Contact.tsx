@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import ContactForm from './contact/ContactForm';
 import ContactInfo from './contact/ContactInfo';
@@ -37,10 +38,10 @@ const Contact = ({
             {subtitle}
           </span>
           <h2 
-            className="section-title-large text-white"
+            className="section-title-large text-foreground dark:text-white"
             dangerouslySetInnerHTML={{ __html: title }}
           />
-          <p className="text-white/70 text-base md:text-lg max-w-2xl mx-auto">
+          <p className="text-foreground/70 dark:text-white/70 text-base md:text-lg max-w-2xl mx-auto">
             {description}
           </p>
         </motion.div>

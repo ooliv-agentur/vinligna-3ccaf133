@@ -24,7 +24,7 @@ const Cta = () => {
               className="text-white"
             >
               <div className="w-16 h-1 bg-wine mb-8 rounded-full"></div>
-              <h2 className="text-3xl md:text-4xl font-light mb-8 leading-tight tracking-wide">
+              <h2 className="text-3xl md:text-4xl font-light mb-8 leading-tight tracking-wide text-foreground dark:text-white">
                 Unsere <span className="font-medium italic">Philosophie</span>
               </h2>
               

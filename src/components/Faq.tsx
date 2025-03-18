@@ -42,7 +42,7 @@ const FaqItem = ({ question, answer }: FaqItemProps) => {
         className="flex w-full items-center justify-between py-6 text-left"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="font-medium text-lg text-white">{question}</span>
+        <span className="font-medium text-lg text-foreground dark:text-white">{question}</span>
         <ChevronDown 
           className={cn(
             "h-6 w-6 text-wine transition-transform duration-300",
@@ -57,7 +57,7 @@ const FaqItem = ({ question, answer }: FaqItemProps) => {
         )}
       >
         <div className="overflow-hidden">
-          <div className="text-white/70 text-lg">
+          <div className="text-foreground/70 dark:text-white/70 text-lg">
             {answer}
           </div>
         </div>
@@ -111,7 +111,7 @@ const Faq = () => {
   ];
 
   return (
-    <section id="faq" className="py-32 md:py-44 bg-darkbg text-white relative overflow-hidden">
+    <section id="faq" className="py-32 md:py-44 bg-darkbg text-foreground dark:text-white relative overflow-hidden">
       {/* Background elements */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -135,10 +135,10 @@ const Faq = () => {
             <span className="inline-block text-xs font-medium tracking-widest uppercase text-wine mb-6">
               HÄUFIG GESTELLTE FRAGEN
             </span>
-            <h2 className="text-4xl md:text-5xl font-light mb-8 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-light mb-8 leading-tight text-foreground dark:text-white">
               Alles über unsere <span className="font-medium bg-gradient-to-r from-wine to-wine-light bg-clip-text text-transparent">Fassmöbel</span>
             </h2>
-            <p className="text-white/80 text-xl max-w-3xl mx-auto">
+            <p className="text-foreground/80 dark:text-white/80 text-xl max-w-3xl mx-auto">
               Hier finden Sie Antworten auf die häufigsten Fragen zu unseren exklusiven Möbeln aus recycelten Weinfässern.
             </p>
           </motion.div>
