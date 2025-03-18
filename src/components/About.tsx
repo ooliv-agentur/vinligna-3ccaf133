@@ -78,7 +78,7 @@ const About = () => {
             >
               <div className="image-card">
                 <img 
-                  src="/lovable-uploads/a5803ca8-92c1-4b97-b7a2-6e6c1fefd43e.png" 
+                  src="/lovable-uploads/0b2a6cfc-0664-48a0-8d2f-c1757d1d687e.png" 
                   alt="Werkstatt mit Weinfässern und daraus gefertigten Möbelstücken" 
                   className="w-full h-full object-cover object-center image-hover"
                 />
