@@ -15,7 +15,7 @@ export const themeColors = {
   },
   // Dark mode colors
   dark: {
-    background: '#505358', // Our standard gray for dark mode
+    background: '#505358', // Our standard gray for dark mode - used consistently
     foreground: '#ffffff',
     muted: 'hsl(0 0% 15%)',
     mutedForeground: 'hsl(0 0% 70%)',
@@ -51,7 +51,7 @@ export const getTextColor = (isDarkMode: boolean): string => {
  */
 export const heroStyles = {
   overlay: {
-    backgroundColor: 'rgba(80, 83, 88, 0.6)' // Consistent overlay for hero sections
+    backgroundColor: 'rgba(80, 83, 88, 0.6)' // Updated to use our standard gray with opacity
   },
   text: {
     color: '#ffffff' // Always white text in hero sections
