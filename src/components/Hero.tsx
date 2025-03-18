@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -230,7 +229,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/35 to-black/35"></div>
                 
                 <div className="absolute bottom-0 left-0 right-0 p-8 text-left transform transition-all duration-300 group-hover:translate-y-0">
-                  {title && <div className="mb-1 text-white/70 text-base">{title}</div>}
+                  {title && <div className="mb-1 text-white/70 text-sm sm:text-base">{title}</div>}
                   <h2 className="text-2xl sm:text-3xl font-medium text-white mb-3">{subtitle}</h2>
                   <p className="text-white/70 mb-6 sm:mb-8 text-base font-light">{description}</p>
                   
