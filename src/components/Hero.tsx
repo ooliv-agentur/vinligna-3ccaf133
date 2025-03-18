@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -210,12 +209,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                 />
               </motion.div>
               
-              <motion.div 
-                initial={{ opacity: 0.9 }}
-                whileHover={{ opacity: 1.0 }}
-                transition={{ duration: 0.3 }}
-                className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/80 to-black/40"
-              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-black/60"></div>
               
               <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-left">
                 {title && <div className="mb-1 text-white/70 text-sm sm:text-base">{title}</div>}
@@ -254,12 +248,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                 />
               </motion.div>
               
-              <motion.div 
-                initial={{ opacity: 0.9 }}
-                whileHover={{ opacity: 1.0 }}
-                transition={{ duration: 0.3 }}
-                className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/80 to-black/40"
-              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-black/60"></div>
               
               <div className="absolute bottom-0 left-0 right-0 p-8 text-left transform transition-all duration-300 group-hover:translate-y-0">
                 {title && <div className="mb-1 text-white/70 text-base">{title}</div>}
