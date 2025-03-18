@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
+import ManufacturerSection from '@/components/ManufacturerSection';
 
 const ImpressumPage = () => {
   useEffect(() => {
@@ -64,6 +65,7 @@ const ImpressumPage = () => {
         </div>
       </section>
       
+      <ManufacturerSection />
       <Footer />
     </>
   );
