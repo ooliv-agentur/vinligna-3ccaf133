@@ -108,6 +108,21 @@ const galleryItems = [
     image: "/lovable-uploads/5a53bbed-9875-4004-aea2-164c6edf6c2b.png", 
     title: "Rotweinfässer Dauben", 
     category: "Materialdetail" 
+  },
+  { 
+    image: "/lovable-uploads/4963d0d8-94ba-4528-bd14-936b5c71c8e7.png", 
+    title: "Gebogene Fassdauben", 
+    category: "Materialdetail" 
+  },
+  { 
+    image: "/lovable-uploads/55177c88-0036-4bd0-9412-882574039cda.png", 
+    title: "Schneidebretter aus Fassholz", 
+    category: "Küchenaccessoires" 
+  },
+  { 
+    image: "/lovable-uploads/2225d56a-8d6b-40db-884a-8696534c8460.png", 
+    title: "Schneidebrett mit VINLIGNA-Gravur", 
+    category: "Küchenaccessoires" 
   }
 ];
 
