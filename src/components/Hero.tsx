@@ -1,8 +1,12 @@
+
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useAppTheme } from '@/hooks/use-theme';
+import { useIsMobile } from '@/hooks/use-mobile';
 import TextArrowButton from './TextArrowButton';
 
+// Animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -41,6 +45,9 @@ const scaleIn = {
 };
 
 const Hero = () => {
+  const { isDarkMode } = useAppTheme();
+  const isMobile = useIsMobile();
+
   return (
     <section className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center px-4 sm:px-6 py-10 sm:py-12 bg-darkbg">
       <motion.div 
@@ -90,17 +97,11 @@ const Hero = () => {
 
         <motion.div
           variants={scaleIn}
-          className="w-full max-w-5xl mx-auto mb-6 sm:mb-6 p-0 m-0"
-          style={{ padding: 0, margin: "0.5rem auto 1rem" }}
+          className="w-full max-w-5xl mx-auto mb-6 sm:mb-6"
+          style={{ margin: "0.5rem auto 1rem" }}
         >
-          <div 
-            className="flex flex-col w-full items-center md:grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-10 p-0 m-0" 
-            style={{ padding: 0, margin: 0 }}
-          >
-            <div 
-              className="w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 p-0 m-0" 
-              style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
-            >
+          <div className="flex flex-col w-full items-center md:grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-10">
+            <div className="w-full">
               <EntryCard 
                 title=""
                 subtitle="Winzer, Gastronom oder Hotelier"
@@ -110,10 +111,7 @@ const Hero = () => {
               />
             </div>
             
-            <div 
-              className="w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 p-0 m-0"
-              style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
-            >
+            <div className="w-full">
               <EntryCard 
                 title=""
                 subtitle="Weinliebhaber"
@@ -169,99 +167,81 @@ interface EntryCardProps {
 }
 
 const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardProps) => {
+  const isMobile = useIsMobile();
+  
   return (
     <motion.div
       whileHover={{ y: -5 }}
       transition={{ type: "spring", stiffness: 300 }}
-      className="w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 flex flex-col p-0 m-0"
-      style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
+      className="w-full flex flex-col"
     >
-      <Link 
-        to={link} 
-        className="block w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 group relative p-0 m-0"
-        style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
-      >
-        <div 
-          className="relative rounded-lg overflow-hidden w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 p-0 m-0"
-          style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
-        >
+      <Link to={link} className="block w-full group relative">
+        <div className="relative rounded-lg overflow-hidden w-full">
           {/* Mobile version */}
-          <div 
-            className="block md:hidden w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 p-0 m-0"
-            style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
-          >
-            <div 
-              className="aspect-[16/14] w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 p-0 m-0"
-              style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
-            >
-              <motion.div
-                initial={{ filter: "blur(5px)" }}
-                animate={{ filter: "blur(0px)" }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="absolute inset-0 w-full h-full p-0 m-0"
-                style={{ padding: 0, margin: 0 }}
-              >
-                <img 
-                  src={imageSrc} 
-                  alt={subtitle} 
-                  className="w-full h-full object-cover" 
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                />
-              </motion.div>
-              
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-black/60"></div>
-              
-              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-left">
-                {title && <div className="mb-1 text-white/70 text-sm sm:text-base">{title}</div>}
-                <h2 className="text-xl sm:text-2xl font-medium text-white mb-2 sm:mb-3">{subtitle}</h2>
-                <p className="text-white/70 mb-4 sm:mb-6 text-sm sm:text-base font-light">{description}</p>
+          {isMobile ? (
+            <div className="block w-full">
+              <div className="aspect-[16/14] w-full">
+                <motion.div
+                  initial={{ filter: "blur(5px)" }}
+                  animate={{ filter: "blur(0px)" }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  className="absolute inset-0 w-full h-full"
+                >
+                  <img 
+                    src={imageSrc} 
+                    alt={subtitle} 
+                    className="w-full h-full object-cover" 
+                  />
+                </motion.div>
                 
-                <div className="flex items-center">
-                  <span className="text-wine font-medium mr-1">Entdecken</span>
-                  <ArrowRight size={16} className="text-wine" />
+                {/* Dark overlay - significantly darker now */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black to-black/70"></div>
+                
+                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-left">
+                  {title && <div className="mb-1 text-white/70 text-sm sm:text-base">{title}</div>}
+                  <h2 className="text-xl sm:text-2xl font-medium text-white mb-2 sm:mb-3">{subtitle}</h2>
+                  <p className="text-white/70 mb-4 sm:mb-6 text-sm sm:text-base font-light">{description}</p>
+                  
+                  <div className="flex items-center">
+                    <span className="text-wine font-medium mr-1">Entdecken</span>
+                    <ArrowRight size={16} className="text-wine" />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Desktop version */}
-          <div 
-            className="hidden md:block h-full w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 p-0 m-0"
-            style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
-          >
-            <div 
-              className="aspect-[16/12] h-full w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 p-0 m-0"
-              style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
-            >
-              <motion.div
-                initial={{ filter: "blur(5px)" }}
-                animate={{ filter: "blur(0px)" }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="absolute inset-0 w-full h-full p-0 m-0"
-                style={{ padding: 0, margin: 0 }}
-              >
-                <img 
-                  src={imageSrc} 
-                  alt={subtitle} 
-                  className="w-full h-full object-cover" 
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                />
-              </motion.div>
-              
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-black/60"></div>
-              
-              <div className="absolute bottom-0 left-0 right-0 p-8 text-left transform transition-all duration-300 group-hover:translate-y-0">
-                {title && <div className="mb-1 text-white/70 text-base">{title}</div>}
-                <h2 className="text-2xl sm:text-3xl font-medium text-white mb-3">{subtitle}</h2>
-                <p className="text-white/70 mb-6 sm:mb-8 text-base font-light">{description}</p>
+          ) : (
+            /* Desktop version */
+            <div className="hidden md:block h-full w-full">
+              <div className="aspect-[16/12] h-full w-full">
+                <motion.div
+                  initial={{ filter: "blur(5px)" }}
+                  animate={{ filter: "blur(0px)" }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  className="absolute inset-0 w-full h-full"
+                >
+                  <img 
+                    src={imageSrc} 
+                    alt={subtitle} 
+                    className="w-full h-full object-cover" 
+                  />
+                </motion.div>
                 
-                <div className="flex items-center">
-                  <span className="text-wine font-medium mr-1">Entdecken</span>
-                  <ArrowRight size={16} className="text-wine" />
+                {/* Dark overlay - significantly darker now */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black to-black/70"></div>
+                
+                <div className="absolute bottom-0 left-0 right-0 p-8 text-left transform transition-all duration-300 group-hover:translate-y-0">
+                  {title && <div className="mb-1 text-white/70 text-base">{title}</div>}
+                  <h2 className="text-2xl sm:text-3xl font-medium text-white mb-3">{subtitle}</h2>
+                  <p className="text-white/70 mb-6 sm:mb-8 text-base font-light">{description}</p>
+                  
+                  <div className="flex items-center">
+                    <span className="text-wine font-medium mr-1">Entdecken</span>
+                    <ArrowRight size={16} className="text-wine" />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </Link>
     </motion.div>
