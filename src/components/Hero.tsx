@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAppTheme } from '@/hooks/use-theme';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { heroStyles, themeColors } from '@/lib/theme-constants';
 
 // Animation variants
 const containerVariants = {
@@ -46,9 +47,15 @@ const scaleIn = {
 const Hero = () => {
   const { isDarkMode } = useAppTheme();
   const isMobile = useIsMobile();
+  
+  // Get the background color based on theme
+  const backgroundColor = isDarkMode ? themeColors.dark.background : themeColors.light.background;
 
   return (
-    <section className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center px-4 sm:px-6 py-10 sm:py-12 bg-white dark:bg-darkbg">
+    <section 
+      className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center px-4 sm:px-6 py-10 sm:py-12" 
+      style={{ backgroundColor: themeColors.dark.background }} // Force dark background for hero
+    >
       <motion.div 
         className="container z-10 mx-auto max-w-6xl flex flex-col h-full pt-16 sm:pt-20 md:pt-24 pb-24 sm:pb-28 md:pb-32 items-center"
         variants={containerVariants}
