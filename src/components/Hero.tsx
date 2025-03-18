@@ -88,7 +88,7 @@ const Hero = () => {
 
         <motion.p 
           variants={itemVariants}
-          className="text-sm sm:text-base text-foreground dark:text-mode-white-80 max-w-2xl mx-auto mb-12 sm:mb-14 text-center leading-relaxed"
+          className="text-sm sm:text-base text-foreground dark:text-mode-white max-w-2xl mx-auto mb-12 sm:mb-14 text-center leading-relaxed"
         >
           Wir verwandeln gebrauchte Barrique-Fässer in elegante, einzigartige Möbelstücke, 
           die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
@@ -191,8 +191,8 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                 />
               </motion.div>
               
-              {/* Much lighter overlay, almost transparent */}
-              <div className="absolute inset-0 bg-black/10"></div>
+              {/* Light overlay with lower opacity */}
+              <div className="absolute inset-0 bg-black/30"></div>
               
               <div className="absolute bottom-0 left-0 right-0 p-6 text-left">
                 {title && <div className="mb-1 text-white text-sm">{title}</div>}
@@ -200,8 +200,8 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                 <p className="text-white mb-4 text-sm sm:text-base font-light">{description}</p>
                 
                 <div className="flex items-center text-wine">
-                  <span className="font-medium mr-1">Entdecken</span>
-                  <ArrowRight size={16} />
+                  <span className="font-medium mr-1 text-wine">Entdecken</span>
+                  <ArrowRight size={16} className="text-wine" />
                 </div>
               </div>
             </div>
