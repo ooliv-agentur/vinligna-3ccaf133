@@ -5,8 +5,8 @@ import { fadeIn, staggerContainer } from '@/lib/motion';
 
 const galleryItems = [
   { 
-    image: "/lovable-uploads/40c41224-a229-42ee-b6df-4f0ad6544eaa.png", 
-    title: "Fassdauben-Fensterbänke", 
+    image: "/lovable-uploads/b8ccf011-269c-4d03-9fab-ec9ce9533125.png", 
+    title: "Fassdauben-Wandpaneele", 
     category: "Wandgestaltung" 
   },
   { 
