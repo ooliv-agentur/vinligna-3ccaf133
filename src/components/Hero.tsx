@@ -107,7 +107,7 @@ const Hero = () => {
                 subtitle="Winzer, Gastronom oder Hotelier"
                 description="Maßgeschneiderte Lösungen für Ihre Marke"
                 link="/business"
-                imageSrc="/lovable-uploads/112627aa-d494-4e9d-939e-39625817461d.png"
+                imageSrc="/lovable-uploads/d71990eb-38c7-4083-8cc8-d26efebbf928.png"
               />
             </div>
             
@@ -120,7 +120,7 @@ const Hero = () => {
                 subtitle="Weinliebhaber"
                 description="Exklusive Designs für Ihr Zuhause"
                 link="/private"
-                imageSrc="/lovable-uploads/e9d912cb-d45d-4016-8e8b-8250bd78de47.png"
+                imageSrc="/lovable-uploads/13d643cb-0706-4f3a-a14d-22b3ad717116.png"
               />
             </div>
           </div>
