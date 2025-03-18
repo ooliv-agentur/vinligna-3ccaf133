@@ -210,8 +210,8 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
               </motion.div>
               
               <motion.div 
-                initial={{ opacity: 0.8 }}  {/* Darker overlay: changed from 0.7 to 0.8 */}
-                whileHover={{ opacity: 0.95 }} {/* Darker overlay on hover: changed from 0.9 to 0.95 */}
+                initial={{ opacity: 0.8 }}
+                whileHover={{ opacity: 0.95 }}
                 transition={{ duration: 0.3 }}
                 className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/80 to-foreground/40 dark:from-darkbg/95 dark:via-darkbg/80 dark:to-darkbg/40"
               />
@@ -253,8 +253,8 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
               </motion.div>
               
               <motion.div 
-                initial={{ opacity: 0.8 }}  {/* Darker overlay: changed from 0.7 to 0.8 */}
-                whileHover={{ opacity: 0.95 }} {/* Darker overlay on hover: changed from 0.9 to 0.95 */}
+                initial={{ opacity: 0.8 }}
+                whileHover={{ opacity: 0.95 }}
                 transition={{ duration: 0.3 }}
                 className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/80 to-foreground/40 dark:from-darkbg/95 dark:via-darkbg/80 dark:to-darkbg/40"
               />
