@@ -186,6 +186,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
           className="relative rounded-lg overflow-hidden w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 p-0 m-0"
           style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
         >
+          {/* Mobile version */}
           <div 
             className="block md:hidden w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 p-0 m-0"
             style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
@@ -213,13 +214,13 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                 initial={{ opacity: 0.9 }}
                 whileHover={{ opacity: 1.0 }}
                 transition={{ duration: 0.3 }}
-                className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/80 to-foreground/40 dark:from-darkbg/95 dark:via-darkbg/80 dark:to-darkbg/40"
+                className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/80 to-black/40"
               />
               
               <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-left">
-                <div className="mb-1 text-background dark:text-white/70 text-sm sm:text-base">{title}</div>
-                <h2 className="text-xl sm:text-2xl font-medium text-background dark:text-white mb-2 sm:mb-3">{subtitle}</h2>
-                <p className="text-background/70 dark:text-white/70 mb-4 sm:mb-6 text-sm sm:text-base font-light">{description}</p>
+                {title && <div className="mb-1 text-white/70 text-sm sm:text-base">{title}</div>}
+                <h2 className="text-xl sm:text-2xl font-medium text-white mb-2 sm:mb-3">{subtitle}</h2>
+                <p className="text-white/70 mb-4 sm:mb-6 text-sm sm:text-base font-light">{description}</p>
                 
                 <div className="flex items-center">
                   <span className="text-wine font-medium mr-1">Entdecken</span>
@@ -229,6 +230,7 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
             </div>
           </div>
 
+          {/* Desktop version */}
           <div 
             className="hidden md:block h-full w-full min-w-full max-w-none flex-grow-0 flex-shrink-0 p-0 m-0"
             style={{ width: "100%", minWidth: "100%", maxWidth: "none", flexGrow: 0, flexShrink: 0, padding: 0, margin: 0 }}
@@ -256,13 +258,13 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                 initial={{ opacity: 0.9 }}
                 whileHover={{ opacity: 1.0 }}
                 transition={{ duration: 0.3 }}
-                className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/80 to-foreground/40 dark:from-darkbg/95 dark:via-darkbg/80 dark:to-darkbg/40"
+                className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/80 to-black/40"
               />
               
               <div className="absolute bottom-0 left-0 right-0 p-8 text-left transform transition-all duration-300 group-hover:translate-y-0">
-                <div className="mb-1 text-background dark:text-white/70 text-base">{title}</div>
-                <h2 className="text-2xl sm:text-3xl font-medium text-background dark:text-white mb-3">{subtitle}</h2>
-                <p className="text-background/70 dark:text-white/70 mb-6 sm:mb-8 text-base font-light">{description}</p>
+                {title && <div className="mb-1 text-white/70 text-base">{title}</div>}
+                <h2 className="text-2xl sm:text-3xl font-medium text-white mb-3">{subtitle}</h2>
+                <p className="text-white/70 mb-6 sm:mb-8 text-base font-light">{description}</p>
                 
                 <div className="flex items-center">
                   <span className="text-wine font-medium mr-1">Entdecken</span>
