@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import { fadeIn, staggerContainer } from '@/lib/motion';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useAppTheme } from '@/hooks/use-theme';
 
 interface TeamMemberProps {
   name: string;
@@ -48,8 +49,10 @@ const TeamMember = ({ name, role, image, altText }: TeamMemberProps) => {
 };
 
 const TeamSection = () => {
+  const { isDarkMode } = useAppTheme();
+  
   return (
-    <section className="py-32 md:py-44 text-foreground overflow-hidden" style={{ backgroundColor: "#505358" }}>
+    <section className={`py-32 md:py-44 text-foreground overflow-hidden ${isDarkMode ? 'bg-darkbg' : 'bg-white'}`}>
       <div className="container mx-auto px-6">
         <div className="max-w-screen-xl mx-auto">
           {/* Section title and subtitle */}
