@@ -8,7 +8,6 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 import ProductGallery from '@/components/ProductGallery';
-import ManufacturerSection from '@/components/ManufacturerSection';
 
 const Index = () => {
   useEffect(() => {
@@ -47,9 +46,7 @@ const Index = () => {
   return (
     <div className="min-h-screen overflow-x-hidden bg-white dark:bg-background">
       <Navbar />
-      <div className="hero-section">
-        <Hero />
-      </div>
+      <Hero />
       <About />
       <ProductGallery />
       <Contact 
@@ -59,7 +56,6 @@ const Index = () => {
         formSource="VINLIGNA Startseite"
       />
       <Faq />
-      <ManufacturerSection />
       <Footer />
       <ScrollToTop />
     </div>

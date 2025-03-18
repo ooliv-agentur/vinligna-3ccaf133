@@ -59,7 +59,7 @@ const Hero = () => {
           variants={itemVariants}
           className="flex justify-center mb-6 sm:mb-8"
         >
-          <div className="inline-block px-4 py-1.5 sm:px-6 sm:py-2 bg-transparent text-white text-xs sm:text-sm tracking-widest uppercase rounded-full border border-white/20">
+          <div className="inline-block px-4 py-1.5 sm:px-6 sm:py-2 bg-transparent text-foreground text-xs sm:text-sm tracking-widest uppercase rounded-full border border-foreground/20">
             NACHHALTIGE ELEGANZ
           </div>
         </motion.div>
@@ -72,7 +72,7 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="block text-white"
+            className="block text-foreground dark:text-mode-white"
           >
             Exklusive Fassmöbel aus
           </motion.span>
@@ -88,7 +88,7 @@ const Hero = () => {
 
         <motion.p 
           variants={itemVariants}
-          className="text-sm sm:text-base text-white max-w-2xl mx-auto mb-12 sm:mb-14 text-center leading-relaxed"
+          className="text-sm sm:text-base text-foreground dark:text-mode-white max-w-2xl mx-auto mb-12 sm:mb-14 text-center leading-relaxed"
         >
           Wir verwandeln gebrauchte Barrique-Fässer in elegante, einzigartige Möbelstücke, 
           die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
@@ -129,7 +129,7 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.7 }}
             transition={{ duration: 0.8, delay: 0.8, repeat: Infinity, repeatType: "reverse" }}
-            className="text-white text-sm mb-2"
+            className="text-foreground dark:text-mode-white text-sm mb-2"
           >
             Mehr entdecken
           </motion.span>
@@ -137,7 +137,7 @@ const Hero = () => {
             initial={{ height: 0 }}
             animate={{ height: 60 }}
             transition={{ duration: 0.8, delay: 0.9 }}
-            className="w-px bg-white/20 relative overflow-hidden"
+            className="w-px bg-foreground/20 relative overflow-hidden"
           >
             <motion.div 
               initial={{ y: -60 }}
@@ -147,14 +147,11 @@ const Hero = () => {
                 repeat: Infinity, 
                 ease: "easeInOut" 
               }}
-              className="w-full h-1/2 bg-white/60 absolute"
+              className="w-full h-1/2 bg-foreground/60 absolute"
             />
           </motion.div>
         </motion.div>
       </motion.div>
-
-      {/* Dark overlay for the entire hero section */}
-      <div className="absolute inset-0 bg-black/40 z-0"></div>
     </section>
   );
 };
