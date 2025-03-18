@@ -86,7 +86,7 @@
   }
 
   ::selection {
-    @apply bg-wine/30 text-foreground;
+    @apply bg-wine/30 text-white;
   }
 }
 
@@ -253,6 +253,16 @@
   
   .hover-scale {
     @apply transition-transform duration-300 ease-out hover:scale-105;
+  }
+  
+  /* Force white text in hero section regardless of theme */
+  .hero-text-white {
+    color: white !important;
+  }
+  
+  /* Override borders for hero section in light mode */
+  .border-white\/20 {
+    border-color: rgba(255, 255, 255, 0.2) !important;
   }
 }
 
@@ -626,4 +636,24 @@ section.bg-background {
 
 .via-darkbg\/20 {
   --tw-gradient-via: rgba(80, 83, 88, 0.2) !important;
+}
+
+.hero-section .text-foreground,
+.hero-section .dark\:text-mode-white {
+  color: white !important;
+}
+
+.hero-section .bg-foreground\/20,
+.hero-section .dark\:bg-foreground\/20 {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.hero-section .bg-foreground\/60,
+.hero-section .dark\:bg-foreground\/60 {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.hero-section .border-foreground\/20,
+.hero-section .dark\:border-foreground\/20 {
+  border-color: rgba(255, 255, 255, 0.2) !important;
 }
