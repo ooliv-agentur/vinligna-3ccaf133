@@ -2,10 +2,13 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import TextArrowButton from '../TextArrowButton';
+import { useAppTheme } from '@/hooks/use-theme';
 
 const HeroSection = () => {
+  const { isDarkMode } = useAppTheme();
+  
   return (
-    <section className="relative h-[100vh] flex items-center justify-center px-4 sm:px-6 pt-20 pb-16 overflow-hidden" style={{ backgroundColor: "#505358" }}>
+    <section className={`relative h-[100vh] flex items-center justify-center px-4 sm:px-6 pt-20 pb-16 overflow-hidden ${isDarkMode ? 'bg-darkbg' : 'bg-white'}`}>
       <div className="container relative z-10 mx-auto max-w-5xl text-center">
         <motion.div 
           initial={{ opacity: 0 }}
@@ -61,7 +64,7 @@ const HeroSection = () => {
           backgroundPosition: 'center'
         }}
       ></div>
-      <div className="absolute inset-0 -z-10" style={{ backgroundColor: "rgba(80, 83, 88, 0.6)" }}></div>
+      <div className="absolute inset-0 -z-10" style={{ backgroundColor: isDarkMode ? "rgba(80, 83, 88, 0.6)" : "rgba(0, 0, 0, 0.6)" }}></div>
       
       {/* Mehr entdecken + animated line */}
       <motion.div 

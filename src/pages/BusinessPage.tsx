@@ -16,8 +16,11 @@ import AboutSection from '@/components/business/AboutSection';
 import ProductsSection from '@/components/business/ProductsSection';
 import BenefitsSection from '@/components/business/BenefitsSection';
 import GallerySection from '@/components/business/GallerySection';
+import { useAppTheme } from '@/hooks/use-theme';
 
 const BusinessPage = () => {
+  const { isDarkMode } = useAppTheme();
+  
   useEffect(() => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
@@ -54,7 +57,7 @@ const BusinessPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-background">
+    <div className={`min-h-screen overflow-x-hidden ${isDarkMode ? 'bg-darkbg' : 'bg-white'}`}>
       <Navbar />
       
       <HeroSection />

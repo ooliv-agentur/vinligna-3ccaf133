@@ -2,10 +2,13 @@
 import { motion } from 'framer-motion';
 import { BenefitItem } from './BenefitItem';
 import { fadeIn, staggerContainer, slideUp } from '@/lib/motion';
+import { useAppTheme } from '@/hooks/use-theme';
 
 const BenefitsSection = () => {
+  const { isDarkMode } = useAppTheme();
+  
   return (
-    <section className="section-padding-lg overflow-hidden" style={{ backgroundColor: "#505358" }}>
+    <section className={`section-padding-lg overflow-hidden ${isDarkMode ? 'bg-darkbg' : 'bg-white'}`}>
       <div className="container mx-auto px-6">
         <div className="max-w-screen-xl mx-auto">
           <motion.div

@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import { GalleryItem } from './GalleryItem';
 import { fadeIn, staggerContainer } from '@/lib/motion';
+import { useAppTheme } from '@/hooks/use-theme';
 
 const galleryItems = [
   { 
@@ -127,8 +128,10 @@ const galleryItems = [
 ];
 
 const GallerySection = () => {
+  const { isDarkMode } = useAppTheme();
+  
   return (
-    <section className="section-padding bg-darkbg" style={{ backgroundColor: "#505358" }}>
+    <section className={`section-padding ${isDarkMode ? 'bg-darkbg' : 'bg-white'}`}>
       <div className="container mx-auto px-6">
         <div className="max-w-screen-xl mx-auto">
           <motion.div
