@@ -1,9 +1,9 @@
+
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAppTheme } from '@/hooks/use-theme';
 import { useIsMobile } from '@/hooks/use-mobile';
-import TextArrowButton from './TextArrowButton';
 
 // Animation variants
 const containerVariants = {
@@ -48,7 +48,7 @@ const Hero = () => {
   const isMobile = useIsMobile();
 
   return (
-    <section className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center px-4 sm:px-6 py-10 sm:py-12 bg-darkbg">
+    <section className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center px-4 sm:px-6 py-10 sm:py-12 bg-white dark:bg-darkbg">
       <motion.div 
         className="container z-10 mx-auto max-w-6xl flex flex-col h-full pt-16 sm:pt-20 md:pt-24 pb-24 sm:pb-28 md:pb-32 items-center"
         variants={containerVariants}
@@ -72,7 +72,7 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="block text-mode-white"
+            className="block text-foreground dark:text-mode-white"
           >
             Exklusive Fassmöbel aus
           </motion.span>
@@ -88,7 +88,7 @@ const Hero = () => {
 
         <motion.p 
           variants={itemVariants}
-          className="text-sm sm:text-base text-mode-white-80 max-w-2xl mx-auto mb-6 sm:mb-8 text-center leading-relaxed"
+          className="text-sm sm:text-base text-foreground dark:text-mode-white-80 max-w-2xl mx-auto mb-12 sm:mb-14 text-center leading-relaxed"
         >
           Wir verwandeln gebrauchte Barrique-Fässer in elegante, einzigartige Möbelstücke, 
           die Tradition, Handwerkskunst und Nachhaltigkeit nahtlos miteinander verbinden.
@@ -97,7 +97,6 @@ const Hero = () => {
         <motion.div
           variants={scaleIn}
           className="w-full max-w-5xl mx-auto mb-6 sm:mb-6"
-          style={{ margin: "0.5rem auto 1rem" }}
         >
           <div className="flex flex-col w-full items-center md:grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-10">
             <div className="w-full">
@@ -130,7 +129,7 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.7 }}
             transition={{ duration: 0.8, delay: 0.8, repeat: Infinity, repeatType: "reverse" }}
-            className="text-mode-white text-sm mb-2"
+            className="text-foreground dark:text-mode-white text-sm mb-2"
           >
             Mehr entdecken
           </motion.span>
@@ -176,71 +175,37 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
     >
       <Link to={link} className="block w-full group relative">
         <div className="relative rounded-lg overflow-hidden w-full">
-          {/* Mobile version */}
-          {isMobile ? (
-            <div className="block w-full">
-              <div className="aspect-[16/14] w-full">
-                <motion.div
-                  initial={{ filter: "blur(5px)" }}
-                  animate={{ filter: "blur(0px)" }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                  className="absolute inset-0 w-full h-full"
-                >
-                  <img 
-                    src={imageSrc} 
-                    alt={subtitle} 
-                    className="w-full h-full object-cover" 
-                  />
-                </motion.div>
+          {/* Card image and content - same structure for both mobile and desktop */}
+          <div className="block w-full">
+            <div className="aspect-[16/12] w-full">
+              <motion.div
+                initial={{ filter: "blur(5px)" }}
+                animate={{ filter: "blur(0px)" }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="absolute inset-0 w-full h-full"
+              >
+                <img 
+                  src={imageSrc} 
+                  alt={subtitle} 
+                  className="w-full h-full object-cover" 
+                />
+              </motion.div>
+              
+              {/* Much lighter overlay, almost transparent */}
+              <div className="absolute inset-0 bg-black/10"></div>
+              
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-left">
+                {title && <div className="mb-1 text-white text-sm">{title}</div>}
+                <h2 className="text-xl sm:text-2xl font-medium text-white mb-2">{subtitle}</h2>
+                <p className="text-white mb-4 text-sm sm:text-base font-light">{description}</p>
                 
-                {/* Dark overlay - 50% of original opacity */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/35 to-black/35"></div>
-                
-                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-left">
-                  {title && <div className="mb-1 text-white/70 text-sm sm:text-base">{title}</div>}
-                  <h2 className="text-xl sm:text-2xl font-medium text-white mb-2 sm:mb-3">{subtitle}</h2>
-                  <p className="text-white/70 mb-4 sm:mb-6 text-sm sm:text-base font-light">{description}</p>
-                  
-                  <div className="flex items-center">
-                    <span className="text-wine font-medium mr-1">Entdecken</span>
-                    <ArrowRight size={16} className="text-wine" />
-                  </div>
+                <div className="flex items-center text-wine">
+                  <span className="font-medium mr-1">Entdecken</span>
+                  <ArrowRight size={16} />
                 </div>
               </div>
             </div>
-          ) : (
-            /* Desktop version */
-            <div className="hidden md:block h-full w-full">
-              <div className="aspect-[16/12] h-full w-full">
-                <motion.div
-                  initial={{ filter: "blur(5px)" }}
-                  animate={{ filter: "blur(0px)" }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                  className="absolute inset-0 w-full h-full"
-                >
-                  <img 
-                    src={imageSrc} 
-                    alt={subtitle} 
-                    className="w-full h-full object-cover" 
-                  />
-                </motion.div>
-                
-                {/* Dark overlay - 50% of original opacity */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/35 to-black/35"></div>
-                
-                <div className="absolute bottom-0 left-0 right-0 p-8 text-left transform transition-all duration-300 group-hover:translate-y-0">
-                  {title && <div className="mb-1 text-white/70 text-sm sm:text-base">{title}</div>}
-                  <h2 className="text-2xl sm:text-3xl font-medium text-white mb-3">{subtitle}</h2>
-                  <p className="text-white/70 mb-6 sm:mb-8 text-base font-light">{description}</p>
-                  
-                  <div className="flex items-center">
-                    <span className="text-wine font-medium mr-1">Entdecken</span>
-                    <ArrowRight size={16} className="text-wine" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
+          </div>
         </div>
       </Link>
     </motion.div>
