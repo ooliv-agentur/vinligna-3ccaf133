@@ -194,8 +194,8 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                   />
                 </motion.div>
                 
-                {/* Dark overlay - significantly darker now */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black to-black/70"></div>
+                {/* Dark overlay - 50% of original opacity */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/35 to-black/35"></div>
                 
                 <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-left">
                   {title && <div className="mb-1 text-white/70 text-sm sm:text-base">{title}</div>}
@@ -226,8 +226,8 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                   />
                 </motion.div>
                 
-                {/* Dark overlay - significantly darker now */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black to-black/70"></div>
+                {/* Dark overlay - 50% of original opacity */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/35 to-black/35"></div>
                 
                 <div className="absolute bottom-0 left-0 right-0 p-8 text-left transform transition-all duration-300 group-hover:translate-y-0">
                   {title && <div className="mb-1 text-white/70 text-base">{title}</div>}
