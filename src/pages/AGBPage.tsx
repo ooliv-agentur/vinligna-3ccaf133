@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
+import BrandAffiliation from '@/components/BrandAffiliation';
 
 const AGBPage = () => {
   useEffect(() => {
@@ -234,6 +235,7 @@ const AGBPage = () => {
         </div>
       </section>
       
+      <BrandAffiliation />
       <Footer />
     </>
   );

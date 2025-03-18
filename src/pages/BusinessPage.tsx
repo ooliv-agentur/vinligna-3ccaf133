@@ -7,6 +7,7 @@ import ScrollToTop from '@/components/ScrollToTop';
 import BusinessFaq from '@/components/BusinessFaq';
 import TeamSection from '@/components/TeamSection';
 import ProductionProcess from '@/components/ProductionProcess';
+import BrandAffiliation from '@/components/BrandAffiliation';
 
 // Newly created components
 import HeroSection from '@/components/business/HeroSection';
@@ -71,6 +72,7 @@ const BusinessPage = () => {
         formSource="Weingüter, Gastronomie & Hotellerie"
       />
       <BusinessFaq />
+      <BrandAffiliation />
       <Footer />
       <ScrollToTop />
     </div>

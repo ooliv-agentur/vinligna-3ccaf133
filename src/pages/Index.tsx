@@ -8,6 +8,7 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 import ProductGallery from '@/components/ProductGallery';
+import BrandAffiliation from '@/components/BrandAffiliation';
 
 const Index = () => {
   useEffect(() => {
@@ -56,6 +57,7 @@ const Index = () => {
         formSource="VINLIGNA Startseite"
       />
       <Faq />
+      <BrandAffiliation />
       <Footer />
       <ScrollToTop />
     </div>

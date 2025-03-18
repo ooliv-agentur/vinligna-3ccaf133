@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
+import BrandAffiliation from '@/components/BrandAffiliation';
 
 const DatenschutzPage = () => {
   useEffect(() => {
@@ -117,6 +118,7 @@ const DatenschutzPage = () => {
         </div>
       </section>
       
+      <BrandAffiliation />
       <Footer />
     </>
   );

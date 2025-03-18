@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BrandAffiliation from "@/components/BrandAffiliation";
 
 const NotFound = () => {
   const location = useLocation();
@@ -36,6 +37,7 @@ const NotFound = () => {
           </a>
         </div>
       </div>
+      <BrandAffiliation />
       <Footer />
     </div>
   );
