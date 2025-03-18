@@ -29,13 +29,13 @@ const TeamMember = ({ name, role, image, altText }: TeamMemberProps) => {
         {/* Overlay and info for desktop (hover effect) */}
         {!isMobile && (
           <>
-            <div className={`absolute inset-0 transition-opacity duration-300 opacity-0 group-hover:opacity-70 ${
+            <div className={`absolute inset-0 transition-opacity duration-300 opacity-0 group-hover:opacity-60 ${
               isDarkMode 
                 ? 'bg-gradient-to-t from-darkbg/70 via-darkbg/20 to-transparent' 
                 : 'bg-gradient-to-t from-black/70 via-black/20 to-transparent'
             }`}></div>
             <div className="absolute inset-0 flex flex-col justify-end p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-              <h3 className="text-xl font-medium text-foreground">{name}</h3>
+              <h3 className="text-xl font-medium text-white">{name}</h3>
               <p className="text-wine mt-1">{role}</p>
             </div>
           </>
