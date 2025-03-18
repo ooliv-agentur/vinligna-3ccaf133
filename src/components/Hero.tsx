@@ -210,16 +210,16 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
               </motion.div>
               
               <motion.div 
-                initial={{ opacity: 0.85 }}
-                whileHover={{ opacity: 0.95 }}
+                initial={{ opacity: 0.7 }}
+                whileHover={{ opacity: 0.9 }}
                 transition={{ duration: 0.3 }}
-                className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/30"
+                className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/70 to-foreground/30 dark:from-darkbg/95 dark:via-darkbg/70 dark:to-darkbg/30"
               />
               
               <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-left">
-                <div className="mb-1 text-white/70 text-sm sm:text-base">{title}</div>
-                <h2 className="text-xl sm:text-2xl font-medium text-white mb-2 sm:mb-3">{subtitle}</h2>
-                <p className="text-white/70 mb-4 sm:mb-6 text-sm sm:text-base font-light">{description}</p>
+                <div className="mb-1 text-background dark:text-white/70 text-sm sm:text-base">{title}</div>
+                <h2 className="text-xl sm:text-2xl font-medium text-background dark:text-white mb-2 sm:mb-3">{subtitle}</h2>
+                <p className="text-background/70 dark:text-white/70 mb-4 sm:mb-6 text-sm sm:text-base font-light">{description}</p>
                 
                 <div className="flex items-center">
                   <span className="text-wine font-medium mr-1">Entdecken</span>
@@ -253,16 +253,16 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
               </motion.div>
               
               <motion.div 
-                initial={{ opacity: 0.85 }}
-                whileHover={{ opacity: 0.95 }}
+                initial={{ opacity: 0.7 }}
+                whileHover={{ opacity: 0.9 }}
                 transition={{ duration: 0.3 }}
-                className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/30"
+                className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/70 to-foreground/30 dark:from-darkbg/95 dark:via-darkbg/70 dark:to-darkbg/30"
               />
               
               <div className="absolute bottom-0 left-0 right-0 p-8 text-left transform transition-all duration-300 group-hover:translate-y-0">
-                <div className="mb-1 text-white/70 text-base">{title}</div>
-                <h2 className="text-2xl sm:text-3xl font-medium text-white mb-3">{subtitle}</h2>
-                <p className="text-white/70 mb-6 sm:mb-8 text-base font-light">{description}</p>
+                <div className="mb-1 text-background dark:text-white/70 text-base">{title}</div>
+                <h2 className="text-2xl sm:text-3xl font-medium text-background dark:text-white mb-3">{subtitle}</h2>
+                <p className="text-background/70 dark:text-white/70 mb-6 sm:mb-8 text-base font-light">{description}</p>
                 
                 <div className="flex items-center">
                   <span className="text-wine font-medium mr-1">Entdecken</span>

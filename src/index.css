@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,7 +6,7 @@
 @layer base {
   :root {
     /* Light mode variables */
-    --background: 0 0% 100%; /* Pure white background */
+    --background: 30 20% 98%;
     --foreground: 20 12% 10%;
     
     --oak-light: 30 30% 90%;
@@ -28,7 +29,7 @@
     --popover-foreground: 20 12% 10%;
 
     --primary: 20 12% 10%;
-    --primary-foreground: 0 0% 100%;
+    --primary-foreground: 30 20% 98%;
 
     --secondary: 30 20% 96%;
     --secondary-foreground: 20 12% 10%;
@@ -40,7 +41,7 @@
     --accent-foreground: 20 12% 10%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive-foreground: 30 20% 98%;
 
     --border: 20 10% 90%;
     --input: 20 10% 90%;
@@ -549,42 +550,64 @@
 
 /* Fix for the black background - IMPORTANT ADDITION */
 .dark .bg-black, .dark .bg-darkbg {
-  background-color: #222222 !important;
+  background-color: #505358 !important;
 }
 
-/* Ensure light mode uses white background */
 .bg-black, .bg-darkbg {
-  background-color: #ffffff !important;
+  background-color: #505358 !important;
 }
 
 /* Ensure dark mode color is applied properly */
 .dark section.bg-darkbg {
-  background-color: #222222 !important;
+  background-color: #505358 !important;
 }
 
 /* Override any conflicting styles */
 section.bg-darkbg {
-  background-color: #ffffff !important;
+  background-color: #505358;
 }
 
-/* Black overlay for card images */
+/* From black gradient overlays to darkbg (color #505358) in dark mode */
+.dark .from-black\/95, .dark .via-black\/70, .dark .to-black\/30,
 .from-black\/95, .via-black\/70, .to-black\/30 {
-  --tw-gradient-from: rgba(0, 0, 0, 0.95);
-  --tw-gradient-to: rgba(0, 0, 0, 0);
+  --tw-gradient-from: rgba(80, 83, 88, 0.95);
+  --tw-gradient-to: rgba(80, 83, 88, 0);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
+.dark .via-black\/70,
 .via-black\/70 {
-  --tw-gradient-via: rgba(0, 0, 0, 0.7);
+  --tw-gradient-via: rgba(80, 83, 88, 0.7);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to);
 }
 
+.dark .to-black\/30,
 .to-black\/30 {
-  --tw-gradient-to: rgba(0, 0, 0, 0.3);
+  --tw-gradient-to: rgba(80, 83, 88, 0.3);
 }
 
-/* Ensure text is white on dark overlay */
-.text-white, .text-white\/70 {
-  color: white !important;
+/* Team section overlay fixes */
+.dark .from-background\/70,
+.from-background\/70 {
+  --tw-gradient-from: rgba(80, 83, 88, 0.7);
+  --tw-gradient-to: rgba(80, 83, 88, 0);
 }
 
+.dark .via-background\/20,
+.via-background\/20 {
+  --tw-gradient-via: rgba(80, 83, 88, 0.2);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to);
+}
+
+/* Black background overrides for hero images and backgrounds */
+.bg-darkbg\/60 {
+  background-color: rgba(80, 83, 88, 0.6) !important;
+}
+
+.from-darkbg\/70 {
+  --tw-gradient-from: rgba(80, 83, 88, 0.7) !important;
+}
+
+.via-darkbg\/20 {
+  --tw-gradient-via: rgba(80, 83, 88, 0.2) !important;
+}
