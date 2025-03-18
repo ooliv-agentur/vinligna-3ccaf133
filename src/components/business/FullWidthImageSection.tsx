@@ -1,9 +1,11 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import { useAppTheme } from '@/hooks/use-theme';
 
 const FullWidthImageSection = () => {
   const ref = useRef(null);
+  const { isDarkMode } = useAppTheme();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"]
@@ -12,7 +14,7 @@ const FullWidthImageSection = () => {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
   return (
-    <section ref={ref} className="w-full h-[90vh] relative overflow-hidden">
+    <section ref={ref} className={`w-full h-[90vh] relative overflow-hidden ${isDarkMode ? 'bg-darkbg' : 'bg-white'}`}>
       <motion.div
         style={{ y }}
         className="absolute inset-0 w-full h-full"

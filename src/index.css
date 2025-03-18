@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,7 +5,7 @@
 @layer base {
   :root {
     /* Light mode variables */
-    --background: 30 20% 98%;
+    --background: 0 0% 100%; /* Changed to pure white (was 30 20% 98%) */
     --foreground: 20 12% 10%;
     
     --oak-light: 30 30% 90%;
@@ -548,26 +547,43 @@
   color: hsl(var(--wine)) !important;
 }
 
-/* Fix for the black background - IMPORTANT ADDITION */
-.dark .bg-black, .dark .bg-darkbg {
-  background-color: #505358 !important;
-}
-
+/* Fix for the dark background - IMPORTANT ADDITION */
 .bg-black, .bg-darkbg {
-  background-color: #505358 !important;
+  background-color: #ffffff !important; /* Change to white in light mode */
 }
 
-/* Ensure dark mode color is applied properly */
-.dark section.bg-darkbg {
-  background-color: #505358 !important;
+.dark .bg-black, .dark .bg-darkbg {
+  background-color: #505358 !important; /* Keep dark mode as is */
+}
+
+/* Ensure section backgrounds are white in light mode */
+section {
+  background-color: #ffffff;
+}
+
+.dark section {
+  background-color: #505358;
 }
 
 /* Override any conflicting styles */
 section.bg-darkbg {
-  background-color: #505358;
+  background-color: #ffffff !important; /* White in light mode */
 }
 
-/* From black gradient overlays to darkbg (color #505358) in dark mode */
+.dark section.bg-darkbg {
+  background-color: #505358 !important; /* Keep dark mode as is */
+}
+
+/* Override section background colors */
+section.bg-background {
+  background-color: #ffffff !important;
+}
+
+.dark section.bg-background {
+  background-color: #505358 !important;
+}
+
+/* Fix gradient backgrounds in light mode */
 .dark .from-black\/95, .dark .via-black\/70, .dark .to-black\/30,
 .from-black\/95, .via-black\/70, .to-black\/30 {
   --tw-gradient-from: rgba(80, 83, 88, 0.95);

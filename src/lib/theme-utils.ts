@@ -44,3 +44,11 @@ export function overlayClass(opacity: 'light' | 'medium' | 'dark' | 'very-dark')
   
   return `bg-gradient-to-t ${opacityMap[opacity]}`;
 }
+
+/**
+ * Get section background color based on theme
+ */
+export function getSectionBackground() {
+  const { isDarkMode } = useAppTheme();
+  return isDarkMode ? 'bg-darkbg' : 'bg-white';
+}

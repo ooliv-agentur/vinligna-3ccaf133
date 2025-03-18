@@ -14,11 +14,15 @@ export function useAppTheme() {
   const isDarkMode = mounted && theme === 'dark';
   const isLightMode = mounted && theme === 'light';
   
+  // Get background color based on theme
+  const backgroundColor = isDarkMode ? '#505358' : '#ffffff';
+  
   return {
     theme,
     setTheme,
     isDarkMode,
     isLightMode,
-    mounted
+    mounted,
+    backgroundColor
   };
 }
