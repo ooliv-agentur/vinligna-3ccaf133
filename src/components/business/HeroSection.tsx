@@ -64,7 +64,7 @@ const HeroSection = () => {
           backgroundPosition: 'center'
         }}
       ></div>
-      <div className="absolute inset-0 -z-10" style={{ backgroundColor: isDarkMode ? "rgba(80, 83, 88, 0.6)" : "rgba(0, 0, 0, 0.6)" }}></div>
+      <div className="absolute inset-0 bg-black/75 dark:bg-darkbg/60 -z-10"></div>
       
       {/* Mehr entdecken + animated line */}
       <motion.div 
@@ -77,7 +77,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.7 }}
           transition={{ duration: 0.8, delay: 0.8, repeat: Infinity, repeatType: "reverse" }}
-          className="text-foreground text-sm mb-2"
+          className="text-white dark:text-foreground text-sm mb-2"
         >
           Mehr entdecken
         </motion.span>
@@ -85,7 +85,7 @@ const HeroSection = () => {
           initial={{ height: 0 }}
           animate={{ height: 60 }}
           transition={{ duration: 0.8, delay: 0.9 }}
-          className="w-px bg-foreground/20 relative overflow-hidden"
+          className="w-px bg-white/30 dark:bg-foreground/20 relative overflow-hidden"
         >
           <motion.div 
             initial={{ y: -60 }}
@@ -95,7 +95,7 @@ const HeroSection = () => {
               repeat: Infinity, 
               ease: "easeInOut" 
             }}
-            className="w-full h-1/2 bg-foreground/60 absolute"
+            className="w-full h-1/2 bg-white/70 dark:bg-foreground/60 absolute"
           />
         </motion.div>
       </motion.div>

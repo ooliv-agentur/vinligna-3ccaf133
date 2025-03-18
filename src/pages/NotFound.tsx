@@ -30,7 +30,7 @@ const NotFound = () => {
           </p>
           <a 
             href="/" 
-            className="inline-flex items-center text-sm font-medium bg-foreground text-background py-3 px-6 rounded-lg hover:bg-foreground/90 transition-colors"
+            className="inline-flex items-center text-sm font-medium bg-foreground text-white dark:text-background py-3 px-6 rounded-lg hover:bg-foreground/90 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             <span>Return to Home</span>
