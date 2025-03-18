@@ -83,9 +83,9 @@ const About = () => {
                   className="w-full h-full object-cover object-center image-hover"
                 />
                 
-                {/* Decorative elements */}
+                {/* Decorative elements - Darker overlay for better text contrast */}
                 <div className="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none" />
-                <div className="absolute bottom-6 left-6 right-6 p-8 bg-glass-dark rounded-xl">
+                <div className="absolute bottom-6 left-6 right-6 p-8 bg-black/70 dark:bg-black/70 backdrop-blur-xl rounded-xl">
                   <span className="text-wine text-sm uppercase tracking-wider">Nachhaltige Materialien</span>
                   <h3 className="text-white text-xl font-medium mt-2">Jedes Stück erzählt eine Geschichte</h3>
                 </div>
