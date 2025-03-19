@@ -58,14 +58,14 @@ const PrivatePage = () => {
     <div className="min-h-screen overflow-x-hidden bg-darkbg">
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="relative h-[100vh] flex items-center justify-center px-4 sm:px-6 pt-20 pb-16 overflow-hidden" style={{ backgroundColor: "#505358" }}>
+      {/* Hero Section - Updated with white background and black text */}
+      <section className="relative h-[100vh] flex items-center justify-center px-4 sm:px-6 pt-20 pb-16 overflow-hidden bg-white dark:bg-darkbg">
         <div className="container relative z-10 mx-auto max-w-5xl text-center">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="inline-block mb-4 sm:mb-6 px-4 py-1.5 sm:px-6 sm:py-2 bg-transparent text-white text-xs sm:text-sm tracking-widest uppercase rounded-full border border-foreground/20"
+            className="inline-block mb-4 sm:mb-6 px-4 py-1.5 sm:px-6 sm:py-2 bg-transparent text-foreground dark:text-white text-xs sm:text-sm tracking-widest uppercase rounded-full border border-foreground/20"
           >
             FÜR WEINLIEBHABER
           </motion.div>
@@ -76,7 +76,7 @@ const PrivatePage = () => {
             transition={{ delay: 0.1, duration: 0.6 }}
             className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-light mb-4 sm:mb-6 leading-tight tracking-tight"
           >
-            <span className="block text-white">Möbel aus Weinfässern</span>
+            <span className="block text-foreground dark:text-white">Möbel aus Weinfässern</span>
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -91,7 +91,7 @@ const PrivatePage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-sm sm:text-base md:text-lg text-white/80 max-w-2xl mx-auto mb-8 sm:mb-16"
+            className="text-sm sm:text-base md:text-lg text-foreground/80 dark:text-white/80 max-w-2xl mx-auto mb-8 sm:mb-16"
           >
             Bringen Sie die Eleganz und Geschichte der Weinkultur in Ihr Zuhause mit unseren handgefertigten Unikaten, die Nachhaltigkeit und Luxus vereinen.
           </motion.p>
@@ -117,7 +117,7 @@ const PrivatePage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.7 }}
             transition={{ duration: 0.8, delay: 0.8, repeat: Infinity, repeatType: "reverse" }}
-            className="text-white text-sm mb-2"
+            className="text-foreground dark:text-white text-sm mb-2"
           >
             Mehr entdecken
           </motion.span>

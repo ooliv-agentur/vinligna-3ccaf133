@@ -2,6 +2,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useAppTheme } from '@/hooks/use-theme';
 
 interface TextArrowButtonProps {
   text: string;
@@ -10,6 +11,8 @@ interface TextArrowButtonProps {
 }
 
 const TextArrowButton = ({ text, href, className = '' }: TextArrowButtonProps) => {
+  const { isDarkMode } = useAppTheme();
+  
   return (
     <a 
       href={href} 
