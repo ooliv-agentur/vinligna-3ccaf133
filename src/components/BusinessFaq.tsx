@@ -19,7 +19,7 @@ const FaqItem = ({ question, answer }: FaqItemProps) => {
         className="flex w-full items-center justify-between py-4 text-left"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="font-medium text-white">{question}</span>
+        <span className="font-medium text-foreground dark:text-white">{question}</span>
         <ChevronDown 
           className={cn(
             "h-5 w-5 text-wine transition-transform duration-200",
@@ -34,7 +34,7 @@ const FaqItem = ({ question, answer }: FaqItemProps) => {
         )}
       >
         <div className="overflow-hidden">
-          <div className="text-white/70">
+          <div className="text-foreground/70 dark:text-white/70">
             {answer}
           </div>
         </div>
@@ -112,10 +112,10 @@ const BusinessFaq = () => {
             <span className="section-subtitle">
               Häufig gestellte Fragen
             </span>
-            <h2 className="section-title text-white">
+            <h2 className="section-title text-foreground dark:text-white">
               Fragen zu <span className="highlight">Weinfass-Möbeln</span>
             </h2>
-            <p className="text-white/70 max-w-2xl mx-auto">
+            <p className="text-foreground/70 dark:text-white/70 max-w-2xl mx-auto">
               Hier finden Sie Antworten auf die häufigsten Fragen zu unseren maßgefertigten Möbeln für Weingüter, Gastronomie und Hotellerie.
             </p>
           </motion.div>

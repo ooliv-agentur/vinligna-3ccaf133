@@ -20,9 +20,9 @@ const ProcessStep = ({ number, title, description, icon }: ProcessStepProps) => 
       <div className="text-wine w-20 h-20 mb-4 flex items-center justify-center">
         {icon}
       </div>
-      <h3 className="text-lg font-medium mb-2 text-center text-white">{title}</h3>
+      <h3 className="text-lg font-medium mb-2 text-center text-foreground dark:text-white">{title}</h3>
     </div>
-    <p className="text-sm text-white/70 text-center">{description}</p>
+    <p className="text-sm text-foreground/70 dark:text-white/70 text-center">{description}</p>
     
     {/* Connector line, only show for non-last items on desktop */}
     <div className="hidden md:block absolute top-8 right-0 h-[2px] w-1/2 bg-wine/10 -z-10 last:hidden"></div>
@@ -158,10 +158,10 @@ const ProductionProcess = ({ isB2C = false }: ProductionProcessProps) => {
             <span className="section-subtitle">
               {content.sectionTitle}
             </span>
-            <h2 className="section-title text-white">
+            <h2 className="section-title text-foreground dark:text-white">
               {content.heading.split(" ").slice(0, -1).join(" ")} <span className="highlight">{content.heading.split(" ").slice(-1)}</span>
             </h2>
-            <p className="text-white/70 max-w-2xl mx-auto">
+            <p className="text-foreground/70 dark:text-white/70 max-w-2xl mx-auto">
               {content.description}
             </p>
           </motion.div>
