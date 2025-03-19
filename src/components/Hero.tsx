@@ -166,6 +166,7 @@ interface EntryCardProps {
 
 const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardProps) => {
   const isMobile = useIsMobile();
+  const { isDarkMode } = useAppTheme();
   
   return (
     <motion.div
@@ -191,8 +192,8 @@ const EntryCard = ({ title, subtitle, description, link, imageSrc }: EntryCardPr
                 />
               </motion.div>
               
-              {/* Darker overlay to ensure text visibility */}
-              <div className="absolute inset-0 bg-black/50"></div>
+              {/* Darker overlay to ensure text visibility - REDUCED OPACITY IN DARK MODE */}
+              <div className={`absolute inset-0 ${isDarkMode ? 'bg-black/30' : 'bg-black/50'}`}></div>
               
               <div className="absolute bottom-0 left-0 right-0 p-6 text-left">
                 {title && <div className="mb-1 text-white text-sm">{title}</div>}
