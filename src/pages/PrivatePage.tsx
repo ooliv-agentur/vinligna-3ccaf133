@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, Wine, Heart, ShieldCheck, Table, BookOpen } from 'lucide-react';
@@ -38,10 +37,10 @@ const PrivatePage = () => {
     window.scrollTo(0, 0);
 
     // Update page title and meta description for SEO
-    document.title = "VINLIGNA | Möbel aus Weinfässern – Handgefertigte Unikate für Weinliebhaber";
+    document.title = "Möbel aus Weinfässern für Ihr Zuhause | VINLIGNA";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "Entdecken Sie exklusive Möbel aus recycelten Barrique-Fässern. Handgefertigte Unikate für Weinliebhaber, die Nachhaltigkeit und Luxus vereinen. Maßanfertigung nach Ihren Wünschen.");
+      metaDescription.setAttribute("content", "Verwandeln Sie Ihr Zuhause mit einzigartigen Möbeln aus recycelten Weinfässern. VINLIGNA bietet stilvolle, handgefertigte Unikate für Weinliebhaber. Jetzt entdecken.");
     }
 
     // Cleanup

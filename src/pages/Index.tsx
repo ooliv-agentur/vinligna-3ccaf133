@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -12,6 +11,13 @@ import BrandAffiliation from '@/components/BrandAffiliation';
 
 const Index = () => {
   useEffect(() => {
+    // Set SEO meta tags
+    document.title = "VINLIGNA | Exklusive Fassmöbel aus recycelten Weinfässern";
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute("content", "VINLIGNA verwandelt recycelte Weinfässer in handgefertigte Möbel für Weingüter, Gastronomie und Weinliebhaber. Entdecken Sie nachhaltige Eleganz für Ihr Zuhause oder Geschäft.");
+    }
+    
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {

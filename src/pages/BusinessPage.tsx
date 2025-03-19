@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -41,10 +40,10 @@ const BusinessPage = () => {
 
     window.scrollTo(0, 0);
 
-    document.title = "VINLIGNA | Maßgeschneiderte Weinfass-Möbel für Weingüter & Gastronomie";
+    document.title = "Weinfass Möbel für Weingüter & Gastronomie | VINLIGNA";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "Maßgefertigte, nachhaltige Weinfass-Möbel für Weingüter, Restaurants und Hotels. Werten Sie Ihren Geschäftsraum mit einzigartigen Unikaten auf.");
+      metaDescription.setAttribute("content", "Maßgeschneiderte Weinfass Möbel für Weingüter, Restaurants & Hotels. VINLIGNA fertigt exklusive Möbel aus Barrique-Fässern – nachhaltig, stilvoll und individuell anpassbar. Jetzt entdecken.");
     }
 
     return () => {
