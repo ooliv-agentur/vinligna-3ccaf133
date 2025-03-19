@@ -19,7 +19,13 @@ const BrandAffiliation = () => {
             Ein Unternehmen der
           </p>
           
-          <div className="w-40 h-auto mb-4">
+          <a 
+            href="https://manufakturhof-alsenz.com/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="w-40 h-auto mb-4 hover:opacity-80 transition-opacity"
+            aria-label="Zur Manufakturhof Alsenz Website"
+          >
             <img 
               src={isDarkMode 
                 ? "/lovable-uploads/085237aa-3df7-4c1f-8eeb-645dcec2875e.png" 
@@ -28,7 +34,7 @@ const BrandAffiliation = () => {
               alt="Manufakturhof Alsenz" 
               className="w-full h-auto"
             />
-          </div>
+          </a>
           
           <p className="uppercase text-sm font-medium text-foreground/70 dark:text-white/80">
             Gruppe
