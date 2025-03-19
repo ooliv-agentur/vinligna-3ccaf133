@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -16,6 +17,12 @@ const Index = () => {
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute("content", "VINLIGNA verwandelt recycelte Weinfässer in handgefertigte Möbel für Weingüter, Gastronomie und Weinliebhaber. Entdecken Sie nachhaltige Eleganz für Ihr Zuhause oder Geschäft.");
+    }
+    
+    // Ensure favicon is set
+    const favicon = document.querySelector('link[rel="icon"]');
+    if (favicon) {
+      favicon.setAttribute("href", "/lovable-uploads/d0e6ed01-5afe-498b-871d-c17c129e711e.png");
     }
     
     // Smooth scroll for anchor links
