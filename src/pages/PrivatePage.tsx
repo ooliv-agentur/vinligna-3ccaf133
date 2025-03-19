@@ -159,7 +159,7 @@ const PrivatePage = () => {
               viewport={{ once: true, margin: "-100px" }}
               className="text-center mb-16"
             >
-              <h2 className="section-title text-white">
+              <h2 className="section-title text-foreground dark:text-white">
                 Über <span className="text-gradient font-normal">uns</span>
               </h2>
             </motion.div>
@@ -178,7 +178,7 @@ const PrivatePage = () => {
                   <Wine size={80} strokeWidth={1} />
                 </div>
                 <div className="border-l-2 border-wine pl-6 py-2">
-                  <p className="text-xl md:text-2xl font-light italic text-white/90 leading-relaxed">
+                  <p className="text-xl md:text-2xl font-light italic text-foreground dark:text-white/90 leading-relaxed">
                     Bei VINLIGNA stehen exklusive Möbelstücke im Fokus, die aus recycelten Barrique-Fässern gefertigt werden.
                   </p>
                 </div>
@@ -193,7 +193,7 @@ const PrivatePage = () => {
                 viewport={{ once: true, margin: "-100px" }}
                 className="flex items-center"
               >
-                <p className="text-white/80 text-lg leading-relaxed">
+                <p className="text-foreground/80 dark:text-white/80 text-lg leading-relaxed">
                   Unsere Möbel vereinen Nachhaltigkeit und Luxus und sind handgefertigte Unikate, die nach Ihren individuellen Wünschen gefertigt werden. Ob im Weinkeller, im Esszimmer oder im Wohnbereich – VINLIGNA-Möbel sind für Menschen gemacht, die das Besondere suchen und ihr Zuhause stilvoll gestalten wollen.
                 </p>
               </motion.div>
@@ -219,7 +219,7 @@ const PrivatePage = () => {
                 </div>
                 <div className="w-px h-32 bg-gradient-to-b from-transparent via-wine/50 to-transparent hidden md:block"></div>
                 <div className="w-full md:w-1/2">
-                  <p className="text-white/80 text-lg leading-relaxed">
+                  <p className="text-foreground/80 dark:text-white/80 text-lg leading-relaxed">
                     VINLIGNA verbindet nachhaltiges Design mit zeitloser Eleganz. Die Barrique-Fässer, die wir verwenden, stammen aus renommierten Weingütern und wurden zuvor zur Reifung edler Weine verwendet. Jedes Möbelstück ist ein handgefertigtes Unikat, das die Schönheit des Weins in Ihren Wohnraum bringt und die Geschichte des Weins bewahrt.
                   </p>
                 </div>
@@ -246,10 +246,10 @@ const PrivatePage = () => {
               <span className="section-subtitle">
                 Unsere Produkte
               </span>
-              <h2 className="section-title text-white">
+              <h2 className="section-title text-foreground dark:text-white">
                 Handgefertigte <span className="text-gradient">Unikate</span>
               </h2>
-              <p className="text-white/70 max-w-2xl mx-auto">
+              <p className="text-foreground/70 dark:text-white/70 max-w-2xl mx-auto">
                 Unsere Möbel sind zu 100% individualisierbar und werden speziell nach Ihren Wünschen gefertigt. Egal, ob Sie ein Einzelstück für Ihren Weinkeller oder ein elegantes Interieur für Ihr Wohnzimmer suchen – bei VINLIGNA finden Sie die perfekte Lösung.
               </p>
             </motion.div>
@@ -321,10 +321,10 @@ const PrivatePage = () => {
               <span className="section-subtitle">
                 Ihre Vorteile
               </span>
-              <h2 className="section-title text-white">
+              <h2 className="section-title text-foreground dark:text-white">
                 Vorteile für <span className="text-gradient">Weinliebhaber</span>
               </h2>
-              <p className="text-white/70 max-w-2xl mx-auto">
+              <p className="text-foreground/70 dark:text-white/70 max-w-2xl mx-auto">
                 Entdecken Sie, was unsere Möbelstücke so besonders macht und wie sie Ihr Zuhause bereichern können.
               </p>
             </motion.div>
@@ -415,8 +415,8 @@ const ProductCategory = ({ icon, title, description, image }: ProductCategoryPro
       <div className="mb-4 bg-wine-light/20 w-12 h-12 rounded-full flex items-center justify-center text-wine">
         {icon}
       </div>
-      <h3 className="text-xl font-medium mb-3 text-white">{title}</h3>
-      <p className="text-white/70 mb-4">{description}</p>
+      <h3 className="text-xl font-medium mb-3 text-foreground dark:text-white">{title}</h3>
+      <p className="text-foreground/70 dark:text-white/70 mb-4">{description}</p>
     </div>
     <div className="order-1 md:order-2">
       <div className="relative rounded-lg overflow-hidden shadow-lg h-64">
@@ -443,8 +443,8 @@ const BenefitItem = ({ title, description }: BenefitItemProps) => (
       </div>
     </div>
     <div>
-      <h4 className="text-lg font-medium mb-1 text-white">{title}</h4>
-      <p className="text-white/70 text-sm">{description}</p>
+      <h4 className="text-lg font-medium mb-1 text-foreground dark:text-white">{title}</h4>
+      <p className="text-foreground/70 dark:text-white/70 text-sm">{description}</p>
     </div>
   </div>
 );
