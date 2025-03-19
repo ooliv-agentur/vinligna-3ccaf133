@@ -82,6 +82,26 @@ const BusinessPage = () => {
       />
       <BusinessFaq />
       <BrandAffiliation />
+      
+      {/* Manufakturhof Alsenz Link */}
+      <div className="bg-neutral-50 dark:bg-neutral-900 py-12 text-center">
+        <div className="container mx-auto">
+          <a 
+            href="https://manufakturhof-alsenz.com/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="inline-block transition-transform hover:scale-105"
+            aria-label="Besuchen Sie Manufakturhof Alsenz"
+          >
+            <img 
+              src="/lovable-uploads/085237aa-3df7-4c1f-8eeb-645dcec2875e.png" 
+              alt="Manufakturhof Alsenz" 
+              className="h-20 mx-auto"
+            />
+          </a>
+        </div>
+      </div>
+      
       <Footer />
       <ScrollToTop />
     </div>
