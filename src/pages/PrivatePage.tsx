@@ -12,6 +12,7 @@ import ProductionProcess from '@/components/ProductionProcess';
 import { fadeIn, slideInLeft, slideInRight, staggerContainer } from '@/lib/motion';
 import FullWidthImageSection from '@/components/private/FullWidthImageSection';
 import TextArrowButton from '@/components/TextArrowButton';
+import BrandAffiliation from '@/components/BrandAffiliation';
 
 const PrivatePage = () => {
   useEffect(() => {
@@ -395,6 +396,7 @@ const PrivatePage = () => {
       {/* FAQ Section */}
       <Faq />
       
+      <BrandAffiliation />
       <Footer />
       <ScrollToTop />
     </div>
