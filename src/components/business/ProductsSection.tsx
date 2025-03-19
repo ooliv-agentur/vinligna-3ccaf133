@@ -3,8 +3,11 @@ import { motion } from 'framer-motion';
 import { Table, Armchair, Layers, Wine, Hotel } from 'lucide-react';
 import { ProductCard } from './ProductCard';
 import { fadeIn, staggerContainer, slideUp } from '@/lib/motion';
+import { useAppTheme } from '@/hooks/use-theme';
 
 const ProductsSection = () => {
+  const { isDarkMode } = useAppTheme();
+  
   return (
     <section className="section-padding-lg bg-darkbg overflow-hidden">
       <div className="container mx-auto px-6">
@@ -19,10 +22,10 @@ const ProductsSection = () => {
             <span className="section-subtitle">
               Unsere Produkte
             </span>
-            <h2 className="section-title text-white">
+            <h2 className="section-title text-foreground dark:text-white">
               Maßgeschneiderte <span className="text-gradient">Weinfass-Möbel</span>
             </h2>
-            <p className="text-white/70 max-w-2xl mx-auto">
+            <p className="text-foreground/70 dark:text-white/70 max-w-2xl mx-auto">
               Unsere Möbel sind vollständig individualisierbar und auf die speziellen Bedürfnisse von Weingütern, Restaurants und Hotels ausgerichtet.
             </p>
           </motion.div>
