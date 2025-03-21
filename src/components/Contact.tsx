@@ -79,7 +79,7 @@ const Contact = ({
             <BenefitsCard benefits={benefits} />
             
             {/* Direct contact options visible on desktop and tablets */}
-            <div className="hidden md:block mt-4 p-6 bg-white/5 backdrop-blur-sm rounded-3xl">
+            <div className="hidden md:block">
               <DirectContactOption />
             </div>
           </motion.div>
