@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import ContactForm from './contact/ContactForm';
 import ContactInfo from './contact/ContactInfo';
 import BenefitsCard from './contact/BenefitsCard';
+import DirectContactOption from './contact/DirectContactOption';
 import { benefits } from './contact/contactConstants';
 
 interface ContactProps {
@@ -44,6 +45,11 @@ const Contact = ({
           <p className="text-foreground/70 dark:text-white/70 text-base md:text-lg max-w-2xl mx-auto">
             {description}
           </p>
+          
+          {/* Direct contact options visible on mobile */}
+          <div className="md:hidden mt-8">
+            <DirectContactOption />
+          </div>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 md:gap-10">
@@ -71,6 +77,11 @@ const Contact = ({
             
             {/* Benefits Card */}
             <BenefitsCard benefits={benefits} />
+            
+            {/* Direct contact options visible on desktop and tablets */}
+            <div className="hidden md:block">
+              <DirectContactOption />
+            </div>
           </motion.div>
         </div>
       </div>

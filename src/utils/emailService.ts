@@ -57,8 +57,9 @@ export const sendEmailNotifications = async (data: EmailData): Promise<EmailResp
     console.log("Request URL:", 'https://vinligna-contact-form.deno.dev');
     console.log("Request payload:", JSON.stringify(payload));
     
+    // Try with standard CORS mode first
     try {
-      // Send the data to the Deno edge function
+      // Send the data to the Deno edge function with CORS mode
       const response = await fetch('https://vinligna-contact-form.deno.dev', {
         method: 'POST',
         headers: { 
@@ -66,7 +67,7 @@ export const sendEmailNotifications = async (data: EmailData): Promise<EmailResp
           'Accept': 'application/json'
         },
         body: JSON.stringify(payload),
-        mode: 'cors' // Explicitly set CORS mode
+        mode: 'cors'
       });
       
       // Log the response status
@@ -99,26 +100,63 @@ export const sendEmailNotifications = async (data: EmailData): Promise<EmailResp
       console.log("Email sending result:", result);
       
       return { success: result.success };
-    } catch (fetchError) {
-      // If CORS mode fails, create a direct mailto link as fallback
-      console.error("CORS error detected, trying alternative approach:", fetchError);
+    } catch (corsError) {
+      // CORS error detected, try with no-cors mode as a second attempt
+      console.error("CORS error detected with 'cors' mode, trying 'no-cors' mode:", corsError);
       
-      // Create direct mailto link as fallback
-      const subject = encodeURIComponent(`Anfrage von ${name} über ${formSource}`);
-      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nTelefon: ${phone || "Nicht angegeben"}\nInteresse: ${formatInterest(interest)}\n\nNachricht:\n${message}\n\nFormular: ${formSource}\nZeitstempel: ${new Date().toLocaleString("de-DE")}`);
-      
-      return { 
-        success: false,
-        errorMessage: `CORS-Fehler beim Senden: Bitte kontaktieren Sie uns direkt unter <a href="mailto:info@vinligna.com?subject=${subject}&body=${body}" class="underline">info@vinligna.com</a>`,
-        mailtoLink: `mailto:info@vinligna.com?subject=${subject}&body=${body}`
-      };
+      try {
+        // Try with no-cors mode
+        console.log("Attempting with no-cors mode");
+        const noCorsFetch = await fetch('https://vinligna-contact-form.deno.dev', {
+          method: 'POST',
+          headers: { 
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload),
+          mode: 'no-cors'
+        });
+        
+        console.log("no-cors response:", noCorsFetch);
+        
+        // With no-cors, we won't get a readable response, but if it didn't throw an error,
+        // we might have succeeded. However, we can't know for sure.
+        
+        // Instead of assuming success (which may be misleading), we'll be honest with the user
+        // Create direct mailto link as fallback
+        const subject = encodeURIComponent(`Anfrage von ${name} über ${formSource}`);
+        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nTelefon: ${phone || "Nicht angegeben"}\nInteresse: ${formatInterest(interest)}\n\nNachricht:\n${message}\n\nFormular: ${formSource}\nZeitstempel: ${new Date().toLocaleString("de-DE")}`);
+        
+        return { 
+          success: false,
+          errorMessage: `CORS-Fehler beim Senden: Bitte kontaktieren Sie uns direkt unter <a href="mailto:info@vinligna.com?subject=${subject}&body=${body}" class="underline">info@vinligna.com</a>`,
+          mailtoLink: `mailto:info@vinligna.com?subject=${subject}&body=${body}`
+        };
+      } catch (noCorsError) {
+        console.error("Both CORS approaches failed:", noCorsError);
+        
+        // Create direct mailto link as ultimate fallback
+        const subject = encodeURIComponent(`Anfrage von ${name} über ${formSource}`);
+        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nTelefon: ${phone || "Nicht angegeben"}\nInteresse: ${formatInterest(interest)}\n\nNachricht:\n${message}\n\nFormular: ${formSource}\nZeitstempel: ${new Date().toLocaleString("de-DE")}`);
+        
+        return { 
+          success: false,
+          errorMessage: `Beim Senden ist ein Fehler aufgetreten: Bitte kontaktieren Sie uns direkt unter <a href="mailto:info@vinligna.com?subject=${subject}&body=${body}" class="underline">info@vinligna.com</a>`,
+          mailtoLink: `mailto:info@vinligna.com?subject=${subject}&body=${body}`
+        };
+      }
     }
     
   } catch (error) {
     console.error("Failed to send email notifications:", error);
+    
+    // Create direct mailto link as fallback
+    const subject = encodeURIComponent(`Anfrage von ${name} über ${formSource}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nTelefon: ${phone || "Nicht angegeben"}\nInteresse: ${formatInterest(interest)}\n\nNachricht:\n${message}\n\nFormular: ${formSource}\nZeitstempel: ${new Date().toLocaleString("de-DE")}`);
+    
     return { 
       success: false, 
-      errorMessage: error instanceof Error ? error.message : 'Unbekannter Fehler beim Senden' 
+      errorMessage: `Fehler: ${error instanceof Error ? error.message : 'Unbekannter Fehler beim Senden'}`,
+      mailtoLink: `mailto:info@vinligna.com?subject=${subject}&body=${body}`
     };
   }
 };

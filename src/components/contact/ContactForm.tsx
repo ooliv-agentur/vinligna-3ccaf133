@@ -1,11 +1,13 @@
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Mail } from 'lucide-react';
+import { ArrowRight, Mail, AlertCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { sendEmailNotifications } from '@/utils/emailService';
 import { useLocation } from 'react-router-dom';
 import { useAppTheme } from '@/hooks/use-theme';
+import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 
 interface ContactFormProps {
   formSource?: string;
@@ -241,27 +243,34 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
       </div>
 
       {errorMessage && (
-        <div className="px-4 py-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-700 dark:text-red-300">
-          {mailtoLink ? (
-            <div className="space-y-3">
-              <p className="text-sm" dangerouslySetInnerHTML={{ __html: errorMessage || "" }} />
+        <div className={cn(
+          "rounded-xl p-4 border",
+          isDarkMode 
+            ? "bg-red-900/30 border-red-900/30 text-red-200"
+            : "bg-red-50 border-red-200 text-red-700"
+        )}>
+          <div className="flex items-start">
+            <AlertCircle className="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" />
+            <div className="space-y-3 w-full">
+              <div>
+                <p className="font-medium text-sm">CORS-Fehler beim Senden: Bitte kontaktieren Sie uns direkt unter <a href="mailto:info@vinligna.com" className="underline hover:text-wine">info@vinligna.com</a></p>
+              </div>
+              
               <button
                 type="button"
                 onClick={handleDirectEmail}
-                className="inline-flex items-center text-sm text-wine dark:text-wine-light hover:underline"
+                className={cn(
+                  "flex items-center justify-center w-full py-2 px-4 text-sm rounded-lg border transition-colors",
+                  isDarkMode 
+                    ? "bg-white/10 border-white/20 text-white hover:bg-white/20"
+                    : "bg-white border-gray-200 text-gray-800 hover:bg-gray-50"
+                )}
               >
                 <Mail className="w-4 h-4 mr-2" />
                 E-Mail direkt senden
               </button>
             </div>
-          ) : (
-            <div className="space-y-2">
-              <p className="text-sm">{errorMessage}</p>
-              <p className="text-sm">
-                Bitte kontaktieren Sie uns direkt: <a href="mailto:info@vinligna.com" className="underline hover:text-wine">info@vinligna.com</a>
-              </p>
-            </div>
-          )}
+          </div>
         </div>
       )}
 
