@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Mail, AlertCircle } from 'lucide-react';
@@ -19,6 +20,7 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [mailtoLink, setMailtoLink] = useState<string | null>(null);
+  const [showDirectContact, setShowDirectContact] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -45,6 +47,7 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
     setIsSubmitting(true);
     setErrorMessage(null);
     setMailtoLink(null);
+    setShowDirectContact(true);
     
     try {
       console.log("Form submission started");
@@ -104,8 +107,10 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
     if (mailtoLink) {
       window.location.href = mailtoLink;
     } else {
-      // Fallback if no mailtoLink is available
-      window.location.href = 'mailto:info@vinligna.com';
+      // Create a basic mailto link as fallback
+      const subject = encodeURIComponent(`Anfrage von ${formData.name} über ${getFormSource()}`);
+      const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nTelefon: ${formData.phone || "Nicht angegeben"}\nInteresse: ${formData.interest}\n\nNachricht:\n${formData.message}`);
+      window.location.href = `mailto:info@vinligna.com?subject=${subject}&body=${body}`;
     }
   };
 
@@ -120,9 +125,6 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
     "block text-sm font-medium",
     isDarkMode ? "text-white/80" : "text-gray-700"
   );
-
-  // Directly show the error message and email button without requiring form submission
-  const showDirectContact = true;
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
