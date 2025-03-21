@@ -2,9 +2,9 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { SMTPClient } from "https://deno.land/x/smtp@v0.7.0/mod.ts";
 
-// Updated CORS headers to allow your domain
+// Updated CORS headers with proper configuration
 const corsHeaders = {
-  'Access-Control-Allow-Origin': '*', // For now allow all origins, can be restricted to 'https://vinligna.com' later
+  'Access-Control-Allow-Origin': '*', // Allow all origins for now
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
   'Access-Control-Max-Age': '86400', // 24 hours cache for preflight requests
@@ -102,20 +102,25 @@ Formular: ${data.formSource || "Nicht angegeben"}
 Zeitstempel: ${new Date().toLocaleString("de-DE")}
 `;
 
-    // Configure SMTP client
-    const client = new SMTPClient({
-      connection: {
-        hostname: "smtp.ionos.de",
-        port: 587,
-        tls: true,
-        auth: {
-          username: Deno.env.get("SMTP_USERNAME") || "info@vinligna.com",
-          password: Deno.env.get("SMTP_PASSWORD") || "",
-        },
-      },
-    });
+    // Create direct mailto link as fallback
+    const mailtoSubject = encodeURIComponent(subject);
+    const mailtoBody = encodeURIComponent(messageBody);
+    const mailtoLink = `mailto:info@vinligna.com?subject=${mailtoSubject}&body=${mailtoBody}`;
 
     try {
+      // Configure SMTP client
+      const client = new SMTPClient({
+        connection: {
+          hostname: "smtp.ionos.de",
+          port: 587,
+          tls: true,
+          auth: {
+            username: Deno.env.get("SMTP_USERNAME") || "info@vinligna.com",
+            password: Deno.env.get("SMTP_PASSWORD") || "",
+          },
+        },
+      });
+
       // Send email
       console.log("Attempting to send email via SMTP");
       await client.send({
@@ -128,11 +133,6 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
       
       console.log("Email sent successfully");
       
-      // Create direct mailto link as fallback
-      const mailtoSubject = encodeURIComponent(subject);
-      const mailtoBody = encodeURIComponent(messageBody);
-      const mailtoLink = `mailto:info@vinligna.com?subject=${mailtoSubject}&body=${mailtoBody}`;
-
       return new Response(
         JSON.stringify({
           success: true,
@@ -147,11 +147,6 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
     } catch (smtpError) {
       console.error("SMTP error:", smtpError);
       
-      // Create direct mailto link as fallback on SMTP failure
-      const mailtoSubject = encodeURIComponent(subject);
-      const mailtoBody = encodeURIComponent(messageBody);
-      const mailtoLink = `mailto:info@vinligna.com?subject=${mailtoSubject}&body=${mailtoBody}`;
-
       return new Response(
         JSON.stringify({
           success: false,
@@ -160,7 +155,7 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
         }),
         {
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-          status: 500,
+          status: 200, // Return 200 to client even with SMTP error, with mailtoLink as fallback
         }
       );
     }

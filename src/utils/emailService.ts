@@ -48,6 +48,11 @@ export const sendEmailNotifications = async (data: EmailData): Promise<EmailResp
   });
   
   try {
+    // Create direct mailto link as fallback
+    const subject = encodeURIComponent(`Anfrage von ${name} über ${formSource}`);
+    const body = encodeURIComponent(`Name: ${name}\nE-Mail: ${email}\nTelefon: ${telefon || "Nicht angegeben"}\nInteresse: ${formatInterest(interesse)}\n\nNachricht:\n${nachricht}\n\nFormular: ${formSource}\nZeitstempel: ${new Date().toLocaleString("de-DE")}`);
+    const mailtoLink = `mailto:info@vinligna.com?subject=${subject}&body=${body}`;
+    
     // Call the Supabase edge function to send the email with proper headers
     const { data: functionData, error } = await supabase.functions.invoke('send-email', {
       body: {
@@ -66,20 +71,34 @@ export const sendEmailNotifications = async (data: EmailData): Promise<EmailResp
     // Check for edge function errors
     if (error) {
       console.error("Supabase edge function error:", error);
-      throw new Error(error.message);
+      return { 
+        success: false,
+        error: error.message,
+        mailtoLink
+      };
     }
     
     console.log("Edge function response:", functionData);
     
     // Return success or error based on the function response
-    if (functionData.success) {
+    if (functionData && functionData.success) {
       return { 
         success: true,
-        message: functionData.message,
-        mailtoLink: functionData.mailtoLink
+        message: functionData.message || "Email sent successfully",
+        mailtoLink: functionData.mailtoLink || mailtoLink
+      };
+    } else if (functionData) {
+      return {
+        success: false,
+        error: functionData.error || "Unknown error from edge function",
+        mailtoLink: functionData.mailtoLink || mailtoLink
       };
     } else {
-      throw new Error(functionData.error || "Unknown error from edge function");
+      return {
+        success: false,
+        error: "No response from edge function",
+        mailtoLink
+      };
     }
     
   } catch (error) {
