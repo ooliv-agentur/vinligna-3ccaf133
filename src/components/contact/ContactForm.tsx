@@ -7,7 +7,6 @@ import { cn } from '@/lib/utils';
 import { sendEmailNotifications } from '@/utils/emailService';
 import { useLocation } from 'react-router-dom';
 import { useAppTheme } from '@/hooks/use-theme';
-import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 
 interface ContactFormProps {
   formSource?: string;
@@ -60,38 +59,20 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
       
       console.log("Email sending completed with result:", result);
       
-      if (result.success) {
-        // Reset form
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          message: '',
-          interest: 'business',
-        });
-        
-        // Show success toast
-        toast({
-          title: "Nachricht erfolgreich gesendet",
-          description: "Vielen Dank für Ihre Nachricht! Wir haben Ihre Anfrage erhalten und melden uns in Kürze bei Ihnen.",
-          variant: "default",
-        });
-      } else {
-        // Set error message
-        setErrorMessage(result.errorMessage || "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten.");
-        
-        // Set mailto link if provided
-        if (result.mailtoLink) {
-          setMailtoLink(result.mailtoLink);
-        }
-        
-        // Show error toast
-        toast({
-          title: "Fehler beim Senden",
-          description: "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte verwenden Sie den alternativen Kontaktweg.",
-          variant: "destructive",
-        });
+      // Set error message and mailto link for client-side fallback
+      setErrorMessage(result.errorMessage || "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten.");
+      
+      if (result.mailtoLink) {
+        setMailtoLink(result.mailtoLink);
       }
+      
+      // Show info toast about using direct email
+      toast({
+        title: "Information",
+        description: "Das Kontaktformular verwendet den E-Mail-Client. Bitte verwenden Sie den 'E-Mail direkt senden' Button.",
+        variant: "default",
+      });
+      
     } catch (error) {
       console.error("Form submission error:", error);
       const errorMsg = error instanceof Error ? error.message : "Unbekannter Fehler";
