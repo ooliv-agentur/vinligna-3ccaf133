@@ -2,11 +2,12 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { SMTPClient } from "https://deno.land/x/smtp@v0.7.0/mod.ts";
 
-// CORS headers with specific origin for the website
+// Updated CORS headers to allow your domain
 const corsHeaders = {
-  'Access-Control-Allow-Origin': '*', // For development, will be restricted in production
+  'Access-Control-Allow-Origin': '*', // For now allow all origins, can be restricted to 'https://vinligna.com' later
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Max-Age': '86400', // 24 hours cache for preflight requests
 };
 
 interface EmailData {

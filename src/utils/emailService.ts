@@ -48,7 +48,7 @@ export const sendEmailNotifications = async (data: EmailData): Promise<EmailResp
   });
   
   try {
-    // Call the Supabase edge function to send the email
+    // Call the Supabase edge function to send the email with proper headers
     const { data: functionData, error } = await supabase.functions.invoke('send-email', {
       body: {
         name,
@@ -57,6 +57,9 @@ export const sendEmailNotifications = async (data: EmailData): Promise<EmailResp
         interesse,
         nachricht,
         formSource
+      },
+      headers: {
+        'Content-Type': 'application/json'
       },
     });
     
