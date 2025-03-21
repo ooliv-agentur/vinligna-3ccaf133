@@ -1,7 +1,6 @@
-
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Mail } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { sendEmailNotifications } from '@/utils/emailService';
@@ -27,7 +26,6 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
     interest: 'business', // Default value
   });
 
-  // Determine the form source based on the current route or provided prop
   const getFormSource = (): string => {
     if (formSource) return formSource;
     
@@ -111,6 +109,15 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleDirectEmail = () => {
+    if (mailtoLink) {
+      window.location.href = mailtoLink;
+    } else {
+      // Fallback if no mailtoLink is available
+      window.location.href = 'mailto:info@vinligna.com';
+    }
   };
 
   const inputClasses = cn(
@@ -236,23 +243,24 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
       {errorMessage && (
         <div className="px-4 py-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-700 dark:text-red-300">
           {mailtoLink ? (
-            <div>
+            <div className="space-y-3">
               <p className="text-sm" dangerouslySetInnerHTML={{ __html: errorMessage || "" }} />
-              <p className="text-sm mt-1">
-                Alternativ können Sie uns auch
-                <a 
-                  href={mailtoLink} 
-                  className="text-wine dark:text-wine-light font-semibold ml-1 hover:underline"
-                >
-                  direkt eine E-Mail senden
-                </a>.
-              </p>
+              <button
+                type="button"
+                onClick={handleDirectEmail}
+                className="inline-flex items-center text-sm text-wine dark:text-wine-light hover:underline"
+              >
+                <Mail className="w-4 h-4 mr-2" />
+                E-Mail direkt senden
+              </button>
             </div>
           ) : (
-            <>
+            <div className="space-y-2">
               <p className="text-sm">{errorMessage}</p>
-              <p className="text-sm mt-1">Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt per E-Mail: <a href="mailto:info@vinligna.com" className="underline">info@vinligna.com</a></p>
-            </>
+              <p className="text-sm">
+                Bitte kontaktieren Sie uns direkt: <a href="mailto:info@vinligna.com" className="underline hover:text-wine">info@vinligna.com</a>
+              </p>
+            </div>
           )}
         </div>
       )}

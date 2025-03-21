@@ -10,6 +10,12 @@ interface EmailData {
   formSource: string;
 }
 
+interface EmailResponse {
+  success: boolean;
+  errorMessage?: string;
+  mailtoLink?: string;
+}
+
 /**
  * Formats interest selection for better readability
  */
@@ -26,7 +32,7 @@ const formatInterest = (interest: string): string => {
 /**
  * Sends form data to the Deno edge function that handles SMTP email sending
  */
-export const sendEmailNotifications = async (data: EmailData): Promise<{ success: boolean; errorMessage?: string }> => {
+export const sendEmailNotifications = async (data: EmailData): Promise<EmailResponse> => {
   const { name, email, phone, interest, message, formSource } = data;
   
   try {
@@ -51,7 +57,6 @@ export const sendEmailNotifications = async (data: EmailData): Promise<{ success
     console.log("Request URL:", 'https://vinligna-contact-form.deno.dev');
     console.log("Request payload:", JSON.stringify(payload));
     
-    // Versuche die Anfrage mit Mode: 'cors' zu senden
     try {
       // Send the data to the Deno edge function
       const response = await fetch('https://vinligna-contact-form.deno.dev', {
@@ -61,7 +66,7 @@ export const sendEmailNotifications = async (data: EmailData): Promise<{ success
           'Accept': 'application/json'
         },
         body: JSON.stringify(payload),
-        mode: 'cors' // Explizit CORS-Modus setzen
+        mode: 'cors' // Explicitly set CORS mode
       });
       
       // Log the response status
@@ -95,10 +100,10 @@ export const sendEmailNotifications = async (data: EmailData): Promise<{ success
       
       return { success: result.success };
     } catch (fetchError) {
-      // Wenn der CORS-Modus fehlschlägt, versuchen wir es mit einer alternativen Methode
+      // If CORS mode fails, create a direct mailto link as fallback
       console.error("CORS error detected, trying alternative approach:", fetchError);
       
-      // Direkter Link zur manuellen E-Mail-Erstellung als Fallback
+      // Create direct mailto link as fallback
       const subject = encodeURIComponent(`Anfrage von ${name} über ${formSource}`);
       const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nTelefon: ${phone || "Nicht angegeben"}\nInteresse: ${formatInterest(interest)}\n\nNachricht:\n${message}\n\nFormular: ${formSource}\nZeitstempel: ${new Date().toLocaleString("de-DE")}`);
       
