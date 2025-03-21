@@ -51,10 +51,9 @@ export const sendEmailNotifications = async (data: EmailData): Promise<EmailResp
     
     const mailtoLink = `mailto:info@vinligna.com?subject=${subject}&body=${body}`;
     
-    // Return the mailtoLink but with success:false to indicate we're using fallback
+    // Return success with mailtoLink for UI to handle
     return { 
-      success: false,
-      errorMessage: `CORS-Fehler beim Senden: Bitte kontaktieren Sie uns direkt unter <a href="${mailtoLink}" class="underline">info@vinligna.com</a>`,
+      success: true,
       mailtoLink: mailtoLink
     };
     

@@ -47,7 +47,7 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
     setIsSubmitting(true);
     setErrorMessage(null);
     setMailtoLink(null);
-    setShowDirectContact(true);
+    setShowDirectContact(false); // Reset this to false initially
     
     try {
       console.log("Form submission started");
@@ -62,20 +62,29 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
       
       console.log("Email sending completed with result:", result);
       
-      // Since we're now always using the mailto fallback, show the error message
-      // and provide the direct email option
-      setErrorMessage(result.errorMessage || "CORS-Fehler beim Senden: Bitte kontaktieren Sie uns direkt unter info@vinligna.com");
-      
-      if (result.mailtoLink) {
-        setMailtoLink(result.mailtoLink);
+      if (result.success) {
+        setMailtoLink(result.mailtoLink || null);
+        setShowDirectContact(true);
+        
+        // Show success toast
+        toast({
+          title: "Erfolg",
+          description: "Klicken Sie auf 'E-Mail direkt senden', um Ihre Nachricht zu senden.",
+          variant: "default",
+        });
+      } else {
+        // Handle error case
+        setErrorMessage(result.errorMessage || "Beim Senden ist ein Fehler aufgetreten. Bitte kontaktieren Sie uns direkt per E-Mail.");
+        setMailtoLink(result.mailtoLink || null);
+        setShowDirectContact(true);
+        
+        // Show error toast
+        toast({
+          title: "Direkte Email erforderlich",
+          description: "Bitte verwenden Sie den 'E-Mail direkt senden' Button, um Ihre Nachricht zu senden.",
+          variant: "default",
+        });
       }
-      
-      // Show toast with instructions
-      toast({
-        title: "Direkte Email erforderlich",
-        description: "Bitte verwenden Sie den 'E-Mail direkt senden' Button, um Ihre Nachricht zu senden.",
-        variant: "default",
-      });
       
     } catch (error) {
       console.error("Form submission error:", error);
@@ -86,11 +95,12 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
       const subject = encodeURIComponent(`Anfrage von ${formData.name} über ${getFormSource()}`);
       const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nTelefon: ${formData.phone || "Nicht angegeben"}\nInteresse: ${formData.interest}\n\nNachricht:\n${formData.message}`);
       setMailtoLink(`mailto:info@vinligna.com?subject=${subject}&body=${body}`);
+      setShowDirectContact(true);
       
       // Show error toast
       toast({
         title: "Fehler beim Senden",
-        description: "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt per E-Mail.",
+        description: "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte verwenden Sie den 'E-Mail direkt senden' Button.",
         variant: "destructive",
       });
     } finally {
