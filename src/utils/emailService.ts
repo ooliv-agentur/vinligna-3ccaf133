@@ -1,5 +1,5 @@
 
-// Email service for form submission using a Deno edge function
+// Email service for form submission using a Supabase edge function
 
 interface EmailData {
   name: string;
@@ -30,14 +30,14 @@ const formatInterest = (interest: string): string => {
 };
 
 /**
- * Sends form data to the Deno edge function that handles SMTP email sending
+ * Sends form data to the Supabase edge function that handles SMTP email sending
  */
 export const sendEmailNotifications = async (data: EmailData): Promise<EmailResponse> => {
   const { name, email, phone, interest, message, formSource } = data;
   
   try {
     // Log what we're about to send
-    console.log("Sending email data to edge function:", {
+    console.log("Sending email data to Supabase edge function:", {
       name,
       email,
       telefon: phone || "Nicht angegeben",
@@ -54,13 +54,16 @@ export const sendEmailNotifications = async (data: EmailData): Promise<EmailResp
       nachricht: `${message}\n\nFormular: ${formSource}\nZeitstempel: ${new Date().toLocaleString("de-DE")}`
     };
     
-    console.log("Request URL:", 'https://vinligna-contact-form.deno.dev');
+    // The CORRECT Supabase Edge Function URL
+    const supabaseUrl = 'https://nbdakkvfedbnpfsfnsrc.supabase.co/functions/v1/send-email';
+    
+    console.log("Request URL:", supabaseUrl);
     console.log("Request payload:", JSON.stringify(payload));
     
     // Try with standard CORS mode first
     try {
-      // Send the data to the Deno edge function with CORS mode
-      const response = await fetch('https://vinligna-contact-form.deno.dev', {
+      // Send the data to the Supabase edge function with CORS mode
+      const response = await fetch(supabaseUrl, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
@@ -107,7 +110,7 @@ export const sendEmailNotifications = async (data: EmailData): Promise<EmailResp
       try {
         // Try with no-cors mode
         console.log("Attempting with no-cors mode");
-        const noCorsFetch = await fetch('https://vinligna-contact-form.deno.dev', {
+        const noCorsFetch = await fetch(supabaseUrl, {
           method: 'POST',
           headers: { 
             'Content-Type': 'application/json'
