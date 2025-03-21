@@ -16,6 +16,7 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
   const location = useLocation();
   const { isDarkMode } = useAppTheme();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -41,16 +42,22 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage(null);
     
     try {
+      console.log("Form submission started");
       // Send email notifications
       const source = getFormSource();
-      const success = await sendEmailNotifications({
+      console.log(`Form source: ${source}`);
+      
+      const result = await sendEmailNotifications({
         ...formData,
         formSource: source
       });
       
-      if (success) {
+      console.log("Email sending completed with result:", result);
+      
+      if (result.success) {
         // Reset form
         setFormData({
           name: '',
@@ -67,15 +74,21 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
           variant: "default",
         });
       } else {
+        // Set error message
+        setErrorMessage(result.errorMessage || "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten.");
+        
         // Show error toast
         toast({
           title: "Fehler beim Senden",
-          description: "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt per E-Mail.",
+          description: result.errorMessage || "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt per E-Mail.",
           variant: "destructive",
         });
       }
     } catch (error) {
       console.error("Form submission error:", error);
+      const errorMsg = error instanceof Error ? error.message : "Unbekannter Fehler";
+      setErrorMessage(errorMsg);
+      
       // Show error toast
       toast({
         title: "Fehler beim Senden",
@@ -211,6 +224,13 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
           placeholder="Beschreiben Sie Ihr Projekt oder Ihre Anfrage..."
         />
       </div>
+
+      {errorMessage && (
+        <div className="px-4 py-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-700 dark:text-red-300">
+          <p className="text-sm">{errorMessage}</p>
+          <p className="text-sm mt-1">Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt per E-Mail: <a href="mailto:info@vinligna.com" className="underline">info@vinligna.com</a></p>
+        </div>
+      )}
 
       <motion.button
         type="submit"
