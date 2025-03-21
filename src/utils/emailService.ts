@@ -40,7 +40,7 @@ export const sendEmailNotifications = async (data: EmailData): Promise<boolean> 
     });
     
     // Send the data to the Deno edge function
-    const response = await fetch('https://your-deno-edge-function-url.com', {
+    const response = await fetch('https://vinligna-contact-form.deno.dev', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
