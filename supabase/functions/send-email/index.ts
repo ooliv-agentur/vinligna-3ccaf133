@@ -2,12 +2,13 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { SMTPClient } from "https://deno.land/x/smtp@v0.7.0/mod.ts";
 
-// Updated CORS headers with proper configuration
+// Improved CORS headers with proper configuration and wildcard origin
 const corsHeaders = {
-  'Access-Control-Allow-Origin': '*', // Allow all origins for now
+  'Access-Control-Allow-Origin': '*', // Allow all origins
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
   'Access-Control-Max-Age': '86400', // 24 hours cache for preflight requests
+  'Content-Type': 'application/json'
 };
 
 interface EmailData {
@@ -20,6 +21,9 @@ interface EmailData {
 }
 
 serve(async (req) => {
+  console.log(`Request received: ${req.method} ${req.url}`);
+  console.log(`Headers: ${JSON.stringify(Object.fromEntries(req.headers))}`);
+  
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
     console.log("Handling CORS preflight request");
@@ -35,7 +39,7 @@ serve(async (req) => {
     return new Response(
       JSON.stringify({ success: false, error: "Method not allowed" }),
       { 
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        headers: corsHeaders,
         status: 405,
       }
     );
@@ -53,7 +57,7 @@ serve(async (req) => {
           error: "InvalidContentType: Content-Type must be application/json" 
         }),
         { 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          headers: corsHeaders,
           status: 400, 
         }
       );
@@ -72,7 +76,7 @@ serve(async (req) => {
           requiredFields: ['name', 'email', 'interesse', 'nachricht'] 
         }),
         { 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          headers: corsHeaders,
           status: 400, 
         }
       );
@@ -108,6 +112,17 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
     const mailtoLink = `mailto:info@vinligna.com?subject=${mailtoSubject}&body=${mailtoBody}`;
 
     try {
+      // Get SMTP credentials from environment variables
+      const smtpUsername = Deno.env.get("SMTP_USERNAME");
+      const smtpPassword = Deno.env.get("SMTP_PASSWORD");
+      
+      console.log(`SMTP username available: ${!!smtpUsername}`);
+      console.log(`SMTP password available: ${!!smtpPassword}`);
+      
+      if (!smtpUsername || !smtpPassword) {
+        throw new Error("SMTP credentials are not configured");
+      }
+      
       // Configure SMTP client
       const client = new SMTPClient({
         connection: {
@@ -115,8 +130,8 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
           port: 587,
           tls: true,
           auth: {
-            username: Deno.env.get("SMTP_USERNAME") || "info@vinligna.com",
-            password: Deno.env.get("SMTP_PASSWORD") || "",
+            username: smtpUsername,
+            password: smtpPassword,
           },
         },
       });
@@ -140,7 +155,7 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
           mailtoLink: mailtoLink
         }),
         {
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          headers: corsHeaders,
           status: 200,
         }
       );
@@ -154,7 +169,7 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
           mailtoLink: mailtoLink
         }),
         {
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          headers: corsHeaders,
           status: 200, // Return 200 to client even with SMTP error, with mailtoLink as fallback
         }
       );
@@ -168,7 +183,7 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
         error: error instanceof Error ? error.message : "Unknown error occurred"
       }),
       {
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        headers: corsHeaders,
         status: 500,
       }
     );

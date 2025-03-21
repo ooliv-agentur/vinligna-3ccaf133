@@ -63,6 +63,7 @@ export const sendEmailNotifications = async (data: EmailData): Promise<EmailResp
         nachricht,
         formSource
       },
+      // No authorization header needed since we turned off JWT verification
       headers: {
         'Content-Type': 'application/json'
       },
