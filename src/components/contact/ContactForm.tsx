@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
@@ -17,6 +18,7 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
   const { isDarkMode } = useAppTheme();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [mailtoLink, setMailtoLink] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -43,6 +45,7 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
     e.preventDefault();
     setIsSubmitting(true);
     setErrorMessage(null);
+    setMailtoLink(null);
     
     try {
       console.log("Form submission started");
@@ -77,10 +80,15 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
         // Set error message
         setErrorMessage(result.errorMessage || "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten.");
         
+        // Set mailto link if provided
+        if (result.mailtoLink) {
+          setMailtoLink(result.mailtoLink);
+        }
+        
         // Show error toast
         toast({
           title: "Fehler beim Senden",
-          description: result.errorMessage || "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt per E-Mail.",
+          description: "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte verwenden Sie den alternativen Kontaktweg.",
           variant: "destructive",
         });
       }
@@ -227,8 +235,25 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
 
       {errorMessage && (
         <div className="px-4 py-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-700 dark:text-red-300">
-          <p className="text-sm">{errorMessage}</p>
-          <p className="text-sm mt-1">Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt per E-Mail: <a href="mailto:info@vinligna.com" className="underline">info@vinligna.com</a></p>
+          {mailtoLink ? (
+            <div>
+              <p className="text-sm" dangerouslySetInnerHTML={{ __html: errorMessage || "" }} />
+              <p className="text-sm mt-1">
+                Alternativ können Sie uns auch
+                <a 
+                  href={mailtoLink} 
+                  className="text-wine dark:text-wine-light font-semibold ml-1 hover:underline"
+                >
+                  direkt eine E-Mail senden
+                </a>.
+              </p>
+            </div>
+          ) : (
+            <>
+              <p className="text-sm">{errorMessage}</p>
+              <p className="text-sm mt-1">Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt per E-Mail: <a href="mailto:info@vinligna.com" className="underline">info@vinligna.com</a></p>
+            </>
+          )}
         </div>
       )}
 

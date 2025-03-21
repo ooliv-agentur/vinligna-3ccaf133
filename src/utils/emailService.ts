@@ -51,46 +51,63 @@ export const sendEmailNotifications = async (data: EmailData): Promise<{ success
     console.log("Request URL:", 'https://vinligna-contact-form.deno.dev');
     console.log("Request payload:", JSON.stringify(payload));
     
-    // Send the data to the Deno edge function
-    const response = await fetch('https://vinligna-contact-form.deno.dev', {
-      method: 'POST',
-      headers: { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    });
-    
-    // Log the response status
-    console.log("Response status:", response.status);
-    
-    // Get the response body
-    const responseText = await response.text();
-    console.log("Response body:", responseText);
-    
-    // Parse the response
-    let result;
+    // Versuche die Anfrage mit Mode: 'cors' zu senden
     try {
-      result = JSON.parse(responseText);
-    } catch (e) {
-      console.error("Failed to parse JSON response:", e);
+      // Send the data to the Deno edge function
+      const response = await fetch('https://vinligna-contact-form.deno.dev', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload),
+        mode: 'cors' // Explizit CORS-Modus setzen
+      });
+      
+      // Log the response status
+      console.log("Response status:", response.status);
+      
+      // Get the response body
+      const responseText = await response.text();
+      console.log("Response body:", responseText);
+      
+      // Parse the response
+      let result;
+      try {
+        result = JSON.parse(responseText);
+      } catch (e) {
+        console.error("Failed to parse JSON response:", e);
+        return { 
+          success: false, 
+          errorMessage: `Server antwortete mit nicht-JSON Daten: ${responseText.substring(0, 100)}...` 
+        };
+      }
+      
+      if (!response.ok) {
+        console.error("Server returned error:", result);
+        return { 
+          success: false, 
+          errorMessage: result.error || `Server antwortete mit Statuscode ${response.status}` 
+        };
+      }
+      
+      console.log("Email sending result:", result);
+      
+      return { success: result.success };
+    } catch (fetchError) {
+      // Wenn der CORS-Modus fehlschlägt, versuchen wir es mit einer alternativen Methode
+      console.error("CORS error detected, trying alternative approach:", fetchError);
+      
+      // Direkter Link zur manuellen E-Mail-Erstellung als Fallback
+      const subject = encodeURIComponent(`Anfrage von ${name} über ${formSource}`);
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nTelefon: ${phone || "Nicht angegeben"}\nInteresse: ${formatInterest(interest)}\n\nNachricht:\n${message}\n\nFormular: ${formSource}\nZeitstempel: ${new Date().toLocaleString("de-DE")}`);
+      
       return { 
-        success: false, 
-        errorMessage: `Server antwortete mit nicht-JSON Daten: ${responseText.substring(0, 100)}...` 
+        success: false,
+        errorMessage: `CORS-Fehler beim Senden: Bitte kontaktieren Sie uns direkt unter <a href="mailto:info@vinligna.com?subject=${subject}&body=${body}" class="underline">info@vinligna.com</a>`,
+        mailtoLink: `mailto:info@vinligna.com?subject=${subject}&body=${body}`
       };
     }
-    
-    if (!response.ok) {
-      console.error("Server returned error:", result);
-      return { 
-        success: false, 
-        errorMessage: result.error || `Server antwortete mit Statuscode ${response.status}` 
-      };
-    }
-    
-    console.log("Email sending result:", result);
-    
-    return { success: result.success };
     
   } catch (error) {
     console.error("Failed to send email notifications:", error);
