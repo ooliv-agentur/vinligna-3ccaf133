@@ -71,7 +71,7 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
         // Show error toast
         toast({
           title: "Fehler beim Senden",
-          description: "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.",
+          description: "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt per E-Mail.",
           variant: "destructive",
         });
       }
@@ -80,7 +80,7 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
       // Show error toast
       toast({
         title: "Fehler beim Senden",
-        description: "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.",
+        description: "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt per E-Mail.",
         variant: "destructive",
       });
     } finally {
