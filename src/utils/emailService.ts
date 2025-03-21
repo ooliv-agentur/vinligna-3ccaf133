@@ -1,6 +1,5 @@
 
-// Email service for browser-based form submission
-import { useToast } from '@/hooks/use-toast';
+// Email service for form submission using a Deno edge function
 
 interface EmailData {
   name: string;
@@ -25,46 +24,43 @@ const formatInterest = (interest: string): string => {
 };
 
 /**
- * Sends form data using a fetch request to a dedicated email handler
- * This function will simulate success for demo purposes since we can't
- * actually send emails directly from the browser
- * 
- * In a production environment, this would send data to a serverless function
- * or API endpoint that handles the actual email sending
+ * Sends form data to the Deno edge function that handles SMTP email sending
  */
 export const sendEmailNotifications = async (data: EmailData): Promise<boolean> => {
   const { name, email, phone, interest, message, formSource } = data;
   
   try {
-    // For demonstration purposes, log the data that would be sent
-    console.log("Email data that would be sent:", {
-      to: "info@vinligna.com",
-      bcc: "info@ooliv.de",
-      subject: `Neue Kontaktanfrage: ${formSource}`,
+    // Log what we're about to send
+    console.log("Sending email data to edge function:", {
       name,
       email,
-      phone: phone || "Nicht angegeben",
-      interest: formatInterest(interest),
-      message,
-      timestamp: new Date().toLocaleString("de-DE")
+      telefon: phone || "Nicht angegeben",
+      interesse: formatInterest(interest),
+      nachricht: `${message}\n\nFormular: ${formSource}\nZeitstempel: ${new Date().toLocaleString("de-DE")}`
     });
     
-    // In a real implementation, we would use fetch to send the data to a server:
-    // const response = await fetch('/api/send-email', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ name, email, phone, interest, message, formSource })
-    // });
+    // Send the data to the Deno edge function
+    const response = await fetch('https://your-deno-edge-function-url.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name,
+        email,
+        telefon: phone || "Nicht angegeben",
+        interesse: formatInterest(interest),
+        nachricht: `${message}\n\nFormular: ${formSource}\nZeitstempel: ${new Date().toLocaleString("de-DE")}`
+      })
+    });
     
-    // if (!response.ok) throw new Error('Failed to send email');
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || 'Fehler beim Senden der E-Mail');
+    }
     
-    // Simulate success response after a short delay
-    await new Promise(resolve => setTimeout(resolve, 500));
+    const result = await response.json();
+    console.log("Email sending result:", result);
     
-    // For demo purposes, always return true
-    console.log("✓ Email would be sent to admin: info@vinligna.com (BCC: info@ooliv.de)");
-    console.log("✓ Confirmation email would be sent to user:", email);
-    return true;
+    return result.success;
     
   } catch (error) {
     console.error("Failed to send email notifications:", error);
