@@ -6,15 +6,16 @@ import { supabase } from "@/integrations/supabase/client";
 interface EmailData {
   name: string;
   email: string;
-  phone: string;
-  interest: string;
-  message: string;
+  telefon: string;
+  interesse: string;
+  nachricht: string;
   formSource: string;
 }
 
 interface EmailResponse {
   success: boolean;
-  errorMessage?: string;
+  message?: string;
+  error?: string;
   mailtoLink?: string;
 }
 
@@ -36,25 +37,25 @@ const formatInterest = (interest: string): string => {
  * Falls back to creating a mailto link if there's any error
  */
 export const sendEmailNotifications = async (data: EmailData): Promise<EmailResponse> => {
-  const { name, email, phone, interest, message, formSource } = data;
+  const { name, email, telefon, interesse, nachricht, formSource } = data;
+  
+  console.log("Sending email via edge function with data:", {
+    name,
+    email,
+    telefon: telefon || "Nicht angegeben",
+    interesse: formatInterest(interesse),
+    nachricht: nachricht.substring(0, 30) + (nachricht.length > 30 ? '...' : '')
+  });
   
   try {
-    console.log("Creating direct mailto link for:", {
-      name,
-      email,
-      phone: phone || "Nicht angegeben",
-      interest: formatInterest(interest),
-      message
-    });
-    
-    // Attempt to call the Supabase edge function
+    // Call the Supabase edge function to send the email
     const { data: functionData, error } = await supabase.functions.invoke('send-email', {
       body: {
         name,
         email,
-        phone,
-        interest: formatInterest(interest),
-        message,
+        telefon,
+        interesse,
+        nachricht,
         formSource
       },
     });
@@ -67,23 +68,28 @@ export const sendEmailNotifications = async (data: EmailData): Promise<EmailResp
     
     console.log("Edge function response:", functionData);
     
-    // Return success with mailtoLink as fallback
-    return { 
-      success: true,
-      mailtoLink: functionData.mailtoLink
-    };
+    // Return success or error based on the function response
+    if (functionData.success) {
+      return { 
+        success: true,
+        message: functionData.message,
+        mailtoLink: functionData.mailtoLink
+      };
+    } else {
+      throw new Error(functionData.error || "Unknown error from edge function");
+    }
     
   } catch (error) {
     console.error("Failed to send email via edge function:", error);
     
     // Create direct mailto link as fallback
     const subject = encodeURIComponent(`Anfrage von ${name} über ${formSource}`);
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nTelefon: ${phone || "Nicht angegeben"}\nInteresse: ${formatInterest(interest)}\n\nNachricht:\n${message}\n\nFormular: ${formSource}\nZeitstempel: ${new Date().toLocaleString("de-DE")}`);
+    const body = encodeURIComponent(`Name: ${name}\nE-Mail: ${email}\nTelefon: ${telefon || "Nicht angegeben"}\nInteresse: ${formatInterest(interesse)}\n\nNachricht:\n${nachricht}\n\nFormular: ${formSource}\nZeitstempel: ${new Date().toLocaleString("de-DE")}`);
     const mailtoLink = `mailto:info@vinligna.com?subject=${subject}&body=${body}`;
     
     return { 
       success: false,
-      errorMessage: `Beim Senden ist ein Fehler aufgetreten: Bitte kontaktieren Sie uns direkt unter <a href="mailto:info@vinligna.com?subject=${subject}&body=${body}" class="underline">info@vinligna.com</a>`,
+      error: error instanceof Error ? error.message : "Unbekannter Fehler",
       mailtoLink
     };
   }

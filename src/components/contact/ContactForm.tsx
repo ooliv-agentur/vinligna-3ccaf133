@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Mail, AlertCircle } from 'lucide-react';
+import { ArrowRight, Mail, AlertCircle, Check } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { sendEmailNotifications } from '@/utils/emailService';
@@ -18,15 +18,16 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
   const location = useLocation();
   const { isDarkMode } = useAppTheme();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [mailtoLink, setMailtoLink] = useState<string | null>(null);
   const [showDirectContact, setShowDirectContact] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
-    message: '',
-    interest: 'business', // Default value
+    telefon: '',
+    nachricht: '',
+    interesse: 'business', // Default value
   });
 
   const getFormSource = (): string => {
@@ -42,10 +43,21 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
     }
   };
 
+  const resetForm = () => {
+    setFormData({
+      name: '',
+      email: '',
+      telefon: '',
+      nachricht: '',
+      interesse: 'business',
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setErrorMessage(null);
+    setSuccessMessage(null);
     setMailtoLink(null);
     setShowDirectContact(false); // Reset this to false initially
     
@@ -63,26 +75,27 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
       console.log("Email sending completed with result:", result);
       
       if (result.success) {
+        setSuccessMessage("Danke für Ihre Nachricht! Wir melden uns bald.");
         setMailtoLink(result.mailtoLink || null);
-        setShowDirectContact(true);
+        resetForm(); // Reset form on success
         
         // Show success toast
         toast({
-          title: "Erfolg",
-          description: "Klicken Sie auf 'E-Mail direkt senden', um Ihre Nachricht zu senden.",
+          title: "Nachricht gesendet",
+          description: "Vielen Dank für Ihre Nachricht. Wir werden uns in Kürze bei Ihnen melden.",
           variant: "default",
         });
       } else {
         // Handle error case
-        setErrorMessage(result.errorMessage || "Beim Senden ist ein Fehler aufgetreten. Bitte kontaktieren Sie uns direkt per E-Mail.");
+        setErrorMessage(result.error || "Beim Senden ist ein Fehler aufgetreten. Bitte kontaktieren Sie uns direkt per E-Mail.");
         setMailtoLink(result.mailtoLink || null);
         setShowDirectContact(true);
         
         // Show error toast
         toast({
-          title: "Direkte Email erforderlich",
+          title: "Fehler beim Senden",
           description: "Bitte verwenden Sie den 'E-Mail direkt senden' Button, um Ihre Nachricht zu senden.",
-          variant: "default",
+          variant: "destructive",
         });
       }
       
@@ -93,7 +106,7 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
       
       // Create a basic mailto link as fallback
       const subject = encodeURIComponent(`Anfrage von ${formData.name} über ${getFormSource()}`);
-      const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nTelefon: ${formData.phone || "Nicht angegeben"}\nInteresse: ${formData.interest}\n\nNachricht:\n${formData.message}`);
+      const body = encodeURIComponent(`Name: ${formData.name}\nE-Mail: ${formData.email}\nTelefon: ${formData.telefon || "Nicht angegeben"}\nInteresse: ${formData.interesse}\n\nNachricht:\n${formData.nachricht}`);
       setMailtoLink(`mailto:info@vinligna.com?subject=${subject}&body=${body}`);
       setShowDirectContact(true);
       
@@ -119,7 +132,7 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
     } else {
       // Create a basic mailto link as fallback
       const subject = encodeURIComponent(`Anfrage von ${formData.name} über ${getFormSource()}`);
-      const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nTelefon: ${formData.phone || "Nicht angegeben"}\nInteresse: ${formData.interest}\n\nNachricht:\n${formData.message}`);
+      const body = encodeURIComponent(`Name: ${formData.name}\nE-Mail: ${formData.email}\nTelefon: ${formData.telefon || "Nicht angegeben"}\nInteresse: ${formData.interesse}\n\nNachricht:\n${formData.nachricht}`);
       window.location.href = `mailto:info@vinligna.com?subject=${subject}&body=${body}`;
     }
   };
@@ -138,6 +151,20 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
+      {successMessage && (
+        <div className={cn(
+          "rounded-xl p-4 border",
+          isDarkMode 
+            ? "bg-green-900/30 border-green-900/30 text-green-200"
+            : "bg-green-50 border-green-200 text-green-700"
+        )}>
+          <div className="flex items-start">
+            <Check className="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" />
+            <p className="font-medium text-sm">{successMessage}</p>
+          </div>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
           <label 
@@ -180,16 +207,16 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
           <label 
-            htmlFor="phone" 
+            htmlFor="telefon" 
             className={labelClasses}
           >
             Telefon (Optional)
           </label>
           <input
             type="tel"
-            id="phone"
-            name="phone"
-            value={formData.phone}
+            id="telefon"
+            name="telefon"
+            value={formData.telefon}
             onChange={handleChange}
             className={inputClasses}
             placeholder="+49 123 456 7890"
@@ -197,15 +224,15 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
         </div>
         <div className="space-y-2">
           <label 
-            htmlFor="interest" 
+            htmlFor="interesse" 
             className={labelClasses}
           >
             Interesse
           </label>
           <select
-            id="interest"
-            name="interest"
-            value={formData.interest}
+            id="interesse"
+            name="interesse"
+            value={formData.interesse}
             onChange={handleChange}
             className={cn(inputClasses, "appearance-none")}
             style={{ 
@@ -227,15 +254,15 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
 
       <div className="space-y-2">
         <label 
-          htmlFor="message" 
+          htmlFor="nachricht" 
           className={labelClasses}
         >
           Nachricht
         </label>
         <textarea
-          id="message"
-          name="message"
-          value={formData.message}
+          id="nachricht"
+          name="nachricht"
+          value={formData.nachricht}
           onChange={handleChange}
           required
           rows={4}
@@ -255,7 +282,7 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
             <AlertCircle className="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" />
             <div className="space-y-3 w-full">
               <div>
-                <p className="font-medium text-sm">CORS-Fehler beim Senden: Bitte kontaktieren Sie uns direkt unter <a href="mailto:info@vinligna.com" className="underline hover:text-wine">info@vinligna.com</a></p>
+                <p className="font-medium text-sm">{errorMessage || "Beim Senden ist ein Fehler aufgetreten. Bitte kontaktieren Sie uns direkt."}</p>
               </div>
               
               <button
