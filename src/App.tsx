@@ -1,9 +1,8 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { LazyMotion, domAnimation } from "framer-motion";
 import { ThemeProvider } from "./components/ThemeProvider";
 import Index from "./pages/Index";
@@ -26,12 +25,17 @@ const App = () => (
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="/business" element={<BusinessPage />} />
-              <Route path="/private" element={<PrivatePage />} />
+              
+              <Route path="/b2b" element={<BusinessPage />} />
+              <Route path="/b2c" element={<PrivatePage />} />
+              
+              <Route path="/business" element={<Navigate to="/b2b" replace />} />
+              <Route path="/private" element={<Navigate to="/b2c" replace />} />
+              
               <Route path="/impressum" element={<ImpressumPage />} />
               <Route path="/datenschutz" element={<DatenschutzPage />} />
               <Route path="/agb" element={<AGBPage />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

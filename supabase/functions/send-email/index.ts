@@ -1,4 +1,3 @@
-
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { SMTPClient } from "https://deno.land/x/denomailer@1.6.0/mod.ts";
 
@@ -117,6 +116,7 @@ serve(async (req) => {
       await client.send({
         from: smtpUsername, // Use the exact username as the from address
         to: smtpUsername,   // Send to the same address
+        replyTo: data.email, // Add reply-to header pointing to the user's email address
         subject: `Neue Nachricht von ${data.name}${data.formSource ? ` über ${data.formSource}` : ''}`,
         content: "",
         html: adminEmailHtml,

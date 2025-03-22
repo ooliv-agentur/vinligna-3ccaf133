@@ -58,7 +58,7 @@ const Navbar = () => {
     }
   };
 
-  // New function to handle logo click
+  // Function to handle logo click
   const handleLogoClick = () => {
     // Close mobile menu if open
     if (isMobileMenuOpen) {
@@ -106,8 +106,8 @@ const Navbar = () => {
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">
-            <NavLink to="/business" isScrolled={isScrolled}>Weingüter, Gastronomie & Hotellerie</NavLink>
-            <NavLink to="/private" isScrolled={isScrolled}>Weinliebhaber & Privatkunden</NavLink>
+            <NavLink to="/b2b" isScrolled={isScrolled}>Weingüter, Gastronomie & Hotellerie</NavLink>
+            <NavLink to="/b2c" isScrolled={isScrolled}>Weinliebhaber & Privatkunden</NavLink>
             <NavLink to="/#contact" isScrolled={isScrolled}>Kontakt</NavLink>
             <ThemeToggle isScrolled={isScrolled} />
           </nav>
@@ -166,7 +166,7 @@ const Navbar = () => {
                     Startseite
                   </MenuNavItem>
                   <MenuNavItem 
-                    to="/business" 
+                    to="/b2b" 
                     icon={<Wine className="w-5 h-5 mr-4 text-wine" />}
                     onClick={() => setIsMobileMenuOpen(false)}
                     delay={0.2}
@@ -174,7 +174,7 @@ const Navbar = () => {
                     Weingüter, Gastronomie & Hotellerie
                   </MenuNavItem>
                   <MenuNavItem 
-                    to="/private" 
+                    to="/b2c" 
                     icon={<User className="w-5 h-5 mr-4 text-wine" />}
                     onClick={() => setIsMobileMenuOpen(false)}
                     delay={0.25}

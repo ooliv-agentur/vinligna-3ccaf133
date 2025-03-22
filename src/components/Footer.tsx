@@ -28,8 +28,8 @@ const Footer = () => {
             <div className="md:col-span-3">
               <h4 className="font-medium mb-4 text-white dark:text-white">Hauptseiten</h4>
               <ul className="space-y-3">
-                <FooterLink to="/business">Weingüter, Gastronomie & Hotellerie</FooterLink>
-                <FooterLink to="/private">Weinliebhaber & Privatkunden</FooterLink>
+                <FooterLink to="/b2b">Weingüter, Gastronomie & Hotellerie</FooterLink>
+                <FooterLink to="/b2c">Weinliebhaber & Privatkunden</FooterLink>
               </ul>
             </div>
             
