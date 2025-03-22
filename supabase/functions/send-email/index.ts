@@ -255,6 +255,11 @@ function createAdminEmailTemplate(data: EmailData, formattedInterest: string, ti
     </style>
   </head>
   <body style="margin:0; padding:0; font-family:Arial, sans-serif; background-color:#EDE0D4; color:#2C2C2C;">
+    <!-- Preview text for email clients -->
+    <span style="display:none; color:transparent; height:0; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all; visibility:hidden; width:0;">
+      Neue Nachricht von ${data.name} über das VINLIGNA Kontaktformular - ${formattedInterest}
+    </span>
+    
     <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#EDE0D4; padding: 40px 0;">
       <tr>
         <td align="center">
@@ -350,6 +355,11 @@ function createUserEmailTemplate(data: EmailData): string {
     </style>
   </head>
   <body style="margin:0; padding:0; font-family:Arial, sans-serif; background-color:#EDE0D4; color:#2C2C2C;">
+    <!-- Preview text for email clients -->
+    <span style="display:none; color:transparent; height:0; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all; visibility:hidden; width:0;">
+      Vielen Dank für Ihre Nachricht an VINLIGNA. Wir werden uns in Kürze bei Ihnen melden.
+    </span>
+    
     <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#EDE0D4; padding: 40px 0;">
       <tr>
         <td align="center">
