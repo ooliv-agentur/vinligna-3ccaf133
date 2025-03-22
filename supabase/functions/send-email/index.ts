@@ -22,7 +22,6 @@ interface EmailData {
 
 serve(async (req) => {
   console.log(`Request received: ${req.method} ${req.url}`);
-  console.log(`Headers: ${JSON.stringify(Object.fromEntries(req.headers))}`);
   
   // Handle CORS preflight requests - this is critical
   if (req.method === 'OPTIONS') {
@@ -47,22 +46,6 @@ serve(async (req) => {
 
   try {
     // Parse request body
-    const contentType = req.headers.get("content-type") || "";
-    
-    if (!contentType.includes("application/json")) {
-      console.log(`Invalid content type: ${contentType}`);
-      return new Response(
-        JSON.stringify({ 
-          success: false, 
-          error: "InvalidContentType: Content-Type must be application/json" 
-        }),
-        { 
-          headers: corsHeaders,
-          status: 400, 
-        }
-      );
-    }
-    
     const data = await req.json() as EmailData;
     console.log("Received data:", data);
     
@@ -73,7 +56,8 @@ serve(async (req) => {
         JSON.stringify({ 
           success: false, 
           error: "Missing required fields",
-          requiredFields: ['name', 'email', 'interesse', 'nachricht'] 
+          requiredFields: ['name', 'email', 'interesse', 'nachricht'],
+          mailtoLink: createMailtoLink(data)
         }),
         { 
           headers: corsHeaders,
@@ -107,9 +91,7 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
 `;
 
     // Create direct mailto link as fallback
-    const mailtoSubject = encodeURIComponent(subject);
-    const mailtoBody = encodeURIComponent(messageBody);
-    const mailtoLink = `mailto:info@vinligna.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+    const mailtoLink = createMailtoLink(data);
 
     try {
       // Get SMTP credentials from environment variables
@@ -123,21 +105,21 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
         throw new Error("SMTP credentials are not configured");
       }
       
-      // Configure SMTP client
-      const client = new SmtpClient({
-        connection: {
-          hostname: "smtp.ionos.de",
-          port: 587,
-          tls: true,
-          auth: {
-            username: smtpUsername,
-            password: smtpPassword,
-          },
-        },
+      // Configure SMTP client with explicit debug settings
+      const client = new SmtpClient();
+      
+      // Connect with detailed logging
+      console.log("Attempting to connect to SMTP server...");
+      await client.connectTLS({
+        hostname: "smtp.ionos.de",
+        port: 587,
+        username: smtpUsername,
+        password: smtpPassword,
       });
-
+      
+      console.log("SMTP connection established, sending email...");
+      
       // Send email
-      console.log("Attempting to send email via SMTP");
       await client.send({
         from: "info@vinligna.com",
         to: "info@vinligna.com",
@@ -147,6 +129,7 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
       });
       
       console.log("Email sent successfully");
+      await client.close();
       
       return new Response(
         JSON.stringify({
@@ -160,7 +143,7 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
         }
       );
     } catch (smtpError) {
-      console.error("SMTP error:", smtpError);
+      console.error("SMTP error details:", smtpError);
       
       return new Response(
         JSON.stringify({
@@ -177,10 +160,14 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
   } catch (error) {
     console.error("General error:", error);
     
+    // Create a generic mailto link as fallback
+    const genericMailto = "mailto:info@vinligna.com?subject=Kontaktanfrage&body=Bitte%20geben%20Sie%20Ihre%20Nachricht%20ein.";
+    
     return new Response(
       JSON.stringify({
         success: false,
-        error: error instanceof Error ? error.message : "Unknown error occurred"
+        error: error instanceof Error ? error.message : "Unknown error occurred",
+        mailtoLink: genericMailto
       }),
       {
         headers: corsHeaders,
@@ -189,3 +176,31 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
     );
   }
 });
+
+// Helper function to create mailto link
+function createMailtoLink(data: EmailData): string {
+  // Format the interest value for the email
+  let formattedInterest = data.interesse;
+  switch (data.interesse) {
+    case 'business': formattedInterest = 'Businesslösungen'; break;
+    case 'private': formattedInterest = 'Privatkollektion'; break;
+    case 'consultation': formattedInterest = 'Designberatung'; break;
+    case 'other': formattedInterest = 'Andere Anfrage'; break;
+  }
+
+  const subject = encodeURIComponent(`Neue Nachricht von ${data.name}${data.formSource ? ` über ${data.formSource}` : ''}`);
+  const body = encodeURIComponent(`
+Neue Nachricht über das Kontaktformular:
+Name: ${data.name}
+E-Mail: ${data.email}
+Telefon: ${data.telefon || "Nicht angegeben"}
+Interesse: ${formattedInterest}
+Nachricht:
+${data.nachricht}
+
+Formular: ${data.formSource || "Nicht angegeben"}
+Zeitstempel: ${new Date().toLocaleString("de-DE")}
+`);
+  
+  return `mailto:info@vinligna.com?subject=${subject}&body=${body}`;
+}
