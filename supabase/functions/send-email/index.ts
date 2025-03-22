@@ -98,9 +98,13 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
       const smtpUsername = Deno.env.get("SMTP_USERNAME");
       const smtpPassword = Deno.env.get("SMTP_PASSWORD");
       
+      // Log environment variables for debugging
       console.log(`Environment variables available: ${Object.keys(Deno.env.toObject()).join(', ')}`);
-      console.log(`SMTP username configured: ${smtpUsername || "NOT FOUND"}`);
-      console.log(`SMTP password available: ${smtpPassword ? "YES" : "NO"}`);
+      console.log(`SMTP username available: ${!!smtpUsername}`);
+      console.log(`SMTP password available: ${!!smtpPassword}`);
+      
+      // Log exact SMTP username value (without logging the password)
+      console.log(`SMTP username exact value: "${smtpUsername}"`);
       
       if (!smtpUsername || !smtpPassword) {
         throw new Error("SMTP credentials are not configured in environment variables");
