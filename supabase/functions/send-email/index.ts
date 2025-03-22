@@ -104,8 +104,11 @@ serve(async (req) => {
         }
       });
       
+      // Get current timestamp
+      const timestamp = new Date().toLocaleString("de-DE");
+      
       // Prepare both email templates
-      const adminEmailHtml = createAdminEmailTemplate(data, formattedInterest);
+      const adminEmailHtml = createAdminEmailTemplate(data, formattedInterest, timestamp);
       const userEmailHtml = createUserEmailTemplate(data);
       
       console.log("SMTP connection configured, sending admin email...");
@@ -227,244 +230,156 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
   return `mailto:info@vinligna.com?subject=${subject}&body=${body}`;
 }
 
-// Create HTML template for admin email
-function createAdminEmailTemplate(data: EmailData, formattedInterest: string): string {
-  return `
-  <!DOCTYPE html>
-  <html>
+// Create HTML template for admin email using the provided template
+function createAdminEmailTemplate(data: EmailData, formattedInterest: string, timestamp: string): string {
+  // Start with the provided template
+  let template = `
+<!DOCTYPE html>
+<html lang="de">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neue Nachricht von ${data.name}</title>
-    <style>
-      body {
-        font-family: 'Helvetica Neue', Arial, sans-serif;
-        line-height: 1.6;
-        color: #333333;
-        background-color: #EDE0D4;
-        margin: 0;
-        padding: 0;
-      }
-      .container {
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      }
-      .header {
-        text-align: center;
-        margin-bottom: 20px;
-        padding-bottom: 20px;
-        border-bottom: 2px solid #5C3B2E;
-      }
-      .header img {
-        max-width: 200px;
-      }
-      h1 {
-        color: #5C3B2E;
-        font-size: 22px;
-        font-weight: 600;
-        margin-top: 0;
-      }
-      .message-details {
-        background-color: #f9f5f0;
-        padding: 15px;
-        border-radius: 5px;
-        margin-bottom: 20px;
-        border-left: 4px solid #5C3B2E;
-      }
-      .field {
-        margin-bottom: 10px;
-      }
-      .field strong {
-        color: #5C3B2E;
-      }
-      .message-content {
-        background-color: #f9f5f0;
-        padding: 15px;
-        border-radius: 5px;
-        white-space: pre-wrap;
-        margin-top: 5px;
-      }
-      .timestamp {
-        font-size: 12px;
-        color: #888888;
-        text-align: right;
-        margin-top: 20px;
-      }
-      .footer {
-        margin-top: 30px;
-        text-align: center;
-        font-size: 12px;
-        color: #888888;
-      }
-      .reply-btn {
-        display: inline-block;
-        background-color: #5C3B2E;
-        color: white;
-        padding: 10px 20px;
-        text-decoration: none;
-        border-radius: 4px;
-        margin-top: 15px;
-        font-weight: 600;
-      }
-    </style>
+    <meta charset="UTF-8" />
+    <title>VINLIGNA Kontaktformular</title>
   </head>
-  <body>
-    <div class="container">
-      <div class="header">
-        <h1>Neue Nachricht über VINLIGNA Kontaktformular</h1>
-      </div>
-      
-      <div class="message-details">
-        <div class="field">
-          <strong>Name:</strong> ${data.name}
-        </div>
-        <div class="field">
-          <strong>E-Mail:</strong> ${data.email}
-        </div>
-        <div class="field">
-          <strong>Telefon:</strong> ${data.telefon || "Nicht angegeben"}
-        </div>
-        <div class="field">
-          <strong>Interesse:</strong> ${formattedInterest}
-        </div>
-        <div class="field">
-          <strong>Formular:</strong> ${data.formSource || "Nicht angegeben"}
-        </div>
-      </div>
-      
-      <div class="field">
-        <strong>Nachricht:</strong>
-        <div class="message-content">${data.nachricht}</div>
-      </div>
-      
-      <div style="text-align: center; margin-top: 30px;">
-        <a href="mailto:${data.email}?subject=RE: Ihre Anfrage an VINLIGNA" class="reply-btn">Antworten</a>
-      </div>
-      
-      <div class="timestamp">
-        Zeitstempel: ${new Date().toLocaleString("de-DE")}
-      </div>
-      
-      <div class="footer">
-        VINLIGNA | Hochwertige Weinkisten & Einrichtungsgegenstände aus Eichenholz
-      </div>
-    </div>
+  <body style="margin:0; padding:0; font-family:Arial, sans-serif; background-color:#EDE0D4; color:#2C2C2C;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#EDE0D4; padding: 40px 0;">
+      <tr>
+        <td align="center">
+          <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.05);">
+            <tr>
+              <td style="background-color: #5C3B2E; color: white; padding: 24px; text-align: center;">
+                <h1 style="margin: 0; font-size: 24px;">VINLIGNA</h1>
+                <p style="margin: 4px 0 0;">Tradition in zeitlose Eleganz verwandeln</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 32px;">
+                <h2 style="color: #5C3B2E; font-size: 20px; margin-bottom: 24px;">
+                  Neue Nachricht über das VINLIGNA Kontaktformular
+                </h2>
+
+                <table cellpadding="6" cellspacing="0" style="width:100%; margin-bottom: 24px;">
+                  <tr>
+                    <td style="font-weight:bold; width: 120px;">Name:</td>
+                    <td>${data.name}</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight:bold;">E-Mail:</td>
+                    <td><a href="mailto:${data.email}" style="color:#D96B37;">${data.email}</a></td>
+                  </tr>`;
+  
+  // Add telefon field only if provided
+  if (data.telefon) {
+    template += `
+                  <tr>
+                    <td style="font-weight:bold;">Telefon:</td>
+                    <td>${data.telefon}</td>
+                  </tr>`;
+  }
+  
+  template += `
+                  <tr>
+                    <td style="font-weight:bold;">Interesse:</td>
+                    <td>${formattedInterest}</td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight:bold;">Formular:</td>
+                    <td>${data.formSource || "Nicht angegeben"}</td>
+                  </tr>
+                </table>
+
+                <h3 style="color:#5C3B2E;">Nachricht:</h3>
+                <p style="background-color:#F9F6F3; padding: 16px; border-left: 4px solid #5C3B2E; margin-top: 8px;">
+                  ${data.nachricht.replace(/\n/g, '<br>')}
+                </p>
+
+                <div style="margin-top: 32px; text-align: center;">
+                  <a href="mailto:${data.email}" style="background-color:#5C3B2E; color:white; text-decoration:none; padding: 12px 24px; border-radius: 6px; font-weight:bold; display:inline-block;">
+                    Antworten
+                  </a>
+                </div>
+
+                <p style="font-size:12px; color:#888; margin-top: 40px; text-align:right;">
+                  Zeitstempel: ${timestamp}
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color:#f2f2f2; text-align:center; padding:16px; font-size:12px; color:#666;">
+                VINLIGNA | Hochwertige Fassmöbel aus recycelten Weinfässern
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
   </body>
-  </html>
+</html>
   `;
+  
+  return template;
 }
 
-// Create HTML template for user confirmation email
+// Create HTML template for user confirmation email using the provided template
 function createUserEmailTemplate(data: EmailData): string {
   return `
-  <!DOCTYPE html>
-  <html>
+<!DOCTYPE html>
+<html lang="de">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vielen Dank für Ihre Nachricht an VINLIGNA</title>
-    <style>
-      body {
-        font-family: 'Helvetica Neue', Arial, sans-serif;
-        line-height: 1.6;
-        color: #333333;
-        background-color: #EDE0D4;
-        margin: 0;
-        padding: 0;
-      }
-      .container {
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      }
-      .header {
-        text-align: center;
-        margin-bottom: 20px;
-        padding-bottom: 20px;
-        border-bottom: 2px solid #5C3B2E;
-      }
-      .header img {
-        max-width: 200px;
-      }
-      h1, h2 {
-        color: #5C3B2E;
-        font-weight: 600;
-      }
-      h1 {
-        font-size: 24px;
-        margin-top: 0;
-      }
-      h2 {
-        font-size: 20px;
-        margin-top: 0;
-      }
-      p {
-        margin-bottom: 15px;
-      }
-      .message-preview {
-        background-color: #f9f5f0;
-        padding: 15px;
-        border-radius: 5px;
-        margin: 15px 0;
-        border-left: 4px solid #5C3B2E;
-        font-style: italic;
-        white-space: pre-wrap;
-      }
-      .footer {
-        margin-top: 30px;
-        padding-top: 15px;
-        border-top: 1px solid #EDE0D4;
-        text-align: center;
-        font-size: 12px;
-        color: #888888;
-      }
-      .signature {
-        margin-top: 25px;
-      }
-      .contact-details {
-        margin-top: 20px;
-        font-size: 14px;
-        color: #666;
-      }
-    </style>
+    <meta charset="UTF-8" />
+    <title>Vielen Dank für Ihre Nachricht</title>
   </head>
-  <body>
-    <div class="container">
-      <div class="header">
-        <h1>VINLIGNA</h1>
-      </div>
-      
-      <h2>Vielen Dank für Ihre Nachricht</h2>
-      
-      <p>Lieber ${data.name},</p>
-      
-      <p>vielen Dank für Ihre Anfrage über unser Kontaktformular. Wir werden uns so schnell wie möglich bei Ihnen melden.</p>
-      
-      <p><strong>Ihre Nachricht:</strong></p>
-      <div class="message-preview">${data.nachricht}</div>
-      
-      <div class="signature">
-        <p>Mit herzlichen Grüßen,<br>Ihr VINLIGNA Team</p>
-      </div>
-      
-      <div class="contact-details">
-        VINLIGNA<br>
-        E-Mail: info@vinligna.com<br>
-        Web: www.vinligna.com
-      </div>
-      
-      <div class="footer">
-        Hochwertige Weinkisten & Einrichtungsgegenstände aus Eichenholz
-      </div>
-    </div>
+  <body style="margin:0; padding:0; font-family:Arial, sans-serif; background-color:#EDE0D4; color:#2C2C2C;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#EDE0D4; padding: 40px 0;">
+      <tr>
+        <td align="center">
+          <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.05);">
+            <tr>
+              <td style="background-color: #5C3B2E; color: white; padding: 24px; text-align: center;">
+                <h1 style="margin: 0; font-size: 24px;">VINLIGNA</h1>
+                <p style="margin: 4px 0 0;">Tradition in zeitlose Eleganz verwandeln</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 32px;">
+                <h2 style="color: #5C3B2E; font-size: 20px; margin-bottom: 24px;">
+                  Vielen Dank für Ihre Nachricht
+                </h2>
+
+                <p style="font-size: 16px; margin-bottom: 24px;">
+                  Lieber ${data.name},<br><br>
+                  vielen Dank für Ihre Anfrage über unser Kontaktformular.<br>
+                  Wir werden uns so schnell wie möglich bei Ihnen melden.
+                </p>
+
+                <h3 style="color:#5C3B2E;">Ihre Nachricht:</h3>
+                <p style="background-color:#F9F6F3; padding: 16px; border-left: 4px solid #5C3B2E; margin-top: 8px;">
+                  ${data.nachricht.replace(/\n/g, '<br>')}
+                </p>
+
+                <p style="font-size: 14px; margin-top: 32px;">
+                  Mit herzlichen Grüßen,<br>
+                  Ihr VINLIGNA Team
+                </p>
+
+                <hr style="border:none; border-top:1px solid #ddd; margin:32px 0;" />
+
+                <p style="font-size: 14px;">
+                  <strong>VINLIGNA</strong><br>
+                  E-Mail: <a href="mailto:info@vinligna.com" style="color:#D96B37;">info@vinligna.com</a><br>
+                  Web: <a href="https://www.vinligna.com" style="color:#D96B37;">www.vinligna.com</a>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color:#f2f2f2; text-align:center; padding:16px; font-size:12px; color:#666;">
+                Hochwertige Fassmöbel aus recycelten Weinfässern
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
   </body>
-  </html>
+</html>
   `;
 }
