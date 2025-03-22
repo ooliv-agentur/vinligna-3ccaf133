@@ -1,3 +1,4 @@
+
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { SMTPClient } from "https://deno.land/x/denomailer@1.6.0/mod.ts";
 
@@ -81,9 +82,6 @@ serve(async (req) => {
       console.log(`SMTP username available: ${!!smtpUsername}`);
       console.log(`SMTP password available: ${!!smtpPassword}`);
       
-      // Log exact SMTP username value (without logging the password)
-      console.log(`SMTP username exact value: "${smtpUsername}"`);
-      
       if (!smtpUsername || !smtpPassword) {
         throw new Error("SMTP credentials are not configured in environment variables");
       }
@@ -120,6 +118,10 @@ serve(async (req) => {
         subject: `Neue Nachricht von ${data.name}${data.formSource ? ` über ${data.formSource}` : ''}`,
         content: "",
         html: adminEmailHtml,
+        headers: {
+          "Content-Type": "text/html; charset=utf-8",
+          "Content-Transfer-Encoding": "8bit"
+        }
       });
       
       console.log("Admin email sent successfully");
@@ -132,6 +134,10 @@ serve(async (req) => {
         subject: "Vielen Dank für Ihre Nachricht an VINLIGNA",
         content: "",
         html: userEmailHtml,
+        headers: {
+          "Content-Type": "text/html; charset=utf-8",
+          "Content-Transfer-Encoding": "8bit"
+        }
       });
       
       console.log("User confirmation email sent successfully");
@@ -254,7 +260,7 @@ function createAdminEmailTemplate(data: EmailData, formattedInterest: string, ti
       }
     </style>
   </head>
-  <body style="margin:0; padding:0; font-family:Arial, sans-serif; background-color:#EDE0D4; color:#2C2C2C;">
+  <body style="margin:0; padding:0; font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color:#EDE0D4; color:#2C2C2C;">
     <!-- Preview text for email clients -->
     <span style="display:none; color:transparent; height:0; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all; visibility:hidden; width:0;">
       Neue Nachricht von ${data.name} über das VINLIGNA Kontaktformular - ${formattedInterest}
@@ -266,7 +272,7 @@ function createAdminEmailTemplate(data: EmailData, formattedInterest: string, ti
           <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.05);" class="container">
             <tr>
               <td style="background-color: #5C3B2E; color: white; padding: 24px; text-align: center;">
-                <img src="https://vinligna.com/vinligna-logo.svg" alt="VINLIGNA" width="160" style="display: block; margin: 0 auto; filter: invert(1);">
+                <img src="https://vinligna.com/lovable-uploads/00edf770-eede-4a74-ac7a-c6d22cc151d3.png" alt="VINLIGNA" width="160" style="display: block; margin: 0 auto;">
                 <p style="margin: 10px 0 0;">Tradition in zeitlose Eleganz verwandeln</p>
               </td>
             </tr>
@@ -354,7 +360,7 @@ function createUserEmailTemplate(data: EmailData): string {
       }
     </style>
   </head>
-  <body style="margin:0; padding:0; font-family:Arial, sans-serif; background-color:#EDE0D4; color:#2C2C2C;">
+  <body style="margin:0; padding:0; font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color:#EDE0D4; color:#2C2C2C;">
     <!-- Preview text for email clients -->
     <span style="display:none; color:transparent; height:0; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all; visibility:hidden; width:0;">
       Vielen Dank für Ihre Nachricht an VINLIGNA. Wir werden uns in Kürze bei Ihnen melden.
@@ -366,7 +372,7 @@ function createUserEmailTemplate(data: EmailData): string {
           <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.05);" class="container">
             <tr>
               <td style="background-color: #5C3B2E; color: white; padding: 24px; text-align: center;">
-                <img src="https://vinligna.com/vinligna-logo.svg" alt="VINLIGNA" width="160" style="display: block; margin: 0 auto; filter: invert(1);">
+                <img src="https://vinligna.com/lovable-uploads/00edf770-eede-4a74-ac7a-c6d22cc151d3.png" alt="VINLIGNA" width="160" style="display: block; margin: 0 auto;">
                 <p style="margin: 10px 0 0;">Tradition in zeitlose Eleganz verwandeln</p>
               </td>
             </tr>
