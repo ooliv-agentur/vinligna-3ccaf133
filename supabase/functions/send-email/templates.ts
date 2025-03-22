@@ -45,14 +45,14 @@ export function createAdminEmailTemplate(data: EmailData, formattedInterest: str
 
         <div style="margin-bottom:24px;">
           <p style="margin:8px 0;"><strong>Name:</strong> ${data.name}</p>
-          <p style="margin:8px 0;"><strong>E-Mail:</strong> <a href="mailto:${data.email}" style="color:#D96B37;">${data.email}</a></p>
+          <p style="margin:8px 0;"><strong>E-Mail:</strong> <a href="mailto:${data.email}" style="color:#D96B37; word-break:break-word;">${data.email}</a></p>
           ${data.telefon ? `<p style="margin:8px 0;"><strong>Telefon:</strong> ${data.telefon}</p>` : ''}
           <p style="margin:8px 0;"><strong>Interesse:</strong> ${formattedInterest}</p>
           <p style="margin:8px 0;"><strong>Formular:</strong> ${data.formSource || "Nicht angegeben"}</p>
         </div>
 
         <h3 style="color:#5C3B2E; margin-top:24px; margin-bottom:8px;">Nachricht:</h3>
-        <div style="background-color:#F9F6F3; padding:16px; border-left:4px solid #5C3B2E; margin-top:8px; word-wrap:break-word; overflow-wrap:break-word; max-width:100%;">
+        <div style="background-color:#F9F6F3; padding:16px; border-left:4px solid #5C3B2E; margin-top:8px; word-wrap:break-word; overflow-wrap:anywhere; white-space:normal; max-width:100%;">
           ${formattedMessage}
         </div>
 
@@ -74,6 +74,27 @@ export function createAdminEmailTemplate(data: EmailData, formattedInterest: str
     </div>
   </body>
 </html>`;
+}
+
+// Create plaintext template for admin email
+export function createAdminPlaintextTemplate(data: EmailData, formattedInterest: string, timestamp: string): string {
+  return `
+VINLIGNA Kontaktformular - Neue Nachricht
+
+Name: ${data.name}
+E-Mail: ${data.email}
+${data.telefon ? `Telefon: ${data.telefon}` : ''}
+Interesse: ${formattedInterest}
+Formular: ${data.formSource || "Nicht angegeben"}
+
+Nachricht:
+${data.nachricht}
+
+Zeitstempel: ${timestamp}
+
+--
+VINLIGNA | Hochwertige Fassmöbel aus recycelten Weinfässern
+`;
 }
 
 // Create HTML template for user confirmation email
@@ -116,7 +137,7 @@ export function createUserEmailTemplate(data: EmailData): string {
         </p>
 
         <h3 style="color:#5C3B2E; margin-top:24px; margin-bottom:8px;">Ihre Nachricht:</h3>
-        <div style="background-color:#F9F6F3; padding:16px; border-left:4px solid #5C3B2E; margin-top:8px; word-wrap:break-word; overflow-wrap:break-word; max-width:100%;">
+        <div style="background-color:#F9F6F3; padding:16px; border-left:4px solid #5C3B2E; margin-top:8px; word-wrap:break-word; overflow-wrap:anywhere; white-space:normal; max-width:100%;">
           ${formattedMessage}
         </div>
 
@@ -130,8 +151,8 @@ export function createUserEmailTemplate(data: EmailData): string {
         <div>
           <p style="font-size:14px;">
             <strong>VINLIGNA</strong><br>
-            E-Mail: <a href="mailto:info@vinligna.com" style="color:#D96B37;">info@vinligna.com</a><br>
-            Web: <a href="https://www.vinligna.com" style="color:#D96B37;">www.vinligna.com</a>
+            E-Mail: <a href="mailto:info@vinligna.com" style="color:#D96B37; word-break:break-word;">info@vinligna.com</a><br>
+            Web: <a href="https://www.vinligna.com" style="color:#D96B37; word-break:break-word;">www.vinligna.com</a>
           </p>
         </div>
       </div>
@@ -143,4 +164,29 @@ export function createUserEmailTemplate(data: EmailData): string {
     </div>
   </body>
 </html>`;
+}
+
+// Create plaintext template for user confirmation email
+export function createUserPlaintextTemplate(data: EmailData): string {
+  return `
+VINLIGNA - Vielen Dank für Ihre Nachricht
+
+Lieber ${data.name},
+
+vielen Dank für Ihre Anfrage über unser Kontaktformular.
+Wir werden uns so schnell wie möglich bei Ihnen melden.
+
+Ihre Nachricht:
+${data.nachricht}
+
+Mit herzlichen Grüßen,
+Ihr VINLIGNA Team
+
+--
+VINLIGNA
+E-Mail: info@vinligna.com
+Web: www.vinligna.com
+
+Hochwertige Fassmöbel aus recycelten Weinfässern
+`;
 }

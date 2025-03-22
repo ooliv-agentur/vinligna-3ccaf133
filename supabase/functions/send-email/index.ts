@@ -1,7 +1,12 @@
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { SMTPClient } from "https://deno.land/x/denomailer@1.6.0/mod.ts";
-import { createAdminEmailTemplate, createUserEmailTemplate } from "./templates.ts";
+import { 
+  createAdminEmailTemplate, 
+  createUserEmailTemplate,
+  createAdminPlaintextTemplate,
+  createUserPlaintextTemplate
+} from "./templates.ts";
 import { formatInterest, createMailtoLink } from "./utils.ts";
 
 // Simplified CORS headers with everything needed for cross-origin requests
@@ -108,18 +113,26 @@ serve(async (req) => {
       
       // Prepare both email templates
       const adminEmailHtml = createAdminEmailTemplate(data, formattedInterest, timestamp);
+      const adminEmailText = createAdminPlaintextTemplate(data, formattedInterest, timestamp);
       const userEmailHtml = createUserEmailTemplate(data);
+      const userEmailText = createUserPlaintextTemplate(data);
       
       console.log("SMTP connection configured, sending admin email...");
+      
+      // Set up the sender display name
+      const fromAddress = `"VINLIGNA – Kontaktformular" <${smtpUsername}>`;
+      const formSource = data.formSource ? ` über ${data.formSource}` : '';
+      const emailSubject = `Neue Nachricht von ${data.name}${formSource}`;
       
       // 1. Send notification email to admin
       try {
         await client.send({
-          from: smtpUsername, // Use the exact username as the from address
+          from: fromAddress,
           to: smtpUsername,   // Send to the same address
           replyTo: data.email, // Add reply-to header pointing to the user's email address
-          subject: `Neue Nachricht von ${data.name}${data.formSource ? ` über ${data.formSource}` : ''}`,
+          subject: emailSubject,
           html: adminEmailHtml,
+          text: adminEmailText, // Plain text alternative
         });
         
         console.log("Admin email sent successfully");
@@ -132,10 +145,11 @@ serve(async (req) => {
       try {
         console.log(`Sending confirmation email to user: ${data.email}`);
         await client.send({
-          from: smtpUsername,
+          from: fromAddress,
           to: data.email,
           subject: "Vielen Dank für Ihre Nachricht an VINLIGNA",
           html: userEmailHtml,
+          text: userEmailText, // Plain text alternative
         });
         
         console.log("User confirmation email sent successfully");
