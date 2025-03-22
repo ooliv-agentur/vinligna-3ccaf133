@@ -113,26 +113,37 @@ serve(async (req) => {
       console.log("SMTP connection configured, sending admin email...");
       
       // 1. Send notification email to admin
-      await client.send({
-        from: smtpUsername, // Use the exact username as the from address
-        to: smtpUsername,   // Send to the same address
-        replyTo: data.email, // Add reply-to header pointing to the user's email address
-        subject: `Neue Nachricht von ${data.name}${data.formSource ? ` über ${data.formSource}` : ''}`,
-        html: adminEmailHtml,
-      });
-      
-      console.log("Admin email sent successfully");
+      try {
+        await client.send({
+          from: smtpUsername, // Use the exact username as the from address
+          to: smtpUsername,   // Send to the same address
+          replyTo: data.email, // Add reply-to header pointing to the user's email address
+          subject: `Neue Nachricht von ${data.name}${data.formSource ? ` über ${data.formSource}` : ''}`,
+          html: adminEmailHtml,
+        });
+        
+        console.log("Admin email sent successfully");
+      } catch (adminEmailError) {
+        console.error("Error sending admin email:", adminEmailError);
+        // Continue to user email even if admin email fails
+      }
       
       // 2. Send confirmation email to the user
-      console.log(`Sending confirmation email to user: ${data.email}`);
-      await client.send({
-        from: smtpUsername,
-        to: data.email,
-        subject: "Vielen Dank für Ihre Nachricht an VINLIGNA",
-        html: userEmailHtml,
-      });
+      try {
+        console.log(`Sending confirmation email to user: ${data.email}`);
+        await client.send({
+          from: smtpUsername,
+          to: data.email,
+          subject: "Vielen Dank für Ihre Nachricht an VINLIGNA",
+          html: userEmailHtml,
+        });
+        
+        console.log("User confirmation email sent successfully");
+      } catch (userEmailError) {
+        console.error("Error sending user email:", userEmailError);
+        // If user email fails but we sent the admin one, still consider it a partial success
+      }
       
-      console.log("User confirmation email sent successfully");
       await client.close();
       
       return new Response(
@@ -151,22 +162,22 @@ serve(async (req) => {
       console.error("SMTP error message:", smtpError.message);
       console.error("SMTP error stack:", smtpError.stack);
       
-      // Create a more detailed error response
-      const errorDetails = {
-        message: smtpError.message,
-        type: smtpError.name,
-        stack: smtpError.stack,
-        envVars: {
-          smtpUsernameAvailable: !!Deno.env.get("SMTP_USERNAME"),
-          smtpPasswordAvailable: !!Deno.env.get("SMTP_PASSWORD")
-        }
-      };
+      // Check for specific SMTP errors
+      let errorMessage = smtpError.message || "Unknown SMTP error";
+      let errorCode = "SMTP_ERROR";
+      
+      // Handle specific error codes
+      if (errorMessage.includes("450: Requested mail action not taken: mailbox unavailable") || 
+          errorMessage.includes("Mail send limit exceeded")) {
+        errorCode = "MAIL_LIMIT_EXCEEDED";
+        errorMessage = "E-Mail-Limit überschritten. Bitte nutzen Sie die direkte E-Mail-Option.";
+      }
       
       return new Response(
         JSON.stringify({
           success: false,
-          error: `SMTP Error: ${smtpError.message || "Unknown SMTP error"}`,
-          details: errorDetails,
+          error: errorMessage,
+          errorCode: errorCode,
           mailtoLink: mailtoLink
         }),
         {

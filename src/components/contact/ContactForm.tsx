@@ -86,12 +86,17 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
           variant: "default",
         });
       } else {
-        // Handle error case
-        setErrorMessage(result.error || "Beim Senden ist ein Fehler aufgetreten. Bitte kontaktieren Sie uns direkt per E-Mail.");
+        // Handle specific error codes
+        if (result.errorCode === "MAIL_LIMIT_EXCEEDED") {
+          setErrorMessage("Das E-Mail-Limit wurde überschritten. Bitte senden Sie Ihre Nachricht direkt per E-Mail.");
+        } else {
+          setErrorMessage(result.error || "Beim Senden ist ein Fehler aufgetreten. Bitte kontaktieren Sie uns direkt per E-Mail.");
+        }
+        
         setMailtoLink(result.mailtoLink || null);
         setShowDirectContact(true);
         
-        // Show error toast
+        // Show error toast with specific message
         toast({
           title: "Fehler beim Senden",
           description: "Bitte verwenden Sie den 'E-Mail direkt senden' Button, um Ihre Nachricht zu senden.",

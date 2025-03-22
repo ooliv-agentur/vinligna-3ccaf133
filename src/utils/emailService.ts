@@ -16,6 +16,7 @@ interface EmailResponse {
   success: boolean;
   message?: string;
   error?: string;
+  errorCode?: string;
   mailtoLink?: string;
 }
 
@@ -98,6 +99,7 @@ export const sendEmailNotifications = async (data: EmailData): Promise<EmailResp
       return {
         success: false,
         error: functionData.error || "Unknown error from edge function",
+        errorCode: functionData.errorCode || "UNKNOWN_ERROR",
         mailtoLink: functionData.mailtoLink || mailtoLink
       };
     } else {
