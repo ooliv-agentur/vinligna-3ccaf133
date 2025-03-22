@@ -1,6 +1,6 @@
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { SmtpClient } from "https://deno.land/x/smtp@v0.7.0/mod.ts";
+import { SMTPClient } from "https://deno.land/x/denomailer@1.6.0/mod.ts";
 
 // Simplified CORS headers with everything needed for cross-origin requests
 const corsHeaders = {
@@ -105,19 +105,20 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
         throw new Error("SMTP credentials are not configured");
       }
       
-      // Configure SMTP client with explicit debug settings
-      const client = new SmtpClient();
-      
-      // Connect with detailed logging
-      console.log("Attempting to connect to SMTP server with updated settings...");
-      await client.connectTLS({
-        hostname: "smtp.ionos.com", // Updated hostname from smtp.ionos.de to smtp.ionos.com
-        port: 465,                  // Updated port from 587 to 465
-        username: smtpUsername,
-        password: smtpPassword,
+      // Configure SMTP client with denomailer
+      const client = new SMTPClient({
+        connection: {
+          hostname: "smtp.ionos.com",
+          port: 465,
+          tls: true,
+          auth: {
+            username: smtpUsername,
+            password: smtpPassword,
+          },
+        }
       });
       
-      console.log("SMTP connection established, sending email...");
+      console.log("SMTP connection configured, sending email...");
       
       // Send email
       await client.send({
