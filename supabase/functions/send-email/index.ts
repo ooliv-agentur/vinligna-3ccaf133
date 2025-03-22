@@ -2,12 +2,12 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { SMTPClient } from "https://deno.land/x/smtp@v0.7.0/mod.ts";
 
-// Improved CORS headers with proper configuration and wildcard origin
+// Simplified CORS headers with everything needed for cross-origin requests
 const corsHeaders = {
-  'Access-Control-Allow-Origin': '*', // Allow all origins
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-  'Access-Control-Max-Age': '86400', // 24 hours cache for preflight requests
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': '*',
+  'Access-Control-Allow-Methods': '*',
+  'Access-Control-Max-Age': '86400',
   'Content-Type': 'application/json'
 };
 
@@ -24,12 +24,12 @@ serve(async (req) => {
   console.log(`Request received: ${req.method} ${req.url}`);
   console.log(`Headers: ${JSON.stringify(Object.fromEntries(req.headers))}`);
   
-  // Handle CORS preflight requests
+  // Handle CORS preflight requests - this is critical
   if (req.method === 'OPTIONS') {
     console.log("Handling CORS preflight request");
     return new Response(null, { 
       headers: corsHeaders,
-      status: 204,
+      status: 204 // No Content is the correct response for OPTIONS
     });
   }
 

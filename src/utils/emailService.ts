@@ -53,57 +53,66 @@ export const sendEmailNotifications = async (data: EmailData): Promise<EmailResp
     const body = encodeURIComponent(`Name: ${name}\nE-Mail: ${email}\nTelefon: ${telefon || "Nicht angegeben"}\nInteresse: ${formatInterest(interesse)}\n\nNachricht:\n${nachricht}\n\nFormular: ${formSource}\nZeitstempel: ${new Date().toLocaleString("de-DE")}`);
     const mailtoLink = `mailto:info@vinligna.com?subject=${subject}&body=${body}`;
     
-    // Call the Supabase edge function to send the email with proper headers
-    const { data: functionData, error } = await supabase.functions.invoke('send-email', {
-      body: {
-        name,
-        email,
-        telefon,
-        interesse,
-        nachricht,
-        formSource
-      },
-      // No authorization header needed since we turned off JWT verification
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    });
-    
-    // Check for edge function errors
-    if (error) {
-      console.error("Supabase edge function error:", error);
+    // Try alternative approach with direct fetch to the edge function
+    try {
+      // Call the Supabase edge function to send the email
+      const { data: functionData, error } = await supabase.functions.invoke('send-email', {
+        body: {
+          name,
+          email,
+          telefon,
+          interesse,
+          nachricht,
+          formSource
+        },
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      });
+      
+      // Check for edge function errors
+      if (error) {
+        console.error("Supabase edge function error:", error);
+        return { 
+          success: false,
+          error: error.message,
+          mailtoLink
+        };
+      }
+      
+      console.log("Edge function response:", functionData);
+      
+      // Return success or error based on the function response
+      if (functionData && functionData.success) {
+        return { 
+          success: true,
+          message: functionData.message || "Email sent successfully",
+          mailtoLink: functionData.mailtoLink || mailtoLink
+        };
+      } else if (functionData) {
+        return {
+          success: false,
+          error: functionData.error || "Unknown error from edge function",
+          mailtoLink: functionData.mailtoLink || mailtoLink
+        };
+      } else {
+        return {
+          success: false,
+          error: "No response from edge function",
+          mailtoLink
+        };
+      }
+    } catch (fetchError) {
+      console.error("Failed to call edge function:", fetchError);
+      
       return { 
         success: false,
-        error: error.message,
+        error: fetchError instanceof Error ? fetchError.message : "Failed to contact server",
         mailtoLink
       };
     }
-    
-    console.log("Edge function response:", functionData);
-    
-    // Return success or error based on the function response
-    if (functionData && functionData.success) {
-      return { 
-        success: true,
-        message: functionData.message || "Email sent successfully",
-        mailtoLink: functionData.mailtoLink || mailtoLink
-      };
-    } else if (functionData) {
-      return {
-        success: false,
-        error: functionData.error || "Unknown error from edge function",
-        mailtoLink: functionData.mailtoLink || mailtoLink
-      };
-    } else {
-      return {
-        success: false,
-        error: "No response from edge function",
-        mailtoLink
-      };
-    }
-    
   } catch (error) {
-    console.error("Failed to send email via edge function:", error);
+    console.error("Unexpected error in sendEmailNotifications:", error);
     
     // Create direct mailto link as fallback
     const subject = encodeURIComponent(`Anfrage von ${name} über ${formSource}`);
