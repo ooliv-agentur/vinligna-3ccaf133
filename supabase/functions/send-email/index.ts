@@ -98,11 +98,12 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
       const smtpUsername = Deno.env.get("SMTP_USERNAME");
       const smtpPassword = Deno.env.get("SMTP_PASSWORD");
       
-      console.log(`SMTP username configured: ${smtpUsername}`);
-      console.log(`SMTP password length: ${smtpPassword ? smtpPassword.length : 0} characters`);
+      console.log(`Environment variables available: ${Object.keys(Deno.env.toObject()).join(', ')}`);
+      console.log(`SMTP username configured: ${smtpUsername || "NOT FOUND"}`);
+      console.log(`SMTP password available: ${smtpPassword ? "YES" : "NO"}`);
       
       if (!smtpUsername || !smtpPassword) {
-        throw new Error("SMTP credentials are not configured");
+        throw new Error("SMTP credentials are not configured in environment variables");
       }
       
       // Configure SMTP client with denomailer
@@ -156,7 +157,11 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
       const errorDetails = {
         message: smtpError.message,
         type: smtpError.name,
-        stack: smtpError.stack
+        stack: smtpError.stack,
+        envVars: {
+          smtpUsernameAvailable: !!Deno.env.get("SMTP_USERNAME"),
+          smtpPasswordAvailable: !!Deno.env.get("SMTP_PASSWORD")
+        }
       };
       
       return new Response(
