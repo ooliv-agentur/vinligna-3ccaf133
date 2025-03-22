@@ -118,12 +118,7 @@ serve(async (req) => {
         to: smtpUsername,   // Send to the same address
         replyTo: data.email, // Add reply-to header pointing to the user's email address
         subject: `Neue Nachricht von ${data.name}${data.formSource ? ` über ${data.formSource}` : ''}`,
-        content: "", // No plain text content
         html: adminEmailHtml,
-        headers: {
-          "Content-Type": "text/html; charset=utf-8",
-          "Content-Transfer-Encoding": "8bit"
-        }
       });
       
       console.log("Admin email sent successfully");
@@ -134,12 +129,7 @@ serve(async (req) => {
         from: smtpUsername,
         to: data.email,
         subject: "Vielen Dank für Ihre Nachricht an VINLIGNA",
-        content: "", // No plain text content
         html: userEmailHtml,
-        headers: {
-          "Content-Type": "text/html; charset=utf-8",
-          "Content-Transfer-Encoding": "8bit"
-        }
       });
       
       console.log("User confirmation email sent successfully");
