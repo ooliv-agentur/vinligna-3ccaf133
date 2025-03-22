@@ -108,7 +108,7 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
       // Configure SMTP client with denomailer
       const client = new SMTPClient({
         connection: {
-          hostname: "smtp.ionos.com",
+          hostname: "smtp.ionos.de", // Updated to match provided credentials
           port: 465,
           tls: true,
           auth: {
