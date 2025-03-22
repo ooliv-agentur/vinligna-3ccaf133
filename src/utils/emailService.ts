@@ -33,6 +33,18 @@ const formatInterest = (interest: string): string => {
 };
 
 /**
+ * Creates a mailto link as fallback option
+ */
+const createMailtoLink = (data: EmailData): string => {
+  const { name, email, telefon, interesse, nachricht, formSource } = data;
+  const subject = encodeURIComponent(`Anfrage von ${name} über ${formSource}`);
+  const body = encodeURIComponent(
+    `Name: ${name}\nE-Mail: ${email}\nTelefon: ${telefon || "Nicht angegeben"}\nInteresse: ${formatInterest(interesse)}\n\nNachricht:\n${nachricht}\n\nFormular: ${formSource}\nZeitstempel: ${new Date().toLocaleString("de-DE")}`
+  );
+  return `mailto:info@vinligna.com?subject=${subject}&body=${body}`;
+};
+
+/**
  * Sends email notifications through Supabase Edge Function
  * Falls back to creating a mailto link if there's any error
  */
@@ -47,81 +59,60 @@ export const sendEmailNotifications = async (data: EmailData): Promise<EmailResp
     nachricht: nachricht.substring(0, 30) + (nachricht.length > 30 ? '...' : '')
   });
   
+  // Create direct mailto link as fallback
+  const mailtoLink = createMailtoLink(data);
+  
   try {
-    // Create direct mailto link as fallback
-    const subject = encodeURIComponent(`Anfrage von ${name} über ${formSource}`);
-    const body = encodeURIComponent(`Name: ${name}\nE-Mail: ${email}\nTelefon: ${telefon || "Nicht angegeben"}\nInteresse: ${formatInterest(interesse)}\n\nNachricht:\n${nachricht}\n\nFormular: ${formSource}\nZeitstempel: ${new Date().toLocaleString("de-DE")}`);
-    const mailtoLink = `mailto:info@vinligna.com?subject=${subject}&body=${body}`;
+    // Call the Supabase edge function to send the email
+    const { data: functionData, error } = await supabase.functions.invoke('send-email', {
+      body: {
+        name,
+        email,
+        telefon,
+        interesse,
+        nachricht,
+        formSource
+      }
+    });
     
-    // Try alternative approach with direct fetch to the edge function
-    try {
-      // Call the Supabase edge function to send the email
-      const { data: functionData, error } = await supabase.functions.invoke('send-email', {
-        body: {
-          name,
-          email,
-          telefon,
-          interesse,
-          nachricht,
-          formSource
-        },
-        headers: {
-          'Content-Type': 'application/json'
-        },
-      });
-      
-      // Check for edge function errors
-      if (error) {
-        console.error("Supabase edge function error:", error);
-        return { 
-          success: false,
-          error: error.message,
-          mailtoLink
-        };
-      }
-      
-      console.log("Edge function response:", functionData);
-      
-      // Return success or error based on the function response
-      if (functionData && functionData.success) {
-        return { 
-          success: true,
-          message: functionData.message || "Email sent successfully",
-          mailtoLink: functionData.mailtoLink || mailtoLink
-        };
-      } else if (functionData) {
-        return {
-          success: false,
-          error: functionData.error || "Unknown error from edge function",
-          mailtoLink: functionData.mailtoLink || mailtoLink
-        };
-      } else {
-        return {
-          success: false,
-          error: "No response from edge function",
-          mailtoLink
-        };
-      }
-    } catch (fetchError) {
-      console.error("Failed to call edge function:", fetchError);
-      
+    // Check for edge function errors
+    if (error) {
+      console.log("Supabase edge function error:", error);
       return { 
         success: false,
-        error: fetchError instanceof Error ? fetchError.message : "Failed to contact server",
+        error: error.message,
+        mailtoLink
+      };
+    }
+    
+    console.log("Edge function response:", functionData);
+    
+    // Return success or error based on the function response
+    if (functionData && functionData.success) {
+      return { 
+        success: true,
+        message: functionData.message || "Email sent successfully",
+        mailtoLink: functionData.mailtoLink || mailtoLink
+      };
+    } else if (functionData) {
+      return {
+        success: false,
+        error: functionData.error || "Unknown error from edge function",
+        mailtoLink: functionData.mailtoLink || mailtoLink
+      };
+    } else {
+      return {
+        success: false,
+        error: "No response from edge function",
         mailtoLink
       };
     }
   } catch (error) {
-    console.error("Unexpected error in sendEmailNotifications:", error);
-    
-    // Create direct mailto link as fallback
-    const subject = encodeURIComponent(`Anfrage von ${name} über ${formSource}`);
-    const body = encodeURIComponent(`Name: ${name}\nE-Mail: ${email}\nTelefon: ${telefon || "Nicht angegeben"}\nInteresse: ${formatInterest(interesse)}\n\nNachricht:\n${nachricht}\n\nFormular: ${formSource}\nZeitstempel: ${new Date().toLocaleString("de-DE")}`);
-    const mailtoLink = `mailto:info@vinligna.com?subject=${subject}&body=${body}`;
+    console.error("Failed to send email via edge function:", error);
     
     return { 
       success: false,
-      error: error instanceof Error ? error.message : "Unbekannter Fehler",
+      error: error instanceof Error ? error.message : "Failed to contact server",
       mailtoLink
     };
   }
