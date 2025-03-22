@@ -98,32 +98,36 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
       const smtpUsername = Deno.env.get("SMTP_USERNAME");
       const smtpPassword = Deno.env.get("SMTP_PASSWORD");
       
-      console.log(`SMTP username available: ${!!smtpUsername}`);
-      console.log(`SMTP password available: ${!!smtpPassword}`);
+      console.log(`SMTP username configured: ${smtpUsername}`);
+      console.log(`SMTP password length: ${smtpPassword ? smtpPassword.length : 0} characters`);
       
       if (!smtpUsername || !smtpPassword) {
         throw new Error("SMTP credentials are not configured");
       }
       
       // Configure SMTP client with denomailer
+      console.log("Configuring SMTP client with hostname: smtp.ionos.de, port: 465, TLS: enabled");
       const client = new SMTPClient({
         connection: {
-          hostname: "smtp.ionos.de", // Updated to match provided credentials
+          hostname: "smtp.ionos.de",
           port: 465,
           tls: true,
           auth: {
             username: smtpUsername,
             password: smtpPassword,
           },
+          debug: true, // Enable debug mode for more detailed logs
         }
       });
       
       console.log("SMTP connection configured, sending email...");
+      console.log(`From address: ${smtpUsername}`);
+      console.log(`To address: ${smtpUsername}`);
       
-      // Send email
+      // Send email - ensure from address matches exactly the SMTP username
       await client.send({
-        from: "info@vinligna.com",
-        to: "info@vinligna.com",
+        from: smtpUsername, // Use the exact username as the from address
+        to: smtpUsername,   // Send to the same address
         bcc: "info@ooliv.de",
         subject: subject,
         content: messageBody,
@@ -145,11 +149,21 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
       );
     } catch (smtpError) {
       console.error("SMTP error details:", smtpError);
+      console.error("SMTP error message:", smtpError.message);
+      console.error("SMTP error stack:", smtpError.stack);
+      
+      // Create a more detailed error response
+      const errorDetails = {
+        message: smtpError.message,
+        type: smtpError.name,
+        stack: smtpError.stack
+      };
       
       return new Response(
         JSON.stringify({
           success: false,
           error: `SMTP Error: ${smtpError.message || "Unknown SMTP error"}`,
+          details: errorDetails,
           mailtoLink: mailtoLink
         }),
         {
