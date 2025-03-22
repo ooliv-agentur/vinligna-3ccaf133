@@ -67,28 +67,7 @@ serve(async (req) => {
     }
 
     // Format the interest value
-    let formattedInterest = data.interesse;
-    switch (data.interesse) {
-      case 'business': formattedInterest = 'Businesslösungen'; break;
-      case 'private': formattedInterest = 'Privatkollektion'; break;
-      case 'consultation': formattedInterest = 'Designberatung'; break;
-      case 'other': formattedInterest = 'Andere Anfrage'; break;
-    }
-
-    // Prepare email content
-    const subject = `Neue Nachricht von ${data.name}${data.formSource ? ` über ${data.formSource}` : ''}`;
-    const messageBody = `
-Neue Nachricht über das Kontaktformular:
-Name: ${data.name}
-E-Mail: ${data.email}
-Telefon: ${data.telefon || "Nicht angegeben"}
-Interesse: ${formattedInterest}
-Nachricht:
-${data.nachricht}
-
-Formular: ${data.formSource || "Nicht angegeben"}
-Zeitstempel: ${new Date().toLocaleString("de-DE")}
-`;
+    let formattedInterest = formatInterest(data.interesse);
 
     // Create direct mailto link as fallback
     const mailtoLink = createMailtoLink(data);
@@ -125,26 +104,40 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
         }
       });
       
-      console.log("SMTP connection configured, sending email...");
-      console.log(`From address: ${smtpUsername}`);
-      console.log(`To address: ${smtpUsername}`);
+      // Prepare both email templates
+      const adminEmailHtml = createAdminEmailTemplate(data, formattedInterest);
+      const userEmailHtml = createUserEmailTemplate(data);
       
-      // Send email - ensure from address matches exactly the SMTP username
+      console.log("SMTP connection configured, sending admin email...");
+      
+      // 1. Send notification email to admin
       await client.send({
         from: smtpUsername, // Use the exact username as the from address
         to: smtpUsername,   // Send to the same address
-        bcc: "info@ooliv.de",
-        subject: subject,
-        content: messageBody,
+        subject: `Neue Nachricht von ${data.name}${data.formSource ? ` über ${data.formSource}` : ''}`,
+        content: "",
+        html: adminEmailHtml,
       });
       
-      console.log("Email sent successfully");
+      console.log("Admin email sent successfully");
+      
+      // 2. Send confirmation email to the user
+      console.log(`Sending confirmation email to user: ${data.email}`);
+      await client.send({
+        from: smtpUsername,
+        to: data.email,
+        subject: "Vielen Dank für Ihre Nachricht an VINLIGNA",
+        content: "",
+        html: userEmailHtml,
+      });
+      
+      console.log("User confirmation email sent successfully");
       await client.close();
       
       return new Response(
         JSON.stringify({
           success: true,
-          message: "Email sent successfully",
+          message: "Emails sent successfully",
           mailtoLink: mailtoLink
         }),
         {
@@ -201,16 +194,21 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
   }
 });
 
+// Format interest selection for display
+function formatInterest(interesse: string): string {
+  switch (interesse) {
+    case 'business': return 'Businesslösungen';
+    case 'private': return 'Privatkollektion';
+    case 'consultation': return 'Designberatung';
+    case 'other': return 'Andere Anfrage';
+    default: return interesse;
+  }
+}
+
 // Helper function to create mailto link
 function createMailtoLink(data: EmailData): string {
   // Format the interest value for the email
-  let formattedInterest = data.interesse;
-  switch (data.interesse) {
-    case 'business': formattedInterest = 'Businesslösungen'; break;
-    case 'private': formattedInterest = 'Privatkollektion'; break;
-    case 'consultation': formattedInterest = 'Designberatung'; break;
-    case 'other': formattedInterest = 'Andere Anfrage'; break;
-  }
+  let formattedInterest = formatInterest(data.interesse);
 
   const subject = encodeURIComponent(`Neue Nachricht von ${data.name}${data.formSource ? ` über ${data.formSource}` : ''}`);
   const body = encodeURIComponent(`
@@ -227,4 +225,246 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
 `);
   
   return `mailto:info@vinligna.com?subject=${subject}&body=${body}`;
+}
+
+// Create HTML template for admin email
+function createAdminEmailTemplate(data: EmailData, formattedInterest: string): string {
+  return `
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neue Nachricht von ${data.name}</title>
+    <style>
+      body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        line-height: 1.6;
+        color: #333333;
+        background-color: #EDE0D4;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #5C3B2E;
+      }
+      .header img {
+        max-width: 200px;
+      }
+      h1 {
+        color: #5C3B2E;
+        font-size: 22px;
+        font-weight: 600;
+        margin-top: 0;
+      }
+      .message-details {
+        background-color: #f9f5f0;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        border-left: 4px solid #5C3B2E;
+      }
+      .field {
+        margin-bottom: 10px;
+      }
+      .field strong {
+        color: #5C3B2E;
+      }
+      .message-content {
+        background-color: #f9f5f0;
+        padding: 15px;
+        border-radius: 5px;
+        white-space: pre-wrap;
+        margin-top: 5px;
+      }
+      .timestamp {
+        font-size: 12px;
+        color: #888888;
+        text-align: right;
+        margin-top: 20px;
+      }
+      .footer {
+        margin-top: 30px;
+        text-align: center;
+        font-size: 12px;
+        color: #888888;
+      }
+      .reply-btn {
+        display: inline-block;
+        background-color: #5C3B2E;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 4px;
+        margin-top: 15px;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Neue Nachricht über VINLIGNA Kontaktformular</h1>
+      </div>
+      
+      <div class="message-details">
+        <div class="field">
+          <strong>Name:</strong> ${data.name}
+        </div>
+        <div class="field">
+          <strong>E-Mail:</strong> ${data.email}
+        </div>
+        <div class="field">
+          <strong>Telefon:</strong> ${data.telefon || "Nicht angegeben"}
+        </div>
+        <div class="field">
+          <strong>Interesse:</strong> ${formattedInterest}
+        </div>
+        <div class="field">
+          <strong>Formular:</strong> ${data.formSource || "Nicht angegeben"}
+        </div>
+      </div>
+      
+      <div class="field">
+        <strong>Nachricht:</strong>
+        <div class="message-content">${data.nachricht}</div>
+      </div>
+      
+      <div style="text-align: center; margin-top: 30px;">
+        <a href="mailto:${data.email}?subject=RE: Ihre Anfrage an VINLIGNA" class="reply-btn">Antworten</a>
+      </div>
+      
+      <div class="timestamp">
+        Zeitstempel: ${new Date().toLocaleString("de-DE")}
+      </div>
+      
+      <div class="footer">
+        VINLIGNA | Hochwertige Weinkisten & Einrichtungsgegenstände aus Eichenholz
+      </div>
+    </div>
+  </body>
+  </html>
+  `;
+}
+
+// Create HTML template for user confirmation email
+function createUserEmailTemplate(data: EmailData): string {
+  return `
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vielen Dank für Ihre Nachricht an VINLIGNA</title>
+    <style>
+      body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        line-height: 1.6;
+        color: #333333;
+        background-color: #EDE0D4;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #5C3B2E;
+      }
+      .header img {
+        max-width: 200px;
+      }
+      h1, h2 {
+        color: #5C3B2E;
+        font-weight: 600;
+      }
+      h1 {
+        font-size: 24px;
+        margin-top: 0;
+      }
+      h2 {
+        font-size: 20px;
+        margin-top: 0;
+      }
+      p {
+        margin-bottom: 15px;
+      }
+      .message-preview {
+        background-color: #f9f5f0;
+        padding: 15px;
+        border-radius: 5px;
+        margin: 15px 0;
+        border-left: 4px solid #5C3B2E;
+        font-style: italic;
+        white-space: pre-wrap;
+      }
+      .footer {
+        margin-top: 30px;
+        padding-top: 15px;
+        border-top: 1px solid #EDE0D4;
+        text-align: center;
+        font-size: 12px;
+        color: #888888;
+      }
+      .signature {
+        margin-top: 25px;
+      }
+      .contact-details {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>VINLIGNA</h1>
+      </div>
+      
+      <h2>Vielen Dank für Ihre Nachricht</h2>
+      
+      <p>Lieber ${data.name},</p>
+      
+      <p>vielen Dank für Ihre Anfrage über unser Kontaktformular. Wir werden uns so schnell wie möglich bei Ihnen melden.</p>
+      
+      <p><strong>Ihre Nachricht:</strong></p>
+      <div class="message-preview">${data.nachricht}</div>
+      
+      <div class="signature">
+        <p>Mit herzlichen Grüßen,<br>Ihr VINLIGNA Team</p>
+      </div>
+      
+      <div class="contact-details">
+        VINLIGNA<br>
+        E-Mail: info@vinligna.com<br>
+        Web: www.vinligna.com
+      </div>
+      
+      <div class="footer">
+        Hochwertige Weinkisten & Einrichtungsgegenstände aus Eichenholz
+      </div>
+    </div>
+  </body>
+  </html>
+  `;
 }
