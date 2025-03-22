@@ -272,7 +272,7 @@ function createAdminEmailTemplate(data: EmailData, formattedInterest: string, ti
           <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.05);" class="container">
             <tr>
               <td style="background-color: #5C3B2E; color: white; padding: 24px; text-align: center;">
-                <img src="https://vinligna.com/lovable-uploads/00edf770-eede-4a74-ac7a-c6d22cc151d3.png" alt="VINLIGNA" width="160" style="display: block; margin: 0 auto;">
+                <img src="https://vinligna.com/VINLIGNA%20Logo@2x.png" alt="VINLIGNA" width="160" style="display:block; margin:0 auto;">
                 <p style="margin: 10px 0 0;">Tradition in zeitlose Eleganz verwandeln</p>
               </td>
             </tr>
@@ -372,7 +372,7 @@ function createUserEmailTemplate(data: EmailData): string {
           <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.05);" class="container">
             <tr>
               <td style="background-color: #5C3B2E; color: white; padding: 24px; text-align: center;">
-                <img src="https://vinligna.com/lovable-uploads/00edf770-eede-4a74-ac7a-c6d22cc151d3.png" alt="VINLIGNA" width="160" style="display: block; margin: 0 auto;">
+                <img src="https://vinligna.com/VINLIGNA%20Logo@2x.png" alt="VINLIGNA" width="160" style="display:block; margin:0 auto;">
                 <p style="margin: 10px 0 0;">Tradition in zeitlose Eleganz verwandeln</p>
               </td>
             </tr>
