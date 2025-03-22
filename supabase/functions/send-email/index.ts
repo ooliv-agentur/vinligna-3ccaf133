@@ -232,23 +232,37 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
 
 // Create HTML template for admin email using the provided template
 function createAdminEmailTemplate(data: EmailData, formattedInterest: string, timestamp: string): string {
-  // Start with the provided template
-  let template = `
+  // Format the message with proper line breaks for HTML
+  const formattedMessage = data.nachricht.replace(/\n/g, '<br>');
+  
+  return `
 <!DOCTYPE html>
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
     <title>VINLIGNA Kontaktformular</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <meta name="supported-color-schemes" content="light">
+    <meta name="description" content="Neue Kontaktanfrage von ${data.name} - ${formattedInterest}">
+    <meta name="x-apple-disable-message-reformatting">
+    <style>
+      @media screen and (max-width: 600px) {
+        .container {
+          width: 100% !important;
+        }
+      }
+    </style>
   </head>
   <body style="margin:0; padding:0; font-family:Arial, sans-serif; background-color:#EDE0D4; color:#2C2C2C;">
     <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#EDE0D4; padding: 40px 0;">
       <tr>
         <td align="center">
-          <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.05);">
+          <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.05);" class="container">
             <tr>
               <td style="background-color: #5C3B2E; color: white; padding: 24px; text-align: center;">
-                <h1 style="margin: 0; font-size: 24px;">VINLIGNA</h1>
-                <p style="margin: 4px 0 0;">Tradition in zeitlose Eleganz verwandeln</p>
+                <img src="https://vinligna.com/vinligna-logo.svg" alt="VINLIGNA" width="160" style="display: block; margin: 0 auto; filter: invert(1);">
+                <p style="margin: 10px 0 0;">Tradition in zeitlose Eleganz verwandeln</p>
               </td>
             </tr>
             <tr>
@@ -265,18 +279,12 @@ function createAdminEmailTemplate(data: EmailData, formattedInterest: string, ti
                   <tr>
                     <td style="font-weight:bold;">E-Mail:</td>
                     <td><a href="mailto:${data.email}" style="color:#D96B37;">${data.email}</a></td>
-                  </tr>`;
-  
-  // Add telefon field only if provided
-  if (data.telefon) {
-    template += `
+                  </tr>
+                  ${data.telefon ? `
                   <tr>
                     <td style="font-weight:bold;">Telefon:</td>
                     <td>${data.telefon}</td>
-                  </tr>`;
-  }
-  
-  template += `
+                  </tr>` : ''}
                   <tr>
                     <td style="font-weight:bold;">Interesse:</td>
                     <td>${formattedInterest}</td>
@@ -288,9 +296,9 @@ function createAdminEmailTemplate(data: EmailData, formattedInterest: string, ti
                 </table>
 
                 <h3 style="color:#5C3B2E;">Nachricht:</h3>
-                <p style="background-color:#F9F6F3; padding: 16px; border-left: 4px solid #5C3B2E; margin-top: 8px;">
-                  ${data.nachricht.replace(/\n/g, '<br>')}
-                </p>
+                <div style="background-color:#F9F6F3; padding: 16px; border-left: 4px solid #5C3B2E; margin-top: 8px; word-wrap: break-word; overflow-wrap: break-word; max-width: 100%;">
+                  ${formattedMessage}
+                </div>
 
                 <div style="margin-top: 32px; text-align: center;">
                   <a href="mailto:${data.email}" style="background-color:#5C3B2E; color:white; text-decoration:none; padding: 12px 24px; border-radius: 6px; font-weight:bold; display:inline-block;">
@@ -315,28 +323,41 @@ function createAdminEmailTemplate(data: EmailData, formattedInterest: string, ti
   </body>
 </html>
   `;
-  
-  return template;
 }
 
 // Create HTML template for user confirmation email using the provided template
 function createUserEmailTemplate(data: EmailData): string {
+  // Format the message with proper line breaks for HTML
+  const formattedMessage = data.nachricht.replace(/\n/g, '<br>');
+  
   return `
 <!DOCTYPE html>
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
     <title>Vielen Dank für Ihre Nachricht</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <meta name="supported-color-schemes" content="light">
+    <meta name="description" content="Vielen Dank für Ihre Anfrage bei VINLIGNA - Wir werden uns bald bei Ihnen melden">
+    <meta name="x-apple-disable-message-reformatting">
+    <style>
+      @media screen and (max-width: 600px) {
+        .container {
+          width: 100% !important;
+        }
+      }
+    </style>
   </head>
   <body style="margin:0; padding:0; font-family:Arial, sans-serif; background-color:#EDE0D4; color:#2C2C2C;">
     <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#EDE0D4; padding: 40px 0;">
       <tr>
         <td align="center">
-          <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.05);">
+          <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.05);" class="container">
             <tr>
               <td style="background-color: #5C3B2E; color: white; padding: 24px; text-align: center;">
-                <h1 style="margin: 0; font-size: 24px;">VINLIGNA</h1>
-                <p style="margin: 4px 0 0;">Tradition in zeitlose Eleganz verwandeln</p>
+                <img src="https://vinligna.com/vinligna-logo.svg" alt="VINLIGNA" width="160" style="display: block; margin: 0 auto; filter: invert(1);">
+                <p style="margin: 10px 0 0;">Tradition in zeitlose Eleganz verwandeln</p>
               </td>
             </tr>
             <tr>
@@ -352,9 +373,9 @@ function createUserEmailTemplate(data: EmailData): string {
                 </p>
 
                 <h3 style="color:#5C3B2E;">Ihre Nachricht:</h3>
-                <p style="background-color:#F9F6F3; padding: 16px; border-left: 4px solid #5C3B2E; margin-top: 8px;">
-                  ${data.nachricht.replace(/\n/g, '<br>')}
-                </p>
+                <div style="background-color:#F9F6F3; padding: 16px; border-left: 4px solid #5C3B2E; margin-top: 8px; word-wrap: break-word; overflow-wrap: break-word; max-width: 100%;">
+                  ${formattedMessage}
+                </div>
 
                 <p style="font-size: 14px; margin-top: 32px;">
                   Mit herzlichen Grüßen,<br>
