@@ -109,10 +109,10 @@ Zeitstempel: ${new Date().toLocaleString("de-DE")}
       const client = new SmtpClient();
       
       // Connect with detailed logging
-      console.log("Attempting to connect to SMTP server...");
+      console.log("Attempting to connect to SMTP server with updated settings...");
       await client.connectTLS({
-        hostname: "smtp.ionos.de",
-        port: 587,
+        hostname: "smtp.ionos.com", // Updated hostname from smtp.ionos.de to smtp.ionos.com
+        port: 465,                  // Updated port from 587 to 465
         username: smtpUsername,
         password: smtpPassword,
       });

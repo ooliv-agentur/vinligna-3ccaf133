@@ -1,4 +1,3 @@
-
 // Email service for form submission using a Supabase edge function
 
 import { supabase } from "@/integrations/supabase/client";
@@ -63,8 +62,8 @@ export const sendEmailNotifications = async (data: EmailData): Promise<EmailResp
   const mailtoLink = createMailtoLink(data);
   
   try {
-    // Call the Supabase edge function to send the email with a timeout
-    const functionCallPromise = supabase.functions.invoke('send-email', {
+    // Call the Supabase edge function to send the email
+    const { data: functionData, error } = await supabase.functions.invoke('send-email', {
       body: {
         name,
         email,
@@ -74,19 +73,6 @@ export const sendEmailNotifications = async (data: EmailData): Promise<EmailResp
         formSource
       }
     });
-    
-    // Create a timeout promise
-    const timeoutPromise = new Promise((_, reject) => {
-      setTimeout(() => reject(new Error("Edge function call timed out after a minute")), 60000);
-    });
-    
-    // Race the function call against the timeout
-    const { data: functionData, error } = await Promise.race([
-      functionCallPromise,
-      timeoutPromise.then(() => { 
-        throw new Error("Edge function call timed out");
-      })
-    ]) as any;
     
     // Check for edge function errors
     if (error) {
