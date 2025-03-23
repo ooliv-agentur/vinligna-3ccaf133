@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -84,6 +85,7 @@ const Navbar = () => {
       : (theme === 'dark' ? "brightness-0 invert" : "")  // Dark theme no scroll: invert, Light theme: normal
   );
 
+  // Updated to ensure mobile menu icon always has good contrast
   const mobileMenuIconClass = cn(
     "h-6 w-6",
     theme === 'dark' ? "text-white" : "text-black"
@@ -146,7 +148,10 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[90] bg-black"
+            className={cn(
+              "fixed inset-0 z-[90]",
+              theme === 'dark' ? "bg-[#505358]" : "bg-white"
+            )}
             style={{
               touchAction: "none"
             }}
@@ -168,7 +173,7 @@ const Navbar = () => {
                     icon={<Home className="w-5 h-5 mr-4 text-wine" />}
                     onClick={() => setIsMobileMenuOpen(false)}
                     delay={0.15}
-                    textColor={menuTextColor}
+                    textColor={theme === 'dark' ? 'white' : 'black'}
                   >
                     Startseite
                   </MenuNavItem>
@@ -177,7 +182,7 @@ const Navbar = () => {
                     icon={<Wine className="w-5 h-5 mr-4 text-wine" />}
                     onClick={() => setIsMobileMenuOpen(false)}
                     delay={0.2}
-                    textColor={menuTextColor}
+                    textColor={theme === 'dark' ? 'white' : 'black'}
                   >
                     Weingüter, Gastronomie & Hotellerie
                   </MenuNavItem>
@@ -186,7 +191,7 @@ const Navbar = () => {
                     icon={<User className="w-5 h-5 mr-4 text-wine" />}
                     onClick={() => setIsMobileMenuOpen(false)}
                     delay={0.25}
-                    textColor={menuTextColor}
+                    textColor={theme === 'dark' ? 'white' : 'black'}
                   >
                     Weinliebhaber & Privatkunden
                   </MenuNavItem>
@@ -194,7 +199,10 @@ const Navbar = () => {
               </motion.nav>
               
               <motion.div 
-                className="mt-8 sm:mt-12 border-t border-white/10 pt-6 sm:pt-8"
+                className={cn(
+                  "mt-8 sm:mt-12 pt-6 sm:pt-8",
+                  theme === 'dark' ? "border-t border-white/10" : "border-t border-black/10"
+                )}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.3 }}
@@ -240,7 +248,10 @@ const Navbar = () => {
               </motion.div>
               
               <motion.div 
-                className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-white/10 flex justify-center"
+                className={cn(
+                  "mt-6 sm:mt-8 pt-6 sm:pt-8 flex justify-center",
+                  theme === 'dark' ? "border-t border-white/10" : "border-t border-black/10"
+                )}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.3 }}
@@ -320,7 +331,7 @@ const MenuNavItem = ({ to, children, icon, onClick, delay = 0, textColor = 'whit
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay, duration: 0.5 }}
       className="flex items-center text-xl transition-colors group"
-      style={{ color: theme === 'dark' ? 'white' : 'black' }}
+      style={{ color: textColor }}
     >
       {icon}
       <span className="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-wine group-hover:after:w-full after:transition-all after:duration-300">
