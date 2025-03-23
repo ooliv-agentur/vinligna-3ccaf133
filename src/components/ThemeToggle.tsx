@@ -27,7 +27,7 @@ const ThemeToggle = ({ className = '', isScrolled }: ThemeToggleProps) => {
       onClick={toggleTheme}
       className={cn(
         "w-6 h-6 flex items-center justify-center transition-colors duration-300 rounded-full relative z-[400]",
-        theme === 'light' ? "text-foreground hover:text-wine" : "text-foreground hover:text-white/80",
+        theme === 'light' ? "text-black hover:text-wine" : "text-white hover:text-white/80",
         className
       )}
       aria-label="Toggle theme"

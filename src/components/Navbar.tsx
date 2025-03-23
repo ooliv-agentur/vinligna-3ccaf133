@@ -7,12 +7,14 @@ import { cn } from '@/lib/utils';
 import ThemeToggle from './ThemeToggle';
 import { useTheme } from 'next-themes';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useAppTheme } from '@/hooks/use-theme';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme } = useTheme();
   const isMobile = useIsMobile();
+  const { menuTextColor, menuIconColor } = useAppTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -83,6 +85,11 @@ const Navbar = () => {
       : (theme === 'dark' ? "brightness-0 invert" : "")  // Dark theme no scroll: invert, Light theme: normal
   );
 
+  const mobileMenuIconClass = cn(
+    "h-6 w-6",
+    theme === 'dark' ? "text-white" : "text-black"
+  );
+
   return (
     <>
       <header
@@ -117,16 +124,16 @@ const Navbar = () => {
             <button
               className={cn(
                 "focus:outline-none relative z-[400]",
-                isMobileMenuOpen ? "text-white" : (isScrolled ? "text-foreground" : "text-white")
+                isMobileMenuOpen ? (theme === 'dark' ? "text-white" : "text-black") : (isScrolled ? "text-foreground" : (theme === 'dark' ? "text-white" : "text-black"))
               )}
               onClick={handleToggleMobileMenu}
               aria-label="Toggle menu"
             >
               <span className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0'}`}>
-                <X className="h-6 w-6" />
+                <X className={mobileMenuIconClass} />
               </span>
               <span className={`flex items-center justify-center transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}>
-                <Menu className="h-6 w-6" />
+                <Menu className={mobileMenuIconClass} />
               </span>
             </button>
           </div>
@@ -162,6 +169,7 @@ const Navbar = () => {
                     icon={<Home className="w-5 h-5 mr-4 text-wine" />}
                     onClick={() => setIsMobileMenuOpen(false)}
                     delay={0.15}
+                    textColor={menuTextColor}
                   >
                     Startseite
                   </MenuNavItem>
@@ -170,6 +178,7 @@ const Navbar = () => {
                     icon={<Wine className="w-5 h-5 mr-4 text-wine" />}
                     onClick={() => setIsMobileMenuOpen(false)}
                     delay={0.2}
+                    textColor={menuTextColor}
                   >
                     Weingüter, Gastronomie & Hotellerie
                   </MenuNavItem>
@@ -178,6 +187,7 @@ const Navbar = () => {
                     icon={<User className="w-5 h-5 mr-4 text-wine" />}
                     onClick={() => setIsMobileMenuOpen(false)}
                     delay={0.25}
+                    textColor={menuTextColor}
                   >
                     Weinliebhaber & Privatkunden
                   </MenuNavItem>
@@ -190,7 +200,7 @@ const Navbar = () => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.3 }}
               >
-                <h3 className="text-sm uppercase tracking-wider text-white/60 mb-4 sm:mb-6 font-light">Kontaktieren Sie uns</h3>
+                <h3 className={`text-sm uppercase tracking-wider ${theme === 'dark' ? 'text-white/60' : 'text-black/60'} mb-4 sm:mb-6 font-light`}>Kontaktieren Sie uns</h3>
                 <ul className="space-y-4 sm:space-y-6">
                   <motion.li 
                     initial={{ opacity: 0, x: -10 }}
@@ -199,7 +209,7 @@ const Navbar = () => {
                     className="flex items-center"
                   >
                     <Mail className="w-5 h-5 mr-4 text-wine" />
-                    <a href="mailto:info@vinligna.com" className="text-white hover:text-wine transition-colors">
+                    <a href="mailto:info@vinligna.com" className={`${theme === 'dark' ? 'text-white hover:text-wine' : 'text-black hover:text-wine'} transition-colors`}>
                       info@vinligna.com
                     </a>
                   </motion.li>
@@ -210,7 +220,7 @@ const Navbar = () => {
                     className="flex items-center"
                   >
                     <Phone className="w-5 h-5 mr-4 text-wine" />
-                    <a href="tel:+4963623094990" className="text-white hover:text-wine transition-colors">
+                    <a href="tel:+4963623094990" className={`${theme === 'dark' ? 'text-white hover:text-wine' : 'text-black hover:text-wine'} transition-colors`}>
                       +49 6362 309 49 90
                     </a>
                   </motion.li>
@@ -221,7 +231,7 @@ const Navbar = () => {
                     className="flex items-start"
                   >
                     <MapPin className="w-5 h-5 mr-4 text-wine flex-shrink-0 mt-1" />
-                    <address className="not-italic text-white/80">
+                    <address className={`not-italic ${theme === 'dark' ? 'text-white/80' : 'text-black/80'}`}>
                       VinLignum Holzmanufaktur<br />
                       Industriestraße 19<br />
                       67821 Alsenz
@@ -298,17 +308,20 @@ interface MenuNavItemProps {
   icon?: React.ReactNode;
   onClick?: () => void;
   delay?: number;
+  textColor?: string;
 }
 
-const MenuNavItem = ({ to, children, icon, onClick, delay = 0 }: MenuNavItemProps) => {
+const MenuNavItem = ({ to, children, icon, onClick, delay = 0, textColor = 'white' }: MenuNavItemProps) => {
   const isHashLink = to.startsWith('/#');
+  const { theme } = useTheme();
   
   const content = (
     <motion.div
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay, duration: 0.5 }}
-      className="flex items-center text-xl text-white hover:text-wine transition-colors group"
+      className="flex items-center text-xl transition-colors group"
+      style={{ color: theme === 'dark' ? 'white' : 'black' }}
     >
       {icon}
       <span className="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-wine group-hover:after:w-full after:transition-all after:duration-300">

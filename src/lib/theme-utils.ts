@@ -52,3 +52,11 @@ export function getSectionBackground() {
   const { isDarkMode } = useAppTheme();
   return isDarkMode ? 'bg-darkbg' : 'bg-white';
 }
+
+/**
+ * Get text color based on theme for mobile menu
+ */
+export function getMobileMenuTextColor() {
+  const { isDarkMode } = useAppTheme();
+  return isDarkMode ? 'text-white' : 'text-black';
+}

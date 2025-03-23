@@ -17,12 +17,18 @@ export function useAppTheme() {
   // Get background color based on theme
   const backgroundColor = isDarkMode ? '#505358' : '#ffffff';
   
+  // Get text color based on theme for mobile menu
+  const menuTextColor = isDarkMode ? 'white' : 'black';
+  const menuIconColor = isDarkMode ? 'text-white' : 'text-black';
+  
   return {
     theme,
     setTheme,
     isDarkMode,
     isLightMode,
     mounted,
-    backgroundColor
+    backgroundColor,
+    menuTextColor,
+    menuIconColor
   };
 }
