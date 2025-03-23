@@ -22,6 +22,14 @@ export function createAdminEmailTemplate(data: EmailData, formattedInterest: str
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
 <meta name="supported-color-schemes" content="light">
+<style>
+@media only screen and (max-width: 480px) {
+  h1 { font-size: 22px !important; }
+  h2 { font-size: 18px !important; }
+  h3 { font-size: 16px !important; }
+  p, div, a { font-size: 14px !important; }
+}
+</style>
 </head>
 <body style="margin:0; padding:20px; background-color:#FFFFFF; font-family:system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height:1.5;">
 <div style="display:none; max-height:0; overflow:hidden;">Neue Nachricht von ${data.name} über das VINLIGNA Kontaktformular - ${formattedInterest}</div>
@@ -85,6 +93,14 @@ export function createUserEmailTemplate(data: EmailData): string {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
 <meta name="supported-color-schemes" content="light">
+<style>
+@media only screen and (max-width: 480px) {
+  h1 { font-size: 22px !important; }
+  h2 { font-size: 18px !important; }
+  h3 { font-size: 16px !important; }
+  p, div, a { font-size: 14px !important; }
+}
+</style>
 </head>
 <body style="margin:0; padding:20px; background-color:#FFFFFF; font-family:system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height:1.5;">
 <div style="display:none; max-height:0; overflow:hidden;">Vielen Dank für Ihre Nachricht an VINLIGNA. Wir werden uns in Kürze bei Ihnen melden.</div>

@@ -124,6 +124,12 @@ serve(async (req) => {
       const formSource = data.formSource ? ` über ${data.formSource}` : '';
       const emailSubject = `Neue Nachricht von ${data.name}${formSource}`;
       
+      // Email sending options with explicit encoding settings
+      const emailOptions = {
+        contentType: "text/html; charset=utf-8",  // Explicitly set UTF-8 charset
+        encoding: "8bit",  // Use 8-bit encoding instead of quoted-printable
+      };
+      
       // 1. Send notification email to admin
       try {
         await client.send({
@@ -133,8 +139,7 @@ serve(async (req) => {
           subject: emailSubject,
           html: adminEmailHtml,
           text: adminEmailText, // Plain text alternative
-          contentType: "text/html; charset=utf-8",  // Explicitly set UTF-8 charset
-          encoding: "8bit"  // Use 8-bit encoding instead of quoted-printable
+          ...emailOptions
         });
         
         console.log("Admin email sent successfully");
@@ -152,8 +157,7 @@ serve(async (req) => {
           subject: "Vielen Dank für Ihre Nachricht an VINLIGNA",
           html: userEmailHtml,
           text: userEmailText, // Plain text alternative
-          contentType: "text/html; charset=utf-8",  // Explicitly set UTF-8 charset
-          encoding: "8bit"  // Use 8-bit encoding instead of quoted-printable
+          ...emailOptions
         });
         
         console.log("User confirmation email sent successfully");
