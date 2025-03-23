@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -6,7 +5,7 @@ import { Menu, X } from 'lucide-react';
 import { useAppTheme } from '@/hooks/use-theme';
 import { cn } from '@/lib/utils';
 import Logo from './Logo';
-import { Button } from './ui/button';
+import Button from './ui/button';
 
 const navigation = [
   { name: 'Leistungen', href: '/leistungen' },
