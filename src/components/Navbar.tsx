@@ -1,357 +1,116 @@
-
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Mail, Phone, MapPin, Wine, User, Home } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import ThemeToggle from './ThemeToggle';
-import { useTheme } from 'next-themes';
-import { useIsMobile } from '@/hooks/use-mobile';
+import { Link, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
 import { useAppTheme } from '@/hooks/use-theme';
+import { cn } from '@/lib/utils';
+import { Button } from './ui/button';
+
+// Create a Logo component to be used in the Navbar
+const Logo = () => {
+  const { isDarkMode } = useAppTheme();
+  
+  return (
+    <div className="flex items-center">
+      <svg width="140" height="36" viewBox="0 0 140 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M21.432 6.00006H24.432L16.584 30.0001H13.584L5.73602 6.00006H8.78402L15.132 26.1481L21.432 6.00006Z" fill={isDarkMode ? "#fff" : "#000"} />
+        <path d="M24.8334 30.0001V6.00006H27.6334V30.0001H24.8334Z" fill={isDarkMode ? "#fff" : "#000"} />
+        <path d="M32.8031 30.0001V6.00006H35.6031V27.4321H47.7591V30.0001H32.8031Z" fill={isDarkMode ? "#fff" : "#000"} />
+        <path d="M54.3102 30.0001V6.00006H57.1102V27.4321H69.2662V30.0001H54.3102Z" fill={isDarkMode ? "#fff" : "#000"} />
+        <path d="M71.3375 30.0001V6.00006H74.1375V30.0001H71.3375Z" fill={isDarkMode ? "#fff" : "#000"} />
+        <path d="M92.2758 30.0001L83.0518 10.7761V30.0001H80.2518V6.00006H83.1958L92.0278 24.5281V6.00006H94.8278V30.0001H92.2758Z" fill={isDarkMode ? "#fff" : "#000"} />
+        <path d="M108.375 30.0001L99.7347 6.00006H102.807L109.731 25.8481L116.655 6.00006H119.631L111.087 30.0001H108.375Z" fill={isDarkMode ? "#fff" : "#000"} />
+        <path d="M132.432 30.0001H129.48L123.84 20.5201H122.736V30.0001H119.952V6.00006H125.496C127.224 6.00006 128.688 6.31206 129.888 6.93606C131.104 7.54406 132.016 8.40806 132.624 9.52806C133.248 10.6321 133.56 11.9361 133.56 13.4401C133.56 15.1361 133.152 16.6401 132.336 17.9521C131.536 19.2641 130.272 20.1761 128.544 20.6881L132.432 30.0001ZM122.736 18.1361H125.352C126.72 18.1361 127.736 17.7321 128.4 16.9241C129.064 16.1161 129.396 14.9961 129.396 13.5641C129.396 12.1001 129.064 11.0161 128.4 10.3121C127.736 9.60806 126.72 9.25606 125.352 9.25606H122.736V18.1361Z" fill={isDarkMode ? "#fff" : "#000"} />
+      </svg>
+    </div>
+  );
+};
+
+const navigation = [
+  { name: 'Business', href: '/business' },
+  { name: 'Private', href: '/private' },
+  { name: 'Design', href: '/design' },
+  { name: 'Kontakt', href: '/kontakt' },
+];
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { theme } = useTheme();
-  const isMobile = useIsMobile();
-  const { menuTextColor, menuIconColor } = useAppTheme();
+  const location = useLocation();
+  const { isDarkMode, toggleTheme } = useAppTheme();
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
+    // Close the mobile menu when the route changes
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isMobileMenuOpen]);
-
-  const handleToggleMobileMenu = () => {
+  const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const handleContactClick = () => {
-    setIsMobileMenuOpen(false); // Close the mobile menu
-    
-    // Scroll to contact section
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      setTimeout(() => {
-        const offsetTop = contactSection.offsetTop;
-        window.scrollTo({
-          top: offsetTop,
-          behavior: 'smooth'
-        });
-      }, 100); // Small delay to ensure menu is closed first
-    }
-  };
-
-  // Function to handle logo click
-  const handleLogoClick = () => {
-    // Close mobile menu if open
-    if (isMobileMenuOpen) {
-      setIsMobileMenuOpen(false);
-    }
-    
-    // Scroll to top with a slight delay to ensure menu closing animation completes
-    setTimeout(() => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    }, 100);
-  };
-
-  const logoSrc = "/lovable-uploads/eef04cda-cc19-4e97-9136-dcd93f60b698.png"; // Always use dark logo
-    
-  const logoClass = cn(
-    "h-6 md:h-8",
-    isScrolled
-      ? (theme === 'dark' ? "brightness-0 invert" : "")  // Dark theme on scroll: invert, Light theme: normal
-      : (theme === 'dark' ? "brightness-0 invert" : "")  // Dark theme no scroll: invert, Light theme: normal
-  );
-
-  const mobileMenuIconClass = cn(
-    "h-6 w-6",
-    theme === 'dark' ? "text-white" : "text-black"
-  );
-
   return (
-    <>
-      <header
-        className={cn(
-          'fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ease-in-out py-4 px-4 sm:px-6 md:px-12',
-          isScrolled ? 'bg-background/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
-        )}
-      >
-        <div className="container mx-auto flex items-center justify-between relative">
-          <Link 
-            to="/" 
-            className="inline-block z-[400]" 
-            aria-label="VINLIGNA"
-            onClick={handleLogoClick}
-          >
-            <img 
-              src={logoSrc}
-              alt="VINLIGNA" 
-              className={logoClass}
-            />
-          </Link>
+    <nav className="bg-transparent py-6 relative z-50">
+      <div className="container mx-auto px-4 flex items-center justify-between">
+        {/* Logo */}
+        <Logo />
 
-          <nav className="hidden md:flex items-center space-x-8">
-            <NavLink to="/b2b" isScrolled={isScrolled}>Weingüter, Gastronomie & Hotellerie</NavLink>
-            <NavLink to="/b2c" isScrolled={isScrolled}>Weinliebhaber & Privatkunden</NavLink>
-            <NavLink to="/#contact" isScrolled={isScrolled}>Kontakt</NavLink>
-            <ThemeToggle isScrolled={isScrolled} />
-          </nav>
-
-          <div className="md:hidden flex items-center space-x-4 z-[400]">
-            <ThemeToggle isScrolled={isScrolled} className="mr-2" />
-            <button
+        {/* Desktop Navigation */}
+        <div className="hidden lg:flex items-center space-x-8">
+          {navigation.map((item) => (
+            <Link
+              key={item.name}
+              to={item.href}
               className={cn(
-                "focus:outline-none relative z-[400]",
-                isMobileMenuOpen ? (theme === 'dark' ? "text-white" : "text-black") : (isScrolled ? "text-foreground" : (theme === 'dark' ? "text-white" : "text-black"))
+                "text-sm font-medium transition-colors hover:text-wine",
+                isDarkMode ? "text-white/80" : "text-gray-700"
               )}
-              onClick={handleToggleMobileMenu}
-              aria-label="Toggle menu"
             >
-              <span className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0'}`}>
-                <X className={mobileMenuIconClass} />
-              </span>
-              <span className={`flex items-center justify-center transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}>
-                <Menu className={mobileMenuIconClass} />
-              </span>
-            </button>
-          </div>
+              {item.name}
+            </Link>
+          ))}
+          <Button variant="ghost" size="sm" onClick={toggleTheme}>
+            {isDarkMode ? "☀️" : "🌙"}
+          </Button>
         </div>
-      </header>
 
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[90] bg-black"
-            style={{
-              touchAction: "none"
-            }}
-          >
-            <div className="flex flex-col justify-between h-full px-4 sm:px-6 py-16 sm:py-20">
-              <div className="mb-8 sm:mb-12">
-                {/* Logo is now in the header and stays fixed */}
-              </div>
-              
-              <motion.nav 
-                className="mb-auto"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.1, duration: 0.3 }}
-              >
-                <ul className="flex flex-col space-y-4 sm:space-y-6">
-                  <MenuNavItem 
-                    to="/" 
-                    icon={<Home className="w-5 h-5 mr-4 text-wine" />}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    delay={0.15}
-                    textColor={menuTextColor}
-                  >
-                    Startseite
-                  </MenuNavItem>
-                  <MenuNavItem 
-                    to="/b2b" 
-                    icon={<Wine className="w-5 h-5 mr-4 text-wine" />}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    delay={0.2}
-                    textColor={menuTextColor}
-                  >
-                    Weingüter, Gastronomie & Hotellerie
-                  </MenuNavItem>
-                  <MenuNavItem 
-                    to="/b2c" 
-                    icon={<User className="w-5 h-5 mr-4 text-wine" />}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    delay={0.25}
-                    textColor={menuTextColor}
-                  >
-                    Weinliebhaber & Privatkunden
-                  </MenuNavItem>
-                </ul>
-              </motion.nav>
-              
-              <motion.div 
-                className="mt-8 sm:mt-12 border-t border-white/10 pt-6 sm:pt-8"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3, duration: 0.3 }}
-              >
-                <h3 className={`text-sm uppercase tracking-wider ${theme === 'dark' ? 'text-white/60' : 'text-black/60'} mb-4 sm:mb-6 font-light`}>Kontaktieren Sie uns</h3>
-                <ul className="space-y-4 sm:space-y-6">
-                  <motion.li 
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.35, duration: 0.3 }}
-                    className="flex items-center"
-                  >
-                    <Mail className="w-5 h-5 mr-4 text-wine" />
-                    <a href="mailto:info@vinligna.com" className={`${theme === 'dark' ? 'text-white hover:text-wine' : 'text-black hover:text-wine'} transition-colors`}>
-                      info@vinligna.com
-                    </a>
-                  </motion.li>
-                  <motion.li 
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.4, duration: 0.3 }}
-                    className="flex items-center"
-                  >
-                    <Phone className="w-5 h-5 mr-4 text-wine" />
-                    <a href="tel:+4963623094990" className={`${theme === 'dark' ? 'text-white hover:text-wine' : 'text-black hover:text-wine'} transition-colors`}>
-                      +49 6362 309 49 90
-                    </a>
-                  </motion.li>
-                  <motion.li 
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.45, duration: 0.3 }}
-                    className="flex items-start"
-                  >
-                    <MapPin className="w-5 h-5 mr-4 text-wine flex-shrink-0 mt-1" />
-                    <address className={`not-italic ${theme === 'dark' ? 'text-white/80' : 'text-black/80'}`}>
-                      VinLignum Holzmanufaktur<br />
-                      Industriestraße 19<br />
-                      67821 Alsenz
-                    </address>
-                  </motion.li>
-                </ul>
-              </motion.div>
-              
-              <motion.div 
-                className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-white/10 flex justify-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.3 }}
-              >
-                <button 
-                  onClick={handleContactClick}
-                  className="inline-flex items-center justify-center bg-wine hover:bg-wine-light text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-md transition-colors duration-300"
-                >
-                  Kontakt aufnehmen
-                </button>
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
-  );
-};
+        {/* Mobile Navigation Button */}
+        <div className="lg:hidden">
+          <Button variant="ghost" size="sm" onClick={toggleMobileMenu}>
+            {isMobileMenuOpen ? (
+              <X className={cn("h-4 w-4", isDarkMode ? "text-white" : "text-gray-700")} />
+            ) : (
+              <Menu className={cn("h-4 w-4", isDarkMode ? "text-white" : "text-gray-700")} />
+            )}
+          </Button>
+        </div>
+      </div>
 
-interface NavLinkProps {
-  to: string;
-  children: React.ReactNode;
-  onClick?: () => void;
-  isScrolled?: boolean;
-}
-
-const NavLink = ({ to, children, isScrolled }: NavLinkProps) => {
-  const isHashLink = to.startsWith('/#');
-  
-  if (isHashLink) {
-    return (
-      <a
-        href={to.substring(1)}
-        className={cn(
-          "text-sm font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 hover:after:w-full after:transition-all after:duration-300",
-          isScrolled 
-            ? "text-foreground hover:text-foreground/80 after:bg-foreground" 
-            : "text-foreground dark:text-white hover:text-foreground/80 dark:hover:text-white/80 after:bg-foreground dark:after:bg-white"
-        )}
+      {/* Mobile Menu */}
+      <motion.div
+        className="lg:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-900 shadow-md rounded-b-lg overflow-hidden"
+        style={{ display: isMobileMenuOpen ? 'block' : 'none' }}
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: isMobileMenuOpen ? 1 : 0, y: isMobileMenuOpen ? 0 : -10 }}
+        transition={{ duration: 0.2, ease: "easeInOut" }}
       >
-        {children}
-      </a>
-    );
-  }
-  
-  return (
-    <Link
-      to={to}
-      className={cn(
-        "text-sm font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 hover:after:w-full after:transition-all after:duration-300",
-        isScrolled 
-          ? "text-foreground hover:text-foreground/80 after:bg-foreground" 
-          : "text-foreground dark:text-white hover:text-foreground/80 dark:hover:text-white/80 after:bg-foreground dark:after:bg-white"
-      )}
-    >
-      {children}
-    </Link>
-  );
-};
-
-interface MenuNavItemProps {
-  to: string;
-  children: React.ReactNode;
-  icon?: React.ReactNode;
-  onClick?: () => void;
-  delay?: number;
-  textColor?: string;
-}
-
-const MenuNavItem = ({ to, children, icon, onClick, delay = 0, textColor = 'white' }: MenuNavItemProps) => {
-  const isHashLink = to.startsWith('/#');
-  const { theme } = useTheme();
-  
-  const content = (
-    <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ delay, duration: 0.5 }}
-      className="flex items-center text-xl transition-colors group"
-      style={{ color: theme === 'dark' ? 'white' : 'black' }}
-    >
-      {icon}
-      <span className="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-wine group-hover:after:w-full after:transition-all after:duration-300">
-        {children}
-      </span>
-    </motion.div>
-  );
-  
-  if (isHashLink) {
-    return (
-      <li>
-        <a
-          href={to.substring(1)}
-          onClick={onClick}
-        >
-          {content}
-        </a>
-      </li>
-    );
-  }
-  
-  return (
-    <li>
-      <Link
-        to={to}
-        onClick={onClick}
-      >
-        {content}
-      </Link>
-    </li>
+        <div className="py-4 px-6 space-y-4">
+          {navigation.map((item) => (
+            <Link
+              key={item.name}
+              to={item.href}
+              className={cn(
+                "block py-2 text-sm font-medium transition-colors hover:text-wine",
+                isDarkMode ? "text-white/80" : "text-gray-700"
+              )}
+            >
+              {item.name}
+            </Link>
+          ))}
+          <Button variant="ghost" size="sm" className="w-full justify-center" onClick={toggleTheme}>
+            {isDarkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
+          </Button>
+        </div>
+      </motion.div>
+    </nav>
   );
 };
 
