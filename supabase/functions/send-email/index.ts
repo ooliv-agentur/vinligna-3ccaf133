@@ -133,6 +133,8 @@ serve(async (req) => {
           subject: emailSubject,
           html: adminEmailHtml,
           text: adminEmailText, // Plain text alternative
+          contentType: "text/html; charset=utf-8",  // Explicitly set UTF-8 charset
+          encoding: "8bit"  // Use 8-bit encoding instead of quoted-printable
         });
         
         console.log("Admin email sent successfully");
@@ -150,6 +152,8 @@ serve(async (req) => {
           subject: "Vielen Dank für Ihre Nachricht an VINLIGNA",
           html: userEmailHtml,
           text: userEmailText, // Plain text alternative
+          contentType: "text/html; charset=utf-8",  // Explicitly set UTF-8 charset
+          encoding: "8bit"  // Use 8-bit encoding instead of quoted-printable
         });
         
         console.log("User confirmation email sent successfully");
