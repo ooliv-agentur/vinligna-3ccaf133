@@ -24,9 +24,10 @@ export function createAdminEmailTemplate(data: EmailData, formattedInterest: str
 <meta name="supported-color-schemes" content="light">
 <style>
 @media only screen and (max-width: 480px) {
-  h1, h2 { font-size: 18px !important; }
+  h1 { font-size: 22px !important; }
+  h2 { font-size: 18px !important; }
   h3 { font-size: 16px !important; }
-  p, div { font-size: 14px !important; }
+  p, div, a { font-size: 14px !important; }
 }
 </style>
 </head>
@@ -94,9 +95,10 @@ export function createUserEmailTemplate(data: EmailData): string {
 <meta name="supported-color-schemes" content="light">
 <style>
 @media only screen and (max-width: 480px) {
-  h1, h2 { font-size: 18px !important; }
+  h1 { font-size: 22px !important; }
+  h2 { font-size: 18px !important; }
   h3 { font-size: 16px !important; }
-  p, div { font-size: 14px !important; }
+  p, div, a { font-size: 14px !important; }
 }
 </style>
 </head>
