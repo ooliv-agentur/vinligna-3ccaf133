@@ -24,7 +24,7 @@ export function createAdminEmailTemplate(data: EmailData, formattedInterest: str
     <meta name="color-scheme" content="light">
     <meta name="supported-color-schemes" content="light">
   </head>
-  <body style="margin:0; padding:20px; background-color:#525358; font-family:system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height:1.5;">
+  <body style="margin:0; padding:20px; background-color:#FFFFFF; font-family:system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height:1.5;">
     <!-- Hidden preview text -->
     <div style="display:none; max-height:0; overflow:hidden;">
       Neue Nachricht von ${data.name} über das VINLIGNA Kontaktformular - ${formattedInterest}
@@ -32,9 +32,9 @@ export function createAdminEmailTemplate(data: EmailData, formattedInterest: str
     
     <div style="max-width:600px; margin:0 auto; background-color:#ffffff; border-radius:8px; overflow:hidden; box-shadow:0 4px 6px rgba(0,0,0,0.1);">
       <!-- Header -->
-      <div style="background-color:#5C3B2E; color:#ffffff; padding:24px; text-align:center;">
-        <h1 style="margin:0; font-size:24px; font-weight:bold;">VINLIGNA</h1>
-        <p style="margin:8px 0 0;">Tradition in zeitlose Eleganz verwandeln</p>
+      <div style="padding:24px; text-align:center;">
+        <h1 style="margin:0; font-size:24px; font-weight:bold; color:#D96B37;">VINLIGNA</h1>
+        <p style="margin:8px 0 0; color:#5C3B2E;">Tradition in zeitlose Eleganz verwandeln</p>
       </div>
       
       <!-- Content -->
@@ -111,7 +111,7 @@ export function createUserEmailTemplate(data: EmailData): string {
     <meta name="color-scheme" content="light">
     <meta name="supported-color-schemes" content="light">
   </head>
-  <body style="margin:0; padding:20px; background-color:#525358; font-family:system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height:1.5;">
+  <body style="margin:0; padding:20px; background-color:#FFFFFF; font-family:system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height:1.5;">
     <!-- Hidden preview text -->
     <div style="display:none; max-height:0; overflow:hidden;">
       Vielen Dank für Ihre Nachricht an VINLIGNA. Wir werden uns in Kürze bei Ihnen melden.
@@ -119,9 +119,9 @@ export function createUserEmailTemplate(data: EmailData): string {
     
     <div style="max-width:600px; margin:0 auto; background-color:#ffffff; border-radius:8px; overflow:hidden; box-shadow:0 4px 6px rgba(0,0,0,0.1);">
       <!-- Header -->
-      <div style="background-color:#5C3B2E; color:#ffffff; padding:24px; text-align:center;">
-        <h1 style="margin:0; font-size:24px; font-weight:bold;">VINLIGNA</h1>
-        <p style="margin:8px 0 0;">Tradition in zeitlose Eleganz verwandeln</p>
+      <div style="padding:24px; text-align:center;">
+        <h1 style="margin:0; font-size:24px; font-weight:bold; color:#D96B37;">VINLIGNA</h1>
+        <p style="margin:8px 0 0; color:#5C3B2E;">Tradition in zeitlose Eleganz verwandeln</p>
       </div>
       
       <!-- Content -->
