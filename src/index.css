@@ -1,91 +1,3 @@
-/* Local fonts */
-@font-face {
-  font-family: 'Cormorant Garamond';
-  src: url('/fonts/CormorantGaramond-Light.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Cormorant Garamond';
-  src: url('/fonts/CormorantGaramond-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Cormorant Garamond';
-  src: url('/fonts/CormorantGaramond-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Cormorant Garamond';
-  src: url('/fonts/CormorantGaramond-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Cormorant Garamond';
-  src: url('/fonts/CormorantGaramond-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-ExtraLight.woff2') format('woff2');
-  font-weight: 200;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-Light.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
 
 @tailwind base;
 @tailwind components;
@@ -686,5 +598,168 @@
 }
 
 .bg-black {
-  background-color: #000000;
+  background-color: #ffffff;
+}
+
+/* Fix for quote text color in About section */
+.text-xl.md\:text-2xl.font-light.italic.text-white\/90 {
+  color: hsl(var(--foreground));
+}
+
+.dark .text-xl.md\:text-2xl.font-light.italic.text-white\/90 {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Wine buttons with white text in both themes */
+.bg-wine, .hover\:bg-wine-dark:hover {
+  color: white !important;
+}
+
+/* Wine icons in both themes */
+.text-wine svg {
+  color: hsl(var(--wine)) !important;
+}
+
+/* Fix for the dark background - IMPORTANT ADDITION */
+.bg-black, .bg-darkbg {
+  background-color: #ffffff !important; /* Change to white in light mode */
+}
+
+.dark .bg-black, .dark .bg-darkbg {
+  background-color: #505358 !important; /* Keep dark mode as is */
+}
+
+/* Ensure section backgrounds are white in light mode */
+section {
+  background-color: #ffffff;
+}
+
+.dark section {
+  background-color: #505358;
+}
+
+/* Override any conflicting styles */
+section.bg-darkbg {
+  background-color: #ffffff !important; /* White in light mode */
+}
+
+.dark section.bg-darkbg {
+  background-color: #505358 !important; /* Keep dark mode as is */
+}
+
+/* Override section background colors */
+section.bg-background {
+  background-color: #ffffff !important;
+}
+
+.dark section.bg-background {
+  background-color: #505358 !important;
+}
+
+/* Fix gradient backgrounds in light mode */
+.from-black\/95, .via-black\/70, .to-black\/30 {
+  --tw-gradient-from: rgba(20, 20, 20, 0.6);
+  --tw-gradient-to: rgba(20, 20, 20, 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.dark .from-black\/95, .dark .via-black\/70, .dark .to-black\/30 {
+  --tw-gradient-from: rgba(80, 83, 88, 0.95);
+  --tw-gradient-to: rgba(80, 83, 88, 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.via-black\/70 {
+  --tw-gradient-via: rgba(20, 20, 20, 0.4);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to);
+}
+
+.dark .via-black\/70 {
+  --tw-gradient-via: rgba(80, 83, 88, 0.7);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to);
+}
+
+.to-black\/30 {
+  --tw-gradient-to: rgba(20, 20, 20, 0.2);
+}
+
+.dark .to-black\/30 {
+  --tw-gradient-to: rgba(80, 83, 88, 0.3);
+}
+
+/* Team section overlay fixes */
+.from-background\/70 {
+  --tw-gradient-from: rgba(255, 255, 255, 0.7);
+  --tw-gradient-to: rgba(255, 255, 255, 0);
+}
+
+.dark .from-background\/70 {
+  --tw-gradient-from: rgba(80, 83, 88, 0.7);
+  --tw-gradient-to: rgba(80, 83, 88, 0);
+}
+
+.via-background\/20 {
+  --tw-gradient-via: rgba(255, 255, 255, 0.2);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to);
+}
+
+.dark .via-background\/20 {
+  --tw-gradient-via: rgba(80, 83, 88, 0.2);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to);
+}
+
+/* Black background overrides for hero images and backgrounds */
+.bg-darkbg\/60 {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.dark .bg-darkbg\/60 {
+  background-color: rgba(80, 83, 88, 0.6) !important;
+}
+
+.from-darkbg\/70 {
+  --tw-gradient-from: rgba(255, 255, 255, 0.7) !important;
+}
+
+.dark .from-darkbg\/70 {
+  --tw-gradient-from: rgba(80, 83, 88, 0.7) !important;
+}
+
+.via-darkbg\/20 {
+  --tw-gradient-via: rgba(255, 255, 255, 0.2) !important;
+}
+
+.dark .via-darkbg\/20 {
+  --tw-gradient-via: rgba(80, 83, 88, 0.2) !important;
+}
+
+/* Light mode specific improvements */
+.light-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.dark .light-shadow {
+  box-shadow: none;
+}
+
+/* Fix form input styling for light mode */
+input.bg-white\/5, textarea.bg-white\/5, select.bg-white\/5 {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  color: rgba(0, 0, 0, 0.8) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark input.bg-white\/5, .dark textarea.bg-white\/5, .dark select.bg-white\/5 {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Fix form label styling for light mode */
+label.text-white\/80 {
+  color: rgba(0, 0, 0, 0.8) !important;
+}
+
+.dark label.text-white\/80 {
+  color: rgba(255, 255, 255, 0.8) !important;
 }
