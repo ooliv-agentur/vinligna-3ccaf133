@@ -34,8 +34,8 @@ const DatenschutzPage = () => {
                 <h2 className="text-xl font-medium mb-4">Verantwortlicher</h2>
                 <p>Verantwortliche für die Datenverarbeitung auf dieser Webseite ist:</p>
                 <p className="mt-2">VinLignum Holzmanufaktur GmbH & Co. KG</p>
-                <p>Hermann-Löns-Str. 17</p>
-                <p>55257 Budenheim</p>
+                <p>Industriestraße 19</p>
+                <p>67821 Alsenz</p>
                 <p className="mt-4">Tel.: <a href="tel:+4963623094990" className="text-wine hover:text-wine-dark transition-colors">+49 6362 309 49 90</a></p>
                 <p>E-Mail: <a href="mailto:info@vinligna.com" className="text-wine hover:text-wine-dark transition-colors">info@vinligna.com</a></p>
               </div>
