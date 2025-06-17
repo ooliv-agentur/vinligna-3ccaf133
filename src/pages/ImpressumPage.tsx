@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
@@ -46,7 +45,16 @@ const ImpressumPage = () => {
               
               <div>
                 <h2 className="text-xl font-medium mb-4 text-foreground">Konzept, Design & technische Umsetzung:</h2>
-                <p>ooliv</p>
+                <p>
+                  <a 
+                    href="https://ooliv.de" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-wine hover:text-wine-dark transition-colors"
+                  >
+                    ooliv
+                  </a>
+                </p>
               </div>
               
               <div>
