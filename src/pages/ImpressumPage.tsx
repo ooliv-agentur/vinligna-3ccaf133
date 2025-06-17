@@ -28,20 +28,20 @@ const ImpressumPage = () => {
             <div className="space-y-8 text-foreground/80">
               <div>
                 <h2 className="text-xl font-medium mb-4 text-foreground">VinLignum Holzmanufaktur GmbH & Co. KG</h2>
-                <p>Hermann-Löns-Str. 17</p>
-                <p>55257 Budenheim</p>
+                <p>Industriestraße 19</p>
+                <p>67821 Alsenz</p>
                 <p className="mt-4">Tel.: <a href="tel:+4963623094990" className="text-wine hover:text-wine-dark transition-colors">+49 6362 309 49 90</a></p>
               </div>
               
               <div>
-                <p>Steuer Nr: 19/201/60077</p>
-                <p>USt-IdNr: DE359132714</p>
+                <p>Steuer Nr: 19/201/22074</p>
+                <p>USt-IdNr: DE356697466</p>
               </div>
               
               <div>
-                <p>Amtsgericht: 55116 Mainz</p>
-                <p>Handelsregister-Nummer: HRA 44247</p>
-                <p>Geschäftsführer: Robert Gries</p>
+                <p>Amtsgericht: Kaiserslautern</p>
+                <p>Handelsregister-Nummer: HRA 30967</p>
+                <p>Geschäftsführer: Rüdiger Gries</p>
               </div>
               
               <div>
