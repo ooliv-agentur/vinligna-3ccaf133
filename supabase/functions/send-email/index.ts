@@ -53,8 +53,18 @@ serve(async (req) => {
 
   try {
     // Parse request body
-    const data = await req.json() as EmailData;
-    console.log("Received data:", data);
+    const rawData = await req.json();
+    console.log("Received data:", rawData);
+    
+    // Type validation - ensure all fields are strings
+    const data: EmailData = {
+      name: typeof rawData.name === 'string' ? rawData.name : '',
+      email: typeof rawData.email === 'string' ? rawData.email : '',
+      telefon: typeof rawData.telefon === 'string' ? rawData.telefon : undefined,
+      interesse: typeof rawData.interesse === 'string' ? rawData.interesse : '',
+      nachricht: typeof rawData.nachricht === 'string' ? rawData.nachricht : '',
+      formSource: typeof rawData.formSource === 'string' ? rawData.formSource : undefined,
+    };
     
     // Validate required fields
     if (!data.name || !data.email || !data.interesse || !data.nachricht) {
@@ -72,12 +82,71 @@ serve(async (req) => {
         }
       );
     }
+    
+    // Email format validation
+    const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!EMAIL_REGEX.test(data.email)) {
+      console.log("Invalid email format");
+      return new Response(
+        JSON.stringify({ 
+          success: false, 
+          error: "Invalid email format",
+          mailtoLink: createMailtoLink(data)
+        }),
+        { 
+          headers: corsHeaders,
+          status: 400, 
+        }
+      );
+    }
+    
+    // Length validation to prevent abuse
+    const MAX_NAME_LENGTH = 100;
+    const MAX_EMAIL_LENGTH = 255;
+    const MAX_TELEFON_LENGTH = 50;
+    const MAX_INTERESSE_LENGTH = 100;
+    const MAX_NACHRICHT_LENGTH = 5000;
+    const MAX_FORM_SOURCE_LENGTH = 100;
+    
+    if (data.name.length > MAX_NAME_LENGTH || 
+        data.email.length > MAX_EMAIL_LENGTH ||
+        (data.telefon && data.telefon.length > MAX_TELEFON_LENGTH) ||
+        data.interesse.length > MAX_INTERESSE_LENGTH ||
+        data.nachricht.length > MAX_NACHRICHT_LENGTH ||
+        (data.formSource && data.formSource.length > MAX_FORM_SOURCE_LENGTH)) {
+      console.log("Field length exceeded");
+      return new Response(
+        JSON.stringify({ 
+          success: false, 
+          error: "One or more fields exceed maximum length",
+          mailtoLink: createMailtoLink(data)
+        }),
+        { 
+          headers: corsHeaders,
+          status: 400, 
+        }
+      );
+    }
+    
+    // Sanitize fields used in email headers to prevent header injection
+    const sanitizeHeader = (str: string): string => str.replace(/[\r\n]/g, '').trim();
+    
+    // Sanitize data for email headers
+    const sanitizedData: EmailData = {
+      ...data,
+      name: sanitizeHeader(data.name),
+      email: sanitizeHeader(data.email),
+      telefon: data.telefon ? sanitizeHeader(data.telefon) : undefined,
+      interesse: sanitizeHeader(data.interesse),
+      nachricht: data.nachricht.trim(), // Keep newlines in message body, just trim
+      formSource: data.formSource ? sanitizeHeader(data.formSource) : undefined,
+    };
 
     // Format the interest value
-    let formattedInterest = formatInterest(data.interesse);
+    let formattedInterest = formatInterest(sanitizedData.interesse);
 
     // Create direct mailto link as fallback
-    const mailtoLink = createMailtoLink(data);
+    const mailtoLink = createMailtoLink(sanitizedData);
 
     try {
       // Get SMTP credentials from environment variables
@@ -112,24 +181,24 @@ serve(async (req) => {
       const timestamp = new Date().toLocaleString("de-DE");
       
       // Prepare both email templates
-      const adminEmailHtml = createAdminEmailTemplate(data, formattedInterest, timestamp);
-      const adminEmailText = createAdminPlaintextTemplate(data, formattedInterest, timestamp);
-      const userEmailHtml = createUserEmailTemplate(data);
-      const userEmailText = createUserPlaintextTemplate(data);
+      const adminEmailHtml = createAdminEmailTemplate(sanitizedData, formattedInterest, timestamp);
+      const adminEmailText = createAdminPlaintextTemplate(sanitizedData, formattedInterest, timestamp);
+      const userEmailHtml = createUserEmailTemplate(sanitizedData);
+      const userEmailText = createUserPlaintextTemplate(sanitizedData);
       
       console.log("SMTP connection configured, sending admin email...");
       
       // Set up the sender display name
       const fromAddress = `"VINLIGNA – Kontaktformular" <${smtpUsername}>`;
-      const formSource = data.formSource ? ` über ${data.formSource}` : '';
-      const emailSubject = `Neue Nachricht von ${data.name}${formSource}`;
+      const formSource = sanitizedData.formSource ? ` über ${sanitizedData.formSource}` : '';
+      const emailSubject = `Neue Nachricht von ${sanitizedData.name}${formSource}`;
       
       // 1. Send notification email to admin
       try {
         await client.send({
           from: fromAddress,
           to: smtpUsername,   // Send to the same address
-          replyTo: data.email, // Add reply-to header pointing to the user's email address
+          replyTo: sanitizedData.email, // Add reply-to header pointing to the user's email address
           subject: emailSubject,
           html: adminEmailHtml,
           text: adminEmailText, // Plain text alternative
@@ -145,10 +214,10 @@ serve(async (req) => {
       
       // 2. Send confirmation email to the user
       try {
-        console.log(`Sending confirmation email to user: ${data.email}`);
+        console.log(`Sending confirmation email to user: ${sanitizedData.email}`);
         await client.send({
           from: fromAddress,
-          to: data.email,
+          to: sanitizedData.email,
           subject: "Vielen Dank für Ihre Nachricht an VINLIGNA",
           html: userEmailHtml,
           text: userEmailText, // Plain text alternative
