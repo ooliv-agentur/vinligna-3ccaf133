@@ -12,11 +12,51 @@ import { formatInterest, createMailtoLink } from "./utils.ts";
 // Simplified CORS headers with everything needed for cross-origin requests
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-request-timestamp',
   'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
   'Access-Control-Max-Age': '86400',
   'Content-Type': 'application/json'
 };
+
+// Simple in-memory rate limiter (resets on function cold start, but provides basic protection)
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+const RATE_LIMIT_WINDOW_MS = 3600000; // 1 hour
+const MAX_REQUESTS_PER_WINDOW = 5; // 5 requests per hour per IP
+
+function getClientIP(req: Request): string {
+  // Try various headers that might contain the real client IP
+  const forwardedFor = req.headers.get('x-forwarded-for');
+  if (forwardedFor) {
+    return forwardedFor.split(',')[0].trim();
+  }
+  const realIP = req.headers.get('x-real-ip');
+  if (realIP) {
+    return realIP;
+  }
+  const cfConnectingIP = req.headers.get('cf-connecting-ip');
+  if (cfConnectingIP) {
+    return cfConnectingIP;
+  }
+  return 'unknown';
+}
+
+function checkRateLimit(ip: string): { allowed: boolean; remaining: number; resetIn: number } {
+  const now = Date.now();
+  const record = rateLimitMap.get(ip);
+  
+  if (!record || now > record.resetTime) {
+    // New window or expired
+    rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+    return { allowed: true, remaining: MAX_REQUESTS_PER_WINDOW - 1, resetIn: RATE_LIMIT_WINDOW_MS };
+  }
+  
+  if (record.count >= MAX_REQUESTS_PER_WINDOW) {
+    return { allowed: false, remaining: 0, resetIn: record.resetTime - now };
+  }
+  
+  record.count++;
+  return { allowed: true, remaining: MAX_REQUESTS_PER_WINDOW - record.count, resetIn: record.resetTime - now };
+}
 
 interface EmailData {
   name: string;
@@ -25,6 +65,8 @@ interface EmailData {
   interesse: string;
   nachricht: string;
   formSource?: string;
+  honeypot?: string; // Hidden field for bot detection
+  timestamp?: number; // Client-side timestamp for freshness check
 }
 
 serve(async (req) => {
@@ -51,10 +93,62 @@ serve(async (req) => {
     );
   }
 
+  // Check rate limit
+  const clientIP = getClientIP(req);
+  const rateLimit = checkRateLimit(clientIP);
+  
+  if (!rateLimit.allowed) {
+    console.log(`Rate limit exceeded for IP: ${clientIP}`);
+    return new Response(
+      JSON.stringify({ 
+        success: false, 
+        error: "Zu viele Anfragen. Bitte versuchen Sie es später erneut.",
+        errorCode: "RATE_LIMIT_EXCEEDED",
+        retryAfter: Math.ceil(rateLimit.resetIn / 1000)
+      }),
+      { 
+        headers: {
+          ...corsHeaders,
+          'Retry-After': String(Math.ceil(rateLimit.resetIn / 1000))
+        },
+        status: 429, 
+      }
+    );
+  }
+
   try {
     // Parse request body
     const rawData = await req.json();
-    console.log("Received data:", rawData);
+    console.log("Received data:", { ...rawData, nachricht: rawData.nachricht?.substring(0, 30) + '...' });
+    
+    // Honeypot check - if filled, it's likely a bot
+    if (rawData.honeypot && rawData.honeypot.trim() !== '') {
+      console.log("Honeypot field filled - likely a bot");
+      // Return success to not alert the bot, but don't send email
+      return new Response(
+        JSON.stringify({ success: true, message: "Message received" }),
+        { headers: corsHeaders, status: 200 }
+      );
+    }
+    
+    // Timestamp freshness check (reject if older than 5 minutes or in the future)
+    if (rawData.timestamp) {
+      const requestTimestamp = Number(rawData.timestamp);
+      const now = Date.now();
+      const fiveMinutesMs = 5 * 60 * 1000;
+      
+      if (isNaN(requestTimestamp) || requestTimestamp > now + 60000 || requestTimestamp < now - fiveMinutesMs) {
+        console.log("Request timestamp invalid or stale");
+        return new Response(
+          JSON.stringify({ 
+            success: false, 
+            error: "Request expired. Please refresh and try again.",
+            errorCode: "REQUEST_EXPIRED"
+          }),
+          { headers: corsHeaders, status: 400 }
+        );
+      }
+    }
     
     // Type validation - ensure all fields are strings
     const data: EmailData = {
