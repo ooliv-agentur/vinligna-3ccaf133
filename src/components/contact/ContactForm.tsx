@@ -28,6 +28,7 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
     telefon: '',
     nachricht: '',
     interesse: 'business', // Default value
+    honeypot: '', // Hidden field for bot detection
   });
 
   const getFormSource = (): string => {
@@ -50,6 +51,7 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
       telefon: '',
       nachricht: '',
       interesse: 'business',
+      honeypot: '',
     });
   };
 
@@ -156,6 +158,19 @@ const ContactForm = ({ formSource }: ContactFormProps) => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
+      {/* Honeypot field - hidden from users, filled by bots */}
+      <div className="hidden" aria-hidden="true">
+        <label htmlFor="honeypot">Leave this empty</label>
+        <input
+          type="text"
+          id="honeypot"
+          name="honeypot"
+          value={formData.honeypot}
+          onChange={handleChange}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
       {successMessage && (
         <div className={cn(
           "rounded-xl p-4 border",

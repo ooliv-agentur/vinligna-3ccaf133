@@ -10,6 +10,7 @@ interface EmailData {
   interesse: string;
   nachricht: string;
   formSource: string;
+  honeypot?: string;
 }
 
 interface EmailResponse {
@@ -72,7 +73,9 @@ export const sendEmailNotifications = async (data: EmailData): Promise<EmailResp
         telefon,
         interesse,
         nachricht,
-        formSource
+        formSource,
+        honeypot: data.honeypot || '', // Include honeypot for bot detection
+        timestamp: Date.now() // Add timestamp for freshness validation
       }
     });
     
