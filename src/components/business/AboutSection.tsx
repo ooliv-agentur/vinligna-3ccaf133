@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import { Quote } from 'lucide-react';
 import { fadeIn, slideInLeft, slideInRight } from '@/lib/motion';
+import BrandAmbassador from '@/components/BrandAmbassador';
 
 const AboutSection = () => {
   return (
@@ -90,6 +91,8 @@ const AboutSection = () => {
               </div>
             </div>
           </motion.div>
+
+          <BrandAmbassador />
         </div>
       </div>
     </section>
