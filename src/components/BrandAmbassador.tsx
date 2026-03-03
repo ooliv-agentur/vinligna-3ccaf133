@@ -18,14 +18,16 @@ const BrandAmbassador = () => {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center pt-6">
+      <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start pt-6">
         {/* Photo */}
-        <div className="w-48 h-48 md:w-56 md:h-56 flex-shrink-0">
-          <img
-            src="/lovable-uploads/075_Difan.jpg"
-            alt="Difan Xu – Markenbotschafterin 075"
-            className="w-full h-full object-cover rounded-xl border border-white/10"
-          />
+        <div className="w-full md:w-72 lg:w-80 flex-shrink-0 self-center md:self-start">
+          <div className="aspect-[3/4] overflow-hidden rounded-xl border border-white/10">
+            <img
+              src="/lovable-uploads/075_Difan.jpg"
+              alt="Difan Xu – Markenbotschafterin 075"
+              className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
+            />
+          </div>
         </div>
 
         {/* Text + Links */}
