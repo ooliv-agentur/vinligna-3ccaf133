@@ -13,6 +13,7 @@ import { fadeIn, slideInLeft, slideInRight, staggerContainer } from '@/lib/motio
 import FullWidthImageSection from '@/components/private/FullWidthImageSection';
 import TextArrowButton from '@/components/TextArrowButton';
 import BrandAffiliation from '@/components/BrandAffiliation';
+import BrandAmbassador from '@/components/BrandAmbassador';
 
 const PrivatePage = () => {
   useEffect(() => {
@@ -225,6 +226,8 @@ const PrivatePage = () => {
                 </div>
               </div>
             </motion.div>
+
+            <BrandAmbassador />
           </div>
         </div>
       </section>
