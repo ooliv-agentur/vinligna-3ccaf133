@@ -1,7 +1,12 @@
 
-// Email service for form submission using a Supabase edge function
+// Email service for form submission.
+//
+// Sends the contact form to the standalone Cloudflare Worker `vinligna-mail`
+// (https://vinligna-mail.uli-95b.workers.dev), which delivers the admin
+// notification + user confirmation over IONOS SMTP. This replaced the former
+// Supabase edge function — no Supabase dependency anymore.
 
-import { supabase } from "@/integrations/supabase/client";
+const MAIL_ENDPOINT = "https://vinligna-mail.uli-95b.workers.dev";
 
 interface EmailData {
   name: string;
@@ -47,27 +52,28 @@ const createMailtoLink = (data: EmailData): string => {
 };
 
 /**
- * Sends email notifications through Supabase Edge Function
- * Falls back to creating a mailto link if there's any error
+ * Sends email notifications through the vinligna-mail Cloudflare Worker.
+ * Falls back to creating a mailto link if there's any error.
  */
 export const sendEmailNotifications = async (data: EmailData): Promise<EmailResponse> => {
   const { name, email, telefon, interesse, nachricht, formSource } = data;
-  
-  console.log("Sending email via edge function with data:", {
+
+  console.log("Sending email via mail worker with data:", {
     name,
     email,
     telefon: telefon || "Nicht angegeben",
     interesse: formatInterest(interesse),
     nachricht: nachricht.substring(0, 30) + (nachricht.length > 30 ? '...' : '')
   });
-  
+
   // Create direct mailto link as fallback
   const mailtoLink = createMailtoLink(data);
-  
+
   try {
-    // Call the Supabase edge function to send the email
-    const { data: functionData, error } = await supabase.functions.invoke('send-email', {
-      body: {
+    const response = await fetch(MAIL_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
         name,
         email,
         telefon,
@@ -76,24 +82,21 @@ export const sendEmailNotifications = async (data: EmailData): Promise<EmailResp
         formSource,
         honeypot: data.honeypot || '', // Include honeypot for bot detection
         timestamp: Date.now() // Add timestamp for freshness validation
-      }
+      })
     });
-    
-    // Check for edge function errors
-    if (error) {
-      console.log("Supabase edge function error:", error);
-      return { 
-        success: false,
-        error: error.message,
-        mailtoLink
-      };
+
+    // Try to parse the JSON body (the worker always returns JSON).
+    let functionData: EmailResponse | null = null;
+    try {
+      functionData = await response.json();
+    } catch {
+      functionData = null;
     }
-    
-    console.log("Edge function response:", functionData);
-    
-    // Return success or error based on the function response
+
+    console.log("Mail worker response:", response.status, functionData);
+
     if (functionData && functionData.success) {
-      return { 
+      return {
         success: true,
         message: functionData.message || "Email sent successfully",
         mailtoLink: functionData.mailtoLink || mailtoLink
@@ -101,21 +104,21 @@ export const sendEmailNotifications = async (data: EmailData): Promise<EmailResp
     } else if (functionData) {
       return {
         success: false,
-        error: functionData.error || "Unknown error from edge function",
+        error: functionData.error || "Unknown error from mail worker",
         errorCode: functionData.errorCode || "UNKNOWN_ERROR",
         mailtoLink: functionData.mailtoLink || mailtoLink
       };
     } else {
       return {
         success: false,
-        error: "No response from edge function",
+        error: `No valid response from mail worker (HTTP ${response.status})`,
         mailtoLink
       };
     }
   } catch (error) {
-    console.error("Failed to send email via edge function:", error);
-    
-    return { 
+    console.error("Failed to send email via mail worker:", error);
+
+    return {
       success: false,
       error: error instanceof Error ? error.message : "Failed to contact server",
       mailtoLink
